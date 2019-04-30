@@ -32,6 +32,15 @@ function em {
 #   ------------------------------------------------------------
     showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
 
+
+#   always list directory contents upon 'cd'
+#   ------------------------------------------------------------
+    cd() { builtin cd "$@"; ll; }                    
+
+#   mcd: Makes new Dir and jumps inside
+#   ------------------------------------------------------------
+    mcd () { mkdir -p "$1" && cd "$1"; }             
+
 #   -------------------------------
 #   1.  FILE AND FOLDER MANAGEMENT
 #   -------------------------------
