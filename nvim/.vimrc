@@ -10,6 +10,16 @@ let mapleader = "\<Space>"
 
 set nocompatible
 filetype plugin indent on
+
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py --clang-completer
+  endif
+endfunction
 " =============================================================================
 " # PLUGINS
 " =============================================================================
@@ -22,9 +32,11 @@ Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
 Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
+Plug 'kien/rainbow_parentheses.vim'
 " Vimscript enhancements
 Plug 'tpope/vim-repeat' " makes . and u work better with plugins
 Plug 'tpope/vim-scriptease' " helpers when writing vimscript
@@ -42,7 +54,6 @@ Plug 'mbbill/undotree' " visualize the undo tree (:h undo-tree)
 Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
-Plug 'majutsushi/tagbar' " tag navigation for files in memory
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
@@ -64,11 +75,6 @@ let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-" Rust
-" if executable('rustc')
-"   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-"   Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-" endif
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -90,9 +96,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
-" c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
+" C++/C
+Plug 'rhysd/vim-clang-format'
+Plug 'lyuts/vim-rtags'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'majutsushi/tagbar'
 " go
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'zchee/deoplete-go', { 'do': 'make' }
@@ -490,6 +498,20 @@ function! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+" Rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" reload files changed outside vim
+set autoread
+" Trigger `autoread` when files changes on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change
+autocmd FileChangedShellPost *
+\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
