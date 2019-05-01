@@ -42,6 +42,7 @@ Plug 'mbbill/undotree' " visualize the undo tree (:h undo-tree)
 Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
+Plug 'majutsushi/tagbar' " tag navigation for files in memory
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
@@ -462,6 +463,8 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
 " undotree functionality
 nnoremap <F5> :UndotreeToggle<cr>
+" tagbar functionality
+nmap <F8> :TagbarToggle<CR>
 
 " Jump to last edit position on opening file
 if has("autocmd")
