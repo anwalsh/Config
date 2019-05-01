@@ -1,5 +1,5 @@
 set shell=/bin/zsh
-" If plug.vim is not present, create and install. 
+" If plug.vim is not present, create and install.
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -106,7 +106,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-" Java Autcomplete 
+" Java Autcomplete
 Plug 'artur-shaik/vim-javacomplete2'
 " JS stuff
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'} " JS autocomplete
@@ -123,14 +123,14 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
 Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
-" WebAPI for Rust Playpen 
+" WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " End Plug Call
 call plug#end()
 " =============================================================================
 " # GUI/Basic Options
 " =============================================================================
-syntax on 
+syntax on
 " Better Colors
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
@@ -191,7 +191,7 @@ set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
 " Colors
 set background=dark
-colorscheme one 
+colorscheme one
 hi Normal ctermbg=NONE
 hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
 " Line hopping
@@ -199,10 +199,10 @@ hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
 nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
 " Vim Autocomplete Menu
-set wildmenu 
+set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-set showmatch   
+set showmatch
 set hidden "allow hidden buffers. VERY GOOD. see help
 set nobackup "dont make those filename~ files (they have bitten me many times)
 set noswapfile "more trouble than they're worth
@@ -331,8 +331,7 @@ inoremap jk <esc>
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-                \:call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
     autocmd FileType java setlocal noexpandtab
     autocmd FileType java setlocal list
     autocmd FileType java setlocal listchars=tab:+\ ,eol:-
@@ -484,6 +483,14 @@ imap <F1> <Esc>
 " Rusty-tags configuration
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
+" trim trailing space
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
