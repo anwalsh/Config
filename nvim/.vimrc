@@ -169,9 +169,6 @@ set binary
 " Sane splits
 set splitright
 set splitbelow
-" Permanent undo
-set undodir=~/.vimdid
-set undofile
 " Searching
 set hlsearch
 set incsearch
@@ -466,6 +463,17 @@ autocmd BufRead *.xlsx.axlsx set filetype=ruby
 
 " Float Preview Dock
 let g:float_preview#docked = 1
+
+function! DisableExtras()
+  call nvim_win_set_option(g:float_preview#win, 'number', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'relativenumber', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'cursorline', v:false)
+endfunction
+
+autocmd User FloatPreviewWinOpen call DisableExtras()
+
+" undotree functionality
+nnoremap <F5> :UndotreeToggle<cr>
 
 " Jump to last edit position on opening file
 if has("autocmd")
