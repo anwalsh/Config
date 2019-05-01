@@ -48,7 +48,6 @@ Plug 'w0rp/ale'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ncm2/float-preview.nvim'
 " Language Server Support
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -460,17 +459,6 @@ autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
-
-" Float Preview Dock
-let g:float_preview#docked = 1
-
-function! DisableExtras()
-  call nvim_win_set_option(g:float_preview#win, 'number', v:false)
-  call nvim_win_set_option(g:float_preview#win, 'relativenumber', v:false)
-  call nvim_win_set_option(g:float_preview#win, 'cursorline', v:false)
-endfunction
-
-autocmd User FloatPreviewWinOpen call DisableExtras()
 
 " undotree functionality
 nnoremap <F5> :UndotreeToggle<cr>
