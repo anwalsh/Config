@@ -68,7 +68,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Let the LSP flow through you . . .
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'cpp': ['clangd'],
     \ 'python': ['pyls'],
     \ }
 let g:LanguageClient_autoStart = 1
@@ -114,9 +113,6 @@ Plug 'airblade/vim-gitgutter'
 " Code Formatting
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-" Java Autcomplete
-Plug 'artur-shaik/vim-javacomplete2'
 " JS stuff
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'} " JS autocomplete
 Plug 'pangloss/vim-javascript' " Better js indent and syntax
@@ -356,13 +352,8 @@ augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer autopep8
 augroup END
-" Install Glaive and then use it to format a Java buffer
-call glaive#Install()
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /Users/awalsh/code_formatting/google-java-format-1.7-all-deps.jar"
 
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
 " found' messages
@@ -427,9 +418,6 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
-
-" Plug Javacomplete2'
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " Adding some short cuts for more efficient workflows
 " Move by line
