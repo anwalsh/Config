@@ -494,6 +494,17 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" YCM Config
+let g:ycm_filetype_blacklist = {
+      \ 'markdown': 1,
+      \ 'rust': 1,
+      \ 'go': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'python': 1,
+      \ 'java': 1,
+      \}
+
 " reload files changed outside vim
 set autoread
 " Trigger `autoread` when files changes on disk
