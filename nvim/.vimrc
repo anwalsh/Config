@@ -37,6 +37,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'ntpeters/vim-better-whitespace'
 " Vimscript enhancements
 Plug 'tpope/vim-repeat' " makes . and u work better with plugins
 Plug 'tpope/vim-scriptease' " helpers when writing vimscript
@@ -329,28 +330,34 @@ nnoremap <silent> <S-t> :tabnew<CR>
 " jk is escape
 inoremap jk <esc>
 
-" Autocmds for removing whitespace, clearing the sign column and appropriately identifying format
+" Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
     autocmd!
+BufNewFile,BufRead,
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-    autocmd FileType java setlocal noexpandtab
-    autocmd FileType java setlocal list
-    autocmd FileType java setlocal listchars=tab:+\ ,eol:-
-    autocmd FileType java setlocal formatprg=par\ -w80\ -T4
     autocmd FileType python setlocal commentstring=#\ %s
-    autocmd BufEnter *.cls setlocal filetype=java
-    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
-    autocmd BufEnter Makefile setlocal noexpandtab
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd FileType fstab,systemd setlocal noexpandtab
+    autocmd FileType gitconfig,sh,toml setlocal noexpandtab
+    autocmd Filetype rust setlocal sw=4 sts=4 ts=4 expandtab
+    autocmd Filetype cls setlocal filetype=java
+    autocmd Filetype Makefile setlocal noexpandtab
+    autocmd Filetype sh setlocal ts=2 sw=2 sts=2
+    autocmd Filetype java setlocal ts=2 sw=2 sts=2
+    autocmd Filetype vim setlocal noet ts=4 sw=4 sts=4
+    autocmd Filetype text setlocal noet ts=4 sw=4
+    autocmd Filetype md setlocal spell expandtab ts=4 sw=4 sts=4
+    autocmd Filetype yml,yaml setlocal expandtab ts=2 sw=2
+    autocmd Filetype c,cpp setlocal expandtab ts=4 sw=4
+    autocmd Filetype hpp setlocal expandtab ts=4 sw=4
+    autocmd Filetype json setlocal expandtab ts=2 sw=2
+    autocmd Filetype go setlocal noexpandtab ts=4 sw=4 sts=4
 augroup END
 
 " Autoformat
 augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType rust  AutoFormatBuffer rustfmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer autopep8
 augroup END
@@ -450,14 +457,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Help filetype detection
-autocmd BufRead *.plot set filetype=gnuplot
-autocmd BufRead *.md set filetype=markdown
-autocmd BufRead *.lds set filetype=ld
-autocmd BufRead *.tex set filetype=tex
-autocmd BufRead *.trm set filetype=c
-autocmd BufRead *.xlsx.axlsx set filetype=ruby
-
 " undotree functionality
 nnoremap <F5> :UndotreeToggle<cr>
 " tagbar functionality
@@ -480,13 +479,11 @@ imap <F1> <Esc>
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-" trim trailing space
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
+" ========= vim-better-whitespace ==================
+
+" auto strip whitespace except for file with extention blacklisted
+let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 
 " Rainbow parens
 au VimEnter * RainbowParenthesesToggle
@@ -503,12 +500,8 @@ let g:ycm_filetype_blacklist = {
       \ 'vimwiki': 1,
       \ 'python': 1,
       \ 'java': 1,
+      \ 'vim': 1,
       \}
-
-" tab to select
-" and don't hijack my enter key
-inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
-inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
 
 " reload files changed outside vim
 set autoread
