@@ -333,7 +333,6 @@ inoremap jk <esc>
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
     autocmd!
-BufNewFile,BufRead,
     autocmd VimEnter * highlight clear SignColumn
     autocmd FileType python setlocal commentstring=#\ %s
     autocmd FileType fstab,systemd setlocal noexpandtab
