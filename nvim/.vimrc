@@ -505,6 +505,11 @@ let g:ycm_filetype_blacklist = {
       \ 'java': 1,
       \}
 
+" tab to select
+" and don't hijack my enter key
+inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+
 " reload files changed outside vim
 set autoread
 " Trigger `autoread` when files changes on disk
