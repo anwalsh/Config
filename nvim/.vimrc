@@ -109,8 +109,6 @@ Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " highlighting for requirements.txt
 Plug 'Vimjas/vim-python-pep8-indent' " better python indentation
-" GitGutter
-Plug 'airblade/vim-gitgutter'
 " Code Formatting
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
