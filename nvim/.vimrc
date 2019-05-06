@@ -80,7 +80,6 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/vim-hug-neovim-rpc'
 " Completion plugins
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -354,7 +353,7 @@ augroup END
 augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType rust  AutoFormatBuffer rustfmt
+  autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer autopep8
 augroup END
@@ -489,15 +488,9 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " YCM Config
-let g:ycm_filetype_blacklist = {
-      \ 'markdown': 1,
-      \ 'rust': 1,
-      \ 'go': 1,
-      \ 'text': 1,
-      \ 'vimwiki': 1,
-      \ 'python': 1,
-      \ 'java': 1,
-      \ 'vim': 1,
+let g:ycm_filetype_whitelist = {
+      \ 'cpp': 1,
+      \ 'c': 1,
       \}
 
 " reload files changed outside vim
