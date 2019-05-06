@@ -100,7 +100,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/a.vim'
 " go
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'zchee/deoplete-go', { 'do': 'make' }
