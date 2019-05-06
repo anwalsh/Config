@@ -477,7 +477,7 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 " ========= vim-better-whitespace ==================
 
 " auto strip whitespace except for file with extention blacklisted
-let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
+let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'text']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 
 " Rainbow parens
