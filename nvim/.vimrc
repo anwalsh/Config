@@ -281,8 +281,14 @@ noremap <leader>w :bn<CR>
 " Close buffer
 noremap <leader>c :bd<CR>
 
+" Buffer search
+nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
+
 " Clean search (highlight)
-nnoremap <silent> <leader>n :noh<CR>
+nnoremap <silent> <leader>h :noh<CR>
+
+" Nerdtree config just in case
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 " Switching windows
 noremap <C-j> <C-w>j
