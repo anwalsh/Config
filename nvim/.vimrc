@@ -281,8 +281,6 @@ noremap <leader>c :bd<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 
-" Don't highlight after exiting search
-noh
 " Clean search (highlight)
 nnoremap <silent> <leader>h :noh<CR>
 
