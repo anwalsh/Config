@@ -273,17 +273,16 @@ if has('macunix')
 endif
 
 " Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
-
-" Close buffer
+noremap <leader>bl :ls<CR>
+noremap <leader>bn :bn<CR>
+noremap <leader>bp :bp<CR>
 noremap <leader>c :bd<CR>
 
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 
+" Don't highlight after exiting search
+noh
 " Clean search (highlight)
 nnoremap <silent> <leader>h :noh<CR>
 
