@@ -349,6 +349,7 @@ augroup configgroup
     autocmd Filetype hpp setlocal expandtab ts=4 sw=4
     autocmd Filetype json setlocal expandtab ts=2 sw=2
     autocmd Filetype go setlocal noexpandtab ts=4 sw=4 sts=4
+	autocmd Filetype cfg setlocal expandtab ts=4 sts=4 commentstring=#\ %s
 augroup END
 
 " Autoformat
