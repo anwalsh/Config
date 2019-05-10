@@ -305,7 +305,7 @@ noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case'.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -448,8 +448,9 @@ nmap <leader>w :w<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
-" nnoremap <leader>F :FZF ~<CR>
 nnoremap <leader>f :FZF<CR>
+nnoremap <leader>F :FZF
+nnoremap <leader>l :Lines<CR>
 " Make splits less terribad
 nnoremap <Leader>o :only<CR>
 nnoremap <Leader>/ :vsp<CR>
