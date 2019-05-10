@@ -310,17 +310,17 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow --hidden' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+  return base == '.' ? 'fd -t file -L -H -E .git' : printf('fd -t file -L -H -E | proximity-sort %s', expand('%'))
 endfunction
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \ 'options': '--tiebreak=index'}, <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+"   \ 'options': '--tiebreak=index'}, <bang>0)
 
 " Tabs
 nnoremap <Tab> gt
