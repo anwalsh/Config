@@ -277,7 +277,6 @@ noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
 noremap <leader>c :bd<CR>
-
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 
@@ -292,6 +291,8 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
+noremap <leader>q :q<CR>
 
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
