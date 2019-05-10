@@ -449,7 +449,7 @@ nmap <leader>w :w<CR>
 map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>F :FZF
+nnoremap <leader>F :FZF ~<CR>
 nnoremap <leader>l :Lines<CR>
 " Make splits less terribad
 nnoremap <Leader>o :only<CR>
