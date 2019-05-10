@@ -429,6 +429,7 @@ let g:go_fmt_autosave = 1
 " Move by line
 nnoremap j gj
 nnoremap k gk
+inoremap jj <Esc>
 " Jump to next/previous error
 nnoremap <C-j> :cnext<cr>
 nnoremap <C-k> :cprev<cr>
@@ -446,6 +447,8 @@ nmap <leader>w :w<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
+" nnoremap <leader>F :FZF ~<CR>
+nnoremap <leader>f :FZF<CR>
 " Make splits less terribad
 nnoremap <Leader>o :only<CR>
 nnoremap <Leader>/ :vsp<CR>
@@ -468,7 +471,7 @@ if has("autocmd")
 endif
 
 " <leader>= reformats current tange
-nnoremap <leader>f :'<,'>RustFmtRange<cr>
+nnoremap <leader>r :'<,'>RustFmtRange<cr>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<cr>
 " I can type :help on my own, thanks.
@@ -503,6 +506,14 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 " Notification after file change
 autocmd FileChangedShellPost *
 \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+if !has('gui_running')
+    "change cursor icon based on mode
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    let &t_SI = "\<Esc>[6 q" "insert - pipe
+    let &t_SR = "\<Esc>[4 q" "replace - underbar
+    let &t_EI = "\<Esc>[2 q" "normal - block
+endif
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
