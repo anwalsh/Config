@@ -276,7 +276,7 @@ endif
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
-noremap <leader>c :bd<CR>
+noremap <leader>bd :bd<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 
@@ -284,7 +284,7 @@ nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><ri
 nnoremap <silent> <leader>h :noh<CR>
 
 " Nerdtree config just in case
-nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " Switching windows
 noremap <C-j> <C-w>j
@@ -326,9 +326,6 @@ endfunction
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
-
-" jk is escape
-inoremap jk <esc>
 
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
@@ -432,15 +429,15 @@ nnoremap j gj
 nnoremap k gk
 inoremap jj <Esc>
 " Jump to next/previous error
-nnoremap <C-j> :cnext<cr>
-nnoremap <C-k> :cprev<cr>
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
 nmap <silent> L <Plug>(ale_lint)
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <C-l> :copen<cr>
-nnoremap <C-g> :cclose<cr>
+nnoremap <C-l> :copen<CR>
+nnoremap <C-g> :cclose<CR>
 " <leader><leader> toggles between buffers
-nnoremap <leader><leader> <c-^>
+nnoremap <leader><leader> <C-^>
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Quick write
@@ -462,7 +459,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " undotree functionality
-nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <F5> :UndotreeToggle<CR>
 " tagbar functionality
 nmap <F8> :TagbarToggle<CR>
 
@@ -473,9 +470,9 @@ if has("autocmd")
 endif
 
 " <leader>= reformats current tange
-nnoremap <leader>r :'<,'>RustFmtRange<cr>
+nnoremap <leader>r :'<,'>RustFmtRange<CR>
 " <leader>, shows/hides hidden characters
-nnoremap <leader>, :set invlist<cr>
+nnoremap <leader>, :set invlist<CR>
 " I can type :help on my own, thanks.
 map <F1> <Esc>
 imap <F1> <Esc>
