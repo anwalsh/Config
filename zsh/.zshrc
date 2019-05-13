@@ -1,5 +1,6 @@
 # .zshrc
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
+export TERM="alacritty"
 #   -----------------------------
 #   1.  USER CONFIGURATION
 #   -----------------------------
