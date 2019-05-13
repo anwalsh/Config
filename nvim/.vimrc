@@ -55,6 +55,7 @@ Plug 'mbbill/undotree' " visualize the undo tree (:h undo-tree)
 Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
+Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
@@ -265,13 +266,15 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
+" =============================================================================
+" # User Defined Commands
+" =============================================================================
 " macOS Copy and Paste
 if has('macunix')
   " pbcopy for OSX copy/paste
   vmap <C-x> :!pbcopy<CR>
   vmap <C-c> :w !pbcopy<CR><CR>
 endif
-
 " Buffer nav
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
@@ -279,27 +282,76 @@ noremap <leader>bp :bp<CR>
 noremap <leader>bd :bd<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
-
 " Clean search (highlight)
 nnoremap <silent> <leader>h :noh<CR>
-
 " Nerdtree config just in case
 nnoremap <leader>n :NERDTreeToggle<CR>
-
 " Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
-
 noremap <leader>q :q<CR>
-
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
+" Adding some short cuts for more efficient workflows
+" Move by line
+nnoremap j gj
+nnoremap k gk
+inoremap jj <Esc>
+" Jump to next/previous error
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
+nmap <silent> L <Plug>(ale_lint)
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap <C-l> :copen<CR>
+nnoremap <C-g> :cclose<CR>
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <C-^>
+" Open new file adjacent to current file
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" Quick write
+nmap <leader>w :w<CR>
+" Open hotkeys
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>F :FZF ~<CR>
+nnoremap <leader>l :Lines<CR>
+" Make splits less terribad
+nnoremap <Leader>o :only<CR>
+nnoremap <Leader>/ :vsp<CR>
+nnoremap <Leader>- :sp<CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" undotree functionality
+nnoremap <F5> :UndotreeToggle<CR>
+" tagbar functionality
+nmap <F8> :TagbarToggle<CR>
+" <leader>, shows/hides hidden characters
+nnoremap <leader>, :set invlist<CR>
+" I can type :help on my own, thanks.
+map <F1> <Esc>
+imap <F1> <Esc>
+" Use <Leader>r instead of default <Leader>e:
+nmap <Leader>r <Plug>(Scalpel)
+" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+nnoremap <silent> gd :ALEGoToDefinition<CR>
 
+" =============================================================================
+" # Config
+" =============================================================================
 " <leader>s for Rg search
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
@@ -321,11 +373,6 @@ endfunction
 " command! -bang -nargs=? -complete=dir Files
 "   \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
 "   \ 'options': '--tiebreak=index'}, <bang>0)
-
-" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
 
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
@@ -358,13 +405,6 @@ augroup autoformat_settings
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer autopep8
 augroup END
-
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
@@ -404,8 +444,6 @@ let g:ale_sign_warning = "⚠"
 let g:ale_sign_info = "i"
 let g:ale_sign_hint = "➤"
 
-nnoremap <silent> gd :ALEGoToDefinition<CR>
-
 " deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $HOME.'/go/bin/gocode'
@@ -423,45 +461,6 @@ let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
 
-" Adding some short cuts for more efficient workflows
-" Move by line
-nnoremap j gj
-nnoremap k gk
-inoremap jj <Esc>
-" Jump to next/previous error
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprev<CR>
-nmap <silent> L <Plug>(ale_lint)
-" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-" nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <C-l> :copen<CR>
-nnoremap <C-g> :cclose<CR>
-" <leader><leader> toggles between buffers
-nnoremap <leader><leader> <C-^>
-" Open new file adjacent to current file
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-" Quick write
-nmap <leader>w :w<CR>
-" Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
-nnoremap <leader>f :FZF<CR>
-nnoremap <leader>F :FZF ~<CR>
-nnoremap <leader>l :Lines<CR>
-" Make splits less terribad
-nnoremap <Leader>o :only<CR>
-nnoremap <Leader>/ :vsp<CR>
-nnoremap <Leader>- :sp<CR>
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" undotree functionality
-nnoremap <F5> :UndotreeToggle<CR>
-" tagbar functionality
-nmap <F8> :TagbarToggle<CR>
 
 " Jump to last edit position on opening file
 if has("autocmd")
@@ -469,19 +468,11 @@ if has("autocmd")
   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" <leader>= reformats current tange
-nnoremap <leader>r :'<,'>RustFmtRange<CR>
-" <leader>, shows/hides hidden characters
-nnoremap <leader>, :set invlist<CR>
-" I can type :help on my own, thanks.
-map <F1> <Esc>
-imap <F1> <Esc>
 " Rusty-tags configuration
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 " ========= vim-better-whitespace ==================
-
 " auto strip whitespace except for file with extention blacklisted
 let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'text']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
