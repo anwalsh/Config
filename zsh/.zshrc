@@ -23,7 +23,7 @@ export NVM_DIR=$HOME/.nvm
 # at some interval of time.
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 
-POWERLEVEL9K_MODE="awesome-fontconfig"
+POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n@%m"
