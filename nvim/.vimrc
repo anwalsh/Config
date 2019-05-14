@@ -206,7 +206,7 @@ set showmatch
 set hidden "allow hidden buffers. VERY GOOD. see help
 set nobackup "dont make those filename~ files (they have bitten me many times)
 set noswapfile "more trouble than they're worth
-set spell "enable spell checking use ":set nospell" to turn it off for a single buffer
+set nospell "enable spell checking use ":set nospell" to turn it off for a single buffer
 set spelllang=en_us "use US dictionary for spelling
 set undofile "keep persistent undo across vim runs
 set undodir=~/.vim-undo/ "where to store undo files
