@@ -13,7 +13,7 @@ function code {
 }
 
 function em {
-    if [[ $# == 0 ]] 
+    if [[ $# == 0 ]]
     then
         emacsclient -n $@ 2> /dev/null
     else
@@ -28,18 +28,13 @@ function em {
         man $1 | grep -iC2 --color=always $2 | less
     }
 
-#   showa: to remind yourself of an alias (given some part of it)
-#   ------------------------------------------------------------
-    showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
-
-
 #   always list directory contents upon 'cd'
 #   ------------------------------------------------------------
-    cd() { builtin cd "$@"; ll; }                    
+    cd() { builtin cd "$@"; exa -lagh; }
 
 #   mcd: Makes new Dir and jumps inside
 #   ------------------------------------------------------------
-    mcd () { mkdir -p "$1" && cd "$1"; }             
+    mcd () { mkdir -p "$1" && cd "$1"; }
 
 #   -------------------------------
 #   1.  FILE AND FOLDER MANAGEMENT
