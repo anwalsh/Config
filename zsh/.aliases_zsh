@@ -6,6 +6,7 @@
 
 alias vim='nvim'                                 # Vim becomes nvim instead
 alias v='nvim'                                   # Shorter Vim command because reasons
+alias em='emacsclient -c $*'
 alias ls='exa'
 alias l='exa -a'
 alias ll='exa -lgh'
