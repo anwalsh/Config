@@ -195,7 +195,7 @@ assign [class="Google-chrome"] $ws4
 assign [class="Steam"] $ws5
 assign [class="vlc"] $ws6
 assign [class="idea"] $ws7
-assign [class="emacs"] $ws7
+assign [class="Emacs"] $ws7
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
