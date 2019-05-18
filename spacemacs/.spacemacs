@@ -96,8 +96,8 @@ values."
             shell-default-shell 'shell
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-term-shell "/bin/zsh"
-            shell-enable-smart-eshell t)
+            shell-default-shell 'term
+            shell-default-term-shell "/bin/zsh")
      treemacs
      vimscript
      yaml
