@@ -60,11 +60,14 @@ values."
      (go    :variables
             go-backend 'lsp
             go-tab-width 4
-            go-use-gometalinter t
-            flycheck-gometalinter-fast t
-            flycheck-gometalinter-deadline "30s"
-            flycheck-gometalinter-enable-linters '("goimports"
-                                                   "golint"))
+            go-use-golangci-lint t
+            godoc-at-point-function 'godoc-gogetdoc
+            ;; go-use-gometalinter t
+            ;; flycheck-gometalinter-fast t
+            ;; flycheck-gometalinter-deadline "30s"
+            ;; flycheck-gometalinter-enable-linters '("goimports"
+                                                   ;; "golint")
+            )
      (gtags :variables
             gtags-enable-by-default t)
      helm
@@ -96,18 +99,19 @@ values."
            rust-rls-cmd '("rustup" "run" "stable" "rls")
            rust-format-on-save t)
      scala
-     shell-scripts
-     semantic
-     (spell-checking :variables
-                     enable-flyspell-auto-completion t
-                     spell-checking-enable-by-default nil)
-     (syntax-checking :variables syntax-checking-enable-by-default t)
      (shell :variables
             shell-default-shell 'shell
             shell-default-height 30
             shell-default-position 'bottom
             shell-default-shell 'term
             shell-default-term-shell "/bin/zsh")
+     shell-scripts
+     semantic
+     (spell-checking :variables
+                     enable-flyspell-auto-completion t
+                     spell-checking-enable-by-default nil)
+     (syntax-checking :variables syntax-checking-enable-by-default t)
+     systemd
      treemacs
      (version-control :variables version-control-diff-tool 'diff-hl
                       version-control-diff-side 'left
@@ -123,9 +127,12 @@ values."
                                       all-the-icons
                                       company-lsp
                                       doom-themes
+                                      fzf
                                       google-c-style
+                                      go-playground
                                       lsp-mode
                                       lsp-ui
+                                      rust-playground
                                       yasnippet-snippets
                                       )
    ;; A list of packages that cannot be updated.
@@ -368,7 +375,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -509,6 +516,7 @@ you shouldplace your code here."
   (set-face-background hl-line-face "#234")
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
+  (setq dumb-jump-prefer-searcher 'rg)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -528,7 +536,7 @@ This function is called at the very end of Spacemacs initialization."
  '(objed-cursor-color "#ff6c6b")
  '(package-selected-packages
    (quote
-    (evil-commentary doom-themes yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle shell-pop seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer pytest pyenv-mode py-isort projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox overseer orgit org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-java lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-lsp helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-gometalinter flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl define-word dap-mode dactyl-mode cython-mode csv-mode cquery counsel-projectile company-tern company-statistics company-shell company-rtags company-lsp company-go company-emacs-eclim company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+    (systemd flycheck-golangci-lint rust-playground go-playground gotest fzf evil-commentary doom-themes yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toml-mode toc-org symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle shell-pop seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer pytest pyenv-mode py-isort projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox overseer orgit org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-java lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-lsp helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-gometalinter flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl define-word dap-mode dactyl-mode cython-mode csv-mode cquery counsel-projectile company-tern company-statistics company-shell company-rtags company-lsp company-go company-emacs-eclim company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
  '(vc-annotate-background "#282c34")
  '(vc-annotate-color-map
    (list
