@@ -517,6 +517,8 @@ you shouldplace your code here."
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
   (setq dumb-jump-prefer-searcher 'rg)
+  (setq vc-follow-symlinks t)
+  (setq create-lockfiles nil)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
