@@ -70,12 +70,19 @@ values."
      (java :variables
            java-backend 'lsp)
      (javascript :variables
-                 javascript-backend 'lsp)
-     lsp
+                 javascript-backend 'lsp
+                 javascript-fmt-tool 'prettier
+                 javascript-import-tool 'import-js)
+     (json :variables
+           json-fmt-tool 'prettier)
+     (lsp :variables
+          lsp-navigation 'peek)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      multiple-cursors
      org
+     (prettier :variables
+               prettier-js-show-errors 'echo)
      (python :variables
              python-enable-yapf-format-on-save t
              python-sort-imports-on-save t
@@ -83,7 +90,9 @@ values."
      ruby
      ruby-on-rails
      (rust :variables
+           ;; rust-backend 'racer
            rust-backend 'lsp
+           rust-rls-cmd '("rustup" "run" "stable" "rls")
            rust-format-on-save t)
      scala
      shell-scripts
@@ -107,9 +116,10 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      company-lsp
                                       google-c-style
+                                      lsp-mode
                                       lsp-ui
+                                      company-lsp
                                       yasnippet-snippets
                                       )
    ;; A list of packages that cannot be updated.
@@ -188,9 +198,9 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(base16-onedark
                          base16-atelier-dune
-                         base16-google-dark
+                         gruvbox
                          )
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -200,6 +210,7 @@ values."
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
+   dotspacemacs-frame-title-format "%I@%S"
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -412,7 +423,7 @@ you shouldplace your code here."
                      :marked-candidates t)
                     (or current-prefix-arg helm-current-prefix-arg)))
   (setq yas-snippet-dirs
-        '("/home/anwalsh/.emacs.d/private/snippets"
+        '("~/.emacs.d/private/snippets"
           ))
   ;; Fix paste behavior to be inline with current expectations
   (defun evil-paste-after-from-0 ()
@@ -430,11 +441,6 @@ you shouldplace your code here."
   ;; ACR: setup gdb nicely
   (setq gud-gdb-command-name "gdb --annotate=3")
   (setq gdb-many-windows t)
-  ;; Omnisharp additional configuration
-  ;;
-  (eval-after-load
-      'company
-    '(add-to-list 'company-backends #'company-omnisharp))
 
   ;; Font Lock
   ;;
@@ -495,43 +501,4 @@ you shouldplace your code here."
   (set-face-background hl-line-face "#234")
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
-)
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#dc752f")
-     ("NEXT" . "#dc752f")
-     ("THEM" . "#2d9574")
-     ("PROG" . "#4f97d7")
-     ("OKAY" . "#4f97d7")
-     ("DONT" . "#f2241f")
-     ("FAIL" . "#f2241f")
-     ("DONE" . "#86dc2f")
-     ("NOTE" . "#b1951d")
-     ("KLUDGE" . "#b1951d")
-     ("HACK" . "#b1951d")
-     ("TEMP" . "#b1951d")
-     ("FIXME" . "#dc752f")
-     ("XXX" . "#dc752f")
-     ("XXXX" . "#dc752f"))))
- '(package-selected-packages
-   (quote
-    (dap-mode bui tree-mode vmd-mode yasnippet-snippets yapfify yaml-mode xterm-color web-beautify vimrc-mode toml-mode stickyfunc-enhance srefactor smeargle shell-pop seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reveal-in-osx-finder rbenv racer pytest pyenv-mode py-isort projectile-rails rake inflections prettier-js pippel pipenv pyvenv pip-requirements osx-trash osx-dictionary osx-clipboard orgit org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain omnisharp noflet mvn multi-term mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow lsp-ui lsp-treemacs lsp-java livid-mode skewer-mode simple-httpd live-py-mode launchctl json-navigator hierarchy js2-refactor multiple-cursors js2-mode js-doc insert-shebang importmagic epc ctable concurrent deferred htmlize helm-rtags helm-pydoc helm-org-rifle helm-lsp helm-gtags helm-gitignore helm-git-grep helm-company helm-c-yasnippet groovy-mode groovy-imports gradle-mode google-c-style godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache gh-md ggtags fuzzy forge ghub closql emacsql-sqlite emacsql treepy graphql flyspell-popup flyspell-correct-helm flyspell-correct flycheck-rust flycheck-rtags flycheck-pos-tip pos-tip flycheck-gometalinter flycheck-bashate fish-mode feature-mode evil-org evil-magit magit transient git-commit with-editor eshell-z eshell-prompt-extras esh-help ensime sbt-mode scala-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat disaster diff-hl dactyl-mode cython-mode csv-mode csharp-mode cquery company-tern tern company-statistics company-shell company-rtags rtags company-lsp company-go go-mode company-emacs-eclim eclim company-c-headers company-anaconda company clang-format chruby ccls lsp-mode dash-functional cargo markdown-mode rust-mode bundler inf-ruby browse-at-remote blacken base16-theme auto-yasnippet yasnippet auto-dictionary anaconda-mode pythonic ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
- '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 )
