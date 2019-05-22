@@ -519,6 +519,11 @@ you shouldplace your code here."
   (setq dumb-jump-prefer-searcher 'rg)
   (setq vc-follow-symlinks t)
   (setq create-lockfiles nil)
+  ;; Expiration date of special buffers to hour
+  (setq clean-buffer-list-delay-special (* 1 3600))
+  ;; Buffer list for cleansing
+  (setq clean-buffer-list-kill-buffer-names (nconc clean-buffer-list-kill-buffer-names
+                                                   '("*magit*")))
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
