@@ -497,6 +497,9 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
 \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" Disable syntax highlighting for large files
+autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
+
 if !has('gui_running')
     "change cursor icon based on mode
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
