@@ -100,9 +100,10 @@ values."
            rust-format-on-save t)
      scala
      (shell :variables
-            shell-default-shell 'eshell
+            shell-default-shell 'shell
             shell-default-height 30
             shell-default-position 'bottom
+            shell-default-shell 'term
             shell-default-term-shell "/bin/zsh")
      shell-scripts
      semantic
@@ -139,6 +140,7 @@ values."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
                                     eclim
+                                    org-projectile
                                     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -367,12 +369,9 @@ values."
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
-   ;; If non-nil, start an Emacs server if one is not already running.
-   ;; (default nil)
-   dotspacemacs-enable-server t
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -410,7 +409,7 @@ you shouldplace your code here."
   ;; (set-face-attribute 'default nil :family "Source Code Pro")
   ;; (set-face-attribute 'default nil :height 155)
   (global-visual-line-mode t)
-  ;; (unless (daemonp) (server-mode 1))
+  (unless (daemonp) (server-mode 1))
   (add-hook 'prog-mode-hook 'column-enforce-mode)
   (setq column-enforce-column 100)
   (setq-default indent-tabs-mode nil)
@@ -514,14 +513,17 @@ you shouldplace your code here."
     (evil-set-jump))
   (advice-add 'evil-previous-line :before 'my-evil-set-jump)
   (advice-add 'evil-next-line :before 'my-evil-set-jump)
-  ;; (set-face-background hl-line-face "#234")
+  (set-face-background hl-line-face "#234")
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
   (setq dumb-jump-prefer-searcher 'rg)
   (setq vc-follow-symlinks t)
   (setq create-lockfiles nil)
-  (evil-leader/set-key
-    "q q" 'spacemacs/frame-killer)
+  ;; Expiration date of special buffers to hour
+  (setq clean-buffer-list-delay-special (* 1 3600))
+  ;; Buffer list for cleansing
+  (setq clean-buffer-list-kill-buffer-names (nconc clean-buffer-list-kill-buffer-names
+                                                   '("*magit*")))
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
