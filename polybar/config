@@ -80,7 +80,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem updates-arch-combined pavolume memory cpu wlan eth temperature date utc
+modules-right = filesystem updates-arch-combined pavolume memory cpu wlan eth temperature nvidia date utc
 
 tray-position = right
 tray-padding = 2
@@ -140,7 +140,7 @@ mount-0 = /
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = %mountpoint% : %used% of %total%
+label-mounted =  %used%/%total%
 
 ; Available tokens:
 ;   %mountpoint%
@@ -270,7 +270,7 @@ label = %percentage:2%%
 type = internal/memory
 interval = 2
 ; format-prefix = " "
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -440,6 +440,8 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
+format-prefix = " "
+format-prefix-foreground = #0a6cf5
 format = <ramp> <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
@@ -523,5 +525,28 @@ click-right = exec pavucontrol
 click-left = ~/polybar-scripts/pavolume.sh --togmute
 scroll-up = ~/polybar-scripts/pavolume.sh --up
 scroll-down = ~/polybar-scripts/pavolume.sh --down
+
+[module/nvidia]
+type = custom/script
+exec = ~/polybar-scripts/gpu.sh
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #55aa55
+format-underline = #f50a4d
+; format-background = ${color.shade3}
+format-padding = 2
+;format-underline = ${color.shade7}
+
+[module/tempcores]
+type = custom/script
+exec = ~/polybar-scripts/tempcores.sh
+interval = 2
+
+format-prefix = 
+format-prefix-foreground = ${colors.red}
+format-overline = ${colors.red}
+format-padding = 2
+
+label = %output%°C
 
 ; vim:ft=dosini
