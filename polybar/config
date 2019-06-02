@@ -539,14 +539,12 @@ format-padding = 2
 
 [module/tempcores]
 type = custom/script
-exec = ~/polybar-scripts/tempcores.sh
+exec = ~/polybar-scripts/sensorcore.sh
 interval = 2
 
-format-prefix = 
-format-prefix-foreground = ${colors.red}
-format-overline = ${colors.red}
-format-padding = 2
+format-prefix = " "
+format-prefix-foreground = #0a6cf5
+format-underline = #f50a4d
 
 label = %output%°C
-
 ; vim:ft=dosini
