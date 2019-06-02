@@ -125,6 +125,7 @@ values."
    dotspacemacs-additional-packages '(
                                       all-the-icons
                                       company-lsp
+                                      doom-modeline
                                       doom-themes
                                       fzf
                                       google-c-style
@@ -522,6 +523,7 @@ you shouldplace your code here."
   (setq create-lockfiles nil)
   (evil-leader/set-key
     "q q" 'spacemacs/frame-killer)
+  (setq doom-modeline-buffer-file-name-style 'truncate-from-project)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
