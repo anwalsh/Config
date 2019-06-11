@@ -523,7 +523,9 @@ you shouldplace your code here."
   (setq create-lockfiles nil)
   (evil-leader/set-key
     "q q" 'spacemacs/frame-killer)
+  ;; Better handling for long paths or naming conventions in the path
   (setq doom-modeline-buffer-file-name-style 'truncate-from-project)
+  ;; undo-tree should have timestamps
   (use-package undo-tree
     :diminish undo-tree-mode
     :config
@@ -531,7 +533,14 @@ you shouldplace your code here."
       (global-undo-tree-mode)
       (setq undo-tree-visualizer-timestamps t)
       (setq undo-tree-visualizer-diff t)))
+  ;; Added y or n abbreviations to statisfy prompt
   (fset 'yes-or-no-p 'y-or-n-p)
+  ;; Autosave only for org-mode
+  (add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
+  (defun my-org-mode-autosave-settings ()
+    ;; (auto-save-mode 1)   ; this is unnecessary as it is on by default
+    (set (make-local-variable 'auto-save-visited-file-name) t)
+    (setq auto-save-interval 20))
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
