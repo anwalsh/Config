@@ -524,6 +524,14 @@ you shouldplace your code here."
   (evil-leader/set-key
     "q q" 'spacemacs/frame-killer)
   (setq doom-modeline-buffer-file-name-style 'truncate-from-project)
+  (use-package undo-tree
+    :diminish undo-tree-mode
+    :config
+    (progn
+      (global-undo-tree-mode)
+      (setq undo-tree-visualizer-timestamps t)
+      (setq undo-tree-visualizer-diff t)))
+  (fset 'yes-or-no-p 'y-or-n-p)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
