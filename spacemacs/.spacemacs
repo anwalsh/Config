@@ -84,7 +84,8 @@ values."
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      multiple-cursors
-     org
+     (org :variables
+          org-enable-github-support)
      (prettier :variables
                prettier-js-show-errors 'echo)
      (python :variables
