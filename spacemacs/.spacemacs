@@ -535,36 +535,43 @@ you shouldplace your code here."
       (global-undo-tree-mode)
       (setq undo-tree-visualizer-timestamps t)
       (setq undo-tree-visualizer-diff t)))
-  ;; Added y or n abbreviations to statisfy prompt
-  (fset 'yes-or-no-p 'y-or-n-p)
-  ;; Autosave only for org-mode
-  (add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
-  (defun my-org-mode-autosave-settings ()
-    ;; (auto-save-mode 1)   ; this is unnecessary as it is on by default
-    (set (make-local-variable 'auto-save-visited-file-name) t)
-    (setq auto-save-interval 20))
-  (setq org-directory "~/Documents/org")
-
-  (defun org-file-path (filename)
-    "Return the absolute address of an org file, given its relative name."
-    (concat (file-name-as-directory org-directory) filename))
-  (setq org-index-file (org-file-path "index.org"))
-  (setq org-archive-location
-    (concat (org-file-path "archive.org") "::* From %s"))
-  ;; Derive agenda from TODOs stored in index file
-  (setq org-agenda-files (list org-index-file))
-  (setq org-capture-templates
-        '(("n" "Notes"
-           entry
-           (file "~/Documents/org/notes/notes.org")
-           "* %?\n")
-
-          ("t" "Todo"
-           entry
-           (file+headline org-index-file "Index")
-           "* TODO %?\n")))
-  (add-hook 'org-capture-mode-hook 'evil-insert-state)
-)
+  (with-eval-after-load 'org
+    (setq-default org-directory "$HOME/Documents/org/")
+    (setq-default org-index-file (concat org-directory "index.org"))
+    (setq-default org-default-notes-file (concat org-directory "notes.org"))
+    ;; Derive agenda from TODOs stored in index file
+    (setq org-agenda-files (list org-index-file))
+    (setq-default org-capture-templates
+      '(("t" "Todo" entry (file+headline org-index-file "Tasks")
+          "* TODO %?\nAdded: %U\n" :prepend t :kill-buffer t)
+        ("m" "Meeting Notes" entry (file+headline "meeting_notes.org" "Meeting Notes")
+          "* %?\nAdded: %U\n" :prepend t :kill-buffer t)
+        ("i" "Idea" entry (file+headline org-default-notes-file "Ideas")
+          "* IDEA %?\nAdded: %U\n" :prepend t :kill-buffer t)
+        ("n" "Notes" entry (file+headline org-default-notes-file "Note")
+          "* %?\nAdded: %U\n" :prepend t :kill-buffer t)
+        ))
+    (setq-default org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+    (setq-default org-todo-keywords
+        '(
+          (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
+          (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
+        ))
+    (setq-default org-todo-keyword-faces
+      '(("IDEA" . (:foreground "Purple" :weight bold))
+        ("NEXT" . (:foreground "Blue" :weight bold))
+        ("STARTED" . (:foreground "Green" :weight bold))
+        ("WAITING" . (:foreground "Orange" :weight bold))
+        ("CANCELED" . (:foreground "Red" :weight bold))
+        ("DELEGATED" . (:foreground "Yellow" :weight bold))
+        ("SOMEDAY" . (:foreground "Purple" :weight bold))
+      )
+    )
+    (setq org-archive-mark-done nil)
+    (setq org-archive-location "%s_archive::* Archived Tasks")
+    (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  )
+ )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -575,9 +582,32 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(org-capture-templates
+   (quote
+    (("t" "Todo" entry
+      (file+headline org-index-file "Tasks")
+      "* TODO %?
+Added: %U
+" :prepend t :kill-buffer t)
+     ("m" "Meeting Notes" entry
+      (file+headline "meeting_notes.org" "Meeting Notes")
+      "* %?
+Added: %U
+" :prepend t :kill-buffer t)
+     ("i" "Idea" entry
+      (file+headline org-default-notes-file "Ideas")
+      "* IDEA %?
+Added: %U
+" :prepend t :kill-buffer t)
+     ("n" "Notes" entry
+      (file+headline org-default-notes-file "Note")
+      "* %?
+Added: %U
+" :prepend t :kill-buffer t))))
  '(package-selected-packages
    (quote
-    (org-jira ox-gfm yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toml-mode toc-org systemd symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle shell-pop seeing-is-believing rvm rust-playground ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer pytest pyenv-mode py-isort projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-java lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-lsp helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-playground go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fzf fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes doom-modeline dockerfile-mode docker disaster diminish diff-hl devdocs define-word dap-mode dactyl-mode cython-mode csv-mode cquery cpp-auto-include counsel-projectile company-tern company-statistics company-shell company-rtags company-lsp company-go company-emacs-eclim company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+    (swift-mode org-jira ox-gfm yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toml-mode toc-org systemd symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle shell-pop seeing-is-believing rvm rust-playground ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer pytest pyenv-mode py-isort projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-java lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-lsp helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-playground go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fzf fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes doom-modeline dockerfile-mode docker disaster diminish diff-hl devdocs define-word dap-mode dactyl-mode cython-mode csv-mode cquery cpp-auto-include counsel-projectile company-tern company-statistics company-shell company-rtags company-lsp company-go company-emacs-eclim company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
