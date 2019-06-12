@@ -548,7 +548,7 @@ you shouldplace your code here."
           "* %?\nAdded: %U\n" :prepend t :kill-buffer t)
         ("i" "Idea" entry (file+headline org-default-notes-file "Ideas")
           "* IDEA %?\nAdded: %U\n" :prepend t :kill-buffer t)
-        ("n" "Notes" entry (file+headline org-default-notes-file "Note")
+        ("n" "Notes" entry (file+headline org-default-notes-file "Notes")
           "* %?\nAdded: %U\n" :prepend t :kill-buffer t)
         ))
     (setq-default org-bullets-bullet-list '("■" "◆" "▲" "▶"))
