@@ -561,7 +561,7 @@ you shouldplace your code here."
 
           ("t" "Todo"
            entry
-           (file+headline org-index-file "Inbox")
+           (file+headline org-index-file "Index")
            "* TODO %?\n")))
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
 )
