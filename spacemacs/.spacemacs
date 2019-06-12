@@ -536,7 +536,7 @@ you shouldplace your code here."
       (setq undo-tree-visualizer-timestamps t)
       (setq undo-tree-visualizer-diff t)))
   (with-eval-after-load 'org
-    (setq-default org-directory "$HOME/Documents/org/")
+    (setq-default org-directory "~/Documents/org/")
     (setq-default org-index-file (concat org-directory "index.org"))
     (setq-default org-default-notes-file (concat org-directory "notes.org"))
     ;; Derive agenda from TODOs stored in index file
