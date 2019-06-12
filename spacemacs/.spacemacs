@@ -543,6 +543,27 @@ you shouldplace your code here."
     ;; (auto-save-mode 1)   ; this is unnecessary as it is on by default
     (set (make-local-variable 'auto-save-visited-file-name) t)
     (setq auto-save-interval 20))
+  (setq org-directory "~/Documents/org")
+
+  (defun org-file-path (filename)
+    "Return the absolute address of an org file, given its relative name."
+    (concat (file-name-as-directory org-directory) filename))
+  (setq org-index-file (org-file-path "index.org"))
+  (setq org-archive-location
+    (concat (org-file-path "archive.org") "::* From %s"))
+  ;; Derive agenda from TODOs stored in index file
+  (setq org-agenda-files (list org-index-file))
+  (setq org-capture-templates
+        '(("n" "Notes"
+           entry
+           (file "~/Documents/org/notes/notes.org")
+           "* %?\n")
+
+          ("t" "Todo"
+           entry
+           (file+headline org-index-file "Inbox")
+           "* TODO %?\n")))
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
