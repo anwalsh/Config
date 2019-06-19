@@ -111,7 +111,7 @@ values."
      semantic
      (spell-checking :variables
                      enable-flyspell-auto-completion t
-                     spell-checking-enable-by-default nil)
+                     spell-checking-enable-by-default t)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      systemd
      treemacs
