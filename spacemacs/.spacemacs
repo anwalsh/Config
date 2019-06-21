@@ -540,8 +540,6 @@ you shouldplace your code here."
     (setq-default org-directory "~/Documents/org/")
     (setq-default org-index-file (concat org-directory "index.org"))
     (setq-default org-default-notes-file (concat org-directory "notes.org"))
-    ;; Derive agenda from TODOs stored in index file
-    (setq org-agenda-files (list org-index-file))
     (setq-default org-capture-templates
       '(("t" "Todo" entry (file+headline org-index-file "Tasks")
           "* TODO %?\nAdded: %U\n" :prepend t :kill-buffer t)
@@ -553,24 +551,26 @@ you shouldplace your code here."
           "* %?\nAdded: %U\n" :prepend t :kill-buffer t)
         ))
     (setq-default org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+    (doom-themes-org-config)
     (setq-default org-todo-keywords
         '(
           (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
           (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
         ))
-    (setq-default org-todo-keyword-faces
-      '(("IDEA" . (:foreground "Purple" :weight bold))
-        ("NEXT" . (:foreground "Blue" :weight bold))
-        ("STARTED" . (:foreground "Green" :weight bold))
-        ("WAITING" . (:foreground "Orange" :weight bold))
-        ("CANCELED" . (:foreground "Red" :weight bold))
-        ("DELEGATED" . (:foreground "Yellow" :weight bold))
-        ("SOMEDAY" . (:foreground "Purple" :weight bold))
-      )
-    )
     (setq org-archive-mark-done nil)
     (setq org-archive-location "%s_archive::* Archived Tasks")
     (add-hook 'org-capture-mode-hook 'evil-insert-state)
+    (use-package org-projectile
+      :after projectile
+      :config
+      (setq org-projectile-projects-file
+            "~/Documents/org/projects/proj_todos.org")
+      (push (org-projectile-project-todo-entry) org-capture-templates)
+      (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+      (global-set-key (kbd "C-c n p") 'org-projectile-project-todo-completing-read))
+    ;; Derive agenda from TODOs stored in index file
+    (setq org-agenda-files (list org-index-file
+                                org-projectile-projects-file))
   )
  )
 (defun dotspacemacs/emacs-custom-settings ()
