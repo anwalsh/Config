@@ -499,7 +499,7 @@ margin-bottom = 5
 
 [module/updates-arch-combined]
 type = custom/script
-exec = ~/polybar-scripts/check-all-updates.sh
+exec = ~/.dotfiles/polybar-scripts/check-all-updates.sh
 interval = 600
 label = %output%
 format-prefix = " "
@@ -520,7 +520,7 @@ format-underline = #FFBB00
 type = custom/script
 tail = true
 label = %output%
-exec = ~/polybar-scripts/pavolume.sh --listen
+exec = ~/.dotfiles/polybar-scripts/pavolume.sh --listen
 click-right = exec pavucontrol
 click-left = ~/polybar-scripts/pavolume.sh --togmute
 scroll-up = ~/polybar-scripts/pavolume.sh --up
@@ -528,7 +528,7 @@ scroll-down = ~/polybar-scripts/pavolume.sh --down
 
 [module/nvidia]
 type = custom/script
-exec = ~/polybar-scripts/gpu.sh
+exec = ~/.dotfiles/polybar-scripts/gpu.sh
 interval = 2
 format-prefix = " "
 format-prefix-foreground = #55aa55
@@ -539,7 +539,7 @@ format-padding = 2
 
 [module/tempcores]
 type = custom/script
-exec = ~/polybar-scripts/sensorcore.sh
+exec = ~/.dotfiles/polybar-scripts/sensorcore.sh
 interval = 2
 
 format-prefix = " "
