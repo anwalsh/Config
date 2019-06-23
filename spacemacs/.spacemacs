@@ -552,11 +552,17 @@ you shouldplace your code here."
         ))
     (setq-default org-bullets-bullet-list '("■" "◆" "▲" "▶"))
     (doom-themes-org-config)
-    (setq-default org-todo-keywords
-        '(
-          (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
-          (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
-        ))
+    (setq-default
+      org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "[ ](T)" "[-](p)" "[?](m)" "|" "[X](D)")
+        (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)"))
+      org-todo-keyword-faces
+      '(("[-]" :inherit (font-lock-constant-face bold))
+        ("[?]" :inherit (warning bold))
+        ("WAITING" :inherit bold)
+        ("LATER" :inherit (warning bold)))
+    )
     (setq org-archive-mark-done nil)
     (setq org-archive-location "%s_archive::* Archived Tasks")
     (add-hook 'org-capture-mode-hook 'evil-insert-state)
