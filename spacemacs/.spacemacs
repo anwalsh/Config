@@ -557,7 +557,8 @@ you shouldplace your code here."
       org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)")
         (sequence "[ ](T)" "[-](p)" "[?](m)" "|" "[X](D)")
-        (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)"))
+        (sequence "NEXT(n)" "IN PROGRESS(i)" "PLANNED(p)" "BLOCKED(b)"
+                  "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)"))
       org-todo-keyword-faces
       '(("[-]" :inherit (font-lock-constant-face bold))
         ("[?]" :inherit (warning bold))
