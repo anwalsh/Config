@@ -21,7 +21,8 @@ export NVM_DIR=$HOME/.nvm
 
 # Sourcing the powerline9k theme as I am too lazy to manually update the git repo
 # at some interval of time.
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 
 POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -38,8 +39,6 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
 POWERLEVEL9K_ROOT_ICON="\uF09C"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
-
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
 # ZSH Options
 CASE_SENSITIVE="false"
@@ -105,3 +104,6 @@ eval "$(hub alias -s)"
 
 # Autojump sourcing lines
 [ -f /usr/share/autojump/autojump.zsh ] && . /usr/share/autojump/autojump.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
