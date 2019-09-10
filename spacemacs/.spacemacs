@@ -223,8 +223,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
+   dotspacemacs-default-font '("SauceCodePro Nerd Font"
+                               :size 14.5
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -412,8 +412,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you shouldplace your code here."
   ;; Next two lines are to correct https://github.com/syl20bnr/spacemacs/issues/3477
-  ;; (set-face-attribute 'default nil :family "Source Code Pro")
-  ;; (set-face-attribute 'default nil :height 155)
+  ;; (set-face-attribute 'default nil :family "SauceCodePro Nerd Font")
+  ;; (set-face-attribute 'default nil :height 120)
   (global-visual-line-mode t)
   ;; (unless (daemonp) (server-mode 1))
   (add-hook 'prog-mode-hook 'column-enforce-mode)
@@ -614,13 +614,4 @@ Added: %U
       "* %?
 Added: %U
 " :prepend t :kill-buffer t))))
- '(package-selected-packages
-   (quote
-    (magit-todos web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path swift-mode org-jira ox-gfm yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toml-mode toc-org systemd symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle shell-pop seeing-is-believing rvm rust-playground ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer pytest pyenv-mode py-isort projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-java lorem-ipsum livid-mode live-py-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-lsp helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-playground go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fzf fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes doom-modeline dockerfile-mode docker disaster diminish diff-hl devdocs define-word dap-mode dactyl-mode cython-mode csv-mode cquery cpp-auto-include counsel-projectile company-tern company-statistics company-shell company-rtags company-lsp company-go company-emacs-eclim company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+))

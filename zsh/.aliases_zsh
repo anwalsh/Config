@@ -32,6 +32,7 @@ alias show_options='shopt'                       # Show_options: display bash op
 alias fix_stty='stty sane'                       # fix_stty: Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'        # cic: Make tab-completion case-insensitive
 alias xclip='xclip -selection c'
+alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
