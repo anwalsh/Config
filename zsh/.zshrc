@@ -109,3 +109,5 @@ eval "$(hub alias -s)"
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

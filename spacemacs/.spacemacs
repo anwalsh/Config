@@ -218,13 +218,13 @@ values."
                          gruvbox
                          )
    ;; dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(doom :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom :separator-scale 1.0)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("SauceCodePro Nerd Font"
-                               :size 14.5
+                               :size 12.5
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -558,12 +558,25 @@ you shouldplace your code here."
       '((sequence "TODO(t)" "|" "DONE(d)")
         (sequence "[ ](T)" "[-](p)" "[?](m)" "|" "[X](D)")
         (sequence "NEXT(n)" "IN PROGRESS(i)" "PLANNED(p)" "BLOCKED(b)"
-                  "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)"))
+                  "WAITING(w)" "LATER(l)" "|" "CANCELED(c)"))
       org-todo-keyword-faces
-      '(("[-]" :inherit (font-lock-constant-face bold))
-        ("[?]" :inherit (warning bold))
-        ("WAITING" :inherit bold)
-        ("LATER" :inherit (warning bold)))
+      '(("TODO" . "#dc752f")
+        ("NEXT" . "#dc752f")
+        ("WAITING" . "#2aa198")
+        ("IN PROGRESS" . "#268bd2")
+        ("BLOCKED" . "#d70000")
+        ("CANCELED" . "#d70000")
+        ("FAIL" . "#d70000")
+        ("DONE" . "#86dc2f")
+        ("NOTE" . "#875f00")
+        ("LATER" . "#875f00")
+        ("HACK" . "#875f00")
+        ("TEMP" . "#875f00")
+        ("FIXME" . "#dc752f")
+        ("XXX+" . "#dc752f")
+        ("\\?\\?\\?+" . "#dc752f")
+        ("[-]" :inherit (font-lock-constant-face bold))
+        ("[?]" :inherit (warning bold)))
     )
     (setq org-archive-mark-done nil)
     (setq org-archive-location "%s_archive::* Archived Tasks")
@@ -582,36 +595,10 @@ you shouldplace your code here."
   )
  )
 (defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
+)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(org-capture-templates
-   (quote
-    (("t" "Todo" entry
-      (file+headline org-index-file "Tasks")
-      "* TODO %?
-Added: %U
-" :prepend t :kill-buffer t)
-     ("m" "Meeting Notes" entry
-      (file+headline "meeting_notes.org" "Meeting Notes")
-      "* %?
-Added: %U
-" :prepend t :kill-buffer t)
-     ("i" "Idea" entry
-      (file+headline org-default-notes-file "Ideas")
-      "* IDEA %?
-Added: %U
-" :prepend t :kill-buffer t)
-     ("n" "Notes" entry
-      (file+headline org-default-notes-file "Note")
-      "* %?
-Added: %U
-" :prepend t :kill-buffer t))))
-))
+ )
