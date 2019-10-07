@@ -528,7 +528,7 @@ you shouldplace your code here."
   (evil-leader/set-key
     "q q" 'spacemacs/frame-killer)
   ;; Better handling for long paths or naming conventions in the path
-  (setq doom-modeline-buffer-file-name-style 'truncate-from-project)
+  (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
   ;; undo-tree should have timestamps
   (use-package undo-tree
     :diminish undo-tree-mode
