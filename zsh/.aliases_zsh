@@ -99,5 +99,5 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 #   5.  MISC CONFIG
 #   ---------------------------------------
 
-alias sshatlas='/opt/scripts/atlas-ssh.sh'
-alias oplogin='eval $(op signin my)'
+alias sshnds='/opt/scripts/nds-ssh.sh'
+alias oplogin='eval $(op signin my)\r'
