@@ -33,6 +33,7 @@ alias fix_stty='stty sane'                       # fix_stty: Restore terminal se
 alias cic='set completion-ignore-case On'        # cic: Make tab-completion case-insensitive
 alias xclip='xclip -selection c'
 alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
+alias aptup="sudo apt-get update && sudo apt-get upgrade"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
@@ -95,5 +96,8 @@ alias showBlocked='sudo ipfw list'                        # showBlocked: All ipf
 alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when booted into single-user
 
 #   ---------------------------------------
-#   5.  .FILE CONFIG
+#   5.  MISC CONFIG
 #   ---------------------------------------
+
+alias sshatlas='/opt/scripts/atlas-ssh.sh'
+alias oplogin='eval $(op signin my)'
