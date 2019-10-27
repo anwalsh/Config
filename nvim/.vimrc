@@ -126,6 +126,8 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
 Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
+" YAML
+Plug 'stephpy/vim-yaml'
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " End Plug Call
@@ -301,7 +303,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 " Move by line
 nnoremap j gj
 nnoremap k gk
-inoremap jj <Esc>
+inoremap fd <Esc>
 " Jump to next/previous error
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
