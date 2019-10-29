@@ -41,7 +41,6 @@ bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -padding 16
 bindsym $mod+z exec --no-startup-id morc_menu
 
 # persist display layout
-exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --off --output DP-5 --off --output DP-4 --primary --mode 2560x1440 --refresh 144 --pos 2560x0 --rotate normal --output DP-3 --off --output DP-2 --mode 2560x1440 --refresh 144 --pos 0x0 --rotate normal --output DP-1 --off --output DP-0 --off
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -58,6 +57,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym Mod1+Left move workspace to output left
+bindsym Mod1+Right move workspace to output right
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -187,7 +188,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
 assign [class="Alacritty"] $ws1
-assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
 assign [class="Thunderbird"] $ws3
 assign [class="discord"] $ws3
 assign [class="Slack"] $ws4
@@ -282,17 +283,7 @@ mode "resize" {
 }
 
 # Lock screen
-# bindsym $mod+9 exec --no-startup-id blurlock
-
-# Betterlockscreen configuration
-bindsym $mod+9 exec betterlockscreen -l dimblur
-# bindsym $mod+shift+x exec betterlockscreen -l dim
-
-# set desktop background with custom effect
-exec --no-startup-id betterlockscreen -w dimblur
-
-# Alternative (set last used background)
-exec --no-startup-id source ~/.fehbg
+bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -306,7 +297,7 @@ exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 30 -locker "betterlockscreen -l"
+exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 

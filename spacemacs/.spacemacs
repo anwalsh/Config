@@ -414,6 +414,7 @@ you shouldplace your code here."
   ;; Next two lines are to correct https://github.com/syl20bnr/spacemacs/issues/3477
   ;; (set-face-attribute 'default nil :family "SauceCodePro Nerd Font")
   ;; (set-face-attribute 'default nil :height 120)
+  (require 'all-the-icons)
   (global-visual-line-mode t)
   ;; (unless (daemonp) (server-mode 1))
   (add-hook 'prog-mode-hook 'column-enforce-mode)
