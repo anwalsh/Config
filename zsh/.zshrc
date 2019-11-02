@@ -73,8 +73,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Source other files
 source ~/.zsh/.secret_zsh
-source ~/.dotfiles/zsh/.functions_zsh
-source ~/.dotfiles/zsh/.aliases_zsh
+source ~/Config/zsh/.functions_zsh
+source ~/Config/zsh/.aliases_zsh
 
 #   ---------------------------------------
 #   2.  FZF Config.
