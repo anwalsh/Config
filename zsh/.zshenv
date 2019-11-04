@@ -1,0 +1,7 @@
+export RUST="$HOME/.cargo/bin"
+export ZSH="$HOME/.oh-my-zsh"
+export NPATH="$HOME/n/bin"
+export LOCALBIN="/usr/local/bin"
+export GOBIN="/usr/bin"
+export GOPATH="$HOME/go"
+export PATH="$RUST:$NPATH:$LOCALBIN:$GOBIN"
