@@ -47,7 +47,7 @@ alert = #bd2c40
 14 = #56b6c2
 
 [bar/mainbar]
-monitor = ${env:MONITOR:DP-4}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 ; offset-x = 1%
@@ -442,19 +442,21 @@ warn-temperature = 60
 
 format-prefix = " "
 format-prefix-foreground = #0a6cf5
-format = <ramp> <label>
+; format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+; format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+; ramp-0 = 
+; ramp-1 = 
+; ramp-2 = 
+; ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
@@ -499,7 +501,7 @@ margin-bottom = 5
 
 [module/updates-arch-combined]
 type = custom/script
-exec = ~/.dotfiles/polybar-scripts/check-all-updates.sh
+exec = ~/Config/polybar-scripts/check-all-updates.sh
 interval = 600
 label = %output%
 format-prefix = " "
@@ -520,7 +522,7 @@ format-underline = #FFBB00
 type = custom/script
 tail = true
 label = %output%
-exec = ~/.dotfiles/polybar-scripts/pavolume.sh --listen
+exec = ~/Config/polybar-scripts/pavolume.sh --listen
 click-right = exec pavucontrol
 click-left = ~/polybar-scripts/pavolume.sh --togmute
 scroll-up = ~/polybar-scripts/pavolume.sh --up
@@ -528,7 +530,7 @@ scroll-down = ~/polybar-scripts/pavolume.sh --down
 
 [module/nvidia]
 type = custom/script
-exec = ~/.dotfiles/polybar-scripts/gpu.sh
+exec = ~/Config/polybar-scripts/gpu.sh
 interval = 2
 format-prefix = " "
 format-prefix-foreground = #55aa55
@@ -539,7 +541,7 @@ format-padding = 2
 
 [module/tempcores]
 type = custom/script
-exec = ~/.dotfiles/polybar-scripts/sensorcore.sh
+exec = ~/Config/polybar-scripts/sensorcore.sh
 interval = 2
 
 format-prefix = " "

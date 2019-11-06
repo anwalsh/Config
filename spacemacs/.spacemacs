@@ -599,6 +599,12 @@ you shouldplace your code here."
     (setq org-agenda-files (list org-index-file
                                 org-projectile-projects-file))
   )
+  (defun stop-using-minibuffer ()
+    "kill the minibuffer"
+    (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+      (abort-recursive-edit)))
+
+  (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.

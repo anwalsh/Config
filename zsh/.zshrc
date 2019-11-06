@@ -82,7 +82,7 @@ source ~/Config/zsh/.aliases_zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='fdfind --type file --follow --hidden --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --follow -g ""'
 export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_OPTS="
@@ -107,6 +107,14 @@ eval "$(hub alias -s)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# ssh-agent Management
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+    eval `ssh-agent`
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
 
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 

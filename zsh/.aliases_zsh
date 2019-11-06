@@ -4,7 +4,7 @@
 #   1.  MAKE TERMINAL BETTER
 #   -----------------------------
 
-alias vim='nvim'                                 # Vim becomes nvim instead
+# alias vim='nvim'                                 # Vim becomes nvim instead
 alias v='nvim'                                   # Shorter Vim command because reasons
 alias ls='exa'
 alias l='exa -a'
