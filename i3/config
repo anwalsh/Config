@@ -298,12 +298,12 @@ exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 20 -locker blurlock
-exec --no-startup-id xautolock -time 20 -locker 'betterlockscreen -l dimblur'
+# exec --no-startup-id xautolock -time 1 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen -l dimblur' &
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # Alternative (set last used background)
-exec --no-startup-id source ~/.fehbg
+exec --no-startup-id sh ~/.fehbg
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
