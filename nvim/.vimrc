@@ -68,9 +68,10 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 " Let the LSP flow through you . . .
+"\ 'rust': ['ra_lsp_server'],
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['pyls'],
+	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+	\ 'python': ['pyls'],
     \ }
 let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
