@@ -625,6 +625,12 @@ you shouldplace your code here."
     (interactive)
     (shell-command "rusty-tags -O TAGS emacs"))
   (spacemacs/set-leader-keys-for-major-mode 'rust-mode "G" 'generate-rusty-tags)
+  (setq exec-path (append exec-path '("~/.cargo/bin/")))
+  ;; Bind <SPC f z> to fzf fuzzy find in CWD, and <SPC f Z> for a manual directory.
+  ;; We disable colors so that the display looks good on any Emacs theme,
+  ;; and we move the fzf prompt up by 1 row to fix a rendering bug in ansi-term.
+  ;; Note that you simply press <C-c C-c> to gently exit fzf if you want to abort.
+  (evil-leader/set-key "f z" 'fzf-directory)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
