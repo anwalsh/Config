@@ -57,17 +57,13 @@ values."
      evil-commentary
      git
      github
-     (go    :variables
-            go-backend 'lsp
-            go-tab-width 4
-            go-use-golangci-lint t
-            godoc-at-point-function 'godoc-gogetdoc
-            ;; go-use-gometalinter t
-            ;; flycheck-gometalinter-fast t
-            ;; flycheck-gometalinter-deadline "30s"
-            ;; flycheck-gometalinter-enable-linters '("goimports"
-                                                   ;; "golint")
-            )
+     (go :variables
+         go-backend 'lsp
+         go-tab-width 4
+         go-use-golangci-lint t
+         godoc-at-point-function 'godoc-gogetdoc
+         go-format-before-save t
+     )
      (gtags :variables
             gtags-enable-by-default t)
      helm
@@ -97,9 +93,9 @@ values."
      ruby
      ruby-on-rails
      (rust :variables
-           ;; rust-backend 'racer
            rust-backend 'lsp
-           rust-rls-cmd '("rustup" "run" "stable" "rls")
+           ;; rustic-lsp-server 'rust-analyzer
+           ;; rustic-format-trigger 'on-save
            rust-format-on-save t)
      scala
      (shell :variables
@@ -133,10 +129,12 @@ values."
                                       fzf
                                       google-c-style
                                       go-playground
+                                      helm-rg
                                       lsp-mode
                                       lsp-ui
                                       magit-todos
                                       rust-playground
+                                      ;; rustic
                                       yasnippet-snippets
                                       )
    ;; A list of packages that cannot be updated.
@@ -283,7 +281,7 @@ values."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize t
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
@@ -462,12 +460,14 @@ you shouldplace your code here."
   ;; C/Cpp Configuration
   ;;
   (push '("C" "h") projectile-other-file-alist)
-  ;; Go Configuration
-  ;;
-  (setq go-format-before-save t)
   ;; ACR: setup gdb nicely
   (setq gud-gdb-command-name "gdb --annotate=3")
   (setq gdb-many-windows t)
+
+  ;; Dap Config
+  ;;
+  (defun rust/pre-init-dap-mode ()
+    (add-to-list 'spacemacs--dap-supported-modes 'rust-mode))
 
   ;; Font Lock
   ;;
@@ -525,6 +525,7 @@ you shouldplace your code here."
     (evil-set-jump))
   (advice-add 'evil-previous-line :before 'my-evil-set-jump)
   (advice-add 'evil-next-line :before 'my-evil-set-jump)
+  (setq evil-escape-key-sequence "jk")
   ;; (set-face-background hl-line-face "#234")
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
@@ -605,6 +606,12 @@ you shouldplace your code here."
       (abort-recursive-edit)))
 
   (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
+  (spacemacs/set-leader-keys "p*" 'helm-projectile-rg)
+  ;; Rust Ctags Configuration
+  (defun generate-rusty-tags ()
+    (interactive)
+    (shell-command "rusty-tags -O TAGS emacs"))
+  (spacemacs/set-leader-keys-for-major-mode 'rust-mode "G" 'generate-rusty-tags)
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -619,7 +626,7 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (utop tuareg caml ocp-indent ob-elixir flycheck-ocaml merlin flycheck-mix flycheck-credo emojify emoji-cheat-sheet-plus dune company-emoji auto-complete-rst alchemist elixir-mode helm-core rust-mode evil async yasnippet-snippets lsp-ui lsp-python-ms live-py-mode helm lsp-mode yasnippet magit yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify vterm volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-magit treemacs-evil toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm rust-playground ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer python pytest pyenv-mode py-isort pug-mode projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox ox-jira ox-gfm overseer orgit org-projectile org-present org-pomodoro org-mime org-jira org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nodejs-repl nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-todos magit-svn magit-gitflow macrostep lsp-treemacs lsp-java lorem-ipsum livid-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-playground go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fzf fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes doom-modeline dockerfile-mode docker disaster diminish diff-hl devdocs define-word dap-mode dactyl-mode cython-mode csv-mode cquery cpp-auto-include company-web company-tern company-statistics company-shell company-rtags company-lsp company-go company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
+    (helm-rg company treemacs org-plus-contrib rustic vhdl-tools utop tuareg caml ocp-indent ob-elixir flycheck-ocaml merlin flycheck-mix flycheck-credo emojify emoji-cheat-sheet-plus dune company-emoji auto-complete-rst alchemist elixir-mode helm-core rust-mode evil async yasnippet-snippets lsp-ui lsp-python-ms live-py-mode helm lsp-mode yasnippet magit yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify vterm volatile-highlights vmd-mode vimrc-mode vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-magit treemacs-evil toml-mode toc-org tagedit systemd symon symbol-overlay string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm rust-playground ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters racer python pytest pyenv-mode py-isort pug-mode projectile-rails prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox ox-jira ox-gfm overseer orgit org-projectile org-present org-pomodoro org-mime org-jira org-download org-cliplink org-bullets org-brain open-junk-file omnisharp noflet nodejs-repl nameless mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-todos magit-svn magit-gitflow macrostep lsp-treemacs lsp-java lorem-ipsum livid-mode link-hint json-navigator js2-refactor js-doc insert-shebang indent-guide importmagic impatient-mode hybrid-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-playground go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fzf fuzzy forge font-lock+ flyspell-popup flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-golangci-lint flycheck-bashate flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes doom-modeline dockerfile-mode docker disaster diminish diff-hl devdocs define-word dap-mode dactyl-mode cython-mode csv-mode cquery cpp-auto-include company-web company-tern company-statistics company-shell company-rtags company-lsp company-go company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format chruby centered-cursor-mode ccls cargo bundler browse-at-remote blacken base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
