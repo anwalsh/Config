@@ -44,6 +44,7 @@ values."
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory nil)
+     asm
      (c-c++ :variables
             c-c++-backend 'lsp-cquery
             c-c++-enable-google-style 't
@@ -65,7 +66,7 @@ values."
          go-format-before-save t
      )
      (gtags :variables
-            gtags-enable-by-default t)
+            gtags-enable-by-default nil)
      helm
      html
      (java :variables
