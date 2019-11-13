@@ -117,8 +117,10 @@ values."
      (syntax-checking :variables syntax-checking-enable-by-default t)
      systemd
      treemacs
-     (typescript :variables typescript-fmt-on-save t
+     (typescript :variables
+                 typescript-fmt-on-save t
                  typescript-fmt-tool 'prettier
+                 typescript-linter 'es-lint
                  typescript-backend 'lsp)
      vagrant
      (version-control :variables version-control-diff-tool 'diff-hl
