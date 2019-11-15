@@ -627,7 +627,6 @@ you shouldplace your code here."
       (abort-recursive-edit)))
 
   (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
-  (spacemacs/set-leader-keys "p*" 'helm-projectile-rg)
   ;; Rust Ctags Configuration
   (defun generate-rusty-tags ()
     (interactive)
