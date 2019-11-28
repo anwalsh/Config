@@ -109,7 +109,7 @@ values."
             shell-default-height 30
             shell-default-position 'bottom
             shell-default-term-shell "/bin/zsh")
-     shell-scripts
+     (shell-scripts :variables shell-scripts-backend 'lsp)
      semantic
      (spell-checking :variables
                      enable-flyspell-auto-completion t
