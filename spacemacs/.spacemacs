@@ -545,7 +545,7 @@ you shouldplace your code here."
     (evil-set-jump))
   (advice-add 'evil-previous-line :before 'my-evil-set-jump)
   (advice-add 'evil-next-line :before 'my-evil-set-jump)
-  (setq evil-escape-key-sequence "jk")
+  (setq evil-escape-key-sequence "fd")
   ;; (set-face-background hl-line-face "#234")
   (setq ns-pop-up-frames nil)
   (setq use-dialog-box nil)
@@ -640,6 +640,14 @@ you shouldplace your code here."
   ;; CCLS Configuration
   (setq ccls-sem-highlight-method 'overlay)
   (defvar spacemacs-jump-handlers-fundamental-mode nil)
+  ;; Show the current function name in the header line
+  (which-function-mode)
+  (setq-default header-line-format
+                '((which-func-mode ("" which-func-format " "))))
+  (setq mode-line-misc-info
+        ;; We remove Which Function Mode from the mode line, because it's mostly
+        ;; invisible here anyway.
+        (assq-delete-all 'which-func-mode mode-line-misc-info))
 )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
