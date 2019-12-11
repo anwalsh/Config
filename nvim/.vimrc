@@ -46,6 +46,7 @@ Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
 Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
 Plug 'wellle/context.vim' " Support for showing surrounding context
+Plug 'bronson/vim-trailing-whitespace' " Shows trailing whitespace
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
