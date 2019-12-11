@@ -99,6 +99,7 @@ values."
      ruby-on-rails
      (rust :variables
            rust-backend 'lsp
+           lsp-rust-server 'rust-analyzer
            ;; rust-rls-cmd '("ra_lsp_server")
            rust-format-on-save t)
      scala
