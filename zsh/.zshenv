@@ -15,4 +15,7 @@ export JAVA_HOME="/usr/lib/jvm/default"
 export ANT_HOME="/opt/ant"
 export ANT_BIN="$ANT_HOME/bin"
 export ANT_OPTS="-Xms64m -Xmx1500m"
-export PATH="$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$RUST:$NPATH:$GOROOT:$GOBIN:$GOPATH:$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF"
+export CODE="/usr/sbin/code-insiders"
+export NODEMODS="/home/andy/node_modules/.bin"
+export PATH="$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$RUST:$NPATH:$GOROOT:$GOBIN:$GOPATH\
+:$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF:$CODE:$NODEMODS"

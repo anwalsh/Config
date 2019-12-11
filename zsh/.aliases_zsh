@@ -5,6 +5,7 @@
 #   -----------------------------
 
 # alias vim='nvim'                                 # Vim becomes nvim instead
+alias code='code-insiders'
 alias v='nvim'                                   # Shorter Vim command because reasons
 alias ls='exa'
 alias l='exa -a'

@@ -10,17 +10,6 @@ let mapleader = "\<Space>"
 
 set nocompatible
 filetype plugin indent on
-
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --java-completer
-  endif
-endfunction
-" =============================================================================
 " # PLUGINS
 " =============================================================================
 call plug#begin('~/.vim/plugged')
@@ -56,40 +45,18 @@ Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
 Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
+Plug 'wellle/context.vim' " Support for showing surrounding context
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 " Language Server Support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" Let the LSP flow through you . . .
-"\ 'rust': ['ra_lsp_server'],
-let g:LanguageClient_serverCommands = {
-	\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-	\ 'python': ['pyls'],
-    \ }
-let g:LanguageClient_autoStart = 1
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Completion plugins
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-" enable ncm2 for all buffers
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-" LanguageClient enhancements
 " Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
 " Syntactic language support
@@ -100,11 +67,9 @@ Plug 'rust-lang/rust.vim'
 " C++/C
 Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'majutsushi/tagbar'
 " go
-Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 " python
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " highlighting for requirements.txt
@@ -113,12 +78,9 @@ Plug 'Vimjas/vim-python-pep8-indent' " better python indentation
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 " JS stuff
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'} " JS autocomplete
 Plug 'pangloss/vim-javascript' " Better js indent and syntax
 " JSON/XML/MD stuff
 Plug 'rhysd/vim-gfm-syntax' " highlight github-flavored markdown
-Plug 'elzr/vim-json' " Better json syntax + concealing noise
-Plug 'sukima/xmledit' " XML and HTML helpers
 " Git stuff
 Plug 'airblade/vim-gitgutter' " show changed lines in gutter
 Plug 'tpope/vim-fugitive' " Git integration
@@ -128,7 +90,7 @@ Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
 " YAML
-Plug 'stephpy/vim-yaml'
+" Plug 'stephpy/vim-yaml'
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " End Plug Call
@@ -216,7 +178,6 @@ set undodir=~/.vim-undo/ "where to store undo files
 set splitright " Make :vsplit put new window to the right, where it belongs
 set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
 set nojoinspaces " only add one space after punctuation when joining lines.
-autocmd BufEnter * call ncm2#enable_for_buffer()
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
@@ -308,9 +269,6 @@ inoremap fd <Esc>
 " Jump to next/previous error
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
-nmap <silent> L <Plug>(ale_lint)
-" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <C-l> :copen<CR>
 nnoremap <C-g> :cclose<CR>
 " <leader><leader> toggles between buffers
@@ -350,7 +308,34 @@ nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
-nnoremap <silent> gd :ALEGoToDefinition<CR>
+" coc Config
+" 'Smart' nevigation
+nmap <silent> E <Plug>(coc-diagnostic-prev)
+nmap <silent> W <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>oo  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
 
 " =============================================================================
 " # Config
@@ -418,38 +403,6 @@ let g:rustfmt_fail_silently = 0
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 " Rust Playground Copy to Clipboard
 let g:rust_clip_command = 'xclip -selection clipboard'
-" Linter
-let g:ale_sign_column_always = 1
-" only lint on save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_enter = 0
-let g:ale_rust_cargo_use_check = 1
-let g:ale_rust_cargo_check_all_targets = 1
-let g:ale_rust_rls_config = {
-	\ 'rust': {
-		\ 'all_targets': 1,
-		\ 'build_on_save': 1,
-		\ 'clippy_preference': 'on'
-	\ }
-	\ }
-let g:ale_rust_rls_toolchain = ''
-let g:ale_linters = {'rust': ['rls']}
-highlight link ALEWarningSign Todo
-highlight link ALEErrorSign WarningMsg
-highlight link ALEVirtualTextWarning Todo
-highlight link ALEVirtualTextInfo Todo
-highlight link ALEVirtualTextError WarningMsg
-highlight ALEError guibg=None
-highlight ALEWarning guibg=None
-let g:ale_sign_error = "✖"
-let g:ale_sign_warning = "⚠"
-let g:ale_sign_info = "i"
-let g:ale_sign_hint = "➤"
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = $HOME.'/go/bin/gocode'
 
 " Golang Configuration
 let g:go_fmt_fail_silently = 0
@@ -485,12 +438,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
-" YCM Config
-let g:ycm_filetype_whitelist = {
-      \ 'cpp': 1,
-      \ 'c': 1,
-      \}
 
 " reload files changed outside vim
 set autoread
