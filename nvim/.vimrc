@@ -51,7 +51,7 @@ Plug 'bronson/vim-trailing-whitespace' " Shows trailing whitespace
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree' " Adding autoclosing support
 " Language Server Support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Fuzzy finder
@@ -188,8 +188,8 @@ if !exists(":DiffOrig")
 endif
 
 " Lightline
-let g:lightline = { 'colorscheme': 'wombat' }
 let g:lightline = {
+	  \ 'colorscheme' : 'one',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
