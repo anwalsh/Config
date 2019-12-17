@@ -45,7 +45,6 @@ Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
 Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
-Plug 'wellle/context.vim' " Support for showing surrounding context
 Plug 'bronson/vim-trailing-whitespace' " Shows trailing whitespace
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -65,6 +64,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+" Linting
+Plug 'w0rp/ale'
 " C++/C
 Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
@@ -189,7 +190,7 @@ endif
 
 " Lightline
 let g:lightline = {
-	  \ 'colorscheme' : 'one',
+	  \ 'colorscheme' : 'powerline',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
@@ -450,6 +451,13 @@ autocmd FileChangedShellPost *
 
 " Disable syntax highlighting for large files
 autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
+
+" Ale Linting
+let g:ale_completion_enabled = 0
+let g:ale_linters = {'rust': ['rustfmt', 'clippy', 'cargo'],
+                    \ 'python': ['flake8', 'pylint'],
+					\ 'javascript': ['eslint']}
+let g:ale_rust_cargo_use_clippy = 1
 
 if !has('gui_running')
     "change cursor icon based on mode
