@@ -115,7 +115,7 @@ values."
                      spell-checking-enable-by-default t)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      systemd
-     treemacs
+     ;; treemacs
      (typescript :variables
                  typescript-fmt-on-save t
                  typescript-fmt-tool 'prettier
