@@ -96,6 +96,9 @@ Plug 'gregsexton/gitv' " like git log in vim
 " Plug 'stephpy/vim-yaml'
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
+" Play nice with tmux
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
 " End Plug Call
 call plug#end()
 " =============================================================================
@@ -191,7 +194,7 @@ endif
 
 " Lightline
 let g:lightline = {
-	  \ 'colorscheme' : 'powerline',
+	  \ 'colorscheme' : 'wombat',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
@@ -328,6 +331,15 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" Remap for rename current word
+nmap <leader>cr <Plug>(coc-rename)
+" Remap for format selected region
+vmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
+" Remap for do codeAction of current line
+nmap <leader>cac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>cq  <Plug>(coc-fix-current)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -342,7 +354,7 @@ nnoremap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
 
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
 			\ 'coc-word', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer', 'coc-tsserver',
-			\ 'coc-yaml', 'coc-python']
+			\ 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-sources']
 
 " =============================================================================
 " # Config
@@ -459,10 +471,12 @@ autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
 
 " Ale Linting
 let g:ale_completion_enabled = 0
-let g:ale_linters = {'rust': ['rustfmt', 'clippy', 'cargo'],
+let g:ale_linters = {'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
+					\ 'markdown': ['prettier'],
                     \ 'python': ['flake8', 'pylint'],
 					\ 'javascript': ['eslint']}
 let g:ale_rust_cargo_use_clippy = 1
+let g:ale_fix_on_save = 1
 
 if !has('gui_running')
     "change cursor icon based on mode
