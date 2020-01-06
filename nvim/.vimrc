@@ -194,7 +194,7 @@ endif
 
 " Lightline
 let g:lightline = {
-	  \ 'colorscheme' : 'wombat',
+	  \ 'colorscheme' : 'powerline',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
@@ -354,7 +354,7 @@ nnoremap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
 
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
 			\ 'coc-word', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer', 'coc-tsserver',
-			\ 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-sources']
+			\ 'coc-yaml', 'coc-python', 'coc-snippets']
 
 " =============================================================================
 " # Config
