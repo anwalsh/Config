@@ -524,9 +524,9 @@ tail = true
 label = %output%
 exec = ~/Config/polybar-scripts/pavolume.sh --listen
 click-right = exec pavucontrol
-click-left = ~/polybar-scripts/pavolume.sh --togmute
-scroll-up = ~/polybar-scripts/pavolume.sh --up
-scroll-down = ~/polybar-scripts/pavolume.sh --down
+click-left = ~/Config/polybar-scripts/pavolume.sh --togmute
+scroll-up = ~/Config/polybar-scripts/pavolume.sh --up
+scroll-down = ~/Config/polybar-scripts/pavolume.sh --down
 
 [module/nvidia]
 type = custom/script
