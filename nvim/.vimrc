@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 " Load plugins
 " Color Scheme
 Plug 'rakr/vim-one'
+Plug 'chriskempson/base16-vim'
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
@@ -162,6 +163,7 @@ set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
 " Colors
 set background=dark
+" colorscheme base16-gruvbox-dark-hard
 colorscheme one
 hi Normal ctermbg=NONE
 hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
@@ -193,8 +195,8 @@ if !exists(":DiffOrig")
 endif
 
 " Lightline
+"     \ 'colorscheme' : 'powerline',
 let g:lightline = {
-	  \ 'colorscheme' : 'powerline',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
