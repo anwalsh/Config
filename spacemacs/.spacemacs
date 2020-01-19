@@ -77,7 +77,8 @@ values."
                  javascript-backend 'lsp
                  javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t
-                 javascript-import-tool 'import-js)
+                 javascript-import-tool 'import-js
+                 javascript-eslint t)
      (json :variables
            json-fmt-tool 'prettier)
      (lsp :variables
