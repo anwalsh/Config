@@ -473,18 +473,17 @@ autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
 
 " Ale Linting
 let g:ale_completion_enabled = 0
-let g:ale_linters = {'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
+let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
 					\ 'markdown': ['prettier'],
-          \ 'python': ['flake8', 'pylint'],
+					\ 'python': ['flake8', 'pylint'],
 					\ 'go': ['golangci-lint', 'gofmt', 'golint'],
 					\ 'javascript': ['eslint']
 					\ }
-let g:ale_fixers = {
-            \ 'sh':       ['shfmt'],
-            \ 'markdown': ['prettier'],
-            \ 'python':   ['add_blank_lines_for_python_control_statements', 'black'],
-			      \ 'javascript': ['eslint']
-            \ }
+let g:ale_fixers = { 'sh': ['shfmt'],
+				   \ 'markdown': ['prettier'],
+				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black'],
+				   \ 'javascript': ['eslint']
+				   \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_fix_on_save = 1
 
