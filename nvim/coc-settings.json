@@ -1,5 +1,4 @@
 {
-  "rust-analyzer.enableCargoWatchOnStartup": "enabled",
   "coc.preferences.formatOnSaveFiletypes": ["go", "rust", "javascript", "typscript", "json"],
 "languageserver": {
     "golang": {
