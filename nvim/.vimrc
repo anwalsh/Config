@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 " Load plugins
 " Color Scheme
 Plug 'rakr/vim-one'
-Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
@@ -106,11 +106,20 @@ call plug#end()
 " # GUI/Basic Options
 " =============================================================================
 syntax on
-" Better Colors
+" deal with colors
+if !has('gui_running')
+  set t_Co=256
+endif
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
+" Colors
+hi Normal ctermbg=NONE
+colorscheme one
+" colorscheme dracula
+" hi Normal ctermbg=NONE
+" hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
 
 " Make autocomplete less stupid
 set completeopt=noinsert,menuone,noselect
@@ -161,12 +170,7 @@ set expandtab
 set autoindent "enable the following line
 set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
-" Colors
-set background=dark
-" colorscheme base16-gruvbox-dark-hard
-colorscheme one
-hi Normal ctermbg=NONE
-hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
+
 " Line hopping
 " Ref: https://superuser.com/questions/539708/vim-moving-around-using-relativenumber-and-adding-it-to-the-jump-list-for-use-w
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
@@ -273,7 +277,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 " Move by line
 nnoremap j gj
 nnoremap k gk
-inoremap fd <Esc>
+inoremap jk <Esc>
 " Jump to next/previous error
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
