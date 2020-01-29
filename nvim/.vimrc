@@ -16,7 +16,6 @@ call plug#begin('~/.vim/plugged')
 " Load plugins
 " Color Scheme
 Plug 'rakr/vim-one'
-Plug 'dracula/vim', { 'as': 'dracula' }
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
@@ -28,6 +27,7 @@ Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'wellle/context.vim'
 " Vimscript enhancements
 Plug 'tpope/vim-repeat' " makes . and u work better with plugins
 Plug 'tpope/vim-scriptease' " helpers when writing vimscript
@@ -117,7 +117,6 @@ endif
 " Colors
 hi Normal ctermbg=NONE
 colorscheme one
-" colorscheme dracula
 " hi Normal ctermbg=NONE
 " hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
 
@@ -277,7 +276,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 " Move by line
 nnoremap j gj
 nnoremap k gk
-inoremap jk <Esc>
+inoremap jj <Esc>
 " Jump to next/previous error
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
