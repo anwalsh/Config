@@ -484,7 +484,7 @@ let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
 					\ }
 let g:ale_fixers = { 'sh': ['shfmt'],
 				   \ 'markdown': ['prettier'],
-				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black'],
+				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'yapf'],
 				   \ 'javascript': ['eslint']
 				   \ }
 let g:ale_rust_cargo_use_clippy = 1

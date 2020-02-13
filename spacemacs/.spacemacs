@@ -94,7 +94,9 @@ values."
      (python :variables
              python-enable-yapf-format-on-save t
              python-sort-imports-on-save t
-             python-backend 'lsp)
+             python-backend 'lsp
+             python-fill-column 79
+             python-test-runner 'pytest)
      (ruby :variables
            ruby-backend 'lsp)
      ruby-on-rails
