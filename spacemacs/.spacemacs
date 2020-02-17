@@ -64,6 +64,7 @@ values."
          go-backend 'lsp
          go-tab-width 4
          go-use-golangci-lint t
+         go-linter 'golangci-lint
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports"
          go-format-before-save t

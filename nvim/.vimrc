@@ -382,10 +382,6 @@ function! s:list_cmd()
   return base == '.' ? 'fd -t file -L -H -E .git' : printf('fd -t file -L -H -E | proximity-sort %s', expand('%'))
 endfunction
 
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-"   \ 'options': '--tiebreak=index'}, <bang>0)
-
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
     autocmd!
