@@ -65,6 +65,7 @@ values."
          go-tab-width 4
          go-use-golangci-lint t
          godoc-at-point-function 'godoc-gogetdoc
+         gofmt-command "goimports"
          go-format-before-save t
      )
      (gtags :variables

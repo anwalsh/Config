@@ -415,8 +415,11 @@ augroup autoformat_settings
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType python AutoFormatBuffer yapf
 augroup END
+
+" Python
+autocmd filetype python setlocal textwidth=78
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
