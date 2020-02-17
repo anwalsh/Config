@@ -488,6 +488,7 @@ let g:ale_fixers = { 'sh': ['shfmt'],
 				   \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_fix_on_save = 1
+let g:ale_go_golangci_lint_options = '--fast'
 
 if !has('gui_running')
     "change cursor icon based on mode
