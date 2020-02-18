@@ -13,7 +13,6 @@ filetype plugin indent on
 " # PLUGINS
 " =============================================================================
 call plug#begin('~/.vim/plugged')
-" Load plugins
 " Color Scheme
 Plug 'rakr/vim-one'
 " VIM enhancements
@@ -93,8 +92,6 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
 Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
-" YAML
-" Plug 'stephpy/vim-yaml'
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " Play nice with tmux
@@ -119,7 +116,6 @@ hi Normal ctermbg=NONE
 colorscheme one
 " hi Normal ctermbg=NONE
 " hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
-
 " Make autocomplete less stupid
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
@@ -169,7 +165,6 @@ set expandtab
 set autoindent "enable the following line
 set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
-
 " Line hopping
 " Ref: https://superuser.com/questions/539708/vim-moving-around-using-relativenumber-and-adding-it-to-the-jump-list-for-use-w
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
@@ -186,7 +181,6 @@ set nospell "enable spell checking use ":set nospell" to turn it off for a singl
 set spelllang=en_us "use US dictionary for spelling
 set undofile "keep persistent undo across vim runs
 set undodir=~/.vim-undo/ "where to store undo files
-set splitright " Make :vsplit put new window to the right, where it belongs
 set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
 set nojoinspaces " only add one space after punctuation when joining lines.
 " Convenient command to see the difference between the current buffer and the
@@ -209,12 +203,12 @@ function! LightlineFilename()
 endfunction
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor
-endif
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 	set grepformat=%f:%l:%c:%m
+endif
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " Search results centered please
@@ -290,14 +284,15 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>w :w<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
+" map <C-h> :History<CR>
 nmap <leader>; :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>F :FZF ~<CR>
 nnoremap <leader>l :Lines<CR>
 " Make splits less terribad
-nnoremap <Leader>o :only<CR>
-nnoremap <Leader>/ :vsp<CR>
-nnoremap <Leader>- :sp<CR>
+nnoremap <leader>o :only<CR>
+nnoremap <leader>/ :vsp<CR>
+nnoremap <leader>- :sp<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -311,8 +306,8 @@ nnoremap <leader>, :set invlist<CR>
 " I can type :help on my own, thanks.
 map <F1> <Esc>
 imap <F1> <Esc>
-" Use <Leader>r instead of default <Leader>e:
-nmap <Leader>r <Plug>(Scalpel)
+" Use <leader>r instead of default <leader>e:
+nmap <leader>r <Plug>(Scalpel)
 " Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -439,7 +434,6 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
-
 
 " Jump to last edit position on opening file
 if has("autocmd")
