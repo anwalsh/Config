@@ -284,7 +284,6 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>w :w<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
-" map <C-h> :History<CR>
 nmap <leader>; :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>F :FZF ~<CR>
