@@ -493,57 +493,6 @@ you shouldplace your code here."
   (defun rust/pre-init-dap-mode ()
     (add-to-list 'spacemacs--dap-supported-modes 'rust-mode))
 
-  ;; Font Lock
-  ;;
-  (defun font-lock-show-tabs ()
-    "Return a font-lock style keyword for tab characters."
-    '(("\t" 0 'trailing-whitespace prepend)))
-
-  (font-lock-add-keywords 'c++-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'c-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'python-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'java-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'go-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'sh-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'rust-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'ruby-mode (font-lock-show-tabs))
-  (font-lock-add-keywords 'javascript-mode (font-lock-show-tabs))
-
-  (add-hook 'c++-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'c-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'java-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'sh-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'rust-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace t)))
-
-  (add-hook 'javascript-mode-hook
-              (lambda ()
-                (setq show-trailing-whitespace t)))
   ;; Jump history per: https://github.com/syl20bnr/spacemacs/issues/5847
   (defun my-evil-set-jump (&rest _)
     (evil-set-jump))
