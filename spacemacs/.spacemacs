@@ -97,6 +97,7 @@ values."
              python-enable-yapf-format-on-save t
              python-sort-imports-on-save t
              python-backend 'lsp
+             python-lsp-server 'mspyls
              python-fill-column 79
              python-test-runner 'pytest)
      (ruby :variables

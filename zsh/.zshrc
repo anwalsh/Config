@@ -100,6 +100,11 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 #   3.  Misc.
 #   ---------------------------------------
 
+# Python Things
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source $HOME/.local/bin/virtualenvwrapper.sh
+
 # Hub Wrapper Init
 eval "$(hub alias -s)"
 
