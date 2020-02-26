@@ -98,7 +98,7 @@ values."
              python-sort-imports-on-save t
              python-format-on-save t
              python-backend 'lsp
-             python-lsp-server 'mspyls
+             python-lsp-server 'pyls
              python-fill-column 79
              python-test-runner 'pytest)
      (ruby :variables
