@@ -94,8 +94,9 @@ values."
      (prettier :variables
                prettier-js-show-errors 'echo)
      (python :variables
-             python-enable-yapf-format-on-save t
+             python-formatter 'yapf
              python-sort-imports-on-save t
+             python-format-on-save t
              python-backend 'lsp
              python-lsp-server 'mspyls
              python-fill-column 79
