@@ -118,7 +118,8 @@ values."
      (shell-scripts :variables shell-scripts-backend 'lsp)
      semantic
      (spell-checking :variables
-                     enable-flyspell-auto-completion f
+                     enable-flyspell-auto-completion t
+                     flyspell-delay 3
                      spell-checking-enable-by-default t)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      systemd
