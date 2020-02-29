@@ -118,7 +118,7 @@ values."
      (shell-scripts :variables shell-scripts-backend 'lsp)
      semantic
      (spell-checking :variables
-                     enable-flyspell-auto-completion t
+                     enable-flyspell-auto-completion f
                      spell-checking-enable-by-default t)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      systemd
