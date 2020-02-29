@@ -65,6 +65,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'arzg/vim-rust-syntax-ext'
 " Linting
 Plug 'w0rp/ale'
 " C++/C
