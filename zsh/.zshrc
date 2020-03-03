@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/.secret_zsh
 source ~/Config/zsh/.functions_zsh
 source ~/Config/zsh/.aliases_zsh
-source ~/.alias.local
+source ~/.zshrc.local
 
 #   ---------------------------------------
 #   2.  FZF Config.
@@ -102,8 +102,8 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 
 # Python Things
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source $HOME/.local/bin/virtualenvwrapper.sh
+export PROJECT_HOME=$HOME/Projects/python
+source /usr/bin/virtualenvwrapper.sh
 
 # Hub Wrapper Init
 eval "$(hub alias -s)"
