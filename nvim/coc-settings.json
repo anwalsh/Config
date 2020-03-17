@@ -25,5 +25,6 @@
       "args": ["start"],
       "ignoredRootPaths": ["~"]
     },
-  }
+  },
+  "python.jediEnabled": false
 }
