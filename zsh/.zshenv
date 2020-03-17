@@ -19,6 +19,7 @@ export CODE="/usr/sbin/code-insiders"
 export NODEMODS="$HOME/node_modules/.bin"
 export N="$HOME/n/bin"
 export LOCAL="$HOME/.local/bin"
-export KUBECONFIG=~/.kube/config.staging:~/.kube/config.prod
-export PATH="$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$RUST:$NPATH:$GOROOT:$GOBIN:$GOPATH\
+export KUBECONFIG="$HOME/.kube/config.staging:~/.kube/config.prod"
+export TOOLS="$HOME/tools"
+export PATH="$TOOLS:$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$RUST:$NPATH:$GOROOT:$GOBIN:$GOPATH\
 :$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF:$CODE:$NODEMODS:$N:$LOCAL:$KUBECONFIG"
