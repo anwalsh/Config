@@ -116,13 +116,15 @@ values."
             shell-default-height 30
             shell-default-position 'bottom
             shell-default-term-shell "/bin/zsh")
-     (shell-scripts :variables shell-scripts-backend 'lsp)
+     (shell-scripts :variables
+                    shell-scripts-backend 'lsp)
      semantic
      (spell-checking :variables
                      enable-flyspell-auto-completion t
                      flyspell-delay 3
                      spell-checking-enable-by-default t)
-     (syntax-checking :variables syntax-checking-enable-by-default t)
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default t)
      systemd
      ;; treemacs
      (typescript :variables
@@ -131,11 +133,13 @@ values."
                  typescript-linter 'es-lint
                  typescript-backend 'lsp)
      vagrant
-     (version-control :variables version-control-diff-tool 'diff-hl
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl
                       version-control-diff-side 'left
                       version-control-global-margin t)
      vimscript
-     yaml
+     (yaml :variables
+           yaml-enable-lsp t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
