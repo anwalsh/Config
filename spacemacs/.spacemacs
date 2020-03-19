@@ -152,6 +152,7 @@ values."
                                       company-lsp
                                       doom-modeline
                                       doom-themes
+                                      editorconfig
                                       fzf
                                       google-c-style
                                       go-playground
@@ -162,7 +163,6 @@ values."
                                       lsp-ui
                                       magit-todos
                                       rust-playground
-                                      ;; rustic
                                       yasnippet-snippets
                                       )
    ;; A list of packages that cannot be updated.
