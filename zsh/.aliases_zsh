@@ -4,7 +4,7 @@
 #   1.  MAKE TERMINAL BETTER
 #   -----------------------------
 
-alias code='code-insiders'
+alias code='code'
 alias v='nvim'                                   # Shorter Vim command because reasons
 alias ls='exa'
 alias l='exa -a'
@@ -34,6 +34,7 @@ alias cic='set completion-ignore-case On'        # cic: Make tab-completion case
 alias xclip='xclip -i'
 alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
 alias aptup="sudo apt-get update && sudo apt-get upgrade"
+alias audioswap="./Projects/scripts/audio-switch.sh"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------

@@ -250,6 +250,7 @@ noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
 noremap <leader>bd :bd<CR>
+nnoremap <leader>; :Buffers<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
@@ -412,12 +413,17 @@ augroup END
 " Python
 autocmd filetype python setlocal textwidth=78
 
+" WRITING
+" =======
+" config to make writing english in vim better
+autocmd FileType markdown setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " Figure out the system Python for Neovim.
 if exists("$VIRTUAL_ENV")
     let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
 else
-    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+    let g:python3_host_prog=substitute(system("which python"), "\n", '', 'g')
 endif
 
 " racer + rust
