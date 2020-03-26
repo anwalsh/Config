@@ -30,27 +30,61 @@
 
     zipf () { zip -r "$1".zip "$1" ; }              # zipf: To create a ZIP archive of a folder
 
-#   extract:  Extract most know archives with one command
+#   extract: Do the needful
 #   ---------------------------------------------------------
-    extract () {
-        if [ -f $1 ] ; then
-          case $1 in
-            *.tar.bz2)   tar xjf $1     ;;
-            *.tar.gz)    tar xzf $1     ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xf $1      ;;
-            *.tbz2)      tar xjf $1     ;;
-            *.tgz)       tar xzf $1     ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)     echo "'$1' cannot be extracted via extract()" ;;
-             esac
-         else
-             echo "'$1' is not a valid file"
-         fi
+    # extract () {
+    #     if [ -f $1 ] ; then
+    #       case $1 in
+    #         *.tar.bz2)   tar xjf $1     ;;
+    #         *.tar.gz)    tar xzf $1     ;;
+    #         *.bz2)       bunzip2 $1     ;;
+    #         *.rar)       unrar e $1     ;;
+    #         *.gz)        gunzip $1      ;;
+    #         *.tar)       tar xf $1      ;;
+    #         *.tbz2)      tar xjf $1     ;;
+    #         *.tgz)       tar xzf $1     ;;
+    #         *.zip)       unzip $1       ;;
+    #         *.Z)         uncompress $1  ;;
+    #         *.7z)        7z x $1        ;;
+    #         *)     echo "'$1' cannot be extracted via extract()" ;;
+    #          esac
+    #      else
+    #          echo "'$1' is not a valid file"
+    #      fi
+    # }
+    extract() {
+        local c e i
+
+        (($#)) || return
+
+        for i; do
+            c=''
+            e=1
+
+            if [[ ! -r $i ]]; then
+                echo "$0: file is unreadable: \`$i'" >&2
+                continue
+            fi
+
+            case $i in
+                *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+                       c=(bsdtar xvf);;
+                *.7z)  c=(7z x);;
+                *.Z)   c=(uncompress);;
+                *.bz2) c=(bunzip2);;
+                *.exe) c=(cabextract);;
+                *.gz)  c=(gunzip);;
+                *.rar) c=(unrar x);;
+                *.xz)  c=(unxz);;
+                *.zip) c=(unzip);;
+                *)     echo "$0: unrecognized file extension: \`$i'" >&2
+                       continue;;
+            esac
+
+            command "${c[@]}" "$i"
+            ((e = e || $?))
+        done
+        return "$e"
     }
 
 #   ---------------------------

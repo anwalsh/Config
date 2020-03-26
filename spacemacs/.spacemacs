@@ -99,7 +99,7 @@ values."
              python-lsp-server 'mspyls
              python-lsp-git-root "~/Tools/python-language-server"
              python-fill-column 79
-             python-formatter 'yapf
+             python-formatter 'black
              python-sort-imports-on-save t
              python-format-on-save t
              python-test-runner 'pytest)
@@ -122,7 +122,7 @@ values."
      semantic
      (spell-checking :variables
                      enable-flyspell-auto-completion t
-                     flyspell-delay 3
+                     flyspell-delay 5
                      spell-checking-enable-by-default t)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t)
