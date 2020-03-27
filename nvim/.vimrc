@@ -26,7 +26,6 @@ Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'wellle/context.vim'
 " Vimscript enhancements
 Plug 'tpope/vim-repeat' " makes . and u work better with plugins
 Plug 'tpope/vim-scriptease' " helpers when writing vimscript
@@ -354,8 +353,8 @@ nnoremap <silent> <space>oo  :<C-u>CocList outline<cr>
 nnoremap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
 
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
-			\ 'coc-word', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer', 'coc-tsserver',
-			\ 'coc-yaml', 'coc-python', 'coc-snippets']
+			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
+			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
 
 " =============================================================================
 " # Config
@@ -404,7 +403,7 @@ augroup END
 " Autoformat
 augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType go AutoFormatBuffer goimports
   autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer yapf
@@ -448,6 +447,7 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Jump to last edit position on opening file
 if has("autocmd")
