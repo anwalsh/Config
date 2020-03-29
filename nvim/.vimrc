@@ -202,6 +202,20 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Plugin settings
+let g:secure_modelines_allowed_items = [
+                \ "textwidth",   "tw",
+                \ "softtabstop", "sts",
+                \ "tabstop",     "ts",
+                \ "shiftwidth",  "sw",
+                \ "expandtab",   "et",   "noexpandtab", "noet",
+                \ "filetype",    "ft",
+                \ "foldmethod",  "fdm",
+                \ "readonly",    "ro",   "noreadonly", "noro",
+                \ "rightleft",   "rl",   "norightleft", "norl",
+                \ "colorcolumn"
+                \ ]
+
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
@@ -253,7 +267,7 @@ nnoremap <leader>; :Buffers<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
-nnoremap <silent> <leader>h :noh<CR>
+nnoremap <silent><leader>sc :noh<CR>
 " Nerdtree config just in case
 nnoremap <leader>n :NERDTreeToggle<CR>
 " Switching windows
@@ -263,8 +277,8 @@ noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <leader>q :q<CR>
 " Neat X clipboard integration
-" ,p will paste clipboard into buffer
-" ,c will copy entire buffer into clipboard
+" p will paste clipboard into buffer
+" c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
 " Adding some short cuts for more efficient workflows
@@ -293,6 +307,8 @@ nnoremap <leader>l :Lines<CR>
 nnoremap <leader>o :only<CR>
 nnoremap <leader>/ :vsp<CR>
 nnoremap <leader>- :sp<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -346,7 +362,7 @@ command! -nargs=0 Format :call CocAction('format')
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols
