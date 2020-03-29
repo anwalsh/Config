@@ -114,8 +114,6 @@ endif
 " Colors
 hi Normal ctermbg=NONE
 colorscheme one
-" hi Normal ctermbg=NONE
-" hi Visual cterm=NONE ctermbg=DarkGray ctermfg=NONE
 " Make autocomplete less stupid
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
@@ -126,6 +124,7 @@ set ttyfast
 set lazyredraw
 set synmaxcol=500
 set laststatus=2
+set noshowmode
 set number
 set textwidth=100
 set relativenumber " Relative line numbers
@@ -165,10 +164,7 @@ set expandtab
 set autoindent "enable the following line
 set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
-" Line hopping
-" Ref: https://superuser.com/questions/539708/vim-moving-around-using-relativenumber-and-adding-it-to-the-jump-list-for-use-w
-nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
-nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
+
 " Vim Autocomplete Menu
 set wildmenu
 set wildmode=list:longest,list:full
@@ -192,14 +188,23 @@ if !exists(":DiffOrig")
 endif
 
 " Lightline
-"     \ 'colorscheme' : 'powerline',
 let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
       \ },
 \ }
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
 endfunction
 
 " Plugin settings
@@ -225,13 +230,6 @@ if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" Search results centered please
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
 :set nolist
@@ -252,18 +250,35 @@ endif
 " =============================================================================
 " # User Defined Commands
 " =============================================================================
-" macOS Copy and Paste
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
+" Search results centered please
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+" Line hopping
+nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
+nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
 " Buffer nav
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
 noremap <leader>bd :bd<CR>
-nnoremap <leader>; :Buffers<CR>
+" Delete hidden buffers
+function! DeleteHiddenBuffers()
+    let l:tpbl=[]
+    let l:closed = 0
+    call map(range(1, tabpagenr('$')), 'extend(l:tpbl, tabpagebuflist(v:val))')
+    for l:buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(l:tpbl, v:val)==-1')
+        if getbufvar(l:buf, '&mod') == 0
+            silent execute 'bwipeout' l:buf
+            let l:closed += 1
+        endif
+    endfor
+    echo 'Closed '.l:closed.' hidden buffers'
+endfunction
+nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
+
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
@@ -299,10 +314,16 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <leader>w :w<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
-nmap <leader>; :Buffers<CR>
-nnoremap <leader>f :FZF<CR>
-nnoremap <leader>F :FZF ~<CR>
-nnoremap <leader>l :Lines<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fp :Files<CR>
+nnoremap <leader>f~ :Files ~/<CR>
+nnoremap <leader>fl :Lines<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>* :execute "Rgg! \\b".expand("<cword>")."\\b"<CR>
+nnoremap <leader>fa :Rgg<CR>
+nnoremap <leader>fA :Rgg!<CR>
+nnoremap <leader>fd :Rggg<CR>
+nnoremap <leader>fD :Rggg!<CR>
 " Make splits less terribad
 nnoremap <leader>o :only<CR>
 nnoremap <leader>/ :vsp<CR>
@@ -319,9 +340,6 @@ nnoremap <F5> :UndotreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<CR>
-" I can type :help on my own, thanks.
-map <F1> <Esc>
-imap <F1> <Esc>
 " Use <leader>r instead of default <leader>e:
 nmap <leader>r <Plug>(Scalpel)
 " Tabs
@@ -330,8 +348,6 @@ nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
-" coc Config
-" 'Smart' nevigation
 nmap <silent> E <Plug>(coc-diagnostic-prev)
 nmap <silent> W <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
@@ -356,11 +372,8 @@ nmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>cq  <Plug>(coc-fix-current)
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show commands
 nnoremap <silent> <space>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document
@@ -372,26 +385,51 @@ let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc
 			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
 			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
 
+
+
 " =============================================================================
 " # Config
 " =============================================================================
-" <leader>s for Rg search
-noremap <leader>s :Rg
+let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case'.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --color=never
+endif
+
+command! -bang -nargs=* Rgg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=never '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%', '?'),
+            \   <bang>0)
+
+command! -bang -nargs=* Rggg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=never '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+            \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+            \   <bang>0)
+
+
+" Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" let g:fzf_layout = { 'down': '~20%' }
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case'.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
 
-function! s:list_cmd()
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd -t file -L -H -E .git' : printf('fd -t file -L -H -E | proximity-sort %s', expand('%'))
-endfunction
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" function! s:list_cmd()
+"   let base = fnamemodify(expand('%'), ':h:.:S')
+"   return base == '.' ? 'fd -t file -L -H -E .git' : printf('fd -t file -L -H -E | proximity-sort %s', expand('%'))
+" endfunction
 
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
