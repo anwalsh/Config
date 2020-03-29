@@ -317,6 +317,7 @@ map <C-p> :Files<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fp :Files<CR>
 nnoremap <leader>f~ :Files ~/<CR>
+nnoremap <leader>f/ :Files /<CR>
 nnoremap <leader>fl :Lines<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>* :execute "Rgg! \\b".expand("<cword>")."\\b"<CR>
@@ -335,7 +336,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " undotree functionality
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 " tagbar functionality
 nmap <F8> :TagbarToggle<CR>
 " <leader>, shows/hides hidden characters
