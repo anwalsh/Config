@@ -329,8 +329,10 @@ nnoremap <leader>fD :Rggg!<CR>
 nnoremap <leader>o :only<CR>
 nnoremap <leader>/ :vsp<CR>
 nnoremap <leader>- :sp<CR>
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+noremap <silent> <C-S-Left> :vertical resize +1<CR>
+noremap <silent> <C-S-Right> :vertical resize -1<CR>
+noremap <silent> <C-S-Up> :resize +1<CR>
+noremap <silent> <C-S-Down> :resize -1<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
