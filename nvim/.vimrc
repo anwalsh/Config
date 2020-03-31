@@ -388,8 +388,6 @@ let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc
 			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
 			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
 
-
-
 " =============================================================================
 " # Config
 " =============================================================================
@@ -418,21 +416,6 @@ command! -bang -nargs=* Rggg
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-" let g:fzf_layout = { 'down': '~20%' }
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always --smart-case'.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"   \   <bang>0)
-
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" function! s:list_cmd()
-"   let base = fnamemodify(expand('%'), ':h:.:S')
-"   return base == '.' ? 'fd -t file -L -H -E .git' : printf('fd -t file -L -H -E | proximity-sort %s', expand('%'))
-" endfunction
 
 " Autocmds clearing the sign column and appropriately identifying/setting the format
 augroup configgroup
