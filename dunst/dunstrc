@@ -151,7 +151,7 @@
     icon_position = left
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/apps
 
     # Limit icons size.
     max_icon_size=128
@@ -271,23 +271,23 @@
 #    background = "#A8EB41"
 #    foreground = "#FFFFFF"
 #
-[irc]
-        appname = weechat
-        timeout = 0
-        background = "#0033bb"
-        foreground = "#dddddd"
-#
-[weechat hl]
-     appname = weechat
-     category = weechat.HL
-     background = "#FF5C47"
-     foreground = "#FFFFFF"
-#
-[weechat pn]
-     appname = weechat
-     category = weechat.PM
-     background = "#D53B84"
-     foreground = "#FFFFFF"
+#[irc]
+#        appname = weechat
+#        timeout = 0
+#        background = "#0033bb"
+#        foreground = "#dddddd"
+##
+#[weechat hl]
+#     appname = weechat
+#     category = weechat.HL
+#     background = "#FF5C47"
+#     foreground = "#FFFFFF"
+##
+#[weechat pn]
+#     appname = weechat
+#     category = weechat.PM
+#     background = "#D53B84"
+#     foreground = "#FFFFFF"
 #
 #[CMUS]
 #    appname = CMUS
