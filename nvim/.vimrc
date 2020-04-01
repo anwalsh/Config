@@ -92,6 +92,7 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
 Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
+Plug 'aymericbeaumet/vim-symlink' " follow symlinks
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " Play nice with tmux
@@ -325,6 +326,9 @@ nnoremap <leader>fa :Rgg<CR>
 nnoremap <leader>fA :Rgg!<CR>
 nnoremap <leader>fd :Rggg<CR>
 nnoremap <leader>fD :Rggg!<CR>
+nnoremap <leader>fT :Tags<CR>
+nnoremap <leader>ft :call fzf#vim#tags(expand('<cword>')." ", {'options': '--exact --select-1 --exit-0'})<CR>
+" nnoremap <leader>fs :Snippets<CR>
 " Make splits less terribad
 nnoremap <leader>o :only<CR>
 nnoremap <leader>/ :vsp<CR>
@@ -340,7 +344,7 @@ nnoremap <C-H> <C-W><C-H>
 " undotree functionality
 nnoremap <leader>ut :UndotreeToggle<CR>
 " tagbar functionality
-nmap <F8> :TagbarToggle<CR>
+nmap <leader>tb :TagbarToggle<CR>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<CR>
 " Use <leader>r instead of default <leader>e:
@@ -357,6 +361,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" Find symbol of current document
+nnoremap <silent> co :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> cs :<C-u>CocList -I symbols<cr>
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -383,14 +393,29 @@ nnoremap <silent> <space>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <space>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <Leader>ls  :<C-u>CocList -I symbols<cr>
-
-let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
-			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
-			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
+" Fugitive
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
 
 " =============================================================================
 " # Config
 " =============================================================================
+let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
+			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
+			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
