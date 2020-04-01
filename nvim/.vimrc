@@ -89,10 +89,10 @@ Plug 'airblade/vim-gitgutter' " show changed lines in gutter
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-rhubarb' " Github support for fugitive
 Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
-Plug 'jreybert/vimagit' " :Magit to see overview of current changes
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
 Plug 'aymericbeaumet/vim-symlink' " follow symlinks
+Plug 'tpope/vim-dispatch'
 " WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
 " Play nice with tmux
@@ -190,14 +190,16 @@ endif
 
 " Lightline
 let g:lightline = {
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'gitbranch': 'FugitiveHead'
       \ },
 \ }
 function! LightlineFilename()
@@ -407,8 +409,8 @@ nnoremap <space>gp :Ggrep<Space>
 nnoremap <space>gm :Gmove<Space>
 nnoremap <space>gb :Git branch<Space>
 nnoremap <space>go :Git checkout<Space>
-nnoremap <space>gps :Dispatch! git push<CR>
-nnoremap <space>gpl :Dispatch! git pull<CR>
+nnoremap <space>gps :Git push<CR>
+nnoremap <space>gpl :Git pull<CR>
 
 " =============================================================================
 " # Config
