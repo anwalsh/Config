@@ -470,7 +470,6 @@ augroup END
 " Autoformat
 augroup autoformat_settings
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType go AutoFormatBuffer goimports
   autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer yapf
