@@ -32,6 +32,5 @@
   "python.jediEnabled": false,
   "python.venvFolders": ["~/Projects/python/bosun/venv"],
   "python.venvPath": "~/.virtualenvs",
-  "python.formatting.provider": "black",
   "rust-analyzer.cargo-watch.enable": false
 }
