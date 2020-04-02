@@ -468,14 +468,6 @@ augroup configgroup
 	autocmd Filetype cfg setlocal expandtab ts=4 sts=4 commentstring=#\ %s
 augroup END
 
-" Autoformat
-augroup autoformat_settings
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType python AutoFormatBuffer yapf
-augroup END
-
 " Python
 autocmd filetype python setlocal textwidth=78
 
@@ -553,12 +545,14 @@ let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
 					\ 'markdown': ['prettier'],
 					\ 'python': ['flake8', 'pylint'],
 					\ 'go': ['golangci-lint', 'gofmt', 'golint'],
-					\ 'javascript': ['eslint']
+					\ 'javascript': ['eslint', 'prettier']
 					\ }
 let g:ale_fixers = { 'sh': ['shfmt'],
 				   \ 'markdown': ['prettier'],
-				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'yapf'],
-				   \ 'javascript': ['eslint']
+				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black', 'isort'],
+				   \ 'javascript': ['eslint'],
+                   \ 'json': ['prettier'],
+                   \ 'xml': ['xmllint']
 				   \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_fix_on_save = 1
