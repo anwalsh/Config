@@ -416,9 +416,10 @@ nnoremap <leader>gpl :Git pull<CR>
 nnoremap <leader>' :call TermToggle(12)<CR>
 inoremap <leader><Esc>:call TermToggle(12)<CR>
 tnoremap <leader><C-\><C-n>:call TermToggle(12)<CR>
-tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
 " Terminal Function
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+
 let g:term_buf = 0
 let g:term_win = 0
 function! TermToggle(height)
