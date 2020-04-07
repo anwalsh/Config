@@ -311,7 +311,7 @@ nnoremap <C-k> :cprev<CR>
 nnoremap <C-l> :copen<CR>
 nnoremap <C-g> :cclose<CR>
 " <leader><leader> toggles between buffers
-nnoremap <leader><leader> <C-^>
+nnoremap <leader><TAB> <C-^>
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Quick write
