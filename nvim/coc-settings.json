@@ -20,7 +20,9 @@
     "rust": {
       "command": "rust-analyzer",
       "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"]
+      "rootPatterns": ["Cargo.toml"],
+      "cargo-watch.enable": true,
+      "highlighting.semanticTokens": true
     },
     "bash": {
       "command": "bash-language-server",
@@ -31,6 +33,5 @@
   },
   "python.jediEnabled": false,
   "python.venvFolders": ["~/Projects/python/bosun/venv"],
-  "python.venvPath": "~/.virtualenvs",
-  "rust-analyzer.cargo-watch.enable": false
+  "python.venvPath": "~/.virtualenvs"
 }

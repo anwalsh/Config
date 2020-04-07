@@ -414,7 +414,7 @@ nnoremap <leader>gps :Git push<CR>
 nnoremap <leader>gpl :Git pull<CR>
 
 nnoremap <leader>' :call TermToggle(12)<CR>
-inoremap <leader><Esc>:call TermToggle(12)<CR>
+" inoremap <leader><Esc>:call TermToggle(12)<CR>
 tnoremap <leader><C-\><C-n>:call TermToggle(12)<CR>
 tnoremap :q! <C-\><C-n>:q!<CR>
 " Terminal Function
