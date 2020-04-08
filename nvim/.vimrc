@@ -154,11 +154,6 @@ set undodir=~/.vim-undo/ "where to store undo files
 set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
 set nojoinspaces " only add one space after punctuation when joining lines.
 
-let g:airline_theme='onedark'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
 function! CocCurrentFunction()
 	return get(b:, 'coc_current_function', '')
 endfunction
@@ -400,6 +395,9 @@ endfunction
 " }}}
 
 " Plugin Config {{{
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1
+
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
                 \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
