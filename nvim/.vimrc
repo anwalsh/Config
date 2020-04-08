@@ -1,21 +1,18 @@
 set shell=/bin/zsh
 " If plug.vim is not present, create and install.
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
 
 let mapleader = "\<Space>"
 
 set nocompatible
 filetype plugin indent on
-" # PLUGINS
-" =============================================================================
+" Install Plugins {{{
 call plug#begin('~/.vim/plugged')
-" Color Scheme
 Plug 'rakr/vim-one'
-" VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
 Plug 'justinmk/vim-sneak'
@@ -26,14 +23,11 @@ Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'ntpeters/vim-better-whitespace'
-" Vimscript enhancements
 Plug 'tpope/vim-repeat' " makes . and u work better with plugins
 Plug 'tpope/vim-scriptease' " helpers when writing vimscript
-" Vim editing enhancements
 Plug 'easymotion/vim-easymotion' " Jump anywhere you can see super fast
 Plug 'tpope/vim-surround' " commands for adding or changing surroundings
 Plug 'wellle/targets.vim' " More text objects (daa to delete an argument)
-Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'AndrewRadev/dsf.vim' " dsf -> Delete Surrounding Function call
 Plug 'tweekmonster/braceless.vim' " text objects for indentation-based languages
@@ -44,47 +38,34 @@ Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
 Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
 Plug 'tpope/vim-vinegar' " Support for file finding
 Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
-Plug 'bronson/vim-trailing-whitespace' " Shows trailing whitespace
 Plug 'reedes/vim-wordy' " https://github.com/reedes/vim-wordy#what-is-wordy
-" GUI enhancements
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tmsvg/pear-tree' " Adding autoclosing support
-" Language Server Support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
-" Syntactic language support
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
-" Linting
 Plug 'w0rp/ale'
-" C++/C
 Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
 Plug 'majutsushi/tagbar'
-" go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-" python
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " highlighting for requirements.txt
 Plug 'Vimjas/vim-python-pep8-indent' " better python indentation
-" Code Formatting
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-" JS stuff
 Plug 'pangloss/vim-javascript' " Better js indent and syntax
-" JSON/XML/MD stuff
 Plug 'rhysd/vim-gfm-syntax' " highlight github-flavored markdown
-" Git stuff
 Plug 'airblade/vim-gitgutter' " show changed lines in gutter
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'tpope/vim-rhubarb' " Github support for fugitive
@@ -93,29 +74,24 @@ Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
 Plug 'aymericbeaumet/vim-symlink' " follow symlinks
 Plug 'tpope/vim-dispatch'
-" WebAPI for Rust Playpen
 Plug 'mattn/webapi-vim'
-" Play nice with tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-" End Plug Call
 call plug#end()
-" =============================================================================
-" # GUI/Basic Options
-" =============================================================================
+" }}}
+
+" Vim Setup {{{
 syntax on
-" deal with colors
 if !has('gui_running')
-  set t_Co=256
+	set t_Co=256
 endif
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
+	" screen does not (yet) support truecolor
+	set termguicolors
 endif
-" Colors
+
 hi Normal ctermbg=NONE
 colorscheme one
-" Make autocomplete less stupid
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
 set foldmethod=marker " Only fold on marks
@@ -153,7 +129,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-" Tabstops
 " Fix backspace indent
 set backspace=indent,eol,start
 set backspace=2 " Backspace over newlines
@@ -165,8 +140,6 @@ set expandtab
 set autoindent "enable the following line
 set smartindent "do the Right Thing
 let g:indentLine_char = "\u2502"
-
-" Vim Autocomplete Menu
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -180,34 +153,14 @@ set undofile "keep persistent undo across vim runs
 set undodir=~/.vim-undo/ "where to store undo files
 set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
 set nojoinspaces " only add one space after punctuation when joining lines.
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-	command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-				\ | wincmd p | diffthis
-endif
 
-" Lightline
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-\ }
-function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
-endfunction
+let g:airline_theme='onedark'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
+	return get(b:, 'coc_current_function', '')
 endfunction
 
 " Plugin settings
@@ -232,27 +185,31 @@ endif
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
 endif
-
-" Show those damn hidden characters
+" Show hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
 :set nolist
 :set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
-
 " Always show sign column for GitGutter
 if exists('&signcolumn')  " Vim 7.4.2201
   set signcolumn=yes
 else
   let g:gitgutter_sign_column_always = 1
 endif
-
 " Copy/Paste/Cut
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+	set clipboard=unnamed,unnamedplus
 endif
 
-" =============================================================================
-" # User Defined Commands
-" =============================================================================
+if !has('gui_running')
+"change cursor icon based on mode
+	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+	let &t_SI = "\<Esc>[6 q" "insert - pipe
+	let &t_SR = "\<Esc>[4 q" "replace - underbar
+	let &t_EI = "\<Esc>[2 q" "normal - block
+endif
+" }}}
+
+" Keybinds and Functions {{{
 nnoremap <leader>fed :e ~/.vimrc<CR>
 " Search results centered please
 nnoremap <silent> n nzz
@@ -282,7 +239,6 @@ function! DeleteHiddenBuffers()
     echo 'Closed '.l:closed.' hidden buffers'
 endfunction
 nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
-
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
@@ -373,11 +329,11 @@ nmap <leader>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 " Remap for rename current word
 nmap <leader>cr <Plug>(coc-rename)
@@ -441,12 +397,12 @@ function! TermToggle(height)
         let g:term_win = win_getid()
     endif
 endfunction
-" =============================================================================
-" # Config
-" =============================================================================
+" }}}
+
+" Plugin Config {{{
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
-			\ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
-			\ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
+                \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
+                \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
@@ -498,19 +454,16 @@ augroup END
 
 " Python
 autocmd filetype python setlocal textwidth=78
-
-" WRITING
-" =======
-" config to make writing english in vim better
-autocmd FileType markdown setlocal spell spelllang=en_us
-autocmd FileType gitcommit setlocal spell spelllang=en_us
-
 " Figure out the system Python for Neovim.
 if exists("$VIRTUAL_ENV")
     let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
 else
     let g:python3_host_prog=substitute(system("which python"), "\n", '', 'g')
 endif
+
+" config to make writing english in vim better
+autocmd FileType markdown setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " Rust Playground Copy to Clipboard
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -564,30 +517,23 @@ autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
 " Ale Linting
 let g:ale_completion_enabled = 0
 let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
-					\ 'markdown': ['prettier'],
-					\ 'python': ['flake8', 'pylint'],
-					\ 'go': ['golangci-lint', 'gofmt', 'golint'],
-					\ 'javascript': ['eslint', 'prettier']
-					\ }
+                    \ 'markdown': ['prettier'],
+                    \ 'python': ['flake8', 'pylint'],
+                    \ 'go': ['golangci-lint', 'gofmt', 'golint'],
+                    \ 'javascript': ['eslint', 'prettier']
+                    \ }
 let g:ale_fixers = { 'sh': ['shfmt'],
                    \ 'rust': ['rustfmt'],
-				   \ 'markdown': ['prettier'],
-				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black', 'isort'],
-				   \ 'javascript': ['eslint'],
+                   \ 'markdown': ['prettier'],
+                   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black', 'isort'],
+                   \ 'javascript': ['eslint'],
                    \ 'json': ['prettier'],
                    \ 'xml': ['xmllint']
-				   \ }
+                   \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_fix_on_save = 1
 let g:ale_go_golangci_lint_options = '--fast'
-
-if !has('gui_running')
-    "change cursor icon based on mode
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-    let &t_SI = "\<Esc>[6 q" "insert - pipe
-    let &t_SR = "\<Esc>[4 q" "replace - underbar
-    let &t_EI = "\<Esc>[2 q" "normal - block
-endif
+" }}}
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
