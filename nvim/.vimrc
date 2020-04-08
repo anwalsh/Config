@@ -512,13 +512,6 @@ else
     let g:python3_host_prog=substitute(system("which python"), "\n", '', 'g')
 endif
 
-" racer + rust
-" https://github.com/rust-lang/rust.vim/issues/192
-let g:rustfmt_command = "rustfmt"
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
-let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 " Rust Playground Copy to Clipboard
 let g:rust_clip_command = 'xclip -selection clipboard'
 
@@ -527,6 +520,7 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
+let g:go_def_mapping_enabled = 0
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
@@ -576,6 +570,7 @@ let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
 					\ 'javascript': ['eslint', 'prettier']
 					\ }
 let g:ale_fixers = { 'sh': ['shfmt'],
+                   \ 'rust': ['rustfmt'],
 				   \ 'markdown': ['prettier'],
 				   \ 'python':   ['add_blank_lines_for_python_control_statements', 'black', 'isort'],
 				   \ 'javascript': ['eslint'],

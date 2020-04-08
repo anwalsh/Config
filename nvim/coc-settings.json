@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["go", "rust", "python", "javascript", "typscript", "json"],
+ "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typscript", "json"],
 "languageserver": {
     "golang": {
       "command": "gopls",
