@@ -68,6 +68,7 @@ Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
 Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
 Plug 'gregsexton/gitv' " like git log in vim
 Plug 'aymericbeaumet/vim-symlink' " follow symlinks
+Plug 'google/maktaba'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
