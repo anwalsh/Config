@@ -43,7 +43,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tmsvg/pear-tree' " Adding autoclosing support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -57,10 +56,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " highlighting for requirements.txt
 Plug 'Vimjas/vim-python-pep8-indent' " better python indentation
-Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'pangloss/vim-javascript' " Better js indent and syntax
 Plug 'rhysd/vim-gfm-syntax' " highlight github-flavored markdown
