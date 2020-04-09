@@ -49,8 +49,6 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/echodoc.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/syntastic'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
@@ -469,7 +467,7 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 
 " Golang Configuration
 let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
 let g:go_def_mapping_enabled = 0
