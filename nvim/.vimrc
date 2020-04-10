@@ -23,22 +23,23 @@ Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-repeat' " makes . and u work better with plugins
-Plug 'tpope/vim-scriptease' " helpers when writing vimscript
-Plug 'easymotion/vim-easymotion' " Jump anywhere you can see super fast
-Plug 'tpope/vim-surround' " commands for adding or changing surroundings
-Plug 'wellle/targets.vim' " More text objects (daa to delete an argument)
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-scriptease'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'AndrewRadev/dsf.vim' " dsf -> Delete Surrounding Function call
-Plug 'tweekmonster/braceless.vim' " text objects for indentation-based languages
-Plug 'tpope/vim-endwise' " End block in languages that use words for blocks
-Plug 'tpope/vim-commentary' " comment things out
-Plug 'mbbill/undotree' " visualize the undo tree (:h undo-tree)
-Plug 'mjbrownie/swapit' " <c-a>/<c-x> to toggle more things (like true/false)
-Plug 'tpope/vim-eunuch' " Support for Unix commands like :Mkdir from within Vim
-Plug 'tpope/vim-vinegar' " Support for file finding
-Plug 'wincent/scalpel' " Support for rapid replacement of the value under the cursor in a file
-Plug 'reedes/vim-wordy' " https://github.com/reedes/vim-wordy#what-is-wordy
+Plug 'AndrewRadev/dsf.vim'
+Plug 'tweekmonster/braceless.vim'
+Plug 'tpope/vim-endwise'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-commentary'
+Plug 'mbbill/undotree'
+Plug 'mjbrownie/swapit'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'wincent/scalpel'
+Plug 'reedes/vim-wordy'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
@@ -56,18 +57,19 @@ Plug 'rhysd/vim-clang-format'
 Plug 'lyuts/vim-rtags'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'} " highlighting for requirements.txt
-Plug 'Vimjas/vim-python-pep8-indent' " better python indentation
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'google/vim-codefmt'
-Plug 'pangloss/vim-javascript' " Better js indent and syntax
-Plug 'rhysd/vim-gfm-syntax' " highlight github-flavored markdown
-Plug 'airblade/vim-gitgutter' " show changed lines in gutter
-Plug 'tpope/vim-fugitive' " Git integration
-Plug 'tpope/vim-rhubarb' " Github support for fugitive
-Plug 'tommcdo/vim-fugitive-blame-ext' " Show commit summary for line in :Gblame
-Plug 'rhysd/conflict-marker.vim' " Add [x and ]x to hop between conflicts
-Plug 'gregsexton/gitv' " like git log in vim
-Plug 'aymericbeaumet/vim-symlink' " follow symlinks
+Plug 'pangloss/vim-javascript'
+Plug 'rhysd/vim-gfm-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tommcdo/vim-fugitive-blame-ext'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'gregsexton/gitv'
+Plug 'rbong/vim-flog'
+Plug 'aymericbeaumet/vim-symlink'
 Plug 'google/maktaba'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
