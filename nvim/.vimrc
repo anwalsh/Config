@@ -75,17 +75,18 @@ Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 " }}}
 
 " Vim Setup {{{
 syntax on
-if !has('gui_running')
-	set t_Co=256
+
+if (has("nvim"))
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-	" screen does not (yet) support truecolor
-	set termguicolors
+if (has("termguicolors"))
+    set termguicolors
 endif
 
 hi Normal ctermbg=NONE
@@ -399,7 +400,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
-                \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets']
+                \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-marketplace',
+				\ 'coc-vimlsp']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
@@ -525,6 +527,7 @@ let g:ale_fixers = { 'sh': ['shfmt'],
                    \ 'python':   ['add_blank_lines_for_python_control_statements', 'black', 'isort'],
                    \ 'javascript': ['eslint'],
                    \ 'json': ['prettier'],
+				   \ 'yaml': ['prettier'],
                    \ 'xml': ['xmllint']
                    \ }
 let g:ale_rust_cargo_use_clippy = 1
