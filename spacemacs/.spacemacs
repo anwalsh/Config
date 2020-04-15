@@ -97,7 +97,7 @@ values."
      (python :variables
              python-backend 'lsp
              python-lsp-server 'mspyls
-             python-lsp-git-root "~/Tools/python-language-server"
+             python-lsp-git-root "~/tools/python-language-server"
              python-fill-column 79
              python-formatter 'black
              python-sort-imports-on-save t

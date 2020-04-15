@@ -75,7 +75,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vimwiki/vimwiki'
 call plug#end()
 " }}}
 
@@ -91,6 +90,7 @@ endif
 
 hi Normal ctermbg=NONE
 colorscheme one
+set background=dark
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
 set foldmethod=marker " Only fold on marks
@@ -214,6 +214,10 @@ nnoremap <silent> g* g*zz
 " Line hopping
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
 nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
+" New empty buffer
+noremap <leader>ns :enew<CR>
+" Source new config
+noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>
 " Buffer nav
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
@@ -397,6 +401,8 @@ endfunction
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',

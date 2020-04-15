@@ -91,9 +91,9 @@
 #   2.  SEARCHING
 #   ---------------------------
 
-ff () { /usr/bin/find . -name "$@" ; }          # ff: Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs: Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe: Find file whose name ends with a given string
+    ff () { /usr/bin/find . -name "$@" ; }          # ff: Find file under the current directory
+    ffs () { /usr/bin/find . -name "$@"'*' ; }      # ffs: Find file whose name starts with a given string
+    ffe () { /usr/bin/find . -name '*'"$@" ; }      # ffe: Find file whose name ends with a given string
 
 #   ---------------------------
 #   3.  PROCESS MANAGEMENT
