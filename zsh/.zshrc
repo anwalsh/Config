@@ -103,7 +103,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 
 # Python Things
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects/python
+export PROJECT_HOME=$HOME/GitLocal/projects/python
 source /usr/bin/virtualenvwrapper.sh
 
 # Hub Wrapper Init

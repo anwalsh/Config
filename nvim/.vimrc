@@ -265,7 +265,7 @@ nnoremap <C-k> :cprev<CR>
 nnoremap <C-l> :copen<CR>
 nnoremap <C-g> :cclose<CR>
 " <leader><leader> toggles between buffers
-nnoremap <leader><TAB> <C-^>
+nnoremap <leader><leader> <C-^>
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Quick write
@@ -309,7 +309,7 @@ nmap <leader>r <Plug>(Scalpel)
 " Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
+nnoremap <silent> <leader>tn :tabnew<CR>
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
 nmap <silent> E <Plug>(coc-diagnostic-prev)
@@ -366,6 +366,8 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Git push<CR>
 nnoremap <leader>gpl :Git pull<CR>
+vnoremap > >gv
+vnoremap < <gv
 
 nnoremap <leader>' :call TermToggle(12)<CR>
 " inoremap <leader><Esc>:call TermToggle(12)<CR>
@@ -407,7 +409,7 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
                 \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-marketplace',
-				\ 'coc-vimlsp']
+				\ 'coc-vimlsp', 'coc-ccls']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 

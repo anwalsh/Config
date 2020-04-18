@@ -121,8 +121,6 @@ values."
                     shell-scripts-backend 'lsp)
      semantic
      (spell-checking :variables
-                     enable-flyspell-auto-completion t
-                     flyspell-delay 5
                      spell-checking-enable-by-default t)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t)
