@@ -240,7 +240,7 @@ nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
-nnoremap <silent><leader>sc :noh<CR>
+nnoremap <silent> <leader>sc :noh<CR>
 " Nerdtree config just in case
 nnoremap <leader>n :NERDTreeToggle<CR>
 " Switching windows
@@ -259,11 +259,6 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 nnoremap j gj
 nnoremap k gk
 inoremap jj <Esc>
-" Jump to next/previous error
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprev<CR>
-nnoremap <C-l> :copen<CR>
-nnoremap <C-g> :cclose<CR>
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <C-^>
 " Open new file adjacent to current file
@@ -350,6 +345,12 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>ls  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
