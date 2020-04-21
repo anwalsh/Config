@@ -79,8 +79,8 @@ font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
-modules-center = xwindow
-modules-right = filesystem updates-arch-combined pavolume memory cpu wlan eth temperature nvidia date utc
+modules-center = date
+modules-right = filesystem updates-arch-combined pavolume memory cpu wlan eth temperature nvidia utc
 
 tray-position = right
 tray-padding = 2
@@ -326,15 +326,15 @@ interval = 5
 ; format-prefix = 
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date =
-date-alt = " %a %b %d, %Y"
+date = " %a %b %d, %Y"
+date-alt =
 time = %H:%M
 time-alt = %H:%M
 format-prefix = " "
 label = "%date% %time% "
 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+; format-underline = #0a6cf5
 
 ; label = %date% %time%
 
