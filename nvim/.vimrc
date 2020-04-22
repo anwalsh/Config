@@ -13,6 +13,8 @@ filetype plugin indent on
 " Install Plugins {{{
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
 Plug 'justinmk/vim-sneak'
@@ -89,6 +91,9 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
+" let g:gruvbox_contrast_dark='hard'
+" colorscheme gruvbox
+" colorscheme base16-default-dark
 colorscheme one
 set background=dark
 set completeopt=noinsert,menuone,noselect
@@ -401,7 +406,9 @@ endfunction
 " }}}
 
 " Plugin Config {{{
+" let g:airline_theme="base16"
 let g:airline_theme='onedark'
+" let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
