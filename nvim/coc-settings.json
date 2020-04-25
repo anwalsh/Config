@@ -1,6 +1,11 @@
 {
- "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typscript", "json"],
-"languageserver": {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "javascript",
+    "typscript",
+    "json"
+  ],
+  "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
