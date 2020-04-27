@@ -107,7 +107,11 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 # Python Things
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/GitLocal/projects/python
-source /usr/bin/virtualenvwrapper.sh
+if [ -x "$(command -v apt-get)" ] || [ -x "$(command -v dnf)" ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
+elif [ -x "$(command -v pacman)" ]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 # Hub Wrapper Init
 eval "$(hub alias -s)"
