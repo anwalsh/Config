@@ -77,6 +77,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 " }}}
 
@@ -411,6 +412,9 @@ let g:airline_theme='onedark'
 " let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" colorizer
+lua require'colorizer'.setup()
 
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
