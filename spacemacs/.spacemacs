@@ -63,6 +63,7 @@ values."
      github
      (go :variables
          go-backend 'lsp
+         lsp-auto-guess-root t
          go-tab-width 4
          go-use-golangci-lint t
          go-linter 'golangci-lint
