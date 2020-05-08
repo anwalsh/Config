@@ -40,7 +40,6 @@ Plug 'mbbill/undotree'
 Plug 'mjbrownie/swapit'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
-Plug 'wincent/scalpel'
 Plug 'reedes/vim-wordy'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -305,8 +304,6 @@ nnoremap <leader>ut :UndotreeToggle<CR>
 nmap <leader>tb :TagbarToggle<CR>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<CR>
-" Use <leader>r instead of default <leader>e:
-nmap <leader>r <Plug>(Scalpel)
 " Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -323,8 +320,6 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> co :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> cs :<C-u>CocList -I symbols<cr>
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -415,6 +410,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " colorizer
 lua require'colorizer'.setup()
+let g:colorizer_auto_filetype='css,html,javascript'
 
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
