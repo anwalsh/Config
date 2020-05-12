@@ -316,10 +316,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Find symbol of current document
-nnoremap <silent> co :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> cs :<C-u>CocList -I symbols<cr>
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -370,6 +366,9 @@ nnoremap <leader>gps :Git push<CR>
 nnoremap <leader>gpl :Git pull<CR>
 vnoremap > >gv
 vnoremap < <gv
+" navigate Ale errors
+nmap <silent> <C-]> <Plug>(ale_previous_wrap)
+nmap <silent> <C-[> <Plug>(ale_next_wrap)
 
 nnoremap <leader>' :call TermToggle(12)<CR>
 " inoremap <leader><Esc>:call TermToggle(12)<CR>
