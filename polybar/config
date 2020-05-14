@@ -299,7 +299,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp0s31f6
+interface = enp5s0
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -439,9 +439,11 @@ animation-discharging-framerate = 750
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
+hwmon-path=/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp2_input
 
 format-prefix = " "
-format-prefix-foreground = #0a6cf5
+; format-prefix-foreground = #0a6cf5
+format-prefix-foreground=#990000
 ; format = <ramp> <label>
 format = <label>
 format-underline = #f50a4d
