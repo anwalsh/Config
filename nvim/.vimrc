@@ -227,7 +227,8 @@ noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
-noremap <leader>bd :bd<CR>
+" noremap <leader>bd :bd<CR>
+noremap <leader>bd :b#<bar>bd#<CR>
 " Delete hidden buffers
 function! DeleteHiddenBuffers()
     let l:tpbl=[]
@@ -270,6 +271,8 @@ nnoremap <leader><leader> <C-^>
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Quick write
 nmap <leader>w :w<CR>
+" Keep splits but close buffer
+nmap ,d :b#<bar>bd#<CR>
 " Open hotkeys
 map <C-p> :Files<CR>
 nnoremap <leader>ff :Files<CR>
