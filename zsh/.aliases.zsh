@@ -33,7 +33,7 @@ alias cic='set completion-ignore-case On'        # cic: Make tab-completion case
 alias xclip='xclip -i'
 alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
 alias aptup="sudo apt-get update && sudo apt-get upgrade"
-alias audioswap="./Projects/scripts/audio-switch.sh"
+alias audioswap="~/GitLocal/scripts/audio-switch.sh"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
