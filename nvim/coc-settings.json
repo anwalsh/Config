@@ -36,7 +36,5 @@
       "ignoredRootPaths": ["~"]
     }
   },
-  "python.jediEnabled": false,
-  "python.venvFolders": ["~/Projects/python/bosun/venv"],
-  "python.venvPath": "~/.virtualenvs"
+  "python.jediEnabled": false
 }

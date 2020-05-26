@@ -21,6 +21,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ryanoasis/vim-devicons'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
@@ -41,8 +42,9 @@ Plug 'mjbrownie/swapit'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'reedes/vim-wordy'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -405,10 +407,89 @@ endfunction
 
 " Plugin Config {{{
 " let g:airline_theme="base16"
-let g:airline_theme='onedark'
+" let g:airline_theme='onedark'
 " let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+
+" LightLine {{{
+	let g:airline_powerline_fonts = 1
+	let g:lightline = {
+		\   'colorscheme': 'one',
+		\   'active': {
+		\       'left': [ [ 'mode', 'paste' ],
+		\               [ 'gitbranch' ],
+		\               [ 'readonly', 'filetype', 'filename' ]],
+		\       'right': [ [ 'percent' ], [ 'lineinfo' ],
+		\               [ 'fileformat', 'fileencoding' ],
+		\               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
+		\   },
+		\   'component_expand': {
+		\   },
+		\   'component_type': {
+		\       'readonly': 'error',
+		\       'linter_warnings': 'warning',
+		\       'linter_errors': 'error'
+		\   },
+		\   'component_function': {
+		\       'fileencoding': 'FileEncoding',
+		\       'filename': 'FileName',
+		\       'fileformat': 'FileFormat',
+		\       'filetype': 'FileType',
+		\       'gitbranch': 'GitBranch',
+		\       'cocstatus': 'coc#status',
+		\       'currentfunction': 'CurrentFunction',
+		\       'gitblame': 'GitBlame'
+		\   },
+		\   'tabline': {
+		\       'left': [ [ 'tabs' ] ],
+		\       'right': [ [ 'close' ] ]
+		\   },
+		\   'tab': {
+		\       'active': [ 'filename', 'modified' ],
+		\       'inactive': [ 'filename', 'modified' ],
+		\   },
+		\   'separator': { 'left': '', 'right': '' },
+		\   'subseparator': { 'left': '', 'right': '' }
+	\ }
+
+	function! FileName() abort
+		let filename = winwidth(0) > 70 ? expand('%') : expand('%:t')
+		if filename =~ 'NERD_tree'
+			return ''
+		endif
+		let modified = &modified ? ' +' : ''
+		return fnamemodify(filename, ":~:.") . modified
+	endfunction
+
+	function! FileEncoding()
+		" only show the file encoding if it's not 'utf-8'
+		return &fileencoding == 'utf-8' ? '' : &fileencoding
+	endfunction
+
+	function! FileFormat()
+		" only show the file format if it's not 'unix'
+		let format = &fileformat == 'unix' ? '' : &fileformat
+		return winwidth(0) > 70 ? format . ' ' . WebDevIconsGetFileFormatSymbol() . ' ' : ''
+	endfunction
+
+	function! FileType()
+		return WebDevIconsGetFileTypeSymbol()
+	endfunction
+
+	function! GitBranch()
+		return "\uE725" . (exists('*fugitive#head') ? ' ' . fugitive#head() : '')
+	endfunction
+
+	function! CurrentFunction()
+		return get(b:, 'coc_current_function', '')
+	endfunction
+
+	function! GitBlame()
+		return winwidth(0) > 100 ? strpart(substitute(get(b:, 'coc_git_blame', ''), '[\(\)]', '', 'g'), 0, 50) : ''
+		" return winwidth(0) > 100 ? strpart(get(b:, 'coc_git_blame', ''), 0, 20) : ''
+	endfunction
+" }}}
 
 " colorizer
 lua require'colorizer'.setup()

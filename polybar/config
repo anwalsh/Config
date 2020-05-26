@@ -436,12 +436,10 @@ animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
 [module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-hwmon-path=/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input
-
+type = custom/script
+exec=~/Config/polybar-scripts/cpu_temp.sh
 format-prefix = " "
+interval = 2
 ; format-prefix-foreground = #0a6cf5
 format-prefix-foreground=#990000
 ; format = <ramp> <label>
@@ -451,8 +449,8 @@ format-underline = #f50a4d
 format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-label-warn = %temperature-c%
+label = %output%
+label-warn = %output%
 label-warn-foreground = ${colors.secondary}
 
 ; ramp-0 = 
