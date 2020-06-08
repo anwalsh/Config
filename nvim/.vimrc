@@ -42,8 +42,6 @@ Plug 'mjbrownie/swapit'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'reedes/vim-wordy'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -404,13 +402,6 @@ function! TermToggle(height)
     endif
 endfunction
 " }}}
-
-" Plugin Config {{{
-" let g:airline_theme="base16"
-" let g:airline_theme='onedark'
-" let g:airline_theme='gruvbox'
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
 
 " LightLine {{{
 	let g:airline_powerline_fonts = 1
