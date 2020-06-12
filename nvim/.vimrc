@@ -351,6 +351,8 @@ nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
 nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
+" Open Quick fix list
+nnoremap <leader>el :clist<CR>
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -402,6 +404,8 @@ function! TermToggle(height)
     endif
 endfunction
 " }}}
+
+" Plugin Config {{{
 
 " LightLine {{{
 	let g:airline_powerline_fonts = 1
