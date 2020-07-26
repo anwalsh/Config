@@ -75,7 +75,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh/.secret_zsh
 source ~/Config/zsh/.functions.zsh
 source ~/Config/zsh/.aliases.zsh
-source ~/.zshrc.local
 
 #   ---------------------------------------
 #   2.  FZF Config.
