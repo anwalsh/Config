@@ -235,7 +235,7 @@ function! DeleteHiddenBuffers()
     let l:tpbl=[]
     let l:closed = 0
     call map(range(1, tabpagenr('$')), 'extend(l:tpbl, tabpagebuflist(v:val))')
-    for l:buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(l:tpbl, v:val)==-1')
+    for l:buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(l:tpbl, v:val)==-1' )
         if getbufvar(l:buf, '&mod') == 0
             silent execute 'bwipeout' l:buf
             let l:closed += 1
@@ -353,7 +353,7 @@ nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 " Open Quick fix list
-nnoremap <leader>el :clist<CR>
+nnoremap <leader>el :llist<CR>
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -404,6 +404,7 @@ function! TermToggle(height)
         let g:term_win = win_getid()
     endif
 endfunction
+
 " }}}
 
 " Plugin Config {{{
@@ -550,7 +551,7 @@ let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
 let g:ale_fixers = { 'sh': ['shfmt'],
                    \ 'rust': ['rustfmt'],
                    \ 'markdown': ['prettier'],
-                   \ 'python':   ['black', 'isort'],
+                   \ 'python':   ['black'],
                    \ 'javascript': ['eslint'],
                    \ 'json': ['prettier'],
 				   \ 'yaml': ['prettier'],
@@ -559,8 +560,11 @@ let g:ale_fixers = { 'sh': ['shfmt'],
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_fix_on_save = 1
 let g:ale_go_golangci_lint_options = '--fast'
+let g:ale_set_loclist = 1
+
 " }}}
 
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
+
