@@ -223,7 +223,7 @@ nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') 
 " New empty buffer
 noremap <leader>ns :enew<CR>
 " Source new config
-noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>
+noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>:PlugUpdate<CR>
 " Buffer nav
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
@@ -309,6 +309,8 @@ nmap <leader>tb :TagbarToggle<CR>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<CR>
 " Tabs
+nnoremap <C-Left> :bprevious<CR>
+nnoremap <C-Right> :bnext<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <leader>tn :tabnew<CR>
@@ -417,6 +419,7 @@ endfunction
     let g:airline_right_sep = ""
 	let g:airline_theme="onedark"
 	let g:airline_section_warning = ""
+    let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " }}}
 
 " colorizer
