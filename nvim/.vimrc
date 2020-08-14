@@ -343,7 +343,7 @@ nmap <leader>cq  <Plug>(coc-fix-current)
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 " Show commands
-nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>hc  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <leader>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols
@@ -548,13 +548,13 @@ let g:ale_completion_enabled = 0
 let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
                     \ 'markdown': ['prettier'],
                     \ 'python': ['flake8', 'pylint'],
-                    \ 'go': ['golangci-lint', 'gofmt', 'golint'],
+                    \ 'go': ['golangci-lint', 'gofmt', 'golint', 'goimports'],
                     \ 'javascript': ['eslint', 'prettier']
                     \ }
 let g:ale_fixers = { 'sh': ['shfmt'],
                    \ 'rust': ['rustfmt'],
                    \ 'markdown': ['prettier'],
-                   \ 'python':   ['black', 'isort'],
+                   \ 'python':   ['black'],
                    \ 'javascript': ['eslint'],
                    \ 'json': ['prettier'],
 				   \ 'yaml': ['prettier'],
