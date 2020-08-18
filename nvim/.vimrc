@@ -419,6 +419,8 @@ endfunction
     let g:airline_right_sep = ""
 	let g:airline_theme="onedark"
 	let g:airline_section_warning = ""
+	let g:airline_section_y = ''
+	let g:airline_section_x = ''
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " }}}
 
