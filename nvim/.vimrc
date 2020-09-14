@@ -93,8 +93,6 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
-" let g:gruvbox_contrast_dark='hard'
-" colorscheme gruvbox
 " colorscheme base16-default-dark
 colorscheme one
 set background=dark
