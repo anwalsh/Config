@@ -1,4 +1,6 @@
 set shell=/bin/zsh
+
+runtime ./functions.vim
 " If plug.vim is not present, create and install.
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -13,39 +15,34 @@ filetype plugin indent on
 " Install Plugins {{{
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
-Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
+Plug 'reedes/vim-lexical'
+Plug 'reedes/vim-pencil'
 Plug 'ciaranm/securemodelines'
-Plug 'vim-scripts/localvimrc'
 Plug 'justinmk/vim-sneak'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-scriptease'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'AndrewRadev/dsf.vim'
-Plug 'tweekmonster/braceless.vim'
 Plug 'tpope/vim-endwise'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
-Plug 'mjbrownie/swapit'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
 Plug 'reedes/vim-wordy'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -75,9 +72,13 @@ Plug 'aymericbeaumet/vim-symlink'
 Plug 'google/maktaba'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
+Plug 'MTDL9/vim-log-highlighting'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rhysd/clever-f.vim'
 call plug#end()
 " }}}
 
@@ -152,8 +153,6 @@ set showmatch
 set hidden "allow hidden buffers. VERY GOOD. see help
 set nobackup "dont make those filename~ files (they have bitten me many times)
 set noswapfile "more trouble than they're worth
-set nospell "enable spell checking use ":set nospell" to turn it off for a single buffer
-set spelllang=en_us "use US dictionary for spelling
 set undofile "keep persistent undo across vim runs
 set undodir=~/.vim-undo/ "where to store undo files
 set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
@@ -228,8 +227,7 @@ noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>:PlugUpdate<CR>
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
-" noremap <leader>bd :bd<CR>
-noremap <leader>bd :b#<bar>bd#<CR>
+nnoremap <silent> <leader>bd :Kwbd<CR>
 " Delete hidden buffers
 function! DeleteHiddenBuffers()
     let l:tpbl=[]
@@ -248,6 +246,7 @@ nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
 nnoremap <silent> <leader>sc :noh<CR>
+nnoremap <silent><esc> <esc>:noh<CR><esc>
 " Nerdtree config just in case
 nnoremap <leader>n :NERDTreeToggle<CR>
 " Switching windows
@@ -407,6 +406,75 @@ function! TermToggle(height)
     endif
 endfunction
 
+" Delete Buffer Function {{{
+function s:Kwbd(kwbdStage)
+  if(a:kwbdStage == 1)
+    if(&modified)
+      let answer = confirm("This buffer has been modified.  Are you sure you want to delete it?", "&Yes\n&No", 2)
+      if(answer != 1)
+        return
+      endif
+    endif
+    if(!buflisted(winbufnr(0)))
+      bd!
+      return
+    endif
+    let s:kwbdBufNum = bufnr("%")
+    let s:kwbdWinNum = winnr()
+    windo call s:Kwbd(2)
+    execute s:kwbdWinNum . 'wincmd w'
+    let s:buflistedLeft = 0
+    let s:bufFinalJump = 0
+    let l:nBufs = bufnr("$")
+    let l:i = 1
+    while(l:i <= l:nBufs)
+      if(l:i != s:kwbdBufNum)
+        if(buflisted(l:i))
+          let s:buflistedLeft = s:buflistedLeft + 1
+        else
+          if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
+            let s:bufFinalJump = l:i
+          endif
+        endif
+      endif
+      let l:i = l:i + 1
+    endwhile
+    if(!s:buflistedLeft)
+      if(s:bufFinalJump)
+        windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
+      else
+        enew
+        let l:newBuf = bufnr("%")
+        windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
+      endif
+      execute s:kwbdWinNum . 'wincmd w'
+    endif
+    if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
+      execute "bd! " . s:kwbdBufNum
+    endif
+    if(!s:buflistedLeft)
+      set buflisted
+      set bufhidden=delete
+      set buftype=
+      setlocal noswapfile
+    endif
+  else
+    if(bufnr("%") == s:kwbdBufNum)
+      let prevbufvar = bufnr("#")
+      if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
+        b #
+      else
+        bn
+      endif
+    endif
+  endif
+endfunction
+
+command! Kwbd call s:Kwbd(1)
+nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+" }}}
+
+
 " }}}
 
 " Plugin Config {{{
@@ -419,10 +487,20 @@ endfunction
     let g:airline_right_sep = ""
 	let g:airline_theme="onedark"
 	let g:airline_section_warning = ""
+	let g:airline_stl_path_style = 'short'
 	let g:airline_section_y = ''
 	let g:airline_section_x = ''
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " }}}
+" Vim Rooter
+let g:rooter_patterns = ['.git', '.git/']
+
+" Turn on rainbow brackets/parens
+let g:rainbow_active = 1
+
+" Clever-f config
+let g:clever_f_smart_case = 1
+let g:clever_f_chars_match_any_signs = ';'
 
 " colorizer
 lua require'colorizer'.setup()
@@ -460,28 +538,29 @@ command! -bang -nargs=* Rggg
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" Autocmds clearing the sign column and appropriately identifying/setting the format
-augroup configgroup
-    autocmd!
-    autocmd VimEnter * highlight clear SignColumn
-    autocmd FileType python setlocal commentstring=#\ %s
-    autocmd FileType fstab,systemd setlocal noexpandtab
-    autocmd FileType gitconfig,sh,toml setlocal noexpandtab
-    autocmd Filetype rust setlocal sw=4 sts=4 ts=4 expandtab
-    autocmd Filetype cls setlocal filetype=java
-    autocmd Filetype Makefile setlocal noexpandtab
-    autocmd Filetype sh setlocal ts=2 sw=2 sts=2
-    autocmd Filetype java setlocal ts=2 sw=2 sts=2
-    autocmd Filetype vim setlocal noet ts=4 sw=4 sts=4
-    autocmd Filetype text setlocal noet ts=4 sw=4
-    autocmd Filetype md setlocal spell expandtab ts=4 sw=4 sts=4
-    autocmd Filetype yml,yaml setlocal expandtab ts=2 sw=2
-    autocmd Filetype c,cpp setlocal expandtab ts=4 sw=4
-    autocmd Filetype hpp setlocal expandtab ts=4 sw=4
-    autocmd Filetype json setlocal expandtab ts=2 sw=2
-    autocmd Filetype go setlocal noexpandtab ts=4 sw=4 sts=4
-	autocmd Filetype cfg setlocal expandtab ts=4 sts=4 commentstring=#\ %s
-augroup END
+" Autocmds clearing the sign column and appropriately identifying/setting the format {{{
+	augroup configgroup
+		autocmd!
+		autocmd VimEnter * highlight clear SignColumn
+		autocmd FileType python setlocal commentstring=#\ %s
+		autocmd FileType fstab,systemd setlocal noexpandtab
+		autocmd FileType gitconfig,sh,toml setlocal noexpandtab
+		autocmd Filetype rust setlocal sw=4 sts=4 ts=4 expandtab
+		autocmd Filetype cls setlocal filetype=java
+		autocmd Filetype Makefile setlocal noexpandtab
+		autocmd Filetype sh setlocal ts=2 sw=2 sts=2
+		autocmd Filetype java setlocal ts=2 sw=2 sts=2
+		autocmd Filetype vim setlocal noet ts=4 sw=4 sts=4
+		autocmd Filetype text setlocal noet ts=4 sw=4
+		autocmd Filetype md setlocal spell expandtab ts=4 sw=4 sts=4
+		autocmd Filetype yml,yaml setlocal expandtab ts=2 sw=2
+		autocmd Filetype c,cpp setlocal expandtab ts=4 sw=4
+		autocmd Filetype hpp setlocal expandtab ts=4 sw=4
+		autocmd Filetype json setlocal expandtab ts=2 sw=2
+		autocmd Filetype go setlocal noexpandtab ts=4 sw=4 sts=4
+		autocmd Filetype cfg setlocal expandtab ts=4 sts=4 commentstring=#\ %s
+	augroup END
+" }}}
 
 " Python
 autocmd filetype python setlocal textwidth=78
@@ -499,19 +578,26 @@ autocmd FileType gitcommit setlocal spell spelllang=en_us
 " Rust Playground Copy to Clipboard
 let g:rust_clip_command = 'xclip -selection clipboard'
 
-" Golang Configuration
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = 'goimports'
-let g:go_autodetect_gopath = 1
-let g:go_term_enabled = 1
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 0
-let g:go_highlight_operators = 0
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_autosave = 1
+" Golang Configuration {{{
+	let g:go_fmt_fail_silently = 0
+	let g:go_fmt_command = 'goimports'
+	let g:go_autodetect_gopath = 1
+	let g:go_term_enabled = 1
+	let g:go_def_mapping_enabled = 0
+	let g:go_highlight_array_whitespace_error = 1
+	let g:go_highlight_extra_types = 1
+	let g:go_highlight_chan_whitespace_error = 1
+	let g:go_highlight_operators = 1
+	let g:go_highlight_functions = 1
+	let g:go_highlight_function_parameters = 1
+	let g:go_highlight_types = 1
+	let g:go_highlight_fields = 1
+	let g:go_highlight_build_constraints = 1
+	let g:go_highlight_generate_tags = 1
+	let g:go_highlight_variable_declarations = 1
+	let g:go_highlight_variable_assignments = 1
+	let g:go_fmt_autosave = 1
+" }}}
 
 " Jump to last edit position on opening file
 if has("autocmd")
@@ -528,12 +614,6 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'text']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 
-" Rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 " reload files changed outside vim
 set autoread
 " Trigger `autoread` when files changes on disk
@@ -545,28 +625,58 @@ autocmd FileChangedShellPost *
 " Disable syntax highlighting for large files
 autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
 
-" Ale Linting
-let g:ale_completion_enabled = 0
-let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
-                    \ 'markdown': ['prettier'],
-                    \ 'python': ['flake8', 'pylint'],
-                    \ 'go': ['golangci-lint', 'gofmt', 'golint', 'goimports'],
-                    \ 'javascript': ['eslint', 'prettier']
-                    \ }
-let g:ale_fixers = { 'sh': ['shfmt'],
-                   \ 'rust': ['rustfmt'],
-                   \ 'markdown': ['prettier'],
-                   \ 'python':   ['black'],
-                   \ 'javascript': ['eslint'],
-                   \ 'json': ['prettier'],
-				   \ 'yaml': ['prettier'],
-                   \ 'xml': ['xmllint']
-                   \ }
-let g:ale_rust_cargo_use_clippy = 1
-let g:ale_fix_on_save = 1
-let g:ale_go_golangci_lint_options = '--fast'
-let g:ale_set_loclist = 1
+" Ale Linting {{{
+	let g:ale_completion_enabled = 0
+	let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
+						\ 'markdown': ['prettier'],
+						\ 'python': ['flake8', 'pylint'],
+						\ 'go': ['golangci-lint', 'gofmt', 'golint', 'goimports'],
+						\ 'javascript': ['eslint', 'prettier']
+						\ }
+	let g:ale_fixers = { 'sh': ['shfmt'],
+					   \ 'rust': ['rustfmt'],
+					   \ 'markdown': ['prettier'],
+					   \ 'python':   ['black'],
+					   \ 'javascript': ['eslint'],
+					   \ 'json': ['prettier'],
+					   \ 'yaml': ['prettier'],
+					   \ 'xml': ['xmllint']
+					   \ }
+	let g:ale_rust_cargo_use_clippy = 1
+	let g:ale_fix_on_save = 1
+	let g:ale_go_golangci_lint_options = '--fast'
+	let g:ale_set_loclist = 1
+" }}}
 
+" Lexical Config {{{
+augroup lexical
+    autocmd!
+    autocmd FileType markdown,mkd call lexical#init()
+    autocmd FileType textile call lexical#init()
+    autocmd FileType text,txt call lexical#init({ 'spell': 0 })
+augroup END
+" }}}
+
+" Vim Pencil {{{
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,md call pencil#init()
+    autocmd FileType text,txt call pencil#init()
+augroup END
+" }}}
+
+" Vim Visual Multi Configuration {{{
+let g:VM_leader = "\\"
+
+" custom remaps (full list: https://github.com/mg979/vim-visual-multi/wiki/Mappings)
+let g:VM_maps = {}
+let g:VM_maps["Undo"] = 'u'
+let g:VM_maps["Redo"] = '<C-r>'
+let g:VM_maps["Add Cursor Down"] = '<C-j>'
+let g:VM_maps["Add Cursor Up"]   = '<C-k>'
+" }}}
+
+" End of plugin config
 " }}}
 
 if has('nvim')
