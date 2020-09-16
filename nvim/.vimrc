@@ -1,6 +1,5 @@
 set shell=/bin/zsh
 
-runtime ./functions.vim
 " If plug.vim is not present, create and install.
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -20,8 +19,7 @@ Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
 Plug 'ciaranm/securemodelines'
 Plug 'justinmk/vim-sneak'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentLine'
@@ -245,9 +243,9 @@ nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
 nnoremap <silent> <leader>sc :noh<CR>
-nnoremap <silent><esc> <esc>:noh<CR><esc>
-" Nerdtree config just in case
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <silent><esc><esc> :noh<CR><esc>
+" Coc Explorer config just in case
+nnoremap <leader>n :CocCommand explorer<CR>
 " Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -309,8 +307,8 @@ nnoremap <leader>, :set invlist<CR>
 " Tabs
 nnoremap <C-Left> :bprevious<CR>
 nnoremap <C-Right> :bnext<CR>
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+nnoremap <tab> gt
+nnoremap <S-tab> gT
 nnoremap <silent> <leader>tn :tabnew<CR>
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
@@ -375,7 +373,10 @@ vnoremap < <gv
 " navigate Ale errors
 nmap <silent> <C-]> <Plug>(ale_previous_wrap)
 nmap <silent> <C-[> <Plug>(ale_next_wrap)
-
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ea <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ea <Plug>(EasyAlign)
 nnoremap <leader>' :call TermToggle(12)<CR>
 " inoremap <leader><Esc>:call TermToggle(12)<CR>
 tnoremap <leader><C-\><C-n>:call TermToggle(12)<CR>
@@ -480,7 +481,7 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 
 " Airline {{{
 	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#tabline#enabled = 0
+	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#branch#enabled = 1
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
@@ -510,7 +511,7 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
                 \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-marketplace',
-				\ 'coc-vimlsp', 'coc-ccls']
+				\ 'coc-vimlsp', 'coc-ccls', 'coc-explorer']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
@@ -674,6 +675,8 @@ let g:VM_maps["Redo"] = '<C-r>'
 let g:VM_maps["Add Cursor Down"] = '<C-j>'
 let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 " }}}
+
+let g:sneak#label = 1
 
 " End of plugin config
 " }}}
