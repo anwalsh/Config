@@ -14,6 +14,7 @@ filetype plugin indent on
 " Install Plugins {{{
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
+Plug 'cormacrelf/vim-colors-github'
 Plug 'chriskempson/base16-vim'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
@@ -94,6 +95,7 @@ endif
 hi Normal ctermbg=NONE
 " colorscheme base16-default-dark
 colorscheme one
+" colorscheme github
 set background=dark
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
@@ -479,13 +481,17 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 
 " Plugin Config {{{
 
+" let base16colorspace=256
+
 " Airline {{{
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#branch#enabled = 1
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
-	let g:airline_theme="onedark"
+	let g:airline_theme = "onedark"
+    " let g:airline_theme = "github"
+	" let g:airline_theme = "base16_vim"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
 	let g:airline_section_y = ''
