@@ -702,6 +702,8 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 
 " {{{ Vim Yoink
 " mappings
+set shada=!,'100,<50,s10,h
+
 nmap <C-n> <Plug>(YoinkPostPasteSwapBack)
 nmap <C-p> <Plug>(YoinkPostPasteSwapForward)
 
@@ -723,7 +725,7 @@ let g:yoinkIncludeDeleteOperations = 1
 
 " {{{ Markdown Preview
 autocmd FileType markdown nmap <buffer> <leader>mv <Plug>MarkdownPreview
-autocmd FileType markdown let g:which_key_map_local.m = {
+autocmd FileType markdown let m = {
     \ 'name': '+markdown',
     \ 'v': 'Markdown preview start',
     \ }
