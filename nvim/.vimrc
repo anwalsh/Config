@@ -80,6 +80,9 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'rhysd/clever-f.vim'
+Plug 'svermeulen/vim-yoink'
+Plug 'justinmk/vim-gtfo'
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 call plug#end()
 " }}}
 
@@ -246,7 +249,6 @@ nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
 " Buffer search
 nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
-nnoremap <silent> <leader>sc :noh<CR>
 nnoremap <silent><esc><esc> :noh<CR><esc>
 " Coc Explorer config just in case
 nnoremap <leader>n :CocCommand explorer<CR>
@@ -275,7 +277,6 @@ nmap <leader>w :w<CR>
 " Keep splits but close buffer
 nmap ,d :b#<bar>bd#<CR>
 " Open hotkeys
-map <C-p> :Files<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fp :Files<CR>
 nnoremap <leader>f~ :Files ~/<CR>
@@ -478,6 +479,21 @@ command! Kwbd call s:Kwbd(1)
 nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 " }}}
 
+" {{{ Highlighted Yank
+let g:highlightedyank_highlight_duration = 400
+
+" mapping
+if !exists('##TextYankPost')
+  map y <Plug>(highlightedyank)
+endif
+
+" Highlights the text that you yanked.
+" Only works on neovim 0.5.0+ (remove vim-highlightedyank once that is the stable version)
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
+" }}}
 
 " }}}
 
@@ -682,6 +698,35 @@ let g:VM_maps["Undo"] = 'u'
 let g:VM_maps["Redo"] = '<C-r>'
 let g:VM_maps["Add Cursor Down"] = '<C-j>'
 let g:VM_maps["Add Cursor Up"]   = '<C-k>'
+" }}}
+
+" {{{ Vim Yoink
+" mappings
+nmap <C-n> <Plug>(YoinkPostPasteSwapBack)
+nmap <C-p> <Plug>(YoinkPostPasteSwapForward)
+
+nmap p <Plug>(YoinkPaste_p)
+nmap P <Plug>(YoinkPaste_P)
+
+nmap [y <Plug>(YoinkRotateBack)
+nmap ]y <Plug>(YoinkRotateForward)
+
+nmap y <Plug>(YoinkYankPreserveCursorPosition)
+xmap y <Plug>(YoinkYankPreserveCursorPosition)
+
+" options
+let g:yoinkSavePersistently = 1
+let g:yoinkAutoFormatPaste = 1
+let g:yoinkMoveCursorToEndOfPaste = 1
+let g:yoinkIncludeDeleteOperations = 1
+" }}}
+
+" {{{ Markdown Preview
+autocmd FileType markdown nmap <buffer> <leader>mv <Plug>MarkdownPreview
+autocmd FileType markdown let g:which_key_map_local.m = {
+    \ 'name': '+markdown',
+    \ 'v': 'Markdown preview start',
+    \ }
 " }}}
 
 let g:sneak#label = 1
