@@ -734,6 +734,9 @@ autocmd FileType markdown let m = {
 
 let g:indentLine_fileTypeExclude = ['tex', 'txt', 'markdown']
 
+autocmd BufNewFile,BufRead Dockerfile.release setlocal filetype=dockerfile
+autocmd BufNewFile,BufRead Dockerfile.dev* setlocal filetype=dockerfile
+
 let g:sneak#label = 1
 
 " End of plugin config
