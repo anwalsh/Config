@@ -732,7 +732,10 @@ autocmd FileType markdown let m = {
     \ }
 " }}}
 
+" IndentLines Config {{{
 let g:indentLine_fileTypeExclude = ['tex', 'txt', 'markdown']
+autocmd FileType help,coc-explorer IndentLinesToggle
+" }}}
 
 autocmd BufNewFile,BufRead Dockerfile.release setlocal filetype=dockerfile
 autocmd BufNewFile,BufRead Dockerfile.dev* setlocal filetype=dockerfile
