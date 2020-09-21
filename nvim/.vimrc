@@ -83,6 +83,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'svermeulen/vim-yoink'
 Plug 'justinmk/vim-gtfo'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
+Plug 'SidOfc/mkdx'
 call plug#end()
 " }}}
 

@@ -1,4 +1,13 @@
 {
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "markdown": ["write-good", "markdownlint"],
+    "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  },
+  "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "javascript",
@@ -36,5 +45,13 @@
       "ignoredRootPaths": ["~"]
     }
   },
-  "python.jediEnabled": false
+  "markdownlint.config": {
+    "MD034": false,
+    "MD013": false,
+    "MD046": false,
+    "MD025": false
+  },
+  "python.jediEnabled": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true
 }
