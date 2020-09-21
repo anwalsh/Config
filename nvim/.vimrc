@@ -732,6 +732,8 @@ autocmd FileType markdown let m = {
     \ }
 " }}}
 
+let g:indentLine_fileTypeExclude = ['tex', 'txt', 'markdown']
+
 let g:sneak#label = 1
 
 " End of plugin config
