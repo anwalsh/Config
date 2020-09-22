@@ -14,7 +14,6 @@ filetype plugin indent on
 " Install Plugins {{{
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
-Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'edersonferreira/dalton-vim'
 Plug 'reedes/vim-lexical'
@@ -101,9 +100,8 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
-" colorscheme base16-default-dark
-colorscheme dalton
-" colorscheme gruvbox
+colorscheme base16-default-dark
+" colorscheme dalton
 " colorscheme one
 set background=dark
 set completeopt=noinsert,menuone,noselect
@@ -444,7 +442,6 @@ augroup END
 let g:BufKillCreateMappings = 0
 " }}}
 
-" let g:gruvbox_dark_contrast = 'hard'
 let base16colorspace = 256
 
 " Airline {{{
@@ -454,9 +451,8 @@ let base16colorspace = 256
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
 	" let g:airline_theme = "onedark"
-    " let g:airline_theme = "gruvbox"
-	" let g:airline_theme = "base16_vim"
-    let g:airline_theme = "dalton"
+	let g:airline_theme = "base16_vim"
+    " let g:airline_theme = "dalton"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
 	let g:airline_section_y = ''
