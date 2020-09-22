@@ -588,7 +588,7 @@ command! -bang -nargs=? -complete=dir Files
 	augroup END
 " }}}
 
-" Python
+" Python {{{
 autocmd filetype python setlocal textwidth=78
 " Figure out the system Python for Neovim.
 if exists("$VIRTUAL_ENV")
@@ -596,13 +596,19 @@ if exists("$VIRTUAL_ENV")
 else
     let g:python3_host_prog=substitute(system("which python"), "\n", '', 'g')
 endif
+" }}}
 
 " config to make writing english in vim better
 autocmd FileType markdown setlocal spell spelllang=en_us
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 
+" Rust things {{{
 " Rust Playground Copy to Clipboard
 let g:rust_clip_command = 'xclip -selection clipboard'
+" Rusty-tags configuration
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+" }}}
 
 " Golang Configuration {{{
 	let g:go_fmt_fail_silently = 0
@@ -625,21 +631,12 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 	let g:go_fmt_autosave = 1
 " }}}
 
+" Better file behavior {{{
 " Jump to last edit position on opening file
 if has("autocmd")
-  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+    au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
-" Rusty-tags configuration
-autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-" ========= vim-better-whitespace ==================
-" auto strip whitespace except for file with extention blacklisted
-let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'text']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
-
 " reload files changed outside vim
 set autoread
 " Trigger `autoread` when files changes on disk
@@ -650,6 +647,12 @@ autocmd FileChangedShellPost *
 
 " Disable syntax highlighting for large files
 autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | syntax off | endif
+
+" ========= vim-better-whitespace ==================
+" auto strip whitespace except for file with extention blacklisted
+let blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'text']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
+" }}}
 
 " Ale Linting {{{
 	let g:ale_completion_enabled = 0
