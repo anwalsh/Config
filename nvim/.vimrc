@@ -84,6 +84,7 @@ Plug 'svermeulen/vim-yoink'
 Plug 'justinmk/vim-gtfo'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 Plug 'SidOfc/mkdx'
+Plug 'elzr/vim-json'
 call plug#end()
 " }}}
 
@@ -735,6 +736,19 @@ autocmd FileType markdown let m = {
 " IndentLines Config {{{
 let g:indentLine_fileTypeExclude = ['tex', 'txt', 'markdown']
 autocmd FileType help,coc-explorer IndentLinesToggle
+" }}}
+
+" Vim JSON {{{
+let g:vim_json_syntax_conceal = 0
+let g:vim_json_warnings = 0
+
+au! BufRead,BufNewFile *.json set filetype=json
+
+augroup json_autocmd
+	autocmd!
+	autocmd FileType json set foldmethod=syntax
+	autocmd FileType json set foldlevelstart=99
+augroup END
 " }}}
 
 autocmd BufNewFile,BufRead Dockerfile.release setlocal filetype=dockerfile

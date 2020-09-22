@@ -8,6 +8,10 @@
     "sh": "shfmt"
   },
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "javascript",
