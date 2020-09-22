@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
+Plug 'edersonferreira/dalton-vim'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
 Plug 'ciaranm/securemodelines'
@@ -100,7 +101,8 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
-colorscheme base16-default-dark
+" colorscheme base16-default-dark
+colorscheme dalton
 " colorscheme gruvbox
 " colorscheme one
 set background=dark
@@ -453,7 +455,8 @@ let base16colorspace = 256
     let g:airline_right_sep = ""
 	" let g:airline_theme = "onedark"
     " let g:airline_theme = "gruvbox"
-	let g:airline_theme = "base16_vim"
+	" let g:airline_theme = "base16_vim"
+    let g:airline_theme = "dalton"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
 	let g:airline_section_y = ''
