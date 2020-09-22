@@ -99,8 +99,8 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
-" colorscheme base16-default-dark
-colorscheme one
+colorscheme base16-default-dark
+" colorscheme one
 " colorscheme github
 set background=dark
 set completeopt=noinsert,menuone,noselect
@@ -501,7 +501,7 @@ augroup END
 
 " Plugin Config {{{
 
-" let base16colorspace=256
+let base16colorspace=256
 
 " Airline {{{
 	let g:airline_powerline_fonts = 1
@@ -509,9 +509,9 @@ augroup END
 	let g:airline#extensions#branch#enabled = 1
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
-	let g:airline_theme = "onedark"
+	" let g:airline_theme = "onedark"
     " let g:airline_theme = "github"
-	" let g:airline_theme = "base16_vim"
+	let g:airline_theme = "base16_vim"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
 	let g:airline_section_y = ''
