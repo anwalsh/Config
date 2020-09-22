@@ -19,7 +19,7 @@
     "json"
   ],
   "languageserver": {
-    "golang": {
+    "go": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"],
