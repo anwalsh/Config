@@ -14,7 +14,7 @@ filetype plugin indent on
 " Install Plugins {{{
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'
-Plug 'cormacrelf/vim-colors-github'
+Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
@@ -85,6 +85,7 @@ Plug 'justinmk/vim-gtfo'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 Plug 'SidOfc/mkdx'
 Plug 'elzr/vim-json'
+Plug 'qpkorr/vim-bufkill'
 call plug#end()
 " }}}
 
@@ -100,8 +101,8 @@ endif
 
 hi Normal ctermbg=NONE
 colorscheme base16-default-dark
+" colorscheme gruvbox
 " colorscheme one
-" colorscheme github
 set background=dark
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
@@ -233,7 +234,11 @@ noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>:PlugUpdate<CR>
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
-nnoremap <silent> <leader>bd :Kwbd<CR>
+nnoremap <silent> <leader>bdo :Bonly!<CR>
+nnoremap <silent> <leader>bdd :BD<CR>
+nnoremap <silent> <leader>bdh :Bdelete hidden<CR>
+nnoremap <silent> <leader>bdw :bufdo BD<CR>
+nnoremap <silent> <leader>bda :Bdelete all<CR>
 " Delete hidden buffers
 function! DeleteHiddenBuffers()
     let l:tpbl=[]
@@ -413,74 +418,6 @@ function! TermToggle(height)
     endif
 endfunction
 
-" Delete Buffer Function {{{
-function s:Kwbd(kwbdStage)
-  if(a:kwbdStage == 1)
-    if(&modified)
-      let answer = confirm("This buffer has been modified.  Are you sure you want to delete it?", "&Yes\n&No", 2)
-      if(answer != 1)
-        return
-      endif
-    endif
-    if(!buflisted(winbufnr(0)))
-      bd!
-      return
-    endif
-    let s:kwbdBufNum = bufnr("%")
-    let s:kwbdWinNum = winnr()
-    windo call s:Kwbd(2)
-    execute s:kwbdWinNum . 'wincmd w'
-    let s:buflistedLeft = 0
-    let s:bufFinalJump = 0
-    let l:nBufs = bufnr("$")
-    let l:i = 1
-    while(l:i <= l:nBufs)
-      if(l:i != s:kwbdBufNum)
-        if(buflisted(l:i))
-          let s:buflistedLeft = s:buflistedLeft + 1
-        else
-          if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
-            let s:bufFinalJump = l:i
-          endif
-        endif
-      endif
-      let l:i = l:i + 1
-    endwhile
-    if(!s:buflistedLeft)
-      if(s:bufFinalJump)
-        windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
-      else
-        enew
-        let l:newBuf = bufnr("%")
-        windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
-      endif
-      execute s:kwbdWinNum . 'wincmd w'
-    endif
-    if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
-      execute "bd! " . s:kwbdBufNum
-    endif
-    if(!s:buflistedLeft)
-      set buflisted
-      set bufhidden=delete
-      set buftype=
-      setlocal noswapfile
-    endif
-  else
-    if(bufnr("%") == s:kwbdBufNum)
-      let prevbufvar = bufnr("#")
-      if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
-        b #
-      else
-        bn
-      endif
-    endif
-  endif
-endfunction
-
-command! Kwbd call s:Kwbd(1)
-nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
-" }}}
-
 " {{{ Highlighted Yank
 let g:highlightedyank_highlight_duration = 400
 
@@ -501,7 +438,12 @@ augroup END
 
 " Plugin Config {{{
 
-let base16colorspace=256
+" Buffer Kill Configuration {{{
+let g:BufKillCreateMappings = 0
+" }}}
+
+" let g:gruvbox_dark_contrast = 'hard'
+let base16colorspace = 256
 
 " Airline {{{
 	let g:airline_powerline_fonts = 1
@@ -510,7 +452,7 @@ let base16colorspace=256
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
 	" let g:airline_theme = "onedark"
-    " let g:airline_theme = "github"
+    " let g:airline_theme = "gruvbox"
 	let g:airline_theme = "base16_vim"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
