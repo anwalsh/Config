@@ -1,1 +1,6 @@
-rofi.theme: ~/.config/rofi/dark.rasi
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+font: "Inter 11";
+theme: "dark";
+}
