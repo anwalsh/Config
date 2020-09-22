@@ -305,8 +305,8 @@ exec = ~/Config/polybar-scripts/sensorcore.sh
 interval = 2
 
 format-prefix = " "
-format-prefix-foreground = #0a6cf5
-format-underline = #f50a4d
+format-prefix-foreground = ${colors.7}
+format-underline = ${colors.7}
 
 label = %output%°C
 ; vim:ft=dosini
