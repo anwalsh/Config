@@ -38,9 +38,7 @@
     "rust": {
       "command": "rust-analyzer",
       "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"],
-      "cargo-watch.enable": true,
-      "highlighting.semanticTokens": true
+      "rootPatterns": ["Cargo.toml"]
     },
     "bash": {
       "command": "bash-language-server",
@@ -48,12 +46,6 @@
       "args": ["start"],
       "ignoredRootPaths": ["~"]
     }
-  },
-  "markdownlint.config": {
-    "MD034": false,
-    "MD013": false,
-    "MD046": false,
-    "MD025": false
   },
   "python.jediEnabled": false,
   "explorer.icon.enableNerdfont": true,

@@ -237,7 +237,7 @@ noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
 nnoremap <silent> <C-q> :Bdelete menu<CR>
 nnoremap <silent> <leader>Q :Bdelete this<CR>
-nnoremap <silent> <leader>bdo :Bonly!<CR>
+nnoremap <silent> <leader>bdo :Bdelete other<CR>
 nnoremap <silent> <leader>bdd :BD<CR>
 nnoremap <silent> <leader>bdh :Bdelete hidden<CR>
 nnoremap <silent> <leader>bdw :bufdo BD<CR>
@@ -256,8 +256,6 @@ function! DeleteHiddenBuffers()
     echo 'Closed '.l:closed.' hidden buffers'
 endfunction
 nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
-" Buffer search
-nnoremap <leader>bs :cex []<BAR>bufdo vimgrepadd @@g %<BAR>cw<s-left><s-left><right>
 " Clean search (highlight)
 nnoremap <silent><esc><esc> :noh<CR><esc>
 " Coc Explorer config just in case
@@ -481,7 +479,7 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
                 \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
                 \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-marketplace',
-				\ 'coc-vimlsp', 'coc-ccls', 'coc-explorer']
+				\ 'coc-vimlsp', 'coc-ccls', 'coc-explorer', 'coc-diagnostic']
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
