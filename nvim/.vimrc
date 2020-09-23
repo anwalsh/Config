@@ -34,7 +34,6 @@ Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-endwise'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-slash'
 Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-eunuch'
@@ -86,6 +85,8 @@ Plug 'elzr/vim-json'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Asheq/close-buffers.vim'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'moll/vim-bbye'
+Plug 'aymericbeaumet/vim-symlink'
 call plug#end()
 " }}}
 
@@ -215,14 +216,13 @@ endif
 " }}}
 
 " Keybinds and Functions {{{
-nnoremap <leader>fed :e ~/.vimrc<CR>
+nnoremap <leader>fed :e ~/Config/nvim/.vimrc<CR>
 " Search results centered please
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-noremap <plug>(slash-after) zz
 " Line hopping
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
 nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
@@ -258,7 +258,7 @@ nnoremap <leader>bD :call DeleteHiddenBuffers()<CR>
 " Clean search (highlight)
 nnoremap <silent><esc><esc> :noh<CR><esc>
 " Coc Explorer config just in case
-nnoremap <leader>n :CocCommand explorer<CR>
+nnoremap <silent> <leader>n :execute 'CocCommand explorer '.getcwd().' --toggle --sources file+'<CR>
 " Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -552,7 +552,7 @@ autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . 
 " }}}
 
 " Golang Configuration {{{
-	let g:go_fmt_fail_silently = 0
+	let g:go_fmt_fail_silently = 1
 	let g:go_fmt_command = 'goimports'
 	let g:go_autodetect_gopath = 1
 	let g:go_term_enabled = 1

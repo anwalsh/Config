@@ -1,12 +1,4 @@
 {
-  "diagnostic-languageserver.filetypes": {
-    "vim": "vint",
-    "markdown": ["write-good", "markdownlint"],
-    "sh": "shellcheck"
-  },
-  "diagnostic-languageserver.formatFiletypes": {
-    "sh": "shfmt"
-  },
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
@@ -16,16 +8,19 @@
     "python",
     "javascript",
     "typscript",
-    "json"
+    "json",
+    "markdown"
   ],
+  "diagnostic-languageserver.filetypes": {
+    "markdown": ["write-good", "markdownlint"],
+    "sh": "shellcheck"
+  },
   "languageserver": {
     "go": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".git/"],
       "filetypes": ["go"],
-      "initializationOptions": {
-        "hoverKind": "SynopsisDocumentation"
-      }
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose"
     },
     "ccls": {
       "command": "ccls",
@@ -47,7 +42,49 @@
       "ignoredRootPaths": ["~"]
     }
   },
+  "write-good": {
+    "command": "write-good",
+    "debounce": 100,
+    "args": ["--text=%text"],
+    "offsetLine": 0,
+    "offsetColumn": 1,
+    "sourceName": "write-good",
+    "formatLines": 1,
+    "formatPattern": [
+      "(.*)\\s+on\\s+line\\s+(\\d+)\\s+at\\s+column\\s+(\\d+)\\s*$",
+      {
+        "line": 2,
+        "column": 3,
+        "message": 1
+      }
+    ]
+  },
+  "markdownlint": {
+    "command": "markdownlint",
+    "isStderr": true,
+    "debounce": 100,
+    "args": ["--stdin"],
+    "offsetLine": 0,
+    "offsetColumn": 0,
+    "sourceName": "markdownlint",
+    "formatLines": 1,
+    "formatPattern": [
+      "^.*?:\\s+(\\d+):\\s+(.*)(\\r|\\n)*$",
+      {
+        "line": 1,
+        "column": -1,
+        "message": 2
+      }
+    ]
+  },
+  "markdownlint.config": {
+    "MD013": false,
+    "MD025": false,
+    "MD034": false,
+    "MD046": false
+  },
   "python.jediEnabled": false,
   "explorer.icon.enableNerdfont": true,
-  "explorer.file.showHiddenFiles": true
+  "explorer.file.showHiddenFiles": true,
+  "rust.clippy_preference": "on"
 }
