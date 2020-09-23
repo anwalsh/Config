@@ -86,6 +86,7 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 Plug 'SidOfc/mkdx'
 Plug 'elzr/vim-json'
 Plug 'qpkorr/vim-bufkill'
+Plug 'Asheq/close-buffers.vim'
 call plug#end()
 " }}}
 
@@ -234,6 +235,8 @@ noremap <leader>feR :source ~/Config/nvim/.vimrc<CR>:PlugUpdate<CR>
 noremap <leader>bl :ls<CR>
 noremap <leader>bn :bn<CR>
 noremap <leader>bp :bp<CR>
+nnoremap <silent> <C-q> :Bdelete menu<CR>
+nnoremap <silent> <leader>Q :Bdelete this<CR>
 nnoremap <silent> <leader>bdo :Bonly!<CR>
 nnoremap <silent> <leader>bdd :BD<CR>
 nnoremap <silent> <leader>bdh :Bdelete hidden<CR>
