@@ -87,6 +87,7 @@ Plug 'SidOfc/mkdx'
 Plug 'elzr/vim-json'
 Plug 'qpkorr/vim-bufkill'
 Plug 'Asheq/close-buffers.vim'
+Plug 'dhruvasagar/vim-zoom'
 call plug#end()
 " }}}
 
