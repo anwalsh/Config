@@ -80,7 +80,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'rhysd/clever-f.vim'
-Plug 'svermeulen/vim-yoink'
 Plug 'justinmk/vim-gtfo'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 Plug 'SidOfc/mkdx'
@@ -649,29 +648,6 @@ let g:VM_maps["Undo"] = 'u'
 let g:VM_maps["Redo"] = '<C-r>'
 let g:VM_maps["Add Cursor Down"] = '<C-j>'
 let g:VM_maps["Add Cursor Up"]   = '<C-k>'
-" }}}
-
-" {{{ Vim Yoink
-" mappings
-set shada=!,'100,<50,s10,h
-
-nmap <C-n> <Plug>(YoinkPostPasteSwapBack)
-nmap <C-p> <Plug>(YoinkPostPasteSwapForward)
-
-nmap p <Plug>(YoinkPaste_p)
-nmap P <Plug>(YoinkPaste_P)
-
-nmap [y <Plug>(YoinkRotateBack)
-nmap ]y <Plug>(YoinkRotateForward)
-
-nmap y <Plug>(YoinkYankPreserveCursorPosition)
-xmap y <Plug>(YoinkYankPreserveCursorPosition)
-
-" options
-let g:yoinkSavePersistently = 1
-let g:yoinkAutoFormatPaste = 1
-let g:yoinkMoveCursorToEndOfPaste = 1
-let g:yoinkIncludeDeleteOperations = 1
 " }}}
 
 " {{{ Markdown Preview
