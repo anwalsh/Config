@@ -69,7 +69,6 @@ Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'gregsexton/gitv'
 Plug 'rbong/vim-flog'
-Plug 'aymericbeaumet/vim-symlink'
 Plug 'google/maktaba'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
@@ -687,4 +686,3 @@ let g:sneak#label = 1
 if has('nvim')
 	runtime! plugin/python_setup.vim
 endif
-
