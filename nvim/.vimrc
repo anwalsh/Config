@@ -18,7 +18,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'edersonferreira/dalton-vim'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-pencil'
-Plug 'ciaranm/securemodelines'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
@@ -58,9 +57,7 @@ Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'google/vim-codefmt'
 Plug 'pangloss/vim-javascript'
-Plug 'rhysd/vim-gfm-syntax'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -68,7 +65,6 @@ Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'gregsexton/gitv'
 Plug 'rbong/vim-flog'
-Plug 'google/maktaba'
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/webapi-vim'
 Plug 'tpope/vim-obsession'
@@ -94,7 +90,7 @@ call plug#end()
 syntax on
 
 if (has("nvim"))
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 if (has("termguicolors"))
     set termguicolors
@@ -110,15 +106,14 @@ set vb t_vb= " No more beeps
 set foldmethod=marker " Only fold on marks
 set ruler " Where am I?
 set ttyfast
-" https://github.com/vim/vim/issues/1735#issuecomment-383353563
 set lazyredraw
 set synmaxcol=500
 set laststatus=2
 set noshowmode
 set number
-set textwidth=100
+set linebreak
+set nowrap
 set relativenumber " Relative line numbers
-" Make diffing better: https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience
 set diffopt+=indent-heuristic
 set diffopt+=vertical
@@ -128,62 +123,37 @@ set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set confirm " ask for confirmation when closing unsaved buffers
 set shortmess+=c " don't give |ins-completion-menu| messages.
-"" Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
 set bomb
 set binary
-" Sane splits
 set splitright
 set splitbelow
-" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-" Fix backspace indent
-set backspace=indent,eol,start
-set backspace=2 " Backspace over newlines
-" Tabs. May be overriten by autocmd rules
 set tabstop=4
-set softtabstop=0
+set softtabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent "enable the following line
-set smartindent "do the Right Thing
+set autoindent
+set smartindent
 let g:indentLine_char = "\u2502"
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set showmatch
-set hidden "allow hidden buffers. VERY GOOD. see help
-set nobackup "dont make those filename~ files (they have bitten me many times)
-set noswapfile "more trouble than they're worth
-set undofile "keep persistent undo across vim runs
-set undodir=~/.vim-undo/ "where to store undo files
-set viminfo='20,<50,s1,h,f0 "limit the viminfo size to speed startup.
-set nojoinspaces " only add one space after punctuation when joining lines.
+set hidden
+set nobackup
+set noswapfile
+set undofile
+set undodir=~/.vim-undo/
+set viminfo='20,<50,s1,h,f0
+set nojoinspaces
 
 function! CocCurrentFunction()
 	return get(b:, 'coc_current_function', '')
 endfunction
 
-" Plugin settings
-let g:secure_modelines_allowed_items = [
-                \ "textwidth",   "tw",
-                \ "softtabstop", "sts",
-                \ "tabstop",     "ts",
-                \ "shiftwidth",  "sw",
-                \ "expandtab",   "et",   "noexpandtab", "noet",
-                \ "filetype",    "ft",
-                \ "foldmethod",  "fdm",
-                \ "readonly",    "ro",   "noreadonly", "noro",
-                \ "rightleft",   "rl",   "norightleft", "norl",
-                \ "colorcolumn"
-                \ ]
-
-" from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 	set grepformat=%f:%l:%c:%m
@@ -369,7 +339,8 @@ nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>gt :Gcommit -v -q %:p<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gbb :Git blame<CR>
 nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
@@ -509,22 +480,12 @@ command! -bang -nargs=? -complete=dir Files
 	augroup configgroup
 		autocmd!
 		autocmd VimEnter * highlight clear SignColumn
-		autocmd FileType python setlocal commentstring=#\ %s
 		autocmd FileType fstab,systemd setlocal noexpandtab
 		autocmd FileType gitconfig,sh,toml setlocal noexpandtab
-		autocmd Filetype rust setlocal sw=4 sts=4 ts=4 expandtab
-		autocmd Filetype cls setlocal filetype=java
 		autocmd Filetype Makefile setlocal noexpandtab
-		autocmd Filetype sh setlocal ts=2 sw=2 sts=2
-		autocmd Filetype java setlocal ts=2 sw=2 sts=2
 		autocmd Filetype vim setlocal noet ts=4 sw=4 sts=4
 		autocmd Filetype text setlocal noet ts=4 sw=4
-		autocmd Filetype md setlocal spell expandtab ts=4 sw=4 sts=4
-		autocmd Filetype yml,yaml setlocal expandtab ts=2 sw=2
-		autocmd Filetype c,cpp setlocal expandtab ts=4 sw=4
-		autocmd Filetype hpp setlocal expandtab ts=4 sw=4
-		autocmd Filetype json setlocal expandtab ts=2 sw=2
-		autocmd Filetype go setlocal noexpandtab ts=4 sw=4 sts=4
+		autocmd Filetype markdown setlocal expandtab ts=4 sw=4 sts=4 textwidth=90
 		autocmd Filetype cfg setlocal expandtab ts=4 sts=4 commentstring=#\ %s
 	augroup END
 " }}}
@@ -598,14 +559,12 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 " Ale Linting {{{
 	let g:ale_completion_enabled = 0
 	let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
-						\ 'markdown': ['prettier'],
 						\ 'python': ['flake8', 'pylint'],
 						\ 'go': ['golangci-lint', 'gofmt', 'golint', 'goimports'],
 						\ 'javascript': ['eslint', 'prettier']
 						\ }
 	let g:ale_fixers = { 'sh': ['shfmt'],
 					   \ 'rust': ['rustfmt'],
-					   \ 'markdown': ['prettier'],
 					   \ 'python':   ['black'],
 					   \ 'javascript': ['eslint'],
 					   \ 'json': ['prettier'],
@@ -631,6 +590,8 @@ augroup END
 " }}}
 
 " Vim Pencil {{{
+let g:pencil#wrapModeDefault = 'soft'
+
 augroup pencil
     autocmd!
     autocmd FileType markdown,md call pencil#init()
