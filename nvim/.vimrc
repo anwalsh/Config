@@ -97,9 +97,9 @@ if (has("termguicolors"))
 endif
 
 hi Normal ctermbg=NONE
-colorscheme base16-default-dark
+" colorscheme base16-default-dark
 " colorscheme dalton
-" colorscheme one
+colorscheme one
 set background=dark
 set completeopt=noinsert,menuone,noselect
 set vb t_vb= " No more beeps
@@ -421,8 +421,8 @@ let base16colorspace = 256
 	let g:airline#extensions#branch#enabled = 1
     let g:airline_left_sep = ""
     let g:airline_right_sep = ""
-	" let g:airline_theme = "onedark"
-	let g:airline_theme = "base16_vim"
+	let g:airline_theme = "onedark"
+	" let g:airline_theme = "base16_vim"
     " let g:airline_theme = "dalton"
 	let g:airline_section_warning = ""
 	let g:airline_stl_path_style = 'short'
