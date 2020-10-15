@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # .zshrc
 export TERM="xterm-256color"
 #   -----------------------------
@@ -19,26 +26,7 @@ export NVM_DIR=$HOME/.nvm
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  --no-use # This loads nvm
 
-# Sourcing the powerline9k theme as I am too lazy to manually update the git repo
-# at some interval of time.
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-
-POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n@%m"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='white'
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='000' # 242
-POWERLEVEL9K_ALWAYS_SHOW_CONTEXT="true"
-POWERLEVEL9K_ALWAYS_SHOW_USER="true"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='9'
-POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
-POWERLEVEL9K_ROOT_ICON="\uF09C"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH Options
 CASE_SENSITIVE="false"
@@ -67,7 +55,7 @@ autoload colors; colors
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Plugins for ZSH
-plugins=(git zsh-completions python npm pip vagrant history zsh-syntax-highlighting)
+plugins=(tmux git zsh-completions golang python kubectl npm pip vagrant history rust rustup cargo terraform zsh-syntax-highlighting)
 # Source ZSH
 source $ZSH/oh-my-zsh.sh
 
@@ -134,3 +122,6 @@ fi
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# Rocket Man
+eval "$(starship init zsh)"
