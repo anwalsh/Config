@@ -24,10 +24,12 @@
     },
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": ["compile_commands.json", ".ccls", ".root", ".git/"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
       "initializationOptions": {
-        "cacheDirectory": "/tmp/ccls"
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
       }
     },
     "rust": {
