@@ -418,6 +418,30 @@
       ]
     },
     {
+      "before": ["<C-j>"],
+      "commands": ["editor.action.insertCursorBelow"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.insertCursorAbove"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": [{ "command": "ccls.navigate", "args": { "direction": "R" } }]
+    },
+    {
+      "before": ["<leader>", "k"],
+      "commands": [{ "command": "ccls.navigate", "args": { "direction": "L" } }]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": [{ "command": "ccls.navigate", "args": { "direction": "U" } }]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": [{ "command": "ccls.navigate", "args": { "direction": "D" } }]
+    },
+    {
       "before": ["leader", "w"],
       "commands": ["workbench.action.files.save"]
     },
@@ -559,9 +583,26 @@
     },
     {
       "before": ["g", "I"],
+      "commands": ["editor.action.peekImplementation"],
+    },
+    {
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-j>"],
+      "commands": ["editor.action.insertCursorBelow"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.insertCursorAbove"]
+    },
     {
       "before": ["K"],
       "commands": ["editor.action.moveLinesUpAction"]
@@ -1513,5 +1554,9 @@
   "whichkey.delay": 200,
   "whichkey.sortOrder": "nonNumberFirst",
   "window.openFoldersInNewWindow": "on",
-  "C_Cpp.updateChannel": "Insiders"
+  "C_Cpp.updateChannel": "Insiders",
+  "C_Cpp.autocomplete": "Disabled",
+  "C_Cpp.formatting": "Disabled",
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.intelliSenseEngine": "Disabled"
 }

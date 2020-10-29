@@ -1679,7 +1679,7 @@
   },
   {
     "command": "workbench.action.navigateBack",
-    "key": "ctrl+["
+    "key": "ctrl+o"
   },
   {
     "command": "workbench.action.navigateForward",
