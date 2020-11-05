@@ -1558,5 +1558,8 @@
   "C_Cpp.autocomplete": "Disabled",
   "C_Cpp.formatting": "Disabled",
   "C_Cpp.errorSquiggles": "Disabled",
-  "C_Cpp.intelliSenseEngine": "Disabled"
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-path.linux": "/home/andy/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+  }
 }

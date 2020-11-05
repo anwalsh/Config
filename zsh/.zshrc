@@ -26,7 +26,7 @@ export NVM_DIR=$HOME/.nvm
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  --no-use # This loads nvm
 
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH Options
 CASE_SENSITIVE="false"
@@ -124,4 +124,4 @@ fi
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # Rocket Man
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
