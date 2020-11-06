@@ -83,6 +83,7 @@ Plug 'Asheq/close-buffers.vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'moll/vim-bbye'
 Plug 'aymericbeaumet/vim-symlink'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 " }}}
 
@@ -360,34 +361,6 @@ nmap <silent> <C-[> <Plug>(ale_next_wrap)
 xmap ea <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ea <Plug>(EasyAlign)
-nnoremap <leader>' :call TermToggle(12)<CR>
-" inoremap <leader><Esc>:call TermToggle(12)<CR>
-tnoremap <leader><C-\><C-n>:call TermToggle(12)<CR>
-tnoremap :q! <C-\><C-n>:q!<CR>
-" Terminal Function
-tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
-
-let g:term_buf = 0
-let g:term_win = 0
-function! TermToggle(height)
-    if win_gotoid(g:term_win)
-        hide
-    else
-        botright new
-        exec "resize " . a:height
-        try
-            exec "buffer " . g:term_buf
-        catch
-            call termopen($SHELL, {"detach": 0})
-            let g:term_buf = bufnr("")
-            set nonumber
-            set norelativenumber
-            set signcolumn=no
-        endtry
-        startinsert!
-        let g:term_win = win_getid()
-    endif
-endfunction
 
 " {{{ Highlighted Yank
 let g:highlightedyank_highlight_duration = 400
@@ -634,6 +607,31 @@ augroup json_autocmd
 	autocmd FileType json set foldmethod=syntax
 	autocmd FileType json set foldlevelstart=99
 augroup END
+" }}}
+
+" floatterm config {{{
+let g:floaterm_height = 0.3
+
+let g:floaterm_autoclose = '1'          " close window if job exits normally
+let g:floaterm_wintype = 'normal'       " don't want it to popup
+let g:floaterm_rootmarkers = ['.project', '.git', '.gitignore']
+
+" mappings
+nnoremap <silent> <C-t> :FloatermToggle<CR>
+tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <C-\> :FloatermNew<CR>
+tnoremap <silent> <C-\> <C-\><C-n>:FloatermNew<CR>
+tnoremap <silent> <C-n> <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> <C-p> <C-\><C-n>:FloatermPrev<CR>
+tnoremap <silent> <C-k> <C-\><C-n>:FloatermKill<CR>
+tnoremap <silent> <C-S-K> <C-\><C-n>:FloatermKill!<CR>
+
+" settings for the view itself
+function s:floatermSettings()
+    setlocal nonumber norelativenumber
+endfunction
+
+autocmd FileType floaterm call s:floatermSettings()
 " }}}
 
 autocmd BufNewFile,BufRead Dockerfile.release setlocal filetype=dockerfile
