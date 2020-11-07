@@ -1768,5 +1768,24 @@
     "command": "-emojisense.quickEmojiTerminal",
     "when": "terminalFocus"
   },
-
+  {
+    "key": "escape",
+    "command": "workbench.action.blur",
+    "when": "!editorTextFocus && !whichKeyActive && inputFocus && !terminalFocus"
+  },
+  {
+    "key": "escape",
+    "command": "workbench.action.blur",
+    "when": "!editorTextFocus && !whichKeyActive && panelFocus && !terminalFocus"
+  },
+  {
+    "key": "shift+escape",
+    "command": "workbench.action.blur",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "Escape",
+    "command": "workbench.action.blur",
+    "when": "inSettingsSearch"
+  },
 ]

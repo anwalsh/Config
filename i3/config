@@ -194,6 +194,7 @@ assign [class="kitty"] $ws1
 assign [class="firefox"] $ws2
 assign [class="Mailspring"] $ws3
 assign [class="discord"] $ws3
+assign [Class="obsidian"] $ws3
 assign [class="Slack"] $ws4
 assign [class="Google-chrome"] $ws4
 assign [class="idea"] $ws5
