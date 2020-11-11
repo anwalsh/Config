@@ -83,7 +83,6 @@ Plug 'Asheq/close-buffers.vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'moll/vim-bbye'
 Plug 'aymericbeaumet/vim-symlink'
-Plug 'voldikss/vim-floaterm'
 call plug#end()
 " }}}
 
@@ -334,7 +333,7 @@ nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
 " Open Quick fix list
-nnoremap <leader>el :llist<CR>
+nnoremap <leader>el :copen<CR>
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -361,6 +360,34 @@ nmap <silent> <C-[> <Plug>(ale_next_wrap)
 xmap ea <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ea <Plug>(EasyAlign)
+nnoremap <leader>' :call TermToggle(12)<CR>
+" inoremap <leader><Esc>:call TermToggle(12)<CR>
+tnoremap <leader><C-\><C-n>:call TermToggle(12)<CR>
+tnoremap :q! <C-\><C-n>:q!<CR>
+" Terminal Function
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+
+let g:term_buf = 0
+let g:term_win = 0
+function! TermToggle(height)
+    if win_gotoid(g:term_win)
+        hide
+    else
+        botright new
+        exec "resize " . a:height
+        try
+            exec "buffer " . g:term_buf
+        catch
+            call termopen($SHELL, {"detach": 0})
+            let g:term_buf = bufnr("")
+            set nonumber
+            set norelativenumber
+            set signcolumn=no
+        endtry
+        startinsert!
+        let g:term_win = win_getid()
+    endif
+endfunction
 
 " {{{ Highlighted Yank
 let g:highlightedyank_highlight_duration = 400
@@ -532,7 +559,7 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 " Ale Linting {{{
 	let g:ale_completion_enabled = 0
 	let g:ale_linters = { 'rust': ['rustfmt', 'rust-analyzer', 'clippy', 'cargo'],
-						\ 'python': ['flake8', 'pylint'],
+						\ 'python': ['flake8', 'pylint', 'pyright'],
 						\ 'go': ['golangci-lint', 'gofmt', 'golint', 'goimports'],
 						\ 'javascript': ['eslint', 'prettier']
 						\ }
@@ -547,7 +574,8 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 	let g:ale_rust_cargo_use_clippy = 1
 	let g:ale_fix_on_save = 1
 	let g:ale_go_golangci_lint_options = '--fast'
-	let g:ale_set_loclist = 1
+	let g:ale_set_loclist = 0
+	let g:ale_set_quickfix = 1
 	let g:ale_sign_error = '✘'
     let g:ale_sign_warning = ''
     let g:ale_sign_info = ''
@@ -609,23 +637,6 @@ augroup json_autocmd
 augroup END
 " }}}
 
-" floatterm config {{{
-let g:floaterm_height = 0.3
-
-let g:floaterm_autoclose = '1'          " close window if job exits normally
-let g:floaterm_wintype = 'normal'       " don't want it to popup
-let g:floaterm_rootmarkers = ['.project', '.git', '.gitignore']
-
-" mappings
-nnoremap <silent> <C-t> :FloatermToggle<CR>
-tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
-nnoremap <silent> <C-\> :FloatermNew<CR>
-tnoremap <silent> <C-\> <C-\><C-n>:FloatermNew<CR>
-tnoremap <silent> <C-n> <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <C-p> <C-\><C-n>:FloatermPrev<CR>
-tnoremap <silent> <C-k> <C-\><C-n>:FloatermKill<CR>
-tnoremap <silent> <C-S-K> <C-\><C-n>:FloatermKill!<CR>
-
 " settings for the view itself
 function s:floatermSettings()
     setlocal nonumber norelativenumber
@@ -638,6 +649,13 @@ autocmd BufNewFile,BufRead Dockerfile.release setlocal filetype=dockerfile
 autocmd BufNewFile,BufRead Dockerfile.dev* setlocal filetype=dockerfile
 
 let g:sneak#label = 1
+
+augroup vimrc_todo
+    au!
+    au Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX):/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
 
 " End of plugin config
 " }}}
