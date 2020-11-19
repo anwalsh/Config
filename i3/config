@@ -61,6 +61,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 bindsym Mod1+$mod+Left move workspace to output left
 bindsym Mod1+$mod+Right move workspace to output right
+bindsym Mod1+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
