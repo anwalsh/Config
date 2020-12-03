@@ -194,9 +194,9 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-" Line hopping
-nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
-nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
+" make j/k behave properly
+noremap <expr> j (v:count? 'j' : 'gj')
+noremap <expr> k (v:count? 'k' : 'gk')
 " New empty buffer
 noremap <leader>ns :enew<CR>
 " Source new config
@@ -435,10 +435,31 @@ let g:colorizer_auto_filetype='css,html,javascript'
 
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
-let g:coc_global_extensions = ['coc-css', 'coc-dictionary', 'coc-prettier', 'coc-eslint',
-                \ 'coc-word', 'coc-go', 'coc-xml', 'coc-java', 'coc-json', 'coc-rust-analyzer',
-                \ 'coc-tsserver', 'coc-yaml', 'coc-python', 'coc-snippets', 'coc-marketplace',
-				\ 'coc-vimlsp', 'coc-ccls', 'coc-explorer', 'coc-diagnostic']
+" coc config {{{
+let g:coc_global_extensions = [
+				\ 'coc-css',
+				\ 'coc-dictionary',
+				\ 'coc-prettier',
+				\ 'coc-eslint',
+                \ 'coc-word',
+				\ 'coc-go',
+				\ 'coc-git',
+				\ 'coc-xml',
+				\ 'coc-java',
+				\ 'coc-json',
+				\ 'coc-rust-analyzer',
+                \ 'coc-tsserver',
+				\ 'coc-yaml',
+				\ 'coc-python',
+				\ 'coc-snippets',
+				\ 'coc-marketplace',
+				\ 'coc-vimlsp',
+				\ 'coc-ccls',
+				\ 'coc-lists',
+				\ 'coc-explorer',
+				\ 'coc-diagnostic']
+" }}}
+
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~20%' }
 
