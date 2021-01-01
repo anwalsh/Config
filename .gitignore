@@ -1,1 +1,15 @@
 .uuid
+
+/zsh/**/*.zwc*
+/zsh/.zcompdump*
+/zsh/.zinit/
+/zsh/.zsh_history
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.DS_STORE
+/nvim/.netrwhist
