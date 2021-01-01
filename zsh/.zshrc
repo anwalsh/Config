@@ -87,18 +87,6 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||  bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
-FZF_TAB_COMMAND=(
-    fzf
-    --ansi                                                                                                # Enable ANSI color support, necessary for showing groups<
-    --expect='$continuous_trigger,$print_query'                                                           # For continuous completion
-    '--color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe'
-    '--color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
-    --nth=2,3 --delimiter='\x00'                                                                          # Don't search prefix
-    --tiebreak=begin -m --bind=tab:down,btab:up,change:top,ctrl-space:toggle --cycle
-    '--query=$query'                                                                                      # $query will be expanded to query string at runtime.
-    '--header-lines=$#headers'                                                                            # $#headers will be expanded to lines of headers at runtime
-    --print-query
-)
 zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
 
 export FZFZ_RECENT_DIRS_TOOL='zi'
@@ -149,7 +137,7 @@ if [[ ! -f ~/.zpm/zpm.zsh  ]]; then
 fi
 source ~/.zpm/zpm.zsh
 
-zpm load andrewferrier/fzf-z
-zpm load Aloxaf/fzf-tab
+zpm load andrewferrier/fzf-z,autload:/executables
+
 # Rocket Man
 # eval "$(starship init zsh)"
