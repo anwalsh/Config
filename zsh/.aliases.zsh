@@ -6,6 +6,7 @@
 
 alias v='nvim' # Shorter Vim command because reasons
 alias vs='code'
+alias mod='git diff --name-only origin/trunk'
 alias ls='exa'
 alias l='exa -a'
 alias ll='exa -lgh'
