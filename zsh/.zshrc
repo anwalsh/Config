@@ -22,6 +22,7 @@ compinit
 # ------------------------------
 export DEFAULT_USER=$USER
 export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 export NVM_DIR=$HOME/.nvm
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  --no-use # This loads nvm
