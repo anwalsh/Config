@@ -33,10 +33,6 @@
     {
       "filenamePattern": "*.json",
       "viewType": "default"
-    },
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
     }
   ],
   "editor.fontFamily": "JetBrains Mono",
@@ -56,7 +52,7 @@
   "editor.autoClosingQuotes": "always",
   "editor.autoClosingBrackets": "always",
   "editor.renderIndentGuides": false,
-  "editor.renderWhitespace": "trailing",
+  "editor.renderWhitespace": "none",
   "editor.showFoldingControls": "mouseover",
   "python.insidersChannel": "off",
   "editor.minimap.enabled": false,
@@ -244,7 +240,8 @@
   "vim.easymotionKeys": "asdfghjklvbcn",
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/sbin/nvim",
+  "vim.useWSL": true,
+  // "vim.neovimPath": "/usr/sbin/nvim",
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.history": 100,
@@ -1567,5 +1564,6 @@
   "vs-kubernetes": {
     "vs-kubernetes.minikube-path.linux": "/home/andy/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.typeCheckingMode": "basic",
+  "pylance.insidersChannel": "daily"
 }
