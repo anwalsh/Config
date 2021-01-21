@@ -141,4 +141,7 @@ source ~/.zpm/zpm.zsh
 zpm load andrewferrier/fzf-z,autload:/executables
 
 # Rocket Man
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
+
+# Direnv for Directory Env variable management
+eval "$(direnv hook zsh)"
