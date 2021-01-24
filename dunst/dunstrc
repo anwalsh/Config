@@ -157,6 +157,19 @@
     # Limit icons size.
     max_icon_size=128
 
+    ### mouse
+
+    # Defines action of mouse event
+    # Possible values are:
+    # * none: Don't do anything.
+    # * do_action: If the notification has exactly one action, or one is marked as default,
+    #              invoke it. If there are multiple and no default, open the context menu.
+    # * close_current: Close current notification.
+    # * close_all: Close all notifications.
+    mouse_left_click = do_action
+    mouse_middle_click = close_current
+    mouse_right_click = close_all
+
 [shortcuts]
 
     # Shortcuts are specified as [modifier+][modifier+]...key
