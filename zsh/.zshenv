@@ -21,8 +21,5 @@ export N="$HOME/n/bin"
 export LOCAL="$HOME/.local/bin"
 export KUBECONFIG="$HOME/.kube/config"
 export TOOLS="$HOME/tools"
-export BOSUN_CONFIG_DIR="$HOME/GitLocal/projects/python/bosun"
-export BOSUN_ENV="andy"
-export BOSUN_LOG_LEVEL="INFO"
 export PATH="$RUST:$TOOLS:$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$NPATH:$GOROOT:$GOBIN:$GOPATH\
 :$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF:$CODE:$NODEMODS:$N:$LOCAL:$KUBECONFIG:$PATH"
