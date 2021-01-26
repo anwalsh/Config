@@ -9,6 +9,10 @@
         fi
     }
 
+    fromEpoch() {
+        date -u -d @$(  echo "("$1" + 500) / 1000" | bc)
+    }
+
 # mans: Search manpage given in agument '1' for term given in argument '2' (case insensitive)
 # displays paginated result with colored search terms and two lines surrounding each hit. Example: mans mplayer codec
 #   --------------------------------------------------------------------
