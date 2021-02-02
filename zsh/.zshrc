@@ -65,6 +65,10 @@ source ~/.zsh/.secret_zsh
 source ~/Config/zsh/.functions.zsh
 source ~/Config/zsh/.aliases.zsh
 
+# Source FZF
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
 #   ---------------------------------------
 #   2.  FZF Config.
 #   ---------------------------------------
