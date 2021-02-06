@@ -84,6 +84,7 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'moll/vim-bbye'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'voldikss/vim-floaterm'
+Plug 'roxma/vim-tmux-clipboard'
 call plug#end()
 " }}}
 

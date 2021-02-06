@@ -56,7 +56,7 @@ autoload colors; colors
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Plugins for ZSH
-plugins=(tmux git zsh-completions golang python kubectl npm pip vagrant history rust rustup cargo terraform zsh-syntax-highlighting z)
+plugins=(tmux git zsh-completions docker golang python kubectl npm pip vagrant history rust rustup cargo terraform zsh-syntax-highlighting z)
 # Source ZSH
 source $ZSH/oh-my-zsh.sh
 
@@ -146,3 +146,6 @@ eval "$(starship init zsh)"
 
 # Direnv for Directory Env variable management
 eval "$(direnv hook zsh)"
+
+# kubectl autocomplete
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi

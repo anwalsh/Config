@@ -36,11 +36,11 @@ alias xclip='xclip -i'
 alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
 alias aptup="sudo apt-get update && sudo apt-get upgrade"
 alias audioswap="~/GitLocal/scripts/audio-switch.sh"
+alias kubectx="kubectl ctx"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
-
 alias numFiles='echo $(ls -1 | wc -l)' # numFiles: Count of non-hidden files in current dir
 alias make1mb='mkfile 1m ./1MB.dat'    # make1mb: Creates a file of 1mb size (all zeros)
 alias make5mb='mkfile 5m ./5MB.dat'    # make5mb: Creates a file of 5mb size (all zeros)

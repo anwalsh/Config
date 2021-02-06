@@ -1,4 +1,5 @@
 export RUST="$HOME/.cargo/bin"
+export RUST_ENV="$HOME/.cargo/env"
 export FZF="$HOME/.fzf/bin"
 export ZSH="$HOME/.oh-my-zsh"
 export NPATH="$HOME/n/bin"
@@ -22,5 +23,8 @@ export LOCAL="$HOME/.local/bin"
 export KUBECONFIG="$HOME/.kube/config"
 export TOOLS="$HOME/tools"
 export SNAP="/snap/bin"
+export KREW_ROOT="$HOME/.krew"
+export KREW="$KREW_ROOT/bin"
 export PATH="$RUST:$TOOLS:$SBIN:$BIN:$TBIN:$LOCALBIN:$LOCALSBIN:$NPATH:$GOROOT:$GOBIN:$GOPATH\
-:$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF:$CODE:$NODEMODS:$N:$LOCAL:$KUBECONFIG:$SNAP:$PATH"
+:$T2PATH:$JAVA_HOME:$ANT_HOME:$ANT_BIN:$FZF:$CODE:$NODEMODS:$N:$LOCAL:$KUBECONFIG:$SNAP:$KREW_ROOT\
+:$KREW:$RUST_ENV:$PATH"
