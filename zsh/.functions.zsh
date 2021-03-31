@@ -13,6 +13,14 @@
         date -u -d @$(  echo "("$1" + 500) / 1000" | bc)
     }
 
+    function delete-branches() {
+        git branch |
+        grep --invert-match '\*' |
+        cut -c 3- |
+        fzf --multi --preview="git log {}" |
+        xargs --no-run-if-empty git branch --delete --force
+    }
+
 # mans: Search manpage given in agument '1' for term given in argument '2' (case insensitive)
 # displays paginated result with colored search terms and two lines surrounding each hit. Example: mans mplayer codec
 #   --------------------------------------------------------------------

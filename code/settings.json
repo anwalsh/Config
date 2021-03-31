@@ -1569,5 +1569,6 @@
     "vs-kubernetes.minikube-path.linux": "/home/andy/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
   "python.analysis.typeCheckingMode": "basic",
-  "pylance.insidersChannel": "daily"
+  "pylance.insidersChannel": "daily",
+  "go.toolsManagement.autoUpdate": true
 }
