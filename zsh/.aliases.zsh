@@ -38,6 +38,8 @@ alias aptup="sudo apt-get update && sudo apt-get upgrade"
 alias audioswap="~/GitLocal/scripts/audio-switch.sh"
 alias kubectx="kubectl ctx"
 alias starup="curl -fsSL https://starship.rs/install.sh | bash"
+alias norg="gron --ungron"
+alias ungron="gron --ungron"
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
