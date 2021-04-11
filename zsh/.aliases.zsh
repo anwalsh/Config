@@ -83,7 +83,6 @@ alias ttop="top -R -F -s 10 -o rsize"
 #   3.  NETWORKING
 #   ---------------------------
 
-alias myip='wget http://ipinfo.io/ip -qO -'       # myip: Public facing IP Address
 alias netCons='lsof -i'                           # netCons: Show all open TCP/IP sockets
 alias flushDNS='dscacheutil -flushcache'          # flushDNS: Flush out the DNS Cache
 alias lsock='sudo /usr/sbin/lsof -i -P'           # lsock: Display open sockets

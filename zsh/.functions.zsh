@@ -140,6 +140,9 @@
 #   4.  NETWORKING
 #   ---------------------------
 
+    function myip() { # myip: prints out your current IP
+        echo "My WAN/Public IP address: $(dig +short myip.opendns.com @resolver1.opendns.com)"
+    }
 
 #   ii:  display useful host related informaton
 #   -------------------------------------------------------------------
