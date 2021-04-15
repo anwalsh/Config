@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "[GitHub Dark]": {
@@ -28,7 +28,6 @@
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.panel.defaultLocation": "bottom",
-  "workbench.editor.showTabs": true,
   "workbench.editorAssociations": [
     {
       "filenamePattern": "*.json",
@@ -78,7 +77,7 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": true,
     },
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",

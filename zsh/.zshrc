@@ -149,3 +149,10 @@ eval "$(direnv hook zsh)"
 
 # kubectl autocomplete
 if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# Poetry and Pyenv
+export PATH="$HOME/.poetry/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
