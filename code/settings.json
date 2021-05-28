@@ -79,9 +79,12 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true,
     },
+    "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wrappingColumn": 88
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.pfettier-vscode"
@@ -229,7 +232,7 @@
   "python.sortImports.args": ["--settings-path=${workspaceFolder}/.isort.cfg"],
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
-  "autoDocstring.docstringFormat": "sphinx",
+  "autoDocstring.docstringFormat": "google",
   "rust-analyzer.highlightingOn": true,
   "vim.easymotionMarkerBackgroundColor": "#f78ae0",
   "vim.easymotionMarkerForegroundColorOneChar": "#f78ae0",
