@@ -229,7 +229,6 @@
   "python.testing.nosetestsEnabled": false,
   "python.testing.unittestEnabled": true,
   "python.formatting.blackPath": "/home/andy/.local/bin/black",
-  "python.sortImports.args": ["--settings-path=${workspaceFolder}/.isort.cfg"],
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
   "autoDocstring.docstringFormat": "google",
