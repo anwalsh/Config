@@ -28,16 +28,10 @@
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.panel.defaultLocation": "bottom",
-  "workbench.editorAssociations": [
-    {
-      "filenamePattern": "*.json",
-      "viewType": "default"
-    },
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.json": "default",
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "editor.fontFamily": "JetBrains Mono",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -1570,5 +1564,24 @@
   },
   "python.analysis.typeCheckingMode": "basic",
   "pylance.insidersChannel": "daily",
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "security.workspace.trust.untrustedFiles": "open",
+  "customizeUI.stylesheet": {
+    ".quick-input-titlebar": "border-radius: 7px 7px 0px 0px !important;",
+    ".quick-input-widget": "top: 25% !important; border-radius: 7px !important;",
+    ".quick-input-widget .monaco-list-row": "font-family: JetBrains Mono !important",
+    ".quick-input-widget .quick-input-title": "font-family: JetBrains Mono !important",
+    "[id='workbench.view.explorer'] .monaco-icon-label.folder-icon > .monaco-icon-label-container > .monaco-icon-name-container > .label-name": "font-weight: 900; filter: brightness(1.2);",
+    "[id='workbench.view.explorer'] .pane-body .mac": "font-family: 'JetBrains Mono'; font-size: 13px;"
+  },
 }
