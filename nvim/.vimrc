@@ -85,6 +85,7 @@ Plug 'moll/vim-bbye'
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'voldikss/vim-floaterm'
 Plug 'roxma/vim-tmux-clipboard'
+Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 " }}}
 

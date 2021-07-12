@@ -25,7 +25,7 @@ export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export NVM_DIR=$HOME/.nvm
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  --no-use # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -41,17 +41,18 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt prompt_subst              # enable parameter expansion, command substitution, and arithmetic expansion in the prompt
-setopt transient_rprompt         # only show the rprompt on the current prompt
-autoload colors; colors
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt prompt_subst           # enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+setopt transient_rprompt      # only show the rprompt on the current prompt
+autoload colors
+colors
 
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
@@ -85,10 +86,14 @@ export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
     --preview '(highlight -O ansi -l {} 2> /dev/null || bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'
     --color=dark
-    --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
-    --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef
+    --color=fg:-1,bg:-1,hl:#8957e5,fg+:#E4E6EB,bg+:#0d1117,hl+:#8957e5
+    --color=info:#3fb950,prompt:#1f6feb,pointer:#f85149,marker:#6e7681,spinner:#1f6feb,header:#1f6feb
     --bind tab:down --cycle
 "
+# OneDark
+# --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
+# --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef
+
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||  bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
@@ -108,34 +113,35 @@ eval "$(hub alias -s)"
 # [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # ssh-agent Management
-if [ -f ~/.ssh/agent.env ] ; then
-    . ~/.ssh/agent.env > /dev/null
-    if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1; then
+if [ -f ~/.ssh/agent.env ]; then
+    . ~/.ssh/agent.env >/dev/null
+    if ! kill -0 $SSH_AGENT_PID >/dev/null 2>&1; then
         echo "Stale agent file found. Spawning new agent… "
-        eval `ssh-agent | tee ~/.ssh/agent.env`
+        eval $(ssh-agent | tee ~/.ssh/agent.env)
         ssh-add
     fi
 else
     echo "Starting ssh-agent"
-    eval `ssh-agent | tee ~/.ssh/agent.env`
+    eval $(ssh-agent | tee ~/.ssh/agent.env)
     ssh-add
 fi
 
-if [ -n "$DESKTOP_SESSION" ];then
+if [ -n "$DESKTOP_SESSION" ]; then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
 fi
 
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
 
 #   ---------------------------------------
 #   4.  ZSH Plugin Manager
 #   ---------------------------------------
 
-if [[ ! -f ~/.zpm/zpm.zsh  ]]; then
-      git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+    git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
 fi
 source ~/.zpm/zpm.zsh
 
@@ -154,5 +160,5 @@ if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 export PATH="$HOME/.poetry/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    eval "$(pyenv init -)"
 fi
