@@ -28,6 +28,7 @@ source ~/.intellimacs/hybrid.vim
 inoremap jj <Esc>
 inoremap kk <Esc>
 
+nnoremap <silent><esc><esc> :noh<CR><esc>
 nnoremap gD        :action SmartSearchAction<CR>
 nnoremap gh        :action QuickImplementations<CR>
 nnoremap <space>jl :action AceLineAction<CR>

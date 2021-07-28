@@ -30,7 +30,7 @@
   "workbench.panel.defaultLocation": "bottom",
   "workbench.editorAssociations": {
     "*.json": "default",
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "editor.fontFamily": "JetBrains Mono",
   "workbench.editor.tabSizing": "shrink",
@@ -1583,5 +1583,10 @@
     ".quick-input-widget .quick-input-title": "font-family: JetBrains Mono !important",
     "[id='workbench.view.explorer'] .monaco-icon-label.folder-icon > .monaco-icon-label-container > .monaco-icon-name-container > .label-name": "font-weight: 900; filter: brightness(1.2);",
     "[id='workbench.view.explorer'] .pane-body .mac": "font-family: 'JetBrains Mono'; font-size: 13px;"
+  },
+  "redhat.telemetry.enabled": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
   },
 }
