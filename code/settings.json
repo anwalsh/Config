@@ -53,6 +53,8 @@
   "editor.showFoldingControls": "mouseover",
   "python.insidersChannel": "off",
   "editor.minimap.enabled": false,
+  "editor.suggest.preview": true,
+  "editor.bracketPairColorization.enabled": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
   "todo-tree.tree.showScanModeButton": false,
@@ -71,7 +73,7 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true,
+      "source.organizeImports": true
     },
     "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnSave": true,
@@ -146,16 +148,6 @@
       "source.organizeImports": true
     }
   },
-  "go.autocompleteUnimportedPackages": true,
-  "go.buildOnSave": "package",
-  "go.formatTool": "goimports",
-  "go.lintFlags": ["--fast"],
-  "go.lintOnSave": "package",
-  "go.lintTool": "golangci-lint",
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-  "go.useLanguageServer": true,
-  "go.vetOnSave": "package",
   "go.docsTool": "gogetdoc",
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
@@ -177,12 +169,34 @@
   "eslint.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "json", "vue"],
   "files.associations": {
+    "*.end": "shellscript",
     "*.jira": "confluence",
     "*.json": "json",
     "*.sublime-keymap": "json",
     "*.textbundle": "markdown",
     ".ackrc": "shellscript",
-    ".spacemacs": "lisp"
+    ".cvimrc": "viml",
+    ".env": "env",
+    ".env-example": "env",
+    ".gitignore_global": "gitignore",
+    ".ideavimrc": "viml",
+    ".prettierrc": "yaml",
+    ".spacemacs": "lisp",
+    ".surfingkeysrc": "javascript",
+    "keybindings.json": "jsonc",
+    "settings.json": "jsonc"
+  },
+  "files.autoSave": "off",
+  "files.defaultLanguage": "txt",
+  "files.exclude": {
+    "**/*.zwc*": true,
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.git": false,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.zcompdump": true,
+    "**/.zsh_history": true
   },
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -213,6 +227,29 @@
   "gitlens.views.search.location": "gitlens",
   "errorLens.followCursor": "activeLine",
   "guides.active.gutter": true,
+  "go.autocompleteUnimportedPackages": true,
+  "go.buildOnSave": "package",
+  "go.coverOnTestPackage": false,
+  "go.formatTool": "goimports",
+  "go.lintFlags": ["--fast"],
+  "go.lintOnSave": "package",
+  "go.lintTool": "golangci-lint",
+  "go.toolsManagement.autoUpdate": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+  "go.useLanguageServer": true,
+  "go.vetOnSave": "package",
+  "gopls": {
+    "gofumpt": true
+  },
+  "indentRainbow.colors": [
+    "rgba(98, 114, 164, 0.1)",
+    "rgba(98, 114, 164, 0.2)",
+    "rgba(98, 114, 164, 0.3)",
+    "rgba(98, 114, 164, 0.4)",
+    "rgba(98, 114, 164, 0.5)"
+  ],
+  "indentRainbow.includedLanguages": ["python"],
   "python.formatting.provider": "black",
   "python.linting.pylintArgs": ["--errors-only"],
   "python.autoComplete.addBrackets": true,
@@ -225,7 +262,32 @@
   "python.formatting.blackPath": "/home/andy/.local/bin/black",
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.experiments.optInto": ["pythonDiscoveryModuleWithoutWatcher"],
+  "python.logging.level": "info",
+  "python.sortImports.path": "/home/andy/.pyenv/shims/isort",
   "autoDocstring.docstringFormat": "google",
+  "projectManager.git.baseFolders": ["~/GitLocal/"],
+  "projectManager.git.ignoredFolders": [
+    "node_modules",
+    "out",
+    "typings",
+    "test",
+    ".haxelib",
+    ".zinit",
+    "rust-lang-book"
+  ],
+  "projectManager.git.maxDepthRecursion": 4,
+  "projectManager.groupList": true,
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  "projectManager.showProjectNameInStatusBar": true,
+  "projectManager.sortList": "Saved",
+  "search.exclude": {
+    "**/.git": true,
+    "yarn-error.log": true,
+    "yarn.lock": true
+  },
   "rust-analyzer.highlightingOn": true,
   "vim.easymotionMarkerBackgroundColor": "#f78ae0",
   "vim.easymotionMarkerForegroundColorOneChar": "#f78ae0",
@@ -280,16 +342,7 @@
   "files.trimTrailingWhitespace": true,
   "extensions.autoCheckUpdates": false,
   "window.zoomLevel": 0,
-  "projectManager.git.baseFolders": ["~/GitLocal/"],
-  "projectManager.git.ignoredFolders": [
-    "node_modules",
-    "out",
-    "typings",
-    "test",
-    ".haxelib",
-    ".zinit",
-    "rust-lang-book"
-  ],
+
   "advancedNewFile.exclude": {
     "__pycache__": true,
     "build": true,
@@ -321,12 +374,6 @@
     "default": true
   },
   "java.semanticHighlighting.enabled": true,
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.commandsToSkipShell": ["vspacecode.space"],
   "multiCommand.commands": [
@@ -1564,16 +1611,21 @@
   },
   "python.analysis.typeCheckingMode": "basic",
   "pylance.insidersChannel": "daily",
-  "go.toolsManagement.autoUpdate": true,
+  "todo-tree.filtering.includeHiddenFiles": true,
   "todo-tree.general.tags": [
     "BUG",
     "HACK",
     "FIXME",
     "TODO",
+    "REFACTOR",
     "XXX",
     "[ ]",
     "[x]"
   ],
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true
+  },
+  "todo-tree.regex.enableMultiLine": true,
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "security.workspace.trust.untrustedFiles": "open",
   "customizeUI.stylesheet": {
@@ -1588,5 +1640,5 @@
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
-  },
+  }
 }

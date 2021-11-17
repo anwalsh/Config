@@ -28,7 +28,6 @@ source ~/.intellimacs/hybrid.vim
 inoremap jj <Esc>
 inoremap kk <Esc>
 
-nnoremap <silent><esc><esc> :noh<CR><esc>
 nnoremap gD        :action SmartSearchAction<CR>
 nnoremap gh        :action QuickImplementations<CR>
 nnoremap <space>jl :action AceLineAction<CR>
@@ -58,6 +57,9 @@ vnoremap <leader>ji :action FileStructurePopup<CR>
 nnoremap <leader>jI :action GotoSymbol<CR>
 vnoremap <leader>jI :action GotoSymbol<CR>
 nnoremap <leader>jr :action FindUsages<CR>
+
+" clear highlight
+nnoremap <C-L>  :noh<CR>
 
 " Focus next window
 nnoremap <leader>w<TAB> :action NextSplitter<CR>
