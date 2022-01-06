@@ -57,7 +57,7 @@ colors
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Plugins for ZSH
-plugins=(tmux git zsh-completions docker golang python kubectl npm pip vagrant history rust rustup cargo terraform zsh-syntax-highlighting z)
+plugins=(tmux git zsh-completions docker golang python kubectl npm pip vagrant history rust terraform zsh-syntax-highlighting z docker-compose)
 # Source ZSH
 source $ZSH/oh-my-zsh.sh
 
@@ -81,15 +81,41 @@ if [ -x "$(command -v apt-get)" ] || [ -x "$(command -v dnf)" ]; then
 elif [ -x "$(command -v pacman)" ]; then
     export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 fi
+
+local background="#0b0d0f"
+local current_line="#131a20"
+local selection="#131a20"
+local foreground="#f8f8f2"
+local comment="#6272a4"
+local cyan="#8be9fd"
+local green="#50fa7b"
+local orange="#ffb86c"
+local pink="#ff79c6"
+local purple="#bd93f9"
+local red="#ff5555"
+local yellow="#f1fa8c"
+
 export FZF_COMPLETION_TRIGGER='**'
+# For Dracula
 export FZF_DEFAULT_OPTS="
-    --height 40% --layout=reverse --border
-    --preview '(highlight -O ansi -l {} 2> /dev/null || bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'
-    --color=dark
-    --color=fg:-1,bg:-1,hl:#8957e5,fg+:#E4E6EB,bg+:#0d1117,hl+:#8957e5
-    --color=info:#3fb950,prompt:#1f6feb,pointer:#f85149,marker:#6e7681,spinner:#1f6feb,header:#1f6feb
-    --bind tab:down --cycle
+  --height 40%
+  --layout=reverse
+  --border
+  --preview '(highlight -O ansi -l {} 2> /dev/null || bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'
+  --color=dark
+  --color fg:-1,bg:$background,hl:$green,fg+:$foreground,bg+:$current_line,hl+:$pink
+  --color info:$comment,prompt:$green,spinner:$green,pointer:$cyan,marker:$pink,header:$purple
+  --bind tab:down
+  --cycle
 "
+# export FZF_DEFAULT_OPTS="
+#     --height 40% --layout=reverse --border
+#     --preview '(highlight -O ansi -l {} 2> /dev/null || bat --style=numbers --color=always {} || tree -C {}) 2> /dev/null | head -200'
+#     --color=dark
+#     --color=fg:-1,bg:-1,hl:#8957e5,fg+:#E4E6EB,bg+:#0d1117,hl+:#8957e5
+#     --color=info:#3fb950,prompt:#1f6feb,pointer:#f85149,marker:#6e7681,spinner:#1f6feb,header:#1f6feb
+#     --bind tab:down --cycle
+# "
 # OneDark
 # --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe
 # --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef
