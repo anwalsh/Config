@@ -1730,7 +1730,7 @@
   },
   {
     "command": "workbench.action.terminal.toggleTerminal",
-    "key": "ctrl+'"
+    "key": "ctrl+escape"
   },
   {
     "key": "ctrl+tab",

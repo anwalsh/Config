@@ -39,7 +39,7 @@
   "terminal.integrated.fontFamily": "SauceCodePro NF",
   "editor.fontSize": 16,
   "rust-client.updateOnStartup": true,
-  "terminal.external.linuxExec": "kitty",
+  "terminal.external.linuxExec": "alacritty",
   "editor.lineNumbers": "relative",
   "editor.rulers": [100],
   "rust-analyzer.enableCargoWatchOnStartup": "enabled",
@@ -266,7 +266,6 @@
   "python.analysis.diagnosticMode": "workspace",
   "python.experiments.optInto": ["pythonDiscoveryModuleWithoutWatcher"],
   "python.logging.level": "info",
-  "python.sortImports.path": "/home/andy/.pyenv/shims/isort",
   "autoDocstring.docstringFormat": "google",
   "projectManager.git.baseFolders": ["~/GitLocal/"],
   "projectManager.git.ignoredFolders": [
