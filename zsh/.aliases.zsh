@@ -37,7 +37,8 @@ alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
 alias aptup="sudo apt-get update && sudo apt-get upgrade"
 alias audioswap="~/GitLocal/scripts/audio-switch.sh"
 alias kubectx="kubectl ctx"
-alias starup="curl -fsSL https://starship.rs/install.sh | bash"
+alias starup="curl -fsSL https://starship.rs/install.sh | sh"
+alias starup='sh -c "$(curl -fsSL https://starship.rs/install.sh)"'
 alias norg="gron --ungron"
 alias ungron="gron --ungron"
 
