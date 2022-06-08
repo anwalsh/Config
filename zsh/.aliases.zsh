@@ -104,5 +104,4 @@ alias mountReadWrite='/sbin/mount -uw /' # mountReadWrite:   For use when booted
 #   5.  MISC CONFIG
 #   ---------------------------------------
 
-alias sshnds='/opt/scripts/nds-ssh.sh'
 alias oplogin='eval $(op signin my)\r'

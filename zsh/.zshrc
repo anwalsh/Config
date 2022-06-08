@@ -66,10 +66,6 @@ source ~/.zsh/.secret_zsh
 source ~/Config/zsh/.functions.zsh
 source ~/Config/zsh/.aliases.zsh
 
-# Source FZF
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
-
 #   ---------------------------------------
 #   2.  FZF Config.
 #   ---------------------------------------
@@ -152,10 +148,10 @@ else
     ssh-add
 fi
 
-if [ -n "$DESKTOP_SESSION" ]; then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
+# if [ -n "$DESKTOP_SESSION" ]; then
+#     eval $(gnome-keyring-daemon --start)
+#     export SSH_AUTH_SOCK
+# fi
 
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 
