@@ -119,7 +119,7 @@
 		"when": "inFileBrowser"
 	},
 	{
-		"key": "ctrl+x left",
+		"key": "ctrl+x h",
 		"command": "workbench.action.previousEditor"
 	},
 	{
@@ -127,7 +127,7 @@
 		"command": "-workbench.action.previousEditor"
 	},
 	{
-		"key": "ctrl+x right",
+		"key": "ctrl+x l",
 		"command": "workbench.action.nextEditor"
 	},
 	{
@@ -149,5 +149,21 @@
 	{
 		"key": "ctrl+x right",
 		"command": "workbench.action.navigateRight"
+	},
+	{
+		"key": "ctrl+x n",
+		"command": "workbench.action.nextEditorInGroup"
+	},
+	{
+		"key": "cmd+k alt+cmd+right",
+		"command": "-workbench.action.nextEditorInGroup"
+	},
+	{
+		"key": "ctrl+x p",
+		"command": "workbench.action.previousEditorInGroup"
+	},
+	{
+		"key": "cmd+k alt+cmd+left",
+		"command": "-workbench.action.previousEditorInGroup"
 	}
 ]
