@@ -63,6 +63,8 @@
   "editor.minimap.enabled": false,
   "editor.suggest.preview": true,
   "editor.bracketPairColorization.enabled": true,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "git.mergeEditor": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
   "editor.wordWrap": "off",
@@ -260,7 +262,6 @@
   "json.trace.server": "verbose",
   "jupyter.askForKernelRestart": false,
   "jupyter.sendSelectionToInteractiveWindow": false,
-  "pylance.insidersChannel": "daily",
   "python.linting.pylintArgs": ["--errors-only"],
   "python.autoComplete.addBrackets": true,
   "python.linting.flake8Enabled": false,
@@ -1865,7 +1866,7 @@
       "before": ["k", "k"]
     }
   ],
-  "vim.leader": ";",
+  "vim.leader": ",",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
@@ -2151,5 +2152,5 @@
       ]
     }
   ],
-  "window.titleBarStyle": "native",
+  "window.titleBarStyle": "custom",
 }

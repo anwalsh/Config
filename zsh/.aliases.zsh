@@ -32,13 +32,8 @@ alias path='echo -e ${PATH//:/\\n}'       # path: Echo all executable Paths
 alias show_options='shopt'                # Show_options: display bash options settings
 alias fix_stty='stty sane'                # fix_stty: Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On' # cic: Make tab-completion case-insensitive
-alias xclip='xclip -i'
 alias ts2date="perl -wE 'say scalar(gmtime(shift() >> 32))'"
-alias aptup="sudo apt-get update && sudo apt-get upgrade"
-alias audioswap="~/GitLocal/scripts/audio-switch.sh"
 alias kubectx="kubectl ctx"
-alias starup="curl -fsSL https://starship.rs/install.sh | sh"
-alias starup='sh -c "$(curl -fsSL https://starship.rs/install.sh)"'
 alias norg="gron --ungron"
 alias ungron="gron --ungron"
 

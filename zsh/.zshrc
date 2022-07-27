@@ -148,11 +148,6 @@ else
     ssh-add
 fi
 
-# if [ -n "$DESKTOP_SESSION" ]; then
-#     eval $(gnome-keyring-daemon --start)
-#     export SSH_AUTH_SOCK
-# fi
-
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 
 export N_PREFIX="$HOME/n"
@@ -185,3 +180,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
 fi
+
+fpath[1,0]=$HOME/.zsh/completion
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
