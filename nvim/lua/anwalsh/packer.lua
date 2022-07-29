@@ -30,6 +30,12 @@ return require("packer").startup(function(use)
     -- use("akinsho/bufferline.nvim")
     use("noib3/nvim-cokeline")
     use("beauwilliams/focus.nvim")
+    use({
+        "stevearc/stickybuf.nvim",
+        config = function()
+            require("stickybuf").setup()
+        end,
+    })
 
     use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" }, "nvim-lua/popup.nvim" } })
     use("nvim-telescope/telescope-github.nvim")
