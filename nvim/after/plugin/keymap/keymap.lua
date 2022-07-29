@@ -35,5 +35,12 @@ nnoremap("<leader>wh", "<C-w>h")
 nnoremap("<leader>wo", ":only<CR>")
 -- Better Visual mode Indention
 vnoremap(">", ">gv")
-vnoremap(">", "<gv")
-
+vnoremap("<", "<gv")
+-- Neogit
+if not pcall(require, "neogit") then
+    return
+else
+    local neogit = require("neogit")
+    nnoremap("gl", neogit.popups.pull.create)
+    nnoremap("gl", neogit.popups.push.create)
+end

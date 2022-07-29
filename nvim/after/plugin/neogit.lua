@@ -4,7 +4,7 @@ require("neogit").setup {
         item = {"﬒", ""},
     },
     commit_popup = {
-        kind = "split",
+        kind = "tab",
     },
     integrations = {
         diffview = true

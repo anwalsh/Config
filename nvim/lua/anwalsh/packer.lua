@@ -58,7 +58,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
     use("hrsh7th/cmp-emoji")
-    use("octaltree/cmp-look") -- TODO: Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
+    use("octaltree/cmp-look") -- TODO Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
     use("ray-x/cmp-treesitter")
     use("williamboman/nvim-lsp-installer")
     -- use("williamboman/mason-lspconfig.nvim") --TODO Does this work? How does it work?
