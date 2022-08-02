@@ -1,5 +1,8 @@
 local lspconfig = require "lspconfig"
 
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(binding, cmd)
     local opts = { noremap = true, silent = true }
@@ -37,6 +40,10 @@ vim.diagnostic.config { float = { source = "always" } }
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require("mason-lspconfig").setup({
+    ensure_installed = { "sumneko_lua" }
+})
 
 -------------------------------------------------------------------------------
 -- gopls
@@ -107,15 +114,35 @@ require("rust-tools").setup {
 }
 
 -------------------------------------------------------------------------------
+-- lua
+-------------------------------------------------------------------------------
+lspconfig.sumneko_lua.setup {
+    capabilities = capabilities,
+    flags = { debounce_text_changes = 200 },
+    on_attach = on_attach
+}
+
+-------------------------------------------------------------------------------
+-- ccls
+-------------------------------------------------------------------------------
+lspconfig.ccls.setup {
+    capabilites = capabilities,
+    flags = { debounce_text_changes = 200 },
+    on_attach = on_attach,
+}
+-------------------------------------------------------------------------------
 -- pyright
 -------------------------------------------------------------------------------
--- lspconfig.pyright.setup {
---     capabilites = capabilities,
---     flags = { debounce_text_changes = 200 },
---     on_attach = on_asttach,
---     settings = {},
--- }
+lspconfig.pyright.setup {
+    capabilites = capabilities,
+    flags = { debounce_text_changes = 200 },
+    on_attach = on_attach,
+    settings = {},
+}
 
+-------------------------------------------------------------------------------
+-- misc 
+-------------------------------------------------------------------------------
 -- lsp-trouble.nvim
 require("trouble").setup {
   auto_preview = false,

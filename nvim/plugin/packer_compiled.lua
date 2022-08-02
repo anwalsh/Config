@@ -225,6 +225,16 @@ _G.packer_plugins = {
     path = "/Users/andy/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   neogen = {
     loaded = true,
     path = "/Users/andy/.local/share/nvim/site/pack/packer/start/neogen",
@@ -494,9 +504,9 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.api.nvim_set_keymap("", "gS", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gS', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "<Plug>(git-messenger)", "<cmd>lua require('packer.load')({'git-messenger.vim'}, { keys = '<lt>Plug>(git-messenger)', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "gJ", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gJ', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "<Plug>(git-messenger)", "<cmd>lua require('packer.load')({'git-messenger.vim'}, { keys = '<lt>Plug>(git-messenger)', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "gS", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gS', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -504,16 +514,13 @@ vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-prettier'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType json ++once lua require("packer.load")({'vim-json'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-prettier'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], true)
-vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]]
-time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], false)
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]], true)
 vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]]
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]], false)
@@ -562,6 +569,9 @@ time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/pack
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]], true)
 vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]]
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]], false)
+time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], true)
+vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]]
+time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 

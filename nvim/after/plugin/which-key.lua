@@ -22,11 +22,11 @@ wk.register({
     ["<leader>"] = {
         ["b"] = {
             name = "+buffer",
+            b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
             n = { "<cmd>bn<cr>", "Next Buffer" },
             p = { "<cmd>bp<cr>", "Previous Buffer" },
-            d = { 
+            d = {
                 name = "delete",
-                d = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
                 c = { "<Cmd>BufferLinePickClose<CR>", "Choose Buffer to Delete" },
                 d = { "<Cmd>BDelete this<CR>", "Delete Current Buffer" },
                 h = { "<Cmd>BDelete! hidden<CR>", "Delete Hidden Buffers" },
@@ -37,9 +37,8 @@ wk.register({
         },
         ["f"] = {
             name = "+file",
+            b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
-            s = { "<cmd>Telescope grep_string<cr>", "Find String" },
-            b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
         },
         ["g"] = {
@@ -85,6 +84,7 @@ wk.register({
                   end,
                   "Goto Symbol",
                 },
+            w = { "<cmd>Telescope grep_string<cr>", "Find String" },
             h = { "<cmd>Telescope command_history<cr>", "Command History" },
             m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
         },
@@ -123,5 +123,5 @@ wk.register({
             name = "+settings",
             -- TODO set this up
         },
-    },
+   },
 })

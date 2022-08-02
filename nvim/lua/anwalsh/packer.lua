@@ -64,6 +64,8 @@ return require("packer").startup(function(use)
     use("romainl/vim-qf") -- QuickFix Window helper
     use("andymass/vim-matchup")
     use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } })
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
 
     -- Text Manipulation
     use("junegunn/vim-easy-align")
