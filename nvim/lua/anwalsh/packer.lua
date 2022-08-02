@@ -20,12 +20,12 @@ return require("packer").startup(function(use)
     use("kyazdani42/nvim-web-devicons")
     use("stevearc/aerial.nvim")
     use("luukvbaal/stabilize.nvim")
-    use({
-        "stevearc/stickybuf.nvim",
-        config = function()
-            require("stickybuf").setup()
-        end,
-    })
+    -- use({
+    --     "stevearc/stickybuf.nvim",
+    --     config = function()
+    --         require("stickybuf").setup()
+    --     end,
+    -- })
     use("onsails/lspkind-nvim")
     use("nvim-telescope/telescope-file-browser.nvim")
 
