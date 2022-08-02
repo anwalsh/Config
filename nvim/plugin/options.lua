@@ -85,7 +85,6 @@ opt.colorcolumn = "80"
 --   1. :center, :left, :right
 --   2. gw{motion} - Put cursor back after formatting motion.
 --
--- TODO: w, {v, b, l}
 opt.formatoptions = opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.

@@ -1,66 +1,138 @@
-local Remap = require("anwalsh.keymap")
-local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
+local lspconfig = require "lspconfig"
 
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(binding, cmd)
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, "n", binding, cmd, opts)
+  end
+-- keybindings
+  buf_set_keymap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  buf_set_keymap("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+  buf_set_keymap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  buf_set_keymap("gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+  buf_set_keymap("gR", "<cmd>lua vim.lsp.buf.references()<CR>")
+  buf_set_keymap("gs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
+  buf_set_keymap("gw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+  buf_set_keymap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  buf_set_keymap("ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  buf_set_keymap("gr", "<cmd>lua vim.lsp.buf.rename()<CR>")
+  buf_set_keymap("g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+  buf_set_keymap("g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+  buf_set_keymap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 
-require("nvim-lsp-installer").setup {
-    automatic_installation = true,
-    ensure_installed = { "sumneko_lua", "gopls", "rust_analyzer", "pyright", "tsserver", "ccls" },
-}
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function()
-			nnoremap("gd", function() vim.lsp.buf.definition() end)
-			nnoremap("K", function() vim.lsp.buf.hover() end)
-			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
-			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
-			nnoremap("[d", function() vim.diagnostic.goto_next() end)
-			nnoremap("]d", function() vim.diagnostic.goto_prev() end)
-			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
-			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
-			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
-		end,
-	}, _config or {})
+  local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+  if filetype == "rust" then
+    buf_set_keymap("gle", "<cmd>lua vim.lsp.codelens.refresh()<CR>")
+    buf_set_keymap("glr", "<cmd>lua vim.lsp.codelens.run()<CR>")
+  elseif filetype == "go" then
+    -- gopls requires a require to list workspace arguments.
+    buf_set_keymap(
+      "fs",
+      "lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.input('Query: ')"
+    )
+  end
 end
 
-require'lspconfig'.ltex.setup{}
+vim.diagnostic.config { float = { source = "always" } }
 
-require("lspconfig").pyright.setup(config())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("lspconfig").tsserver.setup(config())
-
-require("lspconfig").sumneko_lua.setup(config())
-
-require("lspconfig").ccls.setup(config())
-
-require("lspconfig").gopls.setup(config({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-}))
-
-local opts = {
-	-- whether to highlight the currently hovered symbol
-	-- disable if your cpu usage is higher than you want it
-	-- or you just hate the highlight
-	-- default: true
-	highlight_hovered_item = true,
-
-	-- whether to show outline guides
-	-- default: true
-	show_guides = true,
+-------------------------------------------------------------------------------
+-- gopls
+-------------------------------------------------------------------------------
+lspconfig.gopls.setup {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 200 },
+  on_attach = on_attach,
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      buildFlags = { "-tags=debug" },
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      experimentalPostfixCompletions = true,
+      hints = {
+        parameterNames = true,
+        assignVariableTypes = true,
+        constantValues = true,
+        rangeVariableTypes = true,
+        compositeLiteralTypes = true,
+        compositeLiteralFields = true,
+        functionTypeParameters = true,
+      },
+    },
+  },
 }
+
+-------------------------------------------------------------------------------
+-- rust-analyzer
+-------------------------------------------------------------------------------
+require("rust-tools").setup {
+  tools = {
+    autoSetHints = true,
+    runnables = { use_telescope = true },
+    inlay_hints = {
+      show_parameter_hints = true,
+      highlight = "Whitespace",
+    },
+    hover_actions = { auto_focus = true },
+    executor = {
+      execute_command = function(command, args)
+        vim.cmd("T " .. require("rust-tools.utils.utils").make_command_from_args(command, args))
+      end,
+    },
+  },
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 200,
+    },
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+        },
+        completion = {
+          autoimport = {
+            enable = true,
+          },
+        },
+      },
+    },
+  },
+}
+
+-------------------------------------------------------------------------------
+-- pyright
+-------------------------------------------------------------------------------
+-- lspconfig.pyright.setup {
+--     capabilites = capabilities,
+--     flags = { debounce_text_changes = 200 },
+--     on_attach = on_asttach,
+--     settings = {},
+-- }
+
+-- lsp-trouble.nvim
+require("trouble").setup {
+  auto_preview = false,
+  auto_close = true,
+  action_keys = {
+    -- default binding is <esc> for this and it confuses me endlessly that I
+    -- can't just escape in that window.
+    cancel = {},
+  },
+}
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>xx",
+  "<cmd>TroubleToggle workspace_diagnostics<cr>",
+  { silent = true, noremap = true }
+)
 
 -- Icons
 local signs = {

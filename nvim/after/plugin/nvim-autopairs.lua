@@ -1,6 +1,10 @@
+if not pcall(require, "nvim-autopairs") then
+  return
+end
+
 require("nvim-autopairs").setup({
 	map_cr = true,
-	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
+	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input", "markdown", "txt" },
 })
 
 local npairs = require("nvim-autopairs")

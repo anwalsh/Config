@@ -2153,4 +2153,5 @@
     }
   ],
   "window.titleBarStyle": "custom",
+  "Lua.telemetry.enable": true,
 }

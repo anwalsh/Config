@@ -1,3 +1,7 @@
+if not pcall(require, "gitsigns") then
+  return
+end
+
 local hi = vim.highlight.create
 local global_colors = require("anwalsh.global_colors")
 

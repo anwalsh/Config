@@ -1,3 +1,7 @@
+if not pcall(require, "lualine") then
+  return
+end
+
 local gps = require("nvim-gps")
 local lualine = require("lualine")
 
