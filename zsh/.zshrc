@@ -57,7 +57,7 @@ colors
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Plugins for ZSH
-plugins=(tmux git zsh-completions docker golang python kubectl npm pip vagrant history rust terraform zsh-syntax-highlighting z docker-compose)
+plugins=(tmux git zsh-completions docker golang python kubectl npm pip vagrant history rust terraform zsh-syntax-highlighting docker-compose)
 # Source ZSH
 source $ZSH/oh-my-zsh.sh
 

@@ -101,6 +101,7 @@ return require("packer").startup(function(use)
     use("nvim-telescope/telescope-project.nvim")
     use("crispgm/telescope-heading.nvim")
     use("dhruvmanila/telescope-bookmarks.nvim")
+    use("jvgrootveld/telescope-zoxide")
 
     -- Language/Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -111,6 +112,12 @@ return require("packer").startup(function(use)
     use({"simrat39/rust-tools.nvim"})
     use("folke/lua-dev.nvim")
     use({"elzr/vim-json", ft = "json"})
+
+    -- Debug Adapater
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui")
+    use("theHamsta/nvim-dap-virtual-text")
+    use("nvim-telescope/telescope-dap.nvim")
 
     -- Doc Strings
     use("danymat/neogen")

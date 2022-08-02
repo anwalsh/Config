@@ -96,7 +96,7 @@ require("telescope").setup({
         },
         project = {
           base_dirs = {
-            '~/GitLocal',
+            '~/GitLocal/github.com/',
           },
           hidden_files = true, -- default: false
           theme = "dropdown"
@@ -111,6 +111,7 @@ require("telescope").load_extension("heading")
 require("telescope").load_extension("project")
 require("telescope").load_extension("aerial")
 require('telescope').load_extension('octo')
+require('telescope').load_extension('zoxide')
 -- require("telescope").load_extension("git_worktree")
 
 -- Appearance

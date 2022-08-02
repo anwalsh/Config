@@ -40,6 +40,7 @@ wk.register({
             b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+            z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
         },
         ["g"] = {
             name = "+git",

@@ -270,6 +270,21 @@ _G.packer_plugins = {
     path = "/Users/andy/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
   ["nvim-gps"] = {
     loaded = true,
     path = "/Users/andy/.local/share/nvim/site/pack/packer/start/nvim-gps",
@@ -348,6 +363,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/andy/.local/share/nvim/site/pack/packer/start/telescope-bookmarks.nvim",
     url = "https://github.com/dhruvmanila/telescope-bookmarks.nvim"
+  },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/Users/andy/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -504,8 +524,8 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.api.nvim_set_keymap("", "gJ", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gJ', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<Plug>(git-messenger)", "<cmd>lua require('packer.load')({'git-messenger.vim'}, { keys = '<lt>Plug>(git-messenger)', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "gJ", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gJ', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "gS", "<cmd>lua require('packer.load')({'splitjoin.vim'}, { keys = 'gS', prefix = '' }, _G.packer_plugins)<cr>", { noremap = true, silent = true })
 time([[Defining lazy-load keymaps]], false)
 
