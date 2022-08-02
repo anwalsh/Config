@@ -39,6 +39,7 @@ wk.register({
             name = "+file",
             b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
+            n = { "<cmd>enew<cr>", "New File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
             z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
         },
@@ -59,7 +60,8 @@ wk.register({
               end,
               "LazyGit",
             },
-            G = {
+            d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
+            ["G"] = {
                 name = "Octo",
                 b = { "<Cmd>Octo repo browser<cr>", "Open repo in browser" },
                 g = { "<Cmd>Octo gist list<cr>", "List gists" },
@@ -88,6 +90,13 @@ wk.register({
             w = { "<cmd>Telescope grep_string<cr>", "Find String" },
             h = { "<cmd>Telescope command_history<cr>", "Command History" },
             m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
+        },
+        ["t"] = {
+            name = "+text",
+            s = { "<cmd>lua require'spectre'.open()<cr>", "Spectre UI Menu" },
+            c = { "<cmd>lua require'spectre'.open_visual({select_word=true})<cr>", "Spectre Current" },
+            w = { "<cmd>lua require'spectre'.open_visual()<cr>", "Spectre Current Word" },
+            f = { "<cmd>lua require'spectre'.open_file_search()<cr>", "Spectre File Search" },
         },
         u = { "<cmd>UndotreeToggle<cr>", "undo Tree" },
         ["w"] = {
@@ -124,5 +133,13 @@ wk.register({
             name = "+settings",
             -- TODO set this up
         },
-   },
+        ["x"] = {
+            name = "+errors",
+            x = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble" },
+            t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
+            T = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
+            l = { "<cmd>lopen<cr>", "Open Location List" },
+            q = { "<cmd>copen<cr>", "Open Quickfix List" },
+        },
+    },
 })
