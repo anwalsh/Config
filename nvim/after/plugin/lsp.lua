@@ -54,6 +54,7 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   settings = {
     gopls = {
+      gofumpt = true,
       completeUnimported = true,
       buildFlags = { "-tags=debug" },
       analyses = {
@@ -73,6 +74,11 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+-------------------------------------------------------------------------------
+-- golangci-lint-langserver
+-------------------------------------------------------------------------------
+require'lspconfig'.golangci_lint_ls.setup{}
 
 -------------------------------------------------------------------------------
 -- rust-analyzer

@@ -140,6 +140,8 @@ return require("packer").startup(function(use)
     --         { "neovim/nvim-lspconfig" },
     --     },
     -- })
+    use({ "MTDL9/vim-log-highlighting" })
+    use({ "SidOfc/mkdx" })
         
     -- Search
     use({ "junegunn/fzf", run = "./install --all" })
