@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     -- Utility
     use("nvim-lua/plenary.nvim")
     use("mbbill/undotree")
-    use 'kazhala/close-buffers.nvim'
+    use("kazhala/close-buffers.nvim")
     use({
         "chrisbra/NrrwRgn",
         cmd = { "NarrowRegion", "NarrowWindow" },
@@ -119,6 +119,8 @@ return require("packer").startup(function(use)
     use("neovim/nvim-lspconfig")
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/vim-vsnip")
+    use("L3MON4D3/LuaSnip")
+    use("rafamadriz/friendly-snippets")
     use("saadparwaiz1/cmp_luasnip")
     use("lukas-reineke/cmp-under-comparator")
     use("hrsh7th/cmp-nvim-lsp")
@@ -142,7 +144,7 @@ return require("packer").startup(function(use)
     -- })
     use({ "MTDL9/vim-log-highlighting" })
     use({ "SidOfc/mkdx" })
-        
+
     -- Search
     use({ "junegunn/fzf", run = "./install --all" })
     use("junegunn/fzf.vim")

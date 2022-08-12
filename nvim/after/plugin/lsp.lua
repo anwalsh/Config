@@ -78,7 +78,11 @@ lspconfig.gopls.setup {
 -------------------------------------------------------------------------------
 -- golangci-lint-langserver
 -------------------------------------------------------------------------------
-require'lspconfig'.golangci_lint_ls.setup{}
+require'lspconfig'.golangci_lint_ls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = { debounce_text_changes = 200 },
+}
 
 -------------------------------------------------------------------------------
 -- rust-analyzer
@@ -136,6 +140,7 @@ lspconfig.ccls.setup {
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
 }
+
 -------------------------------------------------------------------------------
 -- pyright
 -------------------------------------------------------------------------------
@@ -143,7 +148,40 @@ lspconfig.pyright.setup {
     capabilites = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
-    settings = {},
+    settings = {
+        typeCheckingMode = "basic",
+    }
+}
+
+-------------------------------------------------------------------------------
+-- pylsp 
+-------------------------------------------------------------------------------
+require'lspconfig'.pylsp.setup{
+    capabilities = capabilities,
+    flags = { debounce_text_changes = 200 },
+    on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                -- pyflakes = { enabled = false },
+                pylint = { enabled = true },
+                pycodestyle = {
+                      ignore = {'W391'},
+                      maxLineLength = 100
+                },
+                black = {
+                    enabled = true,
+                    maxLineLength = 100
+                },
+                yapf = {
+                    enabled = false,
+                },
+                flake8 = {
+                    enabled = false,
+                },
+            }
+        }
+    }
 }
 
 -------------------------------------------------------------------------------

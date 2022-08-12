@@ -263,6 +263,8 @@
   "jupyter.askForKernelRestart": false,
   "jupyter.sendSelectionToInteractiveWindow": false,
   "python.linting.pylintArgs": ["--errors-only"],
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true,
   "python.autoComplete.addBrackets": true,
   "python.linting.flake8Enabled": false,
   "python.linting.pylintUseMinimalCheckers": false,

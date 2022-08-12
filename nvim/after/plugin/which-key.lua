@@ -16,7 +16,7 @@ wk.register({
     ["7"] = { [[<Plug>(cokeline-focus-7)]], "which_key_ignore" },
     ["8"] = { [[<Plug>(cokeline-focus-8)]], "which_key_ignore" },
     ["9"] = { [[<Plug>(cokeline-focus-9)]], "which_key_ignore" },
-    [";"] = {
+    ["\\"] = {
         "<cmd>ToggleTerm<cr>", "toggleterm"
     },
     ["<leader>"] = {
@@ -34,6 +34,10 @@ wk.register({
                 o = { "<Cmd>BDelete other<CR>", "Delete Other Buffers" },
                 w = { "<Cmd>bufdo Bw<CR>", "Delete All Buffers, Keep Windows" },
             },
+        },
+        ["c"] = {
+            name = "+create",
+            d = {"<cmd>lua require('neogen').generate()<cr>", "Create Docstring"}
         },
         ["f"] = {
             name = "+file",
