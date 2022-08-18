@@ -87,7 +87,7 @@ return require("packer").startup(function(use)
     use("preservim/vim-lexical")
     use("preservim/vim-pencil")
     use("nacro90/numb.nvim")
-    
+
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" }, "nvim-lua/popup.nvim" } })
     use("nvim-telescope/telescope-github.nvim")
@@ -143,11 +143,14 @@ return require("packer").startup(function(use)
     --     },
     -- })
     use({ "MTDL9/vim-log-highlighting" })
-    use({ "SidOfc/mkdx" })
 
     -- Search
     use({ "junegunn/fzf", run = "./install --all" })
     use("junegunn/fzf.vim")
+
+    -- Markdown and Writing
+    use("SidOfc/mkdx")
+    use("jakewvincent/mkdnflow.nvim")
 
     -- Git integration
     use("lewis6991/gitsigns.nvim")

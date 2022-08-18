@@ -114,20 +114,6 @@ require('telescope').load_extension('octo')
 require('telescope').load_extension('zoxide')
 -- require("telescope").load_extension("git_worktree")
 
--- Appearance
-local colors = require("anwalsh.global_colors")
-local api = vim.api
-local hi = api.nvim_set_hl
-local ns = api.nvim_create_namespace("anwalsh")
-
-hi(ns, "TelescopeNormal", { bg = colors.background_darker })
-hi(ns, "TelescopeSelection", { bg = colors.background_dark, fg = colors.green })
-hi(ns, "TelescopeMatching", { fg = colors.orange, bg = colors.background_dark })
-hi(ns, "TelescopePreviewMatch", { fg = colors.orange, bg = colors.background_dark })
-hi(ns, "TelescopeMultiSelection", { fg = colors.orange, bg = colors.background_dark })
-hi(ns, "TelescopePromptPrefix", { fg = colors.green })
-hi(ns, "TelescopeSelection", { fg = colors.purple })
-
 local M = {}
 
 function M.reload_modules()

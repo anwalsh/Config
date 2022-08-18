@@ -79,7 +79,7 @@ opt.shada = { "!", "'1000", "<50", "s10", "h" }
 opt.mouse = "n"
 
 opt.signcolumn = "yes"
-opt.colorcolumn = "80"
+opt.colorcolumn = "100"
 
 -- Helpful related items:
 --   1. :center, :left, :right

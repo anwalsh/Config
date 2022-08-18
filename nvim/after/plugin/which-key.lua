@@ -35,8 +35,8 @@ wk.register({
                 w = { "<Cmd>bufdo Bw<CR>", "Delete All Buffers, Keep Windows" },
             },
         },
-        ["c"] = {
-            name = "+create",
+        ["d"] = {
+            name = "+docs",
             d = {"<cmd>lua require('neogen').generate()<cr>", "Create Docstring"}
         },
         ["f"] = {
@@ -70,7 +70,6 @@ wk.register({
                 ["p"] = {
                     name = "+pr",
                     p = { "<cmd>Octo pr list<cr>", "List PRs in Current Repository" },
-                    P = { "<cmd>Octo pr browser<cr>", "List PRs in Current Repository" },
                     c = { "<cmd>Octo pr changes<cr>", "List Changes on PR" },
                     d = { "<cmd>Octo pr diff<cr>", "Show PR Diff" },
                     C = { "<cmd>Octo pr checkout<cr>", "Checkout PR" },
@@ -93,6 +92,9 @@ wk.register({
                 i = { "<cmd>Octo issue list<cr>", "List Issues in GitHub" },
                 a = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
+        },
+        ["m"] = {
+            name = "+markdown",
         },
         ["p"] = {
             name = "+project",

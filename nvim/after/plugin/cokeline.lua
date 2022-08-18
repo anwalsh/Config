@@ -3,7 +3,7 @@ if not pcall(require, "cokeline") then
 end
 
 local get_hex = require("cokeline/utils").get_hex
-local palette = require("anwalsh.global_colors")
+local colors = require("anwalsh.global_colors")
 local mappings = require("cokeline/mappings")
 
 local rep = string.rep
@@ -33,8 +33,8 @@ local components = {
         or buffer.devicon.icon
     end,
     fg = function(buffer)
-      return (mappings.is_picking_focus() and palette.yellow)
-        or (mappings.is_picking_close() and palette.red)
+      return (mappings.is_picking_focus() and colors.purple)
+        or (mappings.is_picking_close() and colors.red)
         or (buffer.is_focused and buffer.devicon.color or comments_fg)
     end,
     style = function(_)
@@ -141,7 +141,7 @@ local components = {
       return buffer.is_modified and "● " or " "
     end,
     fg = function(buffer)
-      return buffer.is_modified and palette.green or nil
+      return buffer.is_modified and colors.green or nil
     end,
     delete_buffer_on_left_click = true,
     truncation = { priority = 1 },
@@ -194,7 +194,7 @@ require("cokeline").setup({
         or get_hex("Comment", "fg")
     end,
     bg = function(buffer)
-      return buffer.is_focused and "#323234" or get_hex("ColorColumn", "bg")
+      return colors.background_darker
     end,
   },
 

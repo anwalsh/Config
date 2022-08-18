@@ -174,6 +174,7 @@
   "editor.tabCompletion": "on",
   "editor.tokenColorCustomizations": {},
   "editor.codeLensFontFamily": "Inter",
+  "editorCursor.foreground": "#db2466",
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
   "eslint.enable": false,
