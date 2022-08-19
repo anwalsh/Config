@@ -41,9 +41,9 @@ vim.diagnostic.config { float = { source = "always" } }
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua" }
-})
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua-language-server", "ltex", "marksman" },
+}
 
 -------------------------------------------------------------------------------
 -- gopls
@@ -182,6 +182,26 @@ require'lspconfig'.pylsp.setup{
             }
         }
     }
+}
+
+-------------------------------------------------------------------------------
+-- Latex/Markdown 
+-------------------------------------------------------------------------------
+lspconfig.ltex.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        ltex = {
+            cmd = { "ltex-ls" },
+            single_file_support = true,
+            filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "text" },
+        }
+    }
+}
+
+require'lspconfig'.marksman.setup{
+    capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -------------------------------------------------------------------------------

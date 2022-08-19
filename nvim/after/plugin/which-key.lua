@@ -34,6 +34,16 @@ wk.register({
                 o = { "<Cmd>BDelete other<CR>", "Delete Other Buffers" },
                 w = { "<Cmd>bufdo Bw<CR>", "Delete All Buffers, Keep Windows" },
             },
+            j = { "<C-w>j", "Lower Buffer Split" },
+            k = { "<C-w>k", "Upper Buffer Split" },
+            l = { "<C-w>l", "Right Buffer Split" },
+            h = { "<C-w>h", "Left Buffer Split" },
+            o = { "<cmd>FocusMaximise<cr>", "Focus Buffer Only" },
+            t = { "<cmd>FocusMaxOrEqual<cr>", "Focus Toggle" },
+            H = { "<C-W>5<", "Expand-buffer-left" },
+            J = { ":resize +5", "Expand-buffer-below" },
+            L = { "<C-W>5>", "Expand-buffer-right" },
+            K = { ":resize -5", "Expand-buffer-up" },
         },
         ["d"] = {
             name = "+docs",
@@ -93,9 +103,6 @@ wk.register({
                 a = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
         },
-        ["m"] = {
-            name = "+markdown",
-        },
         ["p"] = {
             name = "+project",
             f = { "<cmd>lua require('anwalsh.telescope').project_search()<cr>", "Open Project File" },
@@ -113,7 +120,7 @@ wk.register({
                   end,
                   "Goto Symbol",
                 },
-            w = { "<cmd>Telescope grep_string<cr>", "Find String" },
+            w = { "<cmd>Telescope grep_string<cr>", "Find String in Current Context" },
             h = { "<cmd>Telescope command_history<cr>", "Command History" },
             m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
         },
@@ -125,19 +132,7 @@ wk.register({
             f = { "<cmd>lua require'spectre'.open_file_search()<cr>", "Spectre File Search" },
         },
         u = { "<cmd>UndotreeToggle<cr>", "undo Tree" },
-        ["w"] = {
-            name = "+window",
-            j = { "<C-w>j", "Lower Window" },
-            k = { "<C-w>k", "Upper Window" },
-            l = { "<C-w>l", "Right Window" },
-            h = { "<C-w>h", "Left Window" },
-            o = { "<cmd>FocusMaximise<cr>", "Focus Window Only" },
-            t = { "<cmd>FocusMaxOrEqual<cr>", "Focus Toggle" },
-            H = { "<C-W>5<", "Expand-window-left" },
-            J = { ":resize +5", "Expand-window-below" },
-            L = { "<C-W>5>", "Expand-window-right" },
-            K = { ":resize -5", "Expand-window-up" },
-        },
+        w = { "<cmd> :w<cr>", "write File" },
         h = { "<cmd>lua require'focus'.split_command('h')<cr>", "Focus Left" },
         l = { "<cmd>lua require'focus'.split_command('l')<cr>", "Focus Right" },
         k = { "<cmd>lua require'focus'.split_command('k')<cr>", "Focus Up" },
@@ -169,3 +164,5 @@ wk.register({
         },
     },
 })
+
+-- TODO Local leader/keybind env for Markdown? Or Markdown top level?

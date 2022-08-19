@@ -62,7 +62,6 @@ return require("packer").startup(function(use)
 
     -- Text Manipulation
     use("junegunn/vim-easy-align")
-    use("inkarkat/vim-LineJuggler")
     use("nvim-pack/nvim-spectre")
     use("tpope/vim-repeat")
     use("tpope/vim-abolish")
@@ -83,8 +82,7 @@ return require("packer").startup(function(use)
         run = "yarn install",
     })
 
-    -- Spell Check/Prose Check
-    use("preservim/vim-lexical")
+    -- Prose
     use("preservim/vim-pencil")
     use("nacro90/numb.nvim")
 
@@ -149,8 +147,14 @@ return require("packer").startup(function(use)
     use("junegunn/fzf.vim")
 
     -- Markdown and Writing
-    use("SidOfc/mkdx")
-    use("jakewvincent/mkdnflow.nvim")
+    -- use("SidOfc/mkdx")
+    use({'jakewvincent/mkdnflow.nvim',
+     config = function()
+        require('mkdnflow').setup({
+            -- Config goes here; leave blank for defaults
+        })
+     end
+})
 
     -- Git integration
     use("lewis6991/gitsigns.nvim")
