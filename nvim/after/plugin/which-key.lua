@@ -103,6 +103,15 @@ wk.register({
                 a = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
         },
+		["H"] = {
+			name = "+hop",
+			["c"] = { "<cmd>HopChar1<cr>", "Hop to single char" },
+			["C"] = { "<cmd>HopChar2<cr>", "Hop to bigram" },
+			["l"] = { "<cmd>HopLine<cr>", "Hop to line" },
+			["L"] = { "<cmd>HopLineStart<cr>", "Hop to line start" },
+			["p"] = { "<cmd>HopPattern<cr>", "Hop to pattern" },
+			["w"] = { "<cmd>HopWord<cr>", "Hop to word" },
+        },
         ["p"] = {
             name = "+project",
             f = { "<cmd>lua require('anwalsh.telescope').project_search()<cr>", "Open Project File" },
@@ -110,8 +119,6 @@ wk.register({
         },
         ["s"] = {
             name = "+search",
-            g = { "<cmd>Telescope live_grep<cr>", "Grep" },
-            b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffer" },
             s = {
                   function()
                     require("telescope.builtin").lsp_document_symbols({
@@ -120,16 +127,38 @@ wk.register({
                   end,
                   "Goto Symbol",
                 },
-            w = { "<cmd>Telescope grep_string<cr>", "Find String in Current Context" },
-            h = { "<cmd>Telescope command_history<cr>", "Command History" },
-            m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
+			b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
+			c = { "<cmd>Telescope commands<cr>", "Commands" },
+			f = { "<cmd>Telescope find_files<cr>", "Find file" },
+			g = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+			h = { "<cmd>Telescope command_history<cr>", "Find command history" },
+			H = { "<cmd>Telescope help_tags<cr>", "Find help" },
+			L = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
+			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+			m = { "<cmd>Telescope marks<cr>", "Marks" },
+			M = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+			o = { "<cmd>Telescope oldfiles<cr>", "Open old files" },
+			r = { "<cmd>Telescope resume<cr>", "Open previous search" },
+			R = { "<cmd>Telescope registers<cr>", "Registers" },
+			p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
+			P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
+			t = { "<cmd>Telescope live_grep<cr>", "Text without args" },
+			w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
         ["t"] = {
             name = "+text",
-            s = { "<cmd>lua require'spectre'.open()<cr>", "Spectre UI Menu" },
-            c = { "<cmd>lua require'spectre'.open_visual({select_word=true})<cr>", "Spectre Current" },
-            w = { "<cmd>lua require'spectre'.open_visual()<cr>", "Spectre Current Word" },
-            f = { "<cmd>lua require'spectre'.open_file_search()<cr>", "Spectre File Search" },
+            ["r"] = {
+                name = "+replace",
+                m = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
+                f = {
+                    "<cmd>lua require('spectre').open_file_search()<CR>",
+                    "Open file menu",
+                },
+                w = {
+                    "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
+                    "Replace word under cursor",
+                },
+            },
         },
         u = { "<cmd>UndotreeToggle<cr>", "undo Tree" },
         w = { "<cmd> :w<cr>", "write File" },
@@ -155,7 +184,7 @@ wk.register({
             -- TODO set this up
         },
         ["x"] = {
-            name = "+errors",
+            name = "+tooling",
             x = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble" },
             t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
             T = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },

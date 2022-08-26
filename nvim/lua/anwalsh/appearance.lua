@@ -9,7 +9,11 @@ api.nvim__set_hl_ns(ns)
 
 -- Theme Settings
 -- NOTE: Needs to be called _before_ the colorscheme is loaded
-vim.g.dracula_transparent_bg = true
+require("dracula").setup({
+    transparent_bg = true,
+})
+
+-- vim.g.dracula_transparent_bg = true
 
 -- Load the theme
 vim.cmd([[colorscheme dracula]])
@@ -26,7 +30,7 @@ hi(ns, "InsertCursor", { fg = colors.foreground, bg = colors.cyan })
 hi(ns, "VisualCursor", { fg = colors.background_dark, bg = colors.orange })
 hi(ns, "ReplaceCursor", { fg = colors.foreground, bg = colors.red })
 hi(ns, "CommandCursor", { fg = colors.foreground, bg = colors.pink })
-hi(ns, "Visual", { bg = colors.background })
+hi(ns, "Visual", { bg = colors.background, fg = colors.purple })
 
 nvim_command([[
     set guicursor=n-c:block-Cursor
@@ -40,6 +44,7 @@ nvim_command([[
 hi(ns, "WhichKeyFloat", { fg = colors.background_dark, bg = colors.background_dark })
 
 -- Telescope 
+hi(ns, "TelescopePreviewBorder", { fg = colors.bg_darker })
 hi(ns, "TelescopeNormal", { bg = colors.background_darker })
 hi(ns, "TelescopeSelection", { bg = colors.background_dark, fg = colors.green })
 hi(ns, "TelescopeMatching", { fg = colors.orange, bg = colors.background_dark })

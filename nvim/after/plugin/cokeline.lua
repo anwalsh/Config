@@ -191,7 +191,6 @@ require("cokeline").setup({
   default_hl = {
     fg = function(buffer)
       return buffer.is_focused and get_hex("Normal", "fg")
-        or get_hex("Comment", "fg")
     end,
     bg = function(buffer)
       return colors.background_darker

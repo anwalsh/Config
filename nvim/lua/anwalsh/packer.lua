@@ -39,7 +39,8 @@ return require("packer").startup(function(use)
     -- Comments
     use("numToStr/Comment.nvim")
     use({
-        "folke/todo-comments.nvim",
+        -- "folke/todo-comments.nvim",
+        "B4mbus/todo-comments.nvim", -- NOTE Using this plugin as the prior fork appears unmaintained.
         requires = "nvim-lua/plenary.nvim",
         })
 
@@ -73,9 +74,9 @@ return require("packer").startup(function(use)
     })
     use("machakann/vim-sandwich")
 
-    -- Formatting
+  -- Formatting
     use("windwp/nvim-autopairs")
-    -- use("eraserhd/parinfer-rust") -- TODO Evaluate
+    -- use("eraserhd/parinfer-rust") -- TODO: Evaluate
     use({
         "prettier/vim-prettier",
         ft = { "html", "javascript", "typescript", "typescriptreact" },
@@ -98,6 +99,7 @@ return require("packer").startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use({ "nvim-treesitter/playground", run = ":TSInstall query" })
     use({ "SmiteshP/nvim-gps", requires = "nvim-tree-sitter/nvim-treesitter" })
+    use("nvim-treesitter/nvim-treesitter-context")
     -- use("jose-elias-alvarez/null-ls.nvim")
     use({"folke/lsp-trouble.nvim"})
     use({"simrat39/rust-tools.nvim"})
@@ -128,11 +130,11 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
     use("hrsh7th/cmp-emoji")
-    use("octaltree/cmp-look") -- TODO Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
+    use("octaltree/cmp-look") -- TODO: Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
     use("ray-x/cmp-treesitter")
     use("folke/lsp-colors.nvim")
-    -- use("ray-x/lsp_signature.nvim") -- TODO Should I use this?
-    -- use("ray-x/guihua.lua") -- TODO Same question for the below possibles.
+    -- use("ray-x/lsp_signature.nvim") -- TODO: Should I use this?
+    -- use("ray-x/guihua.lua") -- TODO: Same question for the below possibles.
     -- use({
     --     "ray-x/navigator.lua",
     --     requires = {
