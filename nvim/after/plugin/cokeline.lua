@@ -179,11 +179,8 @@ require("cokeline").setup({
 
   buffers = {
     filter_valid = function(buffer)
-        return buffer.type ~= "NeogitStatus" and "NEOGIT_COMMIT_EDITMSG"
-        end,
-    filter_visible = function(buffer)
-        return buffer.type ~= "NeogitStatus" and "NEOGIT_COMMIT_EDITMSG"
-        end,
+        return vim.api.nvim_buf_get_option(buffer.number, "bufhidden") == ""
+    end,
     focus_on_delete = "next",
     new_buffers_position = "next",
   },
