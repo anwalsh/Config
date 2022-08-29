@@ -179,7 +179,7 @@ require("cokeline").setup({
 
   buffers = {
     filter_valid = function(buffer)
-        return buffer.type ~= "NeogitStatus"
+        return buffer.type ~= "neogit"
         end,
     focus_on_delete = "next",
     new_buffers_position = "next",
