@@ -12,7 +12,7 @@ local comments_fg = get_hex("Comment", "fg")
 local errors_fg = get_hex("DiagnosticError", "fg")
 local warnings_fg = get_hex("DiagnosticWarn", "fg")
 
-local min_buffer_width = 23 
+local min_buffer_width = 23
 
 local components = {
   separator = {
@@ -119,21 +119,21 @@ local components = {
   },
 
   diagnostics = {
-     text = function(buffer)
-       return
-         (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
-         or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
-         or ''
-     end,
-     hl = {
-       fg = function(buffer)
-         return
-           (buffer.diagnostics.errors ~= 0 and errors_fg)
-           or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-           or nil
-       end,
-     },
-     truncation = { priority = 1 },
+    text = function(buffer)
+      return
+        (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
+        or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
+        or ''
+    end,
+    hl = {
+      fg = function(buffer)
+        return
+          (buffer.diagnostics.errors ~= 0 and errors_fg)
+          or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+          or nil
+      end,
+    },
+    truncation = { priority = 1 },
   },
 
   close_or_unsaved = {
@@ -178,8 +178,6 @@ require("cokeline").setup({
   show_if_buffers_are_at_least = 1,
 
   buffers = {
-    -- filter_valid = function(buffer) return buffer.type ~= 'terminal' end,
-    -- filter_visible = function(buffer) return buffer.type ~= 'terminal' end,
     focus_on_delete = "next",
     new_buffers_position = "next",
   },
@@ -190,11 +188,24 @@ require("cokeline").setup({
 
   default_hl = {
     fg = function(buffer)
-      return buffer.is_focused and get_hex("Normal", "fg")
+      return buffer.is_focused and colors.foregound
+        or colors.comments
     end,
     bg = function(buffer)
-      return colors.background_darker
+      return buffer.is_focused and colors.background_darker or colors.background
     end,
+  },
+
+  sidebar = {
+    filetype = "UndoTree",
+    components = {
+      {
+        text = "",
+        fg = colors.yellow,
+        bg = get_hex("UndoTreeNormal", "bg"),
+        style = "bold",
+      },
+    },
   },
 
   components = {
