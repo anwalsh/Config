@@ -169,7 +169,8 @@ return require("packer").startup(function(use)
         "rhysd/git-messenger.vim",
         keys = "<Plug>(git-messenger)",
     })
-    use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
+    use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+    use({ "akinsho/git-conflict.nvim" })
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

@@ -76,6 +76,16 @@ wk.register({
               "LazyGit",
             },
             d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
+            ["m"] = {
+                name = "Merge Conflict",
+                l = {"<cmd>GitConflictListQf<cr>", "List of Conflicts"},
+                o = {"<Plug>(git-conflict-ours)", "Choose our change"},
+                t = {"<Plug>(git-conflict-theirs)", "Choose their change"},
+                b = {"<Plug>(git-conflict-both)", "Choose both changes"},
+                n = {"<Plug>(git-conflict-none)", "Choose neither change"},
+                ["]"] = {"<Plug>(git-conflict-prev-conflict)", "Previous Conflict"},
+                ["["] = {"<Plug>(git-conflict-prev-conflict)", "Next Conflict"},
+            },
             ["G"] = {
                 name = "Octo",
                 ["p"] = {
