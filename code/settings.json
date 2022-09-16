@@ -238,9 +238,9 @@
   "go.buildOnSave": "package",
   "go.coverOnTestPackage": false,
   "go.formatTool": "goimports",
+  "go.lintTool": "golangci-lint",
   "go.lintFlags": ["--fast"],
   "go.lintOnSave": "package",
-  "go.lintTool": "golangci-lint",
   "go.toolsManagement.autoUpdate": true,
   "go.useCodeSnippetsOnFunctionSuggest": true,
   "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
@@ -2157,4 +2157,5 @@
   ],
   "window.titleBarStyle": "custom",
   "Lua.telemetry.enable": true,
+  "editor.stickyScroll.enabled": true,
 }

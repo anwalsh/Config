@@ -150,6 +150,18 @@ M.project_search = function(opts)
   require'telescope.builtin'.find_files(opts)
 end
 
+function M.find_hidden_files()
+  require("telescope.builtin").find_files {
+    shorten_path = false,
+    hidden = true,
+
+    layout_strategy = "horizontal",
+    layout_config = {
+      preview_width = 0.55,
+    },
+  }
+end
+
 function M.float_terminal(cmd)
   local buf = vim.api.nvim_create_buf(false, true)
   local vpad = 4

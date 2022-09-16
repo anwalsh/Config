@@ -53,6 +53,7 @@ wk.register({
             name = "+file",
             b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
             f = { "<cmd>Telescope find_files<cr>", "Find File" },
+            h = { "<cmd>lua require('anwalsh.telescope').find_hidden_files()<cr>", "Find Hidden Files" },
             n = { "<cmd>enew<cr>", "New File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
             z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
@@ -102,6 +103,7 @@ wk.register({
                 i = { "<cmd>Octo issue list<cr>", "List Issues in GitHub" },
                 a = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
+            y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" }
         },
 		["H"] = {
 			name = "+hop",

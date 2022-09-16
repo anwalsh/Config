@@ -40,8 +40,7 @@ return require("packer").startup(function(use)
     -- Comments
     use("numToStr/Comment.nvim")
     use({
-        -- "folke/todo-comments.nvim",
-        "B4mbus/todo-comments.nvim", -- NOTE Using this plugin as the prior fork appears unmaintained.
+        "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         })
 
@@ -77,7 +76,7 @@ return require("packer").startup(function(use)
 
   -- Formatting
     use("windwp/nvim-autopairs")
-    -- use("eraserhd/parinfer-rust") -- TODO: Evaluate
+    use("eraserhd/parinfer-rust")
     use({
         "prettier/vim-prettier",
         ft = { "html", "javascript", "typescript", "typescriptreact" },
@@ -170,7 +169,7 @@ return require("packer").startup(function(use)
         "rhysd/git-messenger.vim",
         keys = "<Plug>(git-messenger)",
     })
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
