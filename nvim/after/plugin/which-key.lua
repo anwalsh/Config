@@ -45,6 +45,10 @@ wk.register({
             L = { "<C-W>5>", "Expand-buffer-right" },
             K = { ":resize -5", "Expand-buffer-up" },
         },
+        ["c"] = {
+            name = "+code",
+            s = {"<cmd>SymbolsOutline<cr>", "Symbols Outline"},
+        },
         ["d"] = {
             name = "+docs",
             d = {"<cmd>lua require('neogen').generate()<cr>", "Create Docstring"}

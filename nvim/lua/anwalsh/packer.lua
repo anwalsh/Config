@@ -60,6 +60,13 @@ return require("packer").startup(function(use)
     use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } })
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
+    use({
+        "simrat39/symbols-outline.nvim",
+        cmd = { "SymbolsOutline" },
+        config = function()
+            require("symbols-outline").setup()
+        end,
+    })
 
     -- Text Manipulation
     use("junegunn/vim-easy-align")
