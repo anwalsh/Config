@@ -158,7 +158,7 @@ local function get_python_path(workspace)
     local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
     return path.join(venv, 'bin', 'python')
   end
-  
+
   -- Fallback to system Python.
   return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
 end
