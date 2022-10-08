@@ -1,11 +1,8 @@
 -- Use this fioure to make minor changes to the appearance of neovim, unrelated to any particular plugin
 local nvim_command = vim.api.nvim_command
 local colors = require("anwalsh.global_colors")
-local api = vim.api
-local hi = api.nvim_set_hl
-local ns = api.nvim_create_namespace("anwalsh")
-
-api.nvim__set_hl_ns(ns)
+local hi = vim.api.nvim_set_hl
+local ns = 0
 
 -- Theme Settings
 -- NOTE: Needs to be called _before_ the colorscheme is loaded

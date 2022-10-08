@@ -181,36 +181,36 @@ lspconfig.pyright.setup {
 -------------------------------------------------------------------------------
 -- pylsp 
 -------------------------------------------------------------------------------
-require'lspconfig'.pylsp.setup{
-    capabilities = capabilities,
-    flags = { debounce_text_changes = 200 },
-    on_attach = on_attach,
-    on_init = function(client)
-        client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-    end,
-    settings = {
-        pylsp = {
-            plugins = {
-                -- pyflakes = { enabled = false },
-                pylint = { enabled = true },
-                pycodestyle = {
-                      ignore = {'W391'},
-                      maxLineLength = 100
-                },
-                black = {
-                    enabled = true,
-                    maxLineLength = 100
-                },
-                yapf = {
-                    enabled = false,
-                },
-                flake8 = {
-                    enabled = false,
-                },
-            }
-        }
-    }
-}
+-- require'lspconfig'.pylsp.setup{
+--     capabilities = capabilities,
+--     flags = { debounce_text_changes = 200 },
+--     on_attach = on_attach,
+--     on_init = function(client)
+--         client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
+--     end,
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 -- pyflakes = { enabled = false },
+--                 pylint = { enabled = true },
+--                 pycodestyle = {
+--                       ignore = {'W391'},
+--                       maxLineLength = 100
+--                 },
+--                 black = {
+--                     enabled = true,
+--                     maxLineLength = 100
+--                 },
+--                 yapf = {
+--                     enabled = false,
+--                 },
+--                 flake8 = {
+--                     enabled = false,
+--                 },
+--             }
+--         }
+--     }
+-- }
 
 -------------------------------------------------------------------------------
 -- Latex/Markdown 

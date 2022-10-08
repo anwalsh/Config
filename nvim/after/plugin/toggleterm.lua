@@ -3,7 +3,7 @@ if not pcall(require, "toggleterm") then
 end
 
 require("toggleterm").setup({
-    open_mapping = [[<C- >]],
+    open_mapping = [[<C-b>]],
 })
 
 function _G.set_terminal_keymaps()

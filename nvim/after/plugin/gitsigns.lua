@@ -29,4 +29,4 @@ require("gitsigns").setup {
 }
 
 -- Appearance
-hi("GitSignsCurrentLineBlame", {guifg = global_colors.comments}, false)
+-- hi("GitSignsCurrentLineBlame", {guifg = global_colors.comments}, false)

@@ -16,5 +16,10 @@ require('neogen').setup {
                 annotation_convention = "rustdoc",
             }
         },
+        go = {
+            template = {
+                annotation_convention = "godoc"
+            },
+        }
     }
 }

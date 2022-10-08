@@ -82,7 +82,7 @@ require("telescope").setup({
 
     extensions = {
         bookmarks = {
-            selected_browser = "firefox",
+            selected_browser = "arc",
             url_open_command = "open",
             bookmarks = require("telescope.themes").get_dropdown({
                 width = 0.8,
@@ -152,6 +152,7 @@ end
 
 function M.find_hidden_files()
   require("telescope.builtin").find_files {
+    cwd = vim.fn.getcwd(),
     shorten_path = false,
     hidden = true,
 
