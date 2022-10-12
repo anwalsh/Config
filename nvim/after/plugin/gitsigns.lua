@@ -2,7 +2,8 @@ if not pcall(require, "gitsigns") then
   return
 end
 
-local hi = vim.highlight.create
+-- local hi = vim.highlight.create
+local hi = vim.api.nvim_set_hl
 local global_colors = require("anwalsh.global_colors")
 
 require("gitsigns").setup {
@@ -30,3 +31,4 @@ require("gitsigns").setup {
 
 -- Appearance
 -- hi("GitSignsCurrentLineBlame", {guifg = global_colors.comments}, false)
+hi(0, "GitSignsCurrentLineBlame", {fg = global_colors.comments})

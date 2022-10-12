@@ -29,6 +29,13 @@ return require("packer").startup(function(use)
     -- })
     use("onsails/lspkind-nvim")
     use("nvim-telescope/telescope-file-browser.nvim")
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 
     -- Text Rendering
     use("lukas-reineke/indent-blankline.nvim")
@@ -83,7 +90,7 @@ return require("packer").startup(function(use)
 
   -- Formatting
     use("windwp/nvim-autopairs")
-    use("eraserhd/parinfer-rust")
+    use({"eraserhd/parinfer-rust", run = "cargo build --release"})
     use({
         "prettier/vim-prettier",
         ft = { "html", "javascript", "typescript", "typescriptreact" },
