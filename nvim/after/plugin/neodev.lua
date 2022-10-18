@@ -1,8 +1,8 @@
-if not pcall(require, "lua-dev") then
+if not pcall(require, "neodev") then
   return
 end
 
-require("lua-dev").setup({
+require("neodev").setup({
     library = {
         plugins = true,
     },
