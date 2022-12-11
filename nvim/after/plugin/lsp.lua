@@ -44,7 +44,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "ltex", "marksman" },
+    ensure_installed = { "sumneko_lua", "ltex", "marksman", "bashls", },
 }
 
 -------------------------------------------------------------------------------

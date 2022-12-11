@@ -1,16 +1,5 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
-
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+# env:
+#   TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -41,10 +30,10 @@ window:
   # Values for `decorations` (macOS only):
   #     - buttonless: Title bar, transparent background and title bar buttons
   #     - transparent: Title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: buttonless
 
   # When true, alacritty starts maximized.
-  startup_mode: Maximized
+  startup_mode: windowed
 
   opacity: 1.0
 
@@ -68,7 +57,7 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     # family: "SauceCodePro Nerd Font"
-    family: "JetBrains Mono"
+    family: "JetBrains Mono NL"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -80,7 +69,7 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     # family: "SauceCodePro Nerd Font"
-    family: "JetBrains Mono"
+    family: "JetBrains Mono NL"
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -92,7 +81,7 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     # family: "SauceCodePro Nerd Font"
-    family: "JetBrains Mono"
+    family: "JetBrains Mono NL"
 
     # The `style` can be specified to pick a specific face.
     style: Italic

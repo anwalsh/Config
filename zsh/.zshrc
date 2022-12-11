@@ -17,6 +17,8 @@ autoload -U compinit
 fpath+=~/.zfunc
 compinit
 
+eval "$(zoxide init zsh)"
+
 # ------------------------------
 # Exports
 # ------------------------------
@@ -121,7 +123,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 
 zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
 
-export FZFZ_RECENT_DIRS_TOOL='zi'
+export FZFZ_RECENT_DIRS_TOOL='zfr'
 export FZFZ_PREVIEW_COMMAND='exa --tree --git --icons {}'
 
 #   ---------------------------------------
@@ -150,8 +152,6 @@ fi
 
 [ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
 
-export N_PREFIX="$HOME/n"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
 
 #   ---------------------------------------
 #   4.  ZSH Plugin Manager
@@ -161,8 +161,6 @@ if [[ ! -f ~/.zpm/zpm.zsh ]]; then
     git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
 fi
 source ~/.zpm/zpm.zsh
-
-zpm load andrewferrier/fzf-z,autload:/executables
 
 # Rocket Man
 eval "$(starship init zsh)"
@@ -174,7 +172,6 @@ eval "$(direnv hook zsh)"
 if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # Poetry and Pyenv
-export PATH="$HOME/.poetry/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init --path)"
@@ -185,3 +182,6 @@ fpath[1,0]=$HOME/.zsh/completion
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
