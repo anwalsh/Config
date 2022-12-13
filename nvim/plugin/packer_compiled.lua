@@ -560,13 +560,6 @@ time([[Config for mkdnflow.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'NarrowRegion', function(cmdargs)
-          require('packer.load')({'NrrwRgn'}, { cmd = 'NarrowRegion', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'NrrwRgn'}, { cmd = 'NarrowRegion' }, _G.packer_plugins)
-          return vim.fn.getcompletion('NarrowRegion ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'NarrowWindow', function(cmdargs)
           require('packer.load')({'NrrwRgn'}, { cmd = 'NarrowWindow', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -588,6 +581,13 @@ pcall(vim.api.nvim_create_user_command, 'Make', function(cmdargs)
           require('packer.load')({'vim-dispatch'}, { cmd = 'Make' }, _G.packer_plugins)
           return vim.fn.getcompletion('Make ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'NarrowRegion', function(cmdargs)
+          require('packer.load')({'NrrwRgn'}, { cmd = 'NarrowRegion', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'NrrwRgn'}, { cmd = 'NarrowRegion' }, _G.packer_plugins)
+          return vim.fn.getcompletion('NarrowRegion ', 'cmdline')
+      end})
 pcall(vim.api.nvim_create_user_command, 'Dispatch', function(cmdargs)
           require('packer.load')({'vim-dispatch'}, { cmd = 'Dispatch', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -599,23 +599,26 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
+vim.cmd [[noremap <silent> <Plug>(git-messenger) <cmd>lua require("packer.load")({'git-messenger.vim'}, { keys = "<lt>Plug>(git-messenger)", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gJ <cmd>lua require("packer.load")({'splitjoin.vim'}, { keys = "gJ", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gS <cmd>lua require("packer.load")({'splitjoin.vim'}, { keys = "gS", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <Plug>(git-messenger) <cmd>lua require("packer.load")({'git-messenger.vim'}, { keys = "<lt>Plug>(git-messenger)", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-prettier'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-prettier'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'vim-prettier'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType json ++once lua require("packer.load")({'vim-json'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-prettier'}, { ft = "html" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], true)
+vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]]
+time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], false)
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]], true)
 vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]]
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/css.vim]], false)
@@ -664,9 +667,6 @@ time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/pack
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]], true)
 vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]]
 time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-prettier/ftdetect/yaml.vim]], false)
-time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], true)
-vim.cmd [[source /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]]
-time([[Sourcing ftdetect script at: /Users/andy/.local/share/nvim/site/pack/packer/opt/vim-json/ftdetect/json.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

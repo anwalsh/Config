@@ -18,3 +18,7 @@ nnoremap("<tab><tab>", "<C-^>") -- Move between previous/current buffer
 -- Better Visual mode Indention
 vnoremap(">", ">gv")
 vnoremap("<", "<gv")
+
+-- Center the lines yo
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
