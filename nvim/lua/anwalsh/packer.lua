@@ -1,18 +1,33 @@
--- Bootstrap the Packer as required.packer
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap =
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+-- Install packer
+local ensure_packer = function ()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
-require("packer").init({ max_jobs = 50 })
+local packer_bootstrap = ensure_packer()
+
+-- Initialize packer
+require('packer').init({
+  compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.lua',
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'solid' })
+    end,
+  },
+})
 
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- UI
     use("Mofiqul/dracula.nvim")
+    -- use('nyoom-engineering/oxocarbon.nvim')
     use("nvim-lualine/lualine.nvim")
     use("nvim-lua/popup.nvim")
     use("noib3/nvim-cokeline")
@@ -123,6 +138,7 @@ return require("packer").startup(function(use)
     -- Debug Adapater
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
+    use("leoluz/nvim-dap-go")
     use("theHamsta/nvim-dap-virtual-text")
     use("nvim-telescope/telescope-dap.nvim")
 
@@ -143,6 +159,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
     use("hrsh7th/cmp-emoji")
     use("octaltree/cmp-look") -- TODO: Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
     use("ray-x/cmp-treesitter")
