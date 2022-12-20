@@ -67,6 +67,7 @@ return require("packer").startup(function(use)
         })
 
     -- Utility
+    use("lewis6991/impatient.nvim")
     use("nvim-lua/plenary.nvim")
     use("mbbill/undotree")
     use("kazhala/close-buffers.nvim")
