@@ -1,2 +1,1 @@
-require("anwalsh.plugins")
-require('impatient')
+require("anwalsh.lazy")
