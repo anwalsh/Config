@@ -1,2 +1,2 @@
-require("anwalsh.packer")
+require("anwalsh.plugins")
 require('impatient')
