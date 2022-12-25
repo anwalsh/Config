@@ -16,11 +16,9 @@ return {
 
     -- UI
     ("Mofiqul/dracula.nvim"),
-    -- ('nyoom-engineering/oxocarbon.nvim'),
+    ("nyoom-engineering/oxocarbon.nvim"),
     ("nvim-lualine/lualine.nvim"),
     ("nvim-lua/popup.nvim"),
-    ("noib3/nvim-cokeline"),
-    -- ({"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}),
     ("beauwilliams/focus.nvim"),
     ("kyazdani42/nvim-web-devicons"),
     ("stevearc/aerial.nvim"),
@@ -73,6 +71,13 @@ return {
         cmd = { "SymbolsOutline" },
         config = function()
             require("symbols-outline").setup()
+        end,
+    }),
+    ({
+        "smjonas/inc-rename.nvim",
+        cmd = "IncRename",
+        config = function()
+            require("inc_rename").setup()
         end,
     }),
 

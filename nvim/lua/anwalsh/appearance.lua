@@ -14,6 +14,7 @@ require("dracula").setup({
 
 -- Load the theme
 vim.cmd([[colorscheme dracula]])
+-- vim.cmd([[colorscheme oxocarbon]])
 
 -- Other colors
 -- General Things
