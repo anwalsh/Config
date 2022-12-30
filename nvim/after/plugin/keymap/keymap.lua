@@ -22,3 +22,11 @@ vnoremap("<", "<gv")
 -- Center the lines yo
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
+
+nnoremap("J", ":MoveLine(1)<CR>", silent)
+nnoremap("K", ":MoveLine(-1)<CR>", silent)
+
+vnoremap('J', ':MoveBlock(1)<CR>', silent)
+vnoremap('K', ':MoveBlock(-1)<CR>', silent)
+vnoremap('H', ':MoveHBlock(-1)<CR>', silent)
+vnoremap('L', ':MoveHBlock(1)<CR>', silent)

@@ -39,8 +39,9 @@ return {
     ("lukas-reineke/indent-blankline.nvim"),
 
     -- Navigation
-    ({"folke/which-key.nvim"}),
-    ("phaazon/hop.nvim"),
+    ({"folke/which-key.nvim", lazy = false}),
+    ({"phaazon/hop.nvim", lazy = false}),
+    ({"fedepujol/move.nvim", lazy = false}),
 
     -- Comments
     ("numToStr/Comment.nvim"),
@@ -138,13 +139,13 @@ return {
     -- Completion/LSP
     ("neovim/nvim-lspconfig"),
     ({"hrsh7th/nvim-cmp", dependencies = "onsails/lspkind.nvim" }),
-    ("hrsh7th/vim-vsnip"),
+    ({"hrsh7th/vim-vsnip", lazy = false}),
     ("L3MON4D3/LuaSnip"),
     ("rafamadriz/friendly-snippets"),
     ("saadparwaiz1/cmp_luasnip"),
     ("lukas-reineke/cmp-under-comparator"),
     ("hrsh7th/cmp-nvim-lsp"),
-    ("hrsh7th/cmp-vsnip"),
+    ({"hrsh7th/cmp-vsnip", lazy = false}),
     ("hrsh7th/cmp-path"),
     ("hrsh7th/cmp-buffer"),
     ("hrsh7th/cmp-nvim-lua"),

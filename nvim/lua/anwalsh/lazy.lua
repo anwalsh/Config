@@ -11,4 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup("anwalsh.plugins", {})
+require("lazy").setup("anwalsh.plugins",
+    {
+        defaults = { lazy = true },
+        install = { missing = true },
+        checker = { enabled = true, notify = true },
+    })

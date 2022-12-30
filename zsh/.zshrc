@@ -198,6 +198,11 @@ zinit from"gh-r" as"program" mv"direnv* -> direnv" \
     pick"direnv" src="zhook.zsh" for \
         direnv/direnv
 
+zinit ice lucid wait \
+  has'kubectl' \
+  atinit'source <(kubectl completion zsh)'
+zinit light Dbz/kube-aliases
+
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
