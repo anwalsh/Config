@@ -2,25 +2,13 @@ if not pcall(require, "which-key") then
   return
 end
 
-require("which-key").setup {}
-
 local wk = require("which-key")
 
 wk.register({
-    ["1"] = { [[<Plug>(cokeline-focus-1)]], "which_key_ignore" },
-    ["2"] = { [[<Plug>(cokeline-focus-2)]], "which_key_ignore" },
-    ["3"] = { [[<Plug>(cokeline-focus-3)]], "which_key_ignore" },
-    ["4"] = { [[<Plug>(cokeline-focus-4)]], "which_key_ignore" },
-    ["5"] = { [[<Plug>(cokeline-focus-5)]], "which_key_ignore" },
-    ["6"] = { [[<Plug>(cokeline-focus-6)]], "which_key_ignore" },
-    ["7"] = { [[<Plug>(cokeline-focus-7)]], "which_key_ignore" },
-    ["8"] = { [[<Plug>(cokeline-focus-8)]], "which_key_ignore" },
-    ["9"] = { [[<Plug>(cokeline-focus-9)]], "which_key_ignore" },
-    ["C-b"] = {
-        "<cmd>ToggleTerm<cr>", "toggleterm"
-    },
-    ["`"] = { "<cmd>NvimTreeToggle<cr>", "+tree", },
     ["<leader>"] = {
+        [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
+        [";"] = { ":normal gcc<CR>", "Toggle Comment" },
+        ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
         ["b"] = {
             name = "+buffer",
             b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
@@ -35,6 +23,8 @@ wk.register({
                 o = { "<Cmd>BDelete other<CR>", "Delete Other Buffers" },
                 w = { "<Cmd>bufdo Bw<CR>", "Delete All Buffers, Keep Windows" },
             },
+            N = { "<Cmd>enew<CR>", "New Empty Buffer" },
+            m = { "<Cmd>messages<CR>", "Show 'messages' Buffer" },
             j = { "<C-w>j", "Lower Buffer Split" },
             k = { "<C-w>k", "Upper Buffer Split" },
             l = { "<C-w>l", "Right Buffer Split" },
@@ -45,10 +35,6 @@ wk.register({
             J = { ":resize +5", "Expand-buffer-below" },
             L = { "<C-W>5>", "Expand-buffer-right" },
             K = { ":resize -5", "Expand-buffer-up" },
-        },
-        ["c"] = {
-            name = "+code",
-            s = {"<cmd>SymbolsOutline<cr>", "Symbols Outline"},
         },
         ["d"] = {
             name = "+docs",
@@ -62,6 +48,14 @@ wk.register({
             n = { "<cmd>enew<cr>", "New File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
             z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
+            s = { "<Cmd>w<CR>", "Save Current File" },
+            S = { "<Cmd>wa<CR>", "Save All Open Files" },
+            N = {
+            "<Cmd>Telescope file_browser initial_mode=normal<CR>",
+            "Open File Browser",
+            },
+            t = { "<Cmd>NvimTreeToggle<CR>", "Show NvimTree" },
+            T = { "<Cmd>NvimTreeFindFile<CR>", "Find Current File in NvimTree" },
         },
         ["g"] = {
             name = "+git",
@@ -74,12 +68,6 @@ wk.register({
                 },
             f = { "<cmd>lua require('neogit').neogit.popups.pull.create()<cr>", "Neogit Pull Create" },
             p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
-            l = {
-              function()
-                require("anwalsh.telescope").float_terminal("lazygit")
-              end,
-              "LazyGit",
-            },
             d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
             ["m"] = {
                 name = "Merge Conflict",
@@ -118,6 +106,7 @@ wk.register({
                 i = { "<cmd>Octo issue list<cr>", "List Issues in GitHub" },
                 a = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
+            l = { "<Cmd>LazyGit<CR>", "Open LazyGit" },
             y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" }
         },
 		["H"] = {
@@ -129,6 +118,16 @@ wk.register({
 			["p"] = { "<cmd>HopPattern<cr>", "Hop to pattern" },
 			["w"] = { "<cmd>HopWord<cr>", "Hop to word" },
         },
+        o = {
+            name = "open",
+            d = { "<Cmd>TodoTrouble<CR>", "Open TODO List (Trouble)" },
+            D = { "<Cmd>TodoTelescope<CR>", "Open TODO List (Telescope)" },
+            f = { ":normal gof<CR>", "Open File in Finder" },
+            F = { ":normal goF<CR>", "Open PWD in Finder" },
+            h = { ":silent !tmux split-window -dh", "Split Tmux Pane without Focus" },
+            s = { ":silent !tmux split-window" .. " -c " .. "%:p:h" .. " <CR>:<C-[><CR>", "split tmux-window on cwd" },
+            q = { "<Cmd>Trouble quickfix<CR>", "Open Quickfix" },
+        },
         ["p"] = {
             name = "+project",
             f = { "<cmd>lua require('anwalsh.telescope').project_search()<cr>", "Open Project File" },
@@ -136,14 +135,6 @@ wk.register({
         },
         ["s"] = {
             name = "+search",
-            s = {
-                  function()
-                    require("telescope.builtin").lsp_document_symbols({
-                      symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct", "Trait" },
-                    })
-                  end,
-                  "Goto Symbol",
-                },
 			b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>Telescope find_files<cr>", "Find file" },

@@ -2,7 +2,7 @@ if not pcall(require, "neogit") then
   return
 end
 
-local Remap = require("anwalsh.keymap")
+local Remap = require("util.remapper")
 local nmap = Remap.nmap
 
 require("neogit").setup {

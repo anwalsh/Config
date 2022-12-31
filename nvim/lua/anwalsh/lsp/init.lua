@@ -8,22 +8,9 @@ require("mason-lspconfig").setup()
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(binding, cmd)
     local opts = { noremap = true, silent = true }
+    require("anwalsh.lsp.code").setup(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", binding, cmd, opts)
   end
--- keybindings
-  buf_set_keymap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  buf_set_keymap("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  buf_set_keymap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  buf_set_keymap("gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  buf_set_keymap("gR", "<cmd>lua vim.lsp.buf.references()<CR>")
-  buf_set_keymap("gs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-  buf_set_keymap("gw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  buf_set_keymap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  buf_set_keymap("ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  buf_set_keymap("gr", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  buf_set_keymap("g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  buf_set_keymap("g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-  buf_set_keymap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
   if filetype == "rust" then

@@ -12,12 +12,10 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 return {
-    ("wbthomason/packer.nvim"),
-
     -- UI
     ("Mofiqul/dracula.nvim"),
     ("nyoom-engineering/oxocarbon.nvim"),
-    ("nvim-lualine/lualine.nvim"),
+    ({ "nvim-lualine/lualine.nvim", lazy = false }),
     ("nvim-lua/popup.nvim"),
     ("beauwilliams/focus.nvim"),
     ("kyazdani42/nvim-web-devicons"),
@@ -30,21 +28,22 @@ return {
     --     end,
     -- }),
     ("nvim-telescope/telescope-file-browser.nvim"),
-    {
+    ({
         "nvim-tree/nvim-tree.lua",
-        version = "nightly" -- optional, updated every week. (see issue #1193)
-    },
+        version = "nightly", -- optional, updated every week. (see issue #1193)
+        lazy = false
+    }),
 
     -- Text Rendering
     ("lukas-reineke/indent-blankline.nvim"),
 
     -- Navigation
-    ({"folke/which-key.nvim", lazy = false}),
-    ({"phaazon/hop.nvim", lazy = false}),
-    ({"fedepujol/move.nvim", lazy = false}),
+    ({ "folke/which-key.nvim", lazy = false,}),
+    ({ "phaazon/hop.nvim", lazy = false }),
+    ({ "fedepujol/move.nvim", lazy = false }),
 
     -- Comments
-    ("numToStr/Comment.nvim"),
+    ({"numToStr/Comment.nvim", lazy = false}),
     ({
         "folke/todo-comments.nvim",
         dependencies = "nvim-lua/plenary.nvim",
@@ -52,15 +51,15 @@ return {
 
     -- Utility
     ("lewis6991/impatient.nvim"),
+    ({ "mrjones2014/legendary.nvim", version = "^2.1.0", config = true, lazy = false }),
+    ({ "stevearc/dressing.nvim", lazy = false }), -- UI library, used in other plugins
     ("nvim-lua/plenary.nvim"),
-    ("mbbill/undotree"),
-    ("kazhala/close-buffers.nvim"),
+    ({ "mbbill/undotree", lazy = false }),
+    ({ "kazhala/close-buffers.nvim", lazy = false }),
     ({
         "chrisbra/NrrwRgn",
         cmd = { "NarrowRegion", "NarrowWindow" },
     }),
-    ("norcalli/nvim-colorizer.lua"),
-    ("akinsho/toggleterm.nvim"),
     ("tpope/vim-scriptease"),
     ("romainl/vim-qf"), -- QuickFix Window helper
     ("andymass/vim-matchup"),
@@ -118,7 +117,7 @@ return {
     -- Language/Treesitter
     ({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }),
     ({ "nvim-treesitter/playground", build = ":TSInstall query" }),
-    ({ "SmiteshP/nvim-gps" }),
+    ({ "SmiteshP/nvim-gps", lazy = false }),
     ("nvim-treesitter/nvim-treesitter-context"),
     ("jose-elias-alvarez/null-ls.nvim"),
     ("folke/lsp-trouble.nvim"),
@@ -177,7 +176,7 @@ return {
     ("lewis6991/gitsigns.nvim"),
     ("pwntester/octo.nvim"),
     ({ "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }),
-    ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim" }),
+    ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({"rhysd/git-messenger.vim"}),
     ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" }),
     ({ "akinsho/git-conflict.nvim" }),

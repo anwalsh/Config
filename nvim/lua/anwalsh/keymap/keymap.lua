@@ -1,4 +1,4 @@
-local Remap = require("anwalsh.keymap")
+local Remap = require("util.remapper")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap

@@ -1,6 +1,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("anwalsh")
-require("anwalsh.appearance")
 
+require("util.remapper")
+require("anwalsh.options")
+require("anwalsh.lazy")
+require("anwalsh.appearance")
+require("anwalsh.commands")
+require("anwalsh")
