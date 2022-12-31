@@ -66,7 +66,6 @@ opt.foldlevel = 0
 opt.modelines = 1
 
 opt.belloff = "all" -- Just turn the dang bell off
-opt.termguicolors = true
 opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"

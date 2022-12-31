@@ -13,8 +13,15 @@ vim.opt.runtimepath:prepend(lazypath)
 
 return {
     -- UI
-    ("Mofiqul/dracula.nvim"),
-    ("nyoom-engineering/oxocarbon.nvim"),
+
+    -- Themes
+    ({"Mofiqul/dracula.nvim"}),
+    ({"nyoom-engineering/oxocarbon.nvim"}),
+    ({"EdenEast/nightfox.nvim"}),
+    ({"catppuccin/nvim", as = "catppuccin"}),
+    ({"projekt0n/github-nvim-theme"}),
+    ({"folke/tokyonight.nvim"}),
+
     ({ "nvim-lualine/lualine.nvim", lazy = false }),
     ("nvim-lua/popup.nvim"),
     ("beauwilliams/focus.nvim"),
