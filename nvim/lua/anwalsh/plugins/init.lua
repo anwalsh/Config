@@ -90,7 +90,7 @@ return {
     ("tpope/vim-surround"),
     ({
         "AndrewRadev/splitjoin.vim",
-        keys = 
+        keys =
             {
                 { "gJ", desc = "Join a block into single line." },
                 { "gS", desc = "Split one line into multi-line." },
