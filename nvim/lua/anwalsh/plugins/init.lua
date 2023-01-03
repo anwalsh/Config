@@ -22,6 +22,7 @@ return {
     ({"projekt0n/github-nvim-theme"}),
     ({"folke/tokyonight.nvim"}),
 
+    ({ "folke/noice.nvim", dependencies = "MunifTanjim/nui.nvim", lazy = false }),
     ({ "nvim-lualine/lualine.nvim", lazy = false }),
     ("nvim-lua/popup.nvim"),
     ("beauwilliams/focus.nvim"),
@@ -45,8 +46,8 @@ return {
     ("lukas-reineke/indent-blankline.nvim"),
 
     -- Navigation
-    ({ "folke/which-key.nvim", lazy = false,}),
-    ({ "phaazon/hop.nvim", lazy = false }),
+    ({ "ggandor/leap.nvim", lazy = false }),
+    ({ "folke/which-key.nvim", lazy = false }),
     ({ "fedepujol/move.nvim", lazy = false }),
 
     -- Comments
@@ -130,7 +131,6 @@ return {
     ("folke/lsp-trouble.nvim"),
     ("simrat39/rust-tools.nvim"),
     ("folke/neodev.nvim"),
-    ({"elzr/vim-json", ft = "json"}),
 
     -- Debug Adapater
     ("mfussenegger/nvim-dap"),

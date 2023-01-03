@@ -109,15 +109,6 @@ wk.register({
             l = { "<Cmd>LazyGit<CR>", "Open LazyGit" },
             y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" }
         },
-		["H"] = {
-			name = "+hop",
-			["c"] = { "<cmd>HopChar1<cr>", "Hop to single char" },
-			["C"] = { "<cmd>HopChar2<cr>", "Hop to bigram" },
-			["l"] = { "<cmd>HopLine<cr>", "Hop to line" },
-			["L"] = { "<cmd>HopLineStart<cr>", "Hop to line start" },
-			["p"] = { "<cmd>HopPattern<cr>", "Hop to pattern" },
-			["w"] = { "<cmd>HopWord<cr>", "Hop to word" },
-        },
         o = {
             name = "open",
             d = { "<Cmd>TodoTrouble<CR>", "Open TODO List (Trouble)" },
