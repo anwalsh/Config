@@ -22,25 +22,35 @@ return {
     ({"projekt0n/github-nvim-theme"}),
     ({"folke/tokyonight.nvim"}),
 
+    -- Supporting Libs
     ({ "folke/noice.nvim", dependencies = "MunifTanjim/nui.nvim", lazy = false }),
+    ({ "stevearc/dressing.nvim", lazy = false }), -- UI library, used in other plugins
+    -- Elements
+    ("kyazdani42/nvim-web-devicons"),
+    -- UI Tweaks
     ({ "nvim-lualine/lualine.nvim", lazy = false }),
     ("nvim-lua/popup.nvim"),
+    -- Notifications
+    -- Behaviors of Buffers/Frames
     ("beauwilliams/focus.nvim"),
-    ("kyazdani42/nvim-web-devicons"),
     ("stevearc/aerial.nvim"),
     ("luukvbaal/stabilize.nvim"),
+    ({ "folke/zen-mode.nvim", dependencies = "folke/twilight.nvim" }),
+    --
     -- ({
     --     "stevearc/stickybuf.nvim",
     --     config = function()
     --         require("stickybuf").setup()
     --     end,
     -- }),
-    ("nvim-telescope/telescope-file-browser.nvim"),
+
+    -- Forest
     ({
         "nvim-tree/nvim-tree.lua",
         version = "nightly", -- optional, updated every week. (see issue #1193)
         lazy = false
     }),
+    ({ "mbbill/undotree", lazy = false }),
 
     -- Text Rendering
     ("lukas-reineke/indent-blankline.nvim"),
@@ -49,6 +59,7 @@ return {
     ({ "ggandor/leap.nvim", lazy = false }),
     ({ "folke/which-key.nvim", lazy = false }),
     ({ "fedepujol/move.nvim", lazy = false }),
+    ({ "mrjones2014/legendary.nvim", version = "^2.1.0", config = true, lazy = false }),
 
     -- Comments
     ({"numToStr/Comment.nvim", lazy = false}),
@@ -59,15 +70,14 @@ return {
 
     -- Utility
     ("lewis6991/impatient.nvim"),
-    ({ "mrjones2014/legendary.nvim", version = "^2.1.0", config = true, lazy = false }),
-    ({ "stevearc/dressing.nvim", lazy = false }), -- UI library, used in other plugins
     ("nvim-lua/plenary.nvim"),
-    ({ "mbbill/undotree", lazy = false }),
     ({ "kazhala/close-buffers.nvim", lazy = false }),
     ({
         "chrisbra/NrrwRgn",
         cmd = { "NarrowRegion", "NarrowWindow" },
     }),
+
+    -- Tools
     ("tpope/vim-scriptease"),
     ("romainl/vim-qf"), -- QuickFix Window helper
     ("andymass/vim-matchup"),
@@ -88,6 +98,7 @@ return {
             require("inc_rename").setup()
         end,
     }),
+    ({ "ThePrimeagen/harpoon" }),
 
     -- Text Manipulation
     ("junegunn/vim-easy-align"),
@@ -116,6 +127,7 @@ return {
 
     -- Telescope
     ({ "nvim-telescope/telescope.nvim", dependencies = { { "nvim-lua/plenary.nvim" }, "nvim-lua/popup.nvim" } }),
+    ("nvim-telescope/telescope-file-browser.nvim"),
     ("nvim-telescope/telescope-github.nvim"),
     ("nvim-telescope/telescope-project.nvim"),
     ("crispgm/telescope-heading.nvim"),
