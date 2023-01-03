@@ -35,7 +35,7 @@ return {
     ("beauwilliams/focus.nvim"),
     ("stevearc/aerial.nvim"),
     ("luukvbaal/stabilize.nvim"),
-    ({ "folke/zen-mode.nvim", dependencies = "folke/twilight.nvim" }),
+    ({ "folke/zen-mode.nvim", dependencies = "folke/twilight.nvim", lazy = false }),
     --
     -- ({
     --     "stevearc/stickybuf.nvim",
