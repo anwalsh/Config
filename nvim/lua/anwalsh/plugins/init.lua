@@ -188,7 +188,7 @@ return {
     ({ "junegunn/fzf", build = "./install --all" }),
 
     -- Markdown and Writing
-    -- ("SidOfc/mkdx"),
+    ({"SidOfc/mkdx"}),
     ({"jakewvincent/mkdnflow.nvim"}),
 
     -- Git integration
