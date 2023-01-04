@@ -55,6 +55,9 @@ return {
     -- Text Rendering
     ("lukas-reineke/indent-blankline.nvim"),
 
+    -- Color Rendering
+    ({ "norcalli/nvim-colorizer.lua" }),
+
     -- Navigation
     ({ "ggandor/leap.nvim", lazy = false }),
     ({ "folke/which-key.nvim", lazy = false }),
@@ -147,9 +150,11 @@ return {
     -- Debug Adapater
     ("mfussenegger/nvim-dap"),
     ("rcarriga/nvim-dap-ui"),
-    ("leoluz/nvim-dap-go"),
     ("theHamsta/nvim-dap-virtual-text"),
     ("nvim-telescope/telescope-dap.nvim"),
+    -- Debug Languages
+    ("leoluz/nvim-dap-go"),
+    ("mfussenegger/nvim-dap-python"),
 
     -- Doc Strings
     ("danymat/neogen"),
