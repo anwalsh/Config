@@ -2,4 +2,12 @@ if not pcall(require, "colorizer") then
   return
 end
 
-require 'colorizer'.setup()
+return {
+  "norcalli/nvim-colorizer.lua",
+  {
+    "norcalli/nvim-terminal.lua",
+    config = function()
+      require("terminal").setup()
+    end,
+  },
+}

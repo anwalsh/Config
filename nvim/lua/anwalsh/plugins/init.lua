@@ -53,7 +53,7 @@ return {
     ({ "mbbill/undotree", lazy = false }),
 
     -- Text Rendering
-    ("lukas-reineke/indent-blankline.nvim"),
+    ({ "lukas-reineke/indent-blankline.nvim", lazy = false }),
 
     -- Color Rendering
     ({ "norcalli/nvim-colorizer.lua" }),
