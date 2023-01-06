@@ -180,7 +180,8 @@ wk.register({
         },
         [","] = {
             name = "+settings",
-            l = { "<cmd>:Lazy<cr>", "Gogo Lazy "},
+            l = { "<cmd>:Lazy<cr>", "Gogo Lazy" },
+            m = { "<cmd>:Mason<cr>", "Gogo Mason" },
         },
         ["x"] = {
             name = "+tooling",
