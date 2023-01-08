@@ -9,6 +9,8 @@ wk.register({
         [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
         [";"] = { ":normal gcc<CR>", "Toggle Comment" },
         ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
+        ["w"] = { ":w<cr>", "Write" },
+        ["q"] = { ":q<cr>", "Quit" },
         ["b"] = {
             name = "+buffer",
             b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
@@ -160,7 +162,6 @@ wk.register({
             },
         },
         u = { "<cmd>UndotreeToggle<cr>", "undo Tree" },
-        w = { "<cmd> :w<cr>", "write File" },
         h = { "<cmd>lua require'focus'.split_command('h')<cr>", "Focus Left" },
         l = { "<cmd>lua require'focus'.split_command('l')<cr>", "Focus Right" },
         k = { "<cmd>lua require'focus'.split_command('k')<cr>", "Focus Up" },

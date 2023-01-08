@@ -202,6 +202,6 @@ return {
     ({ "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }),
     ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({"rhysd/git-messenger.vim"}),
-    ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" }),
+    ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "akinsho/git-conflict.nvim" }),
 }
