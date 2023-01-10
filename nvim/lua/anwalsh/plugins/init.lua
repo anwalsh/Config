@@ -21,6 +21,7 @@ return {
     ({"catppuccin/nvim", as = "catppuccin"}),
     ({"projekt0n/github-nvim-theme"}),
     ({"folke/tokyonight.nvim"}),
+    ({"rebelot/kanagawa.nvim"}),
 
     -- Supporting Libs
     ({ "folke/noice.nvim", dependencies = "MunifTanjim/nui.nvim", lazy = false }),

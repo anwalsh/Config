@@ -1,9 +1,10 @@
 local hi = vim.api.nvim_set_hl
 
 vim.opt.background = "dark" -- set this to dark or light
--- vim.cmd([[colorscheme carbonfox]])
+vim.cmd([[colorscheme carbonfox]])
 -- vim.cmd([[colorscheme catppuccin-mocha]])
-vim.cmd([[colorscheme oxocarbon]])
+-- vim.cmd([[colorscheme oxocarbon]])
+-- vim.cmd([[colorscheme kanagawa]])
 
 if ("carbonfox" == vim.g.colors_name) then
     local palette = require("nightfox.palette").load("nightfox")
