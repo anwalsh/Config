@@ -2,24 +2,41 @@ if not pcall(require, "lualine") then
   return
 end
 
-local gps = require("nvim-gps")
 local lualine = require("lualine")
 
--- Color table for highlights
--- stylua: ignore
-local colors = {
-  bg       = '#242330',
-  fg       = '#f8f8f3',
-  yellow   = '#effa7c',
-  cyan     = '#68ecff',
-  darkblue = '#5f73a8',
-  green    = '#00fe69',
-  orange   = '#ffb45c',
-  violet   = '#c591ff',
-  magenta  = '#ff6eca',
-  blue     = '#66ecff',
-  red      = '#ff414c',
-}
+if ("carbonfox" == vim.g.colors_name) then
+    local palette = require('nightfox.palette').load("carbonfox")
+
+    Colors = {
+      bg       = palette.bg1,
+      fg       = palette.white.base,
+      yellow   = palette.yellow.base,
+      cyan     = palette.cyan.base,
+      darkblue = palette.blue.dim,
+      green    = palette.green.base,
+      orange   = palette.orange.base,
+      violet   = palette.pink.base,
+      magenta  = palette.magenta.base,
+      blue     = palette.blue.base,
+      red      = palette.red.base,
+    }
+else
+    -- Color table for highlights
+    -- stylua: ignore
+    Colors = {
+      bg       = '#242330',
+      fg       = '#f8f8f3',
+      yellow   = '#effa7c',
+      cyan     = '#68ecff',
+      darkblue = '#5f73a8',
+      green    = '#00fe69',
+      orange   = '#ffb45c',
+      violet   = '#c591ff',
+      magenta  = '#ff6eca',
+      blue     = '#66ecff',
+      red      = '#ff414c',
+    }
+end
 
 local conditions = {
     buffer_not_empty = function()
@@ -45,8 +62,8 @@ local config = {
             -- We are going to use lualine_c an lualine_x as left and
             -- right section. Both are highlighted by c theme .  So we
             -- are just setting default looks o statusline
-            normal = { c = { fg = colors.fg, bg = colors.bg } },
-            inactive = { c = { fg = colors.fg, bg = colors.bg } },
+            normal = { c = { fg = Colors.fg, bg = Colors.bg } },
+            inactive = { c = { fg = Colors.fg, bg = Colors.bg } },
         },
     },
     sections = {
@@ -75,7 +92,7 @@ ins_left({
     function()
         return "▊"
     end,
-    color = { fg = colors.blue }, -- Sets highlighting of component
+    color = { fg = Colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
@@ -87,26 +104,25 @@ ins_left({
     color = function()
         -- auto change color according to neovims mode
         local mode_color = {
-            n = colors.red,
-            i = colors.green,
-            v = colors.blue,
-            [""] = colors.blue,
-            V = colors.blue,
-            c = colors.magenta,
-            no = colors.red,
-            s = colors.orange,
-            S = colors.orange,
-            [""] = colors.orange,
-            ic = colors.yellow,
-            R = colors.violet,
-            Rv = colors.violet,
-            cv = colors.red,
-            ce = colors.red,
-            r = colors.cyan,
-            rm = colors.cyan,
-            ["r?"] = colors.cyan,
-            ["!"] = colors.red,
-            t = colors.red,
+            n = Colors.red,
+            i = Colors.green,
+            v = Colors.blue,
+            [""] = Colors.blue,
+            V = Colors.blue,
+            c = Colors.magenta,
+            no = Colors.red,
+            s = Colors.orange,
+            S = Colors.orange,
+            ic = Colors.yellow,
+            R = Colors.violet,
+            Rv = Colors.violet,
+            cv = Colors.red,
+            ce = Colors.red,
+            r = Colors.cyan,
+            rm = Colors.cyan,
+            ["r?"] = Colors.cyan,
+            ["!"] = Colors.red,
+            t = Colors.red,
         }
         return { fg = mode_color[vim.fn.mode()] }
     end,
@@ -122,37 +138,37 @@ ins_left({
 ins_left({
     "filename",
     cond = conditions.buffer_not_empty,
-    color = { fg = colors.magenta, gui = "bold" },
+    color = { fg = Colors.magenta, gui = "bold" },
 })
 
 ins_left({ "location" })
 
-ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+ins_left({ "progress", color = { fg = Colors.fg, gui = "bold" } })
 
 ins_left({
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " " },
     diagnostics_color = {
-        color_error = { fg = colors.red },
-        color_warn = { fg = colors.yellow },
-        color_info = { fg = colors.cyan },
+        color_error = { fg = Colors.red },
+        color_warn = { fg = Colors.yellow },
+        color_info = { fg = Colors.cyan },
     },
 })
 
 ins_right({
     "branch",
     icon = "",
-    color = { fg = colors.violet, gui = "bold" },
+    color = { fg = Colors.violet, gui = "bold" },
 })
 
 ins_right({
     "diff",
     symbols = { added = " ", modified = " ", removed = " " },
     diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.orange },
-        removed = { fg = colors.red },
+        added = { fg = Colors.green },
+        modified = { fg = Colors.orange },
+        removed = { fg = Colors.red },
     },
     cond = conditions.hide_in_width,
 })
@@ -161,7 +177,7 @@ ins_right({
     function()
         return "▊"
     end,
-    color = { fg = colors.blue },
+    color = { fg = Colors.blue },
     padding = { left = 1 },
 })
 

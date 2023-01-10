@@ -1,6 +1,5 @@
 local hi = vim.api.nvim_set_hl
 
-vim.opt.background = "dark" -- set this to dark or light
 vim.cmd([[colorscheme carbonfox]])
 -- vim.cmd([[colorscheme catppuccin-mocha]])
 -- vim.cmd([[colorscheme oxocarbon]])
@@ -23,4 +22,12 @@ if ("carbonfox" == vim.g.colors_name) then
 
     -- Window Borders
     hi(0, "VertSplit", { fg = palette.sel0 })
+
+    require("nightfox").setup({
+      options = {
+        transparent = true,
+      },
+    })
+else
+    vim.opt.background = "dark" -- set this to dark or light
 end
