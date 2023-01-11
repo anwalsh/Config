@@ -5,6 +5,8 @@ end
 local lualine = require("lualine")
 
 if ("carbonfox" == vim.g.colors_name) then
+    -- Color table for highlights
+    -- stylua: ignore
     local palette = require('nightfox.palette').load("carbonfox")
 
     Colors = {
@@ -21,7 +23,6 @@ if ("carbonfox" == vim.g.colors_name) then
       red      = palette.red.base,
     }
 else
-    -- Color table for highlights
     -- stylua: ignore
     Colors = {
       bg       = '#242330',
