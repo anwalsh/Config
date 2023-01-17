@@ -31,3 +31,7 @@ disabled = false
 
 [line_break]
 disabled = false
+
+[nodejs]
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
