@@ -128,6 +128,7 @@ wk.register({
         },
         ["s"] = {
             name = "+search",
+            a = { "<cmd>lua require('anwalsh.telescope').search_all_files()<cr>", "Search all files" },
 			b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
 			c = { "<cmd>Telescope commands<cr>", "Commands" },
 			f = { "<cmd>Telescope find_files<cr>", "Find file" },
@@ -144,6 +145,7 @@ wk.register({
 			p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
 			P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
 			t = { "<cmd>Telescope live_grep<cr>", "Text without args" },
+            T = { "<cmd>lua require('anwalsh.telescope').search_only_certain_files()<cr>", "Search by file types" },
 			w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
         ["t"] = {

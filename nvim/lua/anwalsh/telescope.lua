@@ -163,6 +163,23 @@ function M.find_hidden_files()
   }
 end
 
+function M.search_all_files()
+  require("telescope.builtin").find_files {
+    find_command = { "rg", "--no-ignore", "--files" },
+  }
+end
+
+function M.search_only_certain_files()
+  require("telescope.builtin").find_files {
+    find_command = {
+      "rg",
+      "--files",
+      "--type",
+      vim.fn.input "Type: ",
+    },
+  }
+end
+
 function M.float_terminal(cmd)
   local buf = vim.api.nvim_create_buf(false, true)
   local vpad = 4
