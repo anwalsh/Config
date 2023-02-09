@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
 end
 vim.opt.runtimepath:prepend(lazypath)
 
@@ -15,13 +15,13 @@ return {
     -- UI
 
     -- Themes
-    ({"Mofiqul/dracula.nvim"}),
-    ({"nyoom-engineering/oxocarbon.nvim"}),
-    ({"EdenEast/nightfox.nvim"}),
-    ({"catppuccin/nvim", as = "catppuccin"}),
-    ({"projekt0n/github-nvim-theme"}),
-    ({"folke/tokyonight.nvim"}),
-    ({"rebelot/kanagawa.nvim"}),
+    ({ "Mofiqul/dracula.nvim" }),
+    ({ "nyoom-engineering/oxocarbon.nvim" }),
+    ({ "EdenEast/nightfox.nvim" }),
+    ({ "catppuccin/nvim", as = "catppuccin" }),
+    ({ "projekt0n/github-nvim-theme" }),
+    ({ "folke/tokyonight.nvim" }),
+    ({ "rebelot/kanagawa.nvim" }),
 
     -- Supporting Libs
     ({ "folke/noice.nvim", dependencies = "MunifTanjim/nui.nvim", lazy = false }),
@@ -66,7 +66,7 @@ return {
     ({ "mrjones2014/legendary.nvim", version = "^2.1.0", config = true, lazy = false }),
 
     -- Comments
-    ({"numToStr/Comment.nvim", lazy = false}),
+    ({ "numToStr/Comment.nvim", lazy = false }),
     ({
         "folke/todo-comments.nvim",
         dependencies = "nvim-lua/plenary.nvim",
@@ -114,16 +114,16 @@ return {
     ({
         "AndrewRadev/splitjoin.vim",
         keys =
-            {
-                { "gJ", desc = "Join a block into single line." },
-                { "gS", desc = "Split one line into multi-line." },
-            }
+        {
+            { "gJ", desc = "Join a block into single line." },
+            { "gS", desc = "Split one line into multi-line." },
+        }
     }),
     ("machakann/vim-sandwich"),
 
     -- Formatting
     ("windwp/nvim-autopairs"),
-    ({"eraserhd/parinfer-rust", build = "cargo build --release"}),
+    ({ "eraserhd/parinfer-rust", build = "cargo build --release" }),
 
     -- Prose
     ("preservim/vim-pencil"),
@@ -157,19 +157,21 @@ return {
     ("leoluz/nvim-dap-go"),
     ("mfussenegger/nvim-dap-python"),
 
+    -- Languages
+
     -- Doc Strings
     ("danymat/neogen"),
 
     -- Completion/LSP
     ("neovim/nvim-lspconfig"),
-    ({"hrsh7th/nvim-cmp", dependencies = "onsails/lspkind.nvim" }),
-    ({"hrsh7th/vim-vsnip", lazy = false}),
+    ({ "hrsh7th/nvim-cmp", dependencies = "onsails/lspkind.nvim" }),
+    ({ "hrsh7th/vim-vsnip", lazy = false }),
     ("L3MON4D3/LuaSnip"),
     ("rafamadriz/friendly-snippets"),
     ("saadparwaiz1/cmp_luasnip"),
     ("lukas-reineke/cmp-under-comparator"),
     ("hrsh7th/cmp-nvim-lsp"),
-    ({"hrsh7th/cmp-vsnip", lazy = false}),
+    ({ "hrsh7th/cmp-vsnip", lazy = false }),
     ("hrsh7th/cmp-path"),
     ("hrsh7th/cmp-buffer"),
     ("hrsh7th/cmp-nvim-lua"),
@@ -194,15 +196,15 @@ return {
     ({ "junegunn/fzf", build = "./install --all" }),
 
     -- Markdown and Writing
-    ({"SidOfc/mkdx"}),
-    ({"jakewvincent/mkdnflow.nvim"}),
+    ({ "SidOfc/mkdx" }),
+    ({ "jakewvincent/mkdnflow.nvim" }),
 
     -- Git integration
     ("lewis6991/gitsigns.nvim"),
     ("pwntester/octo.nvim"),
     ({ "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }),
     ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
-    ({"rhysd/git-messenger.vim"}),
+    ({ "rhysd/git-messenger.vim" }),
     ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "akinsho/git-conflict.nvim" }),
 }
