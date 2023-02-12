@@ -191,7 +191,7 @@ return {
     --     },
     -- }),
     ({ "MTDL9/vim-log-highlighting" }),
-    ("narutoxy/dim.lua"),
+    ("narutoxy/dim.lua"), -- May not work in all contexts (specifically works in Rust)
     ({ "SmiteshP/nvim-navic", lazy = false }),
 
     -- Search
@@ -202,6 +202,7 @@ return {
     ({ "jakewvincent/mkdnflow.nvim" }),
 
     -- Git integration
+    ({ "tpope/vim-fugitive", lazy = false }),
     ("lewis6991/gitsigns.nvim"),
     (
         { "pwntester/octo.nvim",
