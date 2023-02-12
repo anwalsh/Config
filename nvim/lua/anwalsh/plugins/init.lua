@@ -191,6 +191,8 @@ return {
     --     },
     -- }),
     ({ "MTDL9/vim-log-highlighting" }),
+    ("narutoxy/dim.lua"),
+    ({ "SmiteshP/nvim-navic", lazy = false }),
 
     -- Search
     ({ "junegunn/fzf", build = "./install --all" }),
@@ -201,7 +203,10 @@ return {
 
     -- Git integration
     ("lewis6991/gitsigns.nvim"),
-    ("pwntester/octo.nvim"),
+    (
+        { "pwntester/octo.nvim",
+            dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons" },
+            lazy = false }),
     ({ "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }),
     ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "rhysd/git-messenger.vim" }),

@@ -1,8 +1,9 @@
 if not pcall(require, "lualine") then
-  return
+    return
 end
 
 local lualine = require("lualine")
+local navic = require("nvim-navic")
 
 if ("carbonfox" == vim.g.colors_name) then
     -- Color table for highlights
@@ -10,32 +11,32 @@ if ("carbonfox" == vim.g.colors_name) then
     local palette = require('nightfox.palette').load("carbonfox")
 
     Colors = {
-      bg       = palette.bg1,
-      fg       = palette.white.base,
-      yellow   = palette.yellow.base,
-      cyan     = palette.cyan.base,
-      darkblue = palette.blue.dim,
-      green    = palette.green.base,
-      orange   = palette.orange.base,
-      violet   = palette.pink.base,
-      magenta  = palette.magenta.base,
-      blue     = palette.blue.base,
-      red      = palette.red.base,
+        bg       = palette.bg1,
+        fg       = palette.white.base,
+        yellow   = palette.yellow.base,
+        cyan     = palette.cyan.base,
+        darkblue = palette.blue.dim,
+        green    = palette.green.base,
+        orange   = palette.orange.base,
+        violet   = palette.pink.base,
+        magenta  = palette.magenta.base,
+        blue     = palette.blue.base,
+        red      = palette.red.base,
     }
 else
     -- stylua: ignore
     Colors = {
-      bg       = '#242330',
-      fg       = '#f8f8f3',
-      yellow   = '#effa7c',
-      cyan     = '#68ecff',
-      darkblue = '#5f73a8',
-      green    = '#00fe69',
-      orange   = '#ffb45c',
-      violet   = '#c591ff',
-      magenta  = '#ff6eca',
-      blue     = '#66ecff',
-      red      = '#ff414c',
+        bg       = '#242330',
+        fg       = '#f8f8f3',
+        yellow   = '#effa7c',
+        cyan     = '#68ecff',
+        darkblue = '#5f73a8',
+        green    = '#00fe69',
+        orange   = '#ffb45c',
+        violet   = '#c591ff',
+        magenta  = '#ff6eca',
+        blue     = '#66ecff',
+        red      = '#ff414c',
     }
 end
 
@@ -155,6 +156,12 @@ ins_left({
         color_warn = { fg = Colors.yellow },
         color_info = { fg = Colors.cyan },
     },
+})
+
+ins_right({
+    navic.get_location,
+    cond = navic.is_available,
+    color = { fg = Colors.green, gui = "bold", }
 })
 
 ins_right({

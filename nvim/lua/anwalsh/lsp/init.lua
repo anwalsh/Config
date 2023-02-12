@@ -1,9 +1,45 @@
 local lspconfig = require "lspconfig"
 local util = require('lspconfig/util')
+local navic = require("nvim-navic")
 local path = util.path
 
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("nvim-navic").setup({
+    icons = {
+        File          = " ",
+        Module        = " ",
+        Namespace     = " ",
+        Package       = " ",
+        Class         = " ",
+        Method        = " ",
+        Property      = " ",
+        Field         = " ",
+        Constructor   = " ",
+        Enum          = "練",
+        Interface     = "練",
+        Function      = " ",
+        Variable      = " ",
+        Constant      = " ",
+        String        = " ",
+        Number        = " ",
+        Boolean       = "◩ ",
+        Array         = " ",
+        Object        = " ",
+        Key           = " ",
+        Null          = "ﳠ ",
+        EnumMember    = " ",
+        Struct        = " ",
+        Event         = " ",
+        Operator      = " ",
+        TypeParameter = " ",
+    },
+    highlight = false,
+    separator = " > ",
+    depth_limit = 0,
+    depth_limit_indicator = "..",
+    safe_output = true
+})
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(binding, cmd)
@@ -32,6 +68,9 @@ local on_attach = function(client, bufnr)
             augroup END
         ]])
 
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 -- organize imports

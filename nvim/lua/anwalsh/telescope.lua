@@ -105,13 +105,16 @@ require("telescope").setup({
 })
 
 -- Extension Loading
-require("telescope").load_extension("gh")
 require("telescope").load_extension("bookmarks")
 require("telescope").load_extension("heading")
 require("telescope").load_extension("project")
 require("telescope").load_extension("aerial")
-require('telescope').load_extension('octo')
 require('telescope').load_extension('zoxide')
+
+if vim.fn.executable "gh" == 1 then
+  pcall(require("telescope").load_extension, "gh")
+  pcall(require("telescope").load_extension, "octo")
+end
 -- require("telescope").load_extension("git_worktree")
 
 local M = {}

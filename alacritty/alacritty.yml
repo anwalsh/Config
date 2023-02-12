@@ -1,4 +1,5 @@
-# env:
+env:
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
