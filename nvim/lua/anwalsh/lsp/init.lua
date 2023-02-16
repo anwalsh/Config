@@ -96,7 +96,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "ltex", "marksman", "bashls", },
+    ensure_installed = { "sumneko_lua", "ltex", "marksman", "bashls", "yamlls" },
 }
 
 -------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ require("rust-tools").setup {
 lspconfig.sumneko_lua.setup {
     capabilities = capabilities,
     flags = { debounce_text_changes = 200 },
-    on_attach = on_attach
+    on_attach = on_attach,
 }
 
 -------------------------------------------------------------------------------
@@ -281,6 +281,15 @@ lspconfig.ltex.setup {
 
 require 'lspconfig'.marksman.setup {
     capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+-------------------------------------------------------------------------------
+-- yamlls
+-------------------------------------------------------------------------------
+lspconfig.yamlls.setup {
+    capabilities = capabilities,
+    flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
 }
 

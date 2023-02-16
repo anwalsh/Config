@@ -1,5 +1,5 @@
 if not pcall(require, "which-key") then
-  return
+    return
 end
 
 local wk = require("which-key")
@@ -40,7 +40,7 @@ wk.register({
         },
         ["d"] = {
             name = "+docs",
-            d = {"<cmd>lua require('neogen').generate()<cr>", "Create Docstring"}
+            d = { "<cmd>lua require('neogen').generate()<cr>", "Create Docstring" }
         },
         ["f"] = {
             name = "+file",
@@ -53,8 +53,8 @@ wk.register({
             s = { "<Cmd>w<CR>", "Save Current File" },
             S = { "<Cmd>wa<CR>", "Save All Open Files" },
             N = {
-            "<Cmd>Telescope file_browser initial_mode=normal<CR>",
-            "Open File Browser",
+                "<Cmd>Telescope file_browser initial_mode=normal<CR>",
+                "Open File Browser",
             },
             t = { "<Cmd>NvimTreeToggle<CR>", "Show NvimTree" },
             T = { "<Cmd>NvimTreeFindFile<CR>", "Find Current File in NvimTree" },
@@ -65,21 +65,21 @@ wk.register({
             s = { "<cmd>Neogit<cr>", "Neogit Status" },
             ["n"] = {
                 name = "+neogit",
-                    f = { "<cmd>lua require('neogit').neogit.popups.pull.create()<cr>", "Neogit Pull Create" },
-                    p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
-                },
+                f = { "<cmd>lua require('neogit').neogit.popups.pull.create()<cr>", "Neogit Pull Create" },
+                p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
+            },
             f = { "<cmd>lua require('neogit').neogit.popups.pull.create()<cr>", "Neogit Pull Create" },
             p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
             d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
             ["m"] = {
                 name = "Merge Conflict",
-                l = {"<cmd>GitConflictListQf<cr>", "List of Conflicts"},
-                o = {"<Plug>(git-conflict-ours)", "Choose our change"},
-                t = {"<Plug>(git-conflict-theirs)", "Choose their change"},
-                b = {"<Plug>(git-conflict-both)", "Choose both changes"},
-                n = {"<Plug>(git-conflict-none)", "Choose neither change"},
-                ["]"] = {"<Plug>(git-conflict-prev-conflict)", "Previous Conflict"},
-                ["["] = {"<Plug>(git-conflict-prev-conflict)", "Next Conflict"},
+                l = { "<cmd>GitConflictListQf<cr>", "List of Conflicts" },
+                o = { "<Plug>(git-conflict-ours)", "Choose our change" },
+                t = { "<Plug>(git-conflict-theirs)", "Choose their change" },
+                b = { "<Plug>(git-conflict-both)", "Choose both changes" },
+                n = { "<Plug>(git-conflict-none)", "Choose neither change" },
+                ["]"] = { "<Plug>(git-conflict-prev-conflict)", "Previous Conflict" },
+                ["["] = { "<Plug>(git-conflict-prev-conflict)", "Next Conflict" },
             },
             ["G"] = {
                 name = "Octo",
@@ -111,7 +111,7 @@ wk.register({
             l = { "<Cmd>LazyGit<CR>", "Open LazyGit" },
             y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" }
         },
-        o = {
+        ["o"] = {
             name = "open",
             d = { "<Cmd>TodoTrouble<CR>", "Open TODO List (Trouble)" },
             D = { "<Cmd>TodoTelescope<CR>", "Open TODO List (Telescope)" },
@@ -129,24 +129,24 @@ wk.register({
         ["s"] = {
             name = "+search",
             a = { "<cmd>lua require('anwalsh.telescope').search_all_files()<cr>", "Search all files" },
-			b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
-			c = { "<cmd>Telescope commands<cr>", "Commands" },
-			f = { "<cmd>Telescope find_files<cr>", "Find file" },
-			g = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-			h = { "<cmd>Telescope command_history<cr>", "Find command history" },
-			H = { "<cmd>Telescope help_tags<cr>", "Find help" },
-			L = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
-			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-			m = { "<cmd>Telescope marks<cr>", "Marks" },
-			M = { "<cmd>Telescope man_pages<cr>", "Man pages" },
-			o = { "<cmd>Telescope oldfiles<cr>", "Open old files" },
-			r = { "<cmd>Telescope resume<cr>", "Open previous search" },
-			R = { "<cmd>Telescope registers<cr>", "Registers" },
-			p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
-			P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
-			t = { "<cmd>Telescope live_grep<cr>", "Text without args" },
+            b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
+            c = { "<cmd>Telescope commands<cr>", "Commands" },
+            f = { "<cmd>Telescope find_files<cr>", "Find file" },
+            g = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+            h = { "<cmd>Telescope command_history<cr>", "Find command history" },
+            H = { "<cmd>Telescope help_tags<cr>", "Find help" },
+            L = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
+            k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+            m = { "<cmd>Telescope marks<cr>", "Marks" },
+            M = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+            o = { "<cmd>Telescope oldfiles<cr>", "Open old files" },
+            r = { "<cmd>Telescope resume<cr>", "Open previous search" },
+            R = { "<cmd>Telescope registers<cr>", "Registers" },
+            p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
+            P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
+            t = { "<cmd>Telescope live_grep<cr>", "Text without args" },
             T = { "<cmd>lua require('anwalsh.telescope').search_only_certain_files()<cr>", "Search by file types" },
-			w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
+            w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
         ["t"] = {
             name = "+text",

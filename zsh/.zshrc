@@ -21,7 +21,7 @@ fi
 #   2.  USER CONFIGURATION
 #   -----------------------------
 export DEFAULT_USER=$USER
-export EDITOR="nvim"
+# export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
