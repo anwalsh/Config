@@ -30,3 +30,8 @@ vnoremap('J', ':MoveBlock(1)<CR>', silent)
 vnoremap('K', ':MoveBlock(-1)<CR>', silent)
 vnoremap('H', ':MoveHBlock(-1)<CR>', silent)
 vnoremap('L', ':MoveHBlock(1)<CR>', silent)
+
+-- Format the JSON
+if vim.fn.executable "jq" == 1 then
+    nnoremap("<leader>fj", ":%!jq .<CR>", silent)
+end
