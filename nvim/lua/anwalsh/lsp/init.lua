@@ -90,13 +90,26 @@ function OrganizeImports(timeoutms)
     end
 end
 
-vim.diagnostic.config { float = { source = "always" } }
+vim.diagnostic.config({
+    virtual_text = {
+        source = "always",
+        prefix = "▎",
+        spacing = 6,
+    },
+    float = {
+        source = "always",
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+})
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "ltex", "marksman", "bashls", "yamlls" },
+    ensure_installed = { "lua_ls", "ltex", "marksman", "bashls", "yamlls", "jsonls", "dockerls", },
 }
 
 -------------------------------------------------------------------------------
@@ -180,7 +193,7 @@ require("rust-tools").setup {
 -------------------------------------------------------------------------------
 -- lua
 -------------------------------------------------------------------------------
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     capabilities = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
