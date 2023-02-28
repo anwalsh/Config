@@ -1,5 +1,5 @@
 if not pcall(require, "telescope") then
-  return
+    return
 end
 
 local actions = require("telescope.actions")
@@ -95,11 +95,13 @@ require("telescope").setup({
             }),
         },
         project = {
-          base_dirs = {
-            '~/GitLocal/github.com/',
-          },
-          hidden_files = true, -- default: false
-          theme = "dropdown"
+            base_dirs = {
+                '~/GitLocal/github.com/',
+                '~/Config/',
+                '~/Config/nvim',
+            },
+            hidden_files = true, -- default: false
+            theme = "dropdown"
         },
     },
 })
@@ -112,98 +114,112 @@ require("telescope").load_extension("aerial")
 require('telescope').load_extension('zoxide')
 
 if vim.fn.executable "gh" == 1 then
-  pcall(require("telescope").load_extension, "gh")
-  pcall(require("telescope").load_extension, "octo")
+    pcall(require("telescope").load_extension, "gh")
+    pcall(require("telescope").load_extension, "octo")
 end
 -- require("telescope").load_extension("git_worktree")
 
 local M = {}
 
 function M.reload_modules()
-	local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
-	for _, dir in ipairs(lua_dirs) do
-		dir = string.gsub(dir, "./lua/", "")
-		require("plenary.reload").reload_module(dir)
-	end
+    local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
+    for _, dir in ipairs(lua_dirs) do
+        dir = string.gsub(dir, "./lua/", "")
+        require("plenary.reload").reload_module(dir)
+    end
 end
 
 M.git_branches = function()
-	require("telescope.builtin").git_branches({
-		attach_mappings = function(_, map)
-			map("i", "<c-d>", actions.git_delete_branch)
-			map("n", "<c-d>", actions.git_delete_branch)
-			return true
-		end,
-	})
+    require("telescope.builtin").git_branches({
+        attach_mappings = function(_, map)
+            map("i", "<c-d>", actions.git_delete_branch)
+            map("n", "<c-d>", actions.git_delete_branch)
+            return true
+        end,
+    })
 end
 
 M.project_search = function(opts)
-  opts = opts or {}
-  opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-  if vim.v.shell_error ~= 0 then
-    -- if not git then active lsp client root
-    -- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps 
-    if pcall(vim.lsp.get_active_clients()) then
-        opts.cwd = vim.lsp.get_active_clients()[1].config.root_dir
-    else
-        -- if the above call falls we enter here and use the current working directorY
-        opts.cwd = vim.fn.getcwd()
+    opts = opts or {}
+    opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+    if vim.v.shell_error ~= 0 then
+        -- if not git then active lsp client root
+        -- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps
+        if pcall(vim.lsp.get_active_clients()) then
+            opts.cwd = vim.lsp.get_active_clients()[1].config.root_dir
+        else
+            -- if the above call falls we enter here and use the current working directorY
+            opts.cwd = vim.fn.getcwd()
+        end
     end
-  end
-  require'telescope.builtin'.find_files(opts)
+    require 'telescope.builtin'.find_files(opts)
 end
 
 function M.find_hidden_files()
-  require("telescope.builtin").find_files {
-    cwd = vim.fn.getcwd(),
-    shorten_path = false,
-    hidden = true,
+    require("telescope.builtin").find_files {
+        cwd = vim.fn.getcwd(),
+        shorten_path = false,
+        hidden = true,
 
-    layout_strategy = "horizontal",
-    layout_config = {
-      preview_width = 0.55,
-    },
-  }
+        layout_strategy = "horizontal",
+        layout_config = {
+            preview_width = 0.55,
+        },
+    }
 end
 
 function M.search_all_files()
-  require("telescope.builtin").find_files {
-    find_command = { "rg", "--no-ignore", "--files" },
-  }
+    require("telescope.builtin").find_files {
+        find_command = { "rg", "--no-ignore", "--files" },
+    }
 end
 
 function M.search_only_certain_files()
-  require("telescope.builtin").find_files {
-    find_command = {
-      "rg",
-      "--files",
-      "--type",
-      vim.fn.input "Type: ",
-    },
-  }
+    require("telescope.builtin").find_files {
+        find_command = {
+            "rg",
+            "--files",
+            "--type",
+            vim.fn.input "Type: ",
+        },
+    }
 end
 
 function M.float_terminal(cmd)
-  local buf = vim.api.nvim_create_buf(false, true)
-  local vpad = 4
-  local hpad = 10
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = vim.o.columns - hpad * 2,
-    height = vim.o.lines - vpad * 2,
-    row = vpad,
-    col = hpad,
-    style = "minimal",
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  })
-  vim.fn.termopen(cmd)
-  local autocmd = {
-    "autocmd! TermClose <buffer> lua",
-    string.format("vim.api.nvim_win_close(%d, {force = true});", win),
-    string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
-  }
-  vim.cmd(table.concat(autocmd, " "))
-  vim.cmd([[startinsert]])
+    local buf = vim.api.nvim_create_buf(false, true)
+    local vpad = 4
+    local hpad = 10
+    local win = vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = vim.o.columns - hpad * 2,
+        height = vim.o.lines - vpad * 2,
+        row = vpad,
+        col = hpad,
+        style = "minimal",
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    })
+    vim.fn.termopen(cmd)
+    local autocmd = {
+        "autocmd! TermClose <buffer> lua",
+        string.format("vim.api.nvim_win_close(%d, {force = true});", win),
+        string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
+    }
+    vim.cmd(table.concat(autocmd, " "))
+    vim.cmd([[startinsert]])
+end
+
+function M.edit_nvim()
+    require("telescope.builtin").find_files {
+        shorten_path = false,
+        cwd = "~/Config/nvim/",
+        prompt = "~ NVIM ~",
+        hidden = true,
+
+        layout_strategy = "horizontal",
+        layout_config = {
+            preview_width = 0.55,
+        },
+    }
 end
 
 return M

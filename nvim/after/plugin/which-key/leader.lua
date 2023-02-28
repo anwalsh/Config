@@ -185,6 +185,7 @@ wk.register({
             name = "+settings",
             l = { "<cmd>:Lazy<cr>", "Gogo Lazy" },
             m = { "<cmd>:Mason<cr>", "Gogo Mason" },
+            n = { "<cmd>lua require('anwalsh.telescope').edit_nvim()<cr>", "Edit Nvim Config" },
         },
         ["x"] = {
             name = "+tooling",
