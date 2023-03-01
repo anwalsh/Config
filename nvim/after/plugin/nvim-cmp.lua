@@ -1,4 +1,3 @@
-
 local cmp = require("cmp")
 
 -- For mapping <CR> {{{
@@ -45,8 +44,8 @@ cmp.setup({
             elseif vim.fn["vsnip#available"](1) == 1 then
                 feedkey("<Plug>(vsnip-expand-or-jump)", "")
             elseif has_words_before() then
-                feedkey("<Plug>(Tabout)", "")
-                -- cmp.complete()
+                -- feedkey("<Plug>(Tabout)", "")
+                cmp.complete()
             else
                 fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
             end
