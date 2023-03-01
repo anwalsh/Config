@@ -57,7 +57,7 @@ return {
     ({ "lukas-reineke/indent-blankline.nvim", lazy = false }),
 
     -- Color Rendering
-    ({ "norcalli/nvim-colorizer.lua" }),
+    ({ "norcalli/nvim-colorizer.lua", dependencies = "norcalli/nvim-terminal.lua" }),
 
     -- Navigation
     ({ "ggandor/leap.nvim", lazy = false }),
@@ -178,9 +178,10 @@ return {
     ("hrsh7th/cmp-nvim-lsp-document-symbol"),
     ("hrsh7th/cmp-nvim-lsp-signature-help"),
     ("hrsh7th/cmp-emoji"),
-    ("octaltree/cmp-look"), -- TODO: Figure out how to only get this to run in txt/markdown/whatever, and then only in comments as well.
+    ("octaltree/cmp-look"),
     ("ray-x/cmp-treesitter"),
     ("folke/lsp-colors.nvim"),
+    ("j-hui/fidget.nvim"),
     -- ("ray-x/lsp_signature.nvim"), -- TODO: Should I use this?
     -- ("ray-x/guihua.lua"), -- TODO: Same question for the below possibles.
     -- ({

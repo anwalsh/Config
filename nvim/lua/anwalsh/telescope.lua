@@ -9,24 +9,27 @@ require("telescope").setup({
         -- General Config
         vimgrep_arguments = {
             "rg",
+            "--no-heading",
+            "--with-filename",
             "--line-number",
             "--column",
             "--smart-case",
-            "--hidden",
+            "--hidden"
         },
         initial_mode = "insert",
         selection_strategy = "reset",
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "*.git", ".vim/undo", "node_modules", "venv" },
+        file_ignore_patterns = { "^%*.git/", "^.vim/undo", "^node_modules", "venv", "^__pycache__/", },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         find_command = {
             "rg",
-            "--ignore",
-            "--hidden",
-            "--files",
-            "--smartcase",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden"
         },
-
         -- Appearance
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         sorting_strategy = "ascending",
