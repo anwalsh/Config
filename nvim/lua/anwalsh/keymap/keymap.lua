@@ -13,7 +13,7 @@ inoremap("jj", "<Esc>")
 -- nnoremaps
 nnoremap("<esc><esc>", ":nohl<CR>", silent)
 nnoremap("<leader>pv", ":Ex<CR>")
-nnoremap("<tab><tab>", "<C-^>") -- Move between previous/current buffer
+-- nnoremap("<tab><tab>", "<C-^>") -- Move between previous/current buffer
 
 -- Better Visual mode Indention
 vnoremap(">", ">gv")

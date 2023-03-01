@@ -5,12 +5,17 @@ end
 local wk = require("which-key")
 
 wk.register({
+    [";"] = { ":normal gcc<CR>", "Toggle Comment" },
+    ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
+    ["<S-TAB>"] = { ":bprevious<CR>", "Jump to prev buffer" },
+    ["<C-h>"] = { "<C-w>h", "Jump window left" },
+    ["<C-j>"] = { "<C-w>j", "Jump window down" },
+    ["<C-k>"] = { "<C-w>k", "Jump window up" },
+    ["<C-l>"] = { "<C-w>l", "Jump window right" },
     ["<leader>"] = {
-        [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
-        [";"] = { ":normal gcc<CR>", "Toggle Comment" },
-        ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
         ["w"] = { ":w<cr>", "Write" },
         ["q"] = { ":q<cr>", "Quit" },
+        [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
         ["b"] = {
             name = "+buffer",
             b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
@@ -21,7 +26,7 @@ wk.register({
                 c = { "<Cmd>BufferLinePickClose<CR>", "Choose Buffer to Delete" },
                 d = { "<Cmd>BDelete this<CR>", "Delete Current Buffer" },
                 h = { "<Cmd>BDelete! hidden<CR>", "Delete Hidden Buffers" },
-                n = { "<Cmd>BDelete nameless<CR>", "Delete All Nameless Buggers" },
+                n = { "<Cmd>BDelete nameless<CR>", "Delete All Nameless Buffers" },
                 o = { "<Cmd>BDelete other<CR>", "Delete Other Buffers" },
                 w = { "<Cmd>bufdo Bw<CR>", "Delete All Buffers, Keep Windows" },
             },
@@ -38,10 +43,6 @@ wk.register({
             L = { "<C-W>5>", "Expand-buffer-right" },
             K = { ":resize -5", "Expand-buffer-up" },
         },
-        ["d"] = {
-            name = "+docs",
-            d = { "<cmd>lua require('neogen').generate()<cr>", "Create Docstring" }
-        },
         ["f"] = {
             name = "+file",
             b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
@@ -49,13 +50,8 @@ wk.register({
             h = { "<cmd>lua require('anwalsh.telescope').find_hidden_files()<cr>", "Find Hidden Files" },
             n = { "<cmd>enew<cr>", "New File" },
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-            z = { "<cmd>Telescope zoxide list<cr>", "Zoxide" },
             s = { "<Cmd>w<CR>", "Save Current File" },
             S = { "<Cmd>wa<CR>", "Save All Open Files" },
-            N = {
-                "<Cmd>Telescope file_browser initial_mode=normal<CR>",
-                "Open File Browser",
-            },
             t = { "<Cmd>NvimTreeToggle<CR>", "Show NvimTree" },
             T = { "<Cmd>NvimTreeFindFile<CR>", "Find Current File in NvimTree" },
         },
@@ -69,7 +65,7 @@ wk.register({
                 p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
             },
             f = { "<cmd>lua require('neogit').neogit.popups.pull.create()<cr>", "Neogit Pull Create" },
-            p = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
+            P = { "<cmd>lua require('neogit').popups.push.create()<cr>", "Neogit Push Create" },
             d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
             ["m"] = {
                 name = "Merge Conflict",
@@ -125,27 +121,26 @@ wk.register({
             name = "+project",
             f = { "<cmd>lua require('anwalsh.telescope').project_search()<cr>", "Open Project File" },
             p = { "<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Project Finder" },
+            z = { "<cmd>Telescope zoxide list<cr>", "Zoxide Directory List" },
         },
         ["s"] = {
             name = "+search",
-            a = { "<cmd>lua require('anwalsh.telescope').search_all_files()<cr>", "Search all files" },
             b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
             c = { "<cmd>Telescope commands<cr>", "Commands" },
             f = { "<cmd>Telescope find_files<cr>", "Find file" },
             g = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             h = { "<cmd>Telescope command_history<cr>", "Find command history" },
-            H = { "<cmd>Telescope help_tags<cr>", "Find help" },
             L = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
             m = { "<cmd>Telescope marks<cr>", "Marks" },
-            M = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+            n = { "<cmd>lua require('anwalsh.telescope').search_all_files()<cr>", "Search File Names in Context" },
             o = { "<cmd>Telescope oldfiles<cr>", "Open old files" },
             r = { "<cmd>Telescope resume<cr>", "Open previous search" },
             R = { "<cmd>Telescope registers<cr>", "Registers" },
             p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
             P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
-            t = { "<cmd>Telescope live_grep<cr>", "Text without args" },
-            T = { "<cmd>lua require('anwalsh.telescope').search_only_certain_files()<cr>", "Search by file types" },
+            s = { "<cmd>Telescope live_grep<cr>", "Text without args" },
+            t = { "<cmd>lua require('anwalsh.telescope').search_only_certain_files()<cr>", "Search by file types" },
             w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
         ["t"] = {
@@ -186,6 +181,7 @@ wk.register({
             l = { "<cmd>:Lazy<cr>", "Gogo Lazy" },
             m = { "<cmd>:Mason<cr>", "Gogo Mason" },
             n = { "<cmd>lua require('anwalsh.telescope').edit_nvim()<cr>", "Edit Nvim Config" },
+            d = { "<cmd>lua require('anwalsh.telescope').edit_config()<cr>", "Edit Config Files" },
         },
         ["x"] = {
             name = "+tooling",

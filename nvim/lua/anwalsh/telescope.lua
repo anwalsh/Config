@@ -65,8 +65,8 @@ require("telescope").setup({
         aerial = { theme = "ivy" },
         buffers = { theme = "dropdown" },
         colorscheme = { theme = "ivy" },
-        lsp_references = { theme = "cursor" },
-        lsp_definitions = { theme = "cursor" },
+        lsp_references = { theme = "ivy" },
+        lsp_definitions = { theme = "ivy" },
         current_buffer_fuzzy_find = { theme = "ivy" },
         file_browser = { theme = "ivy" },
         find_files = { theme = "ivy" },
@@ -216,6 +216,20 @@ function M.edit_nvim()
         shorten_path = false,
         cwd = "~/Config/nvim/",
         prompt = "~ NVIM ~",
+        hidden = true,
+
+        layout_strategy = "horizontal",
+        layout_config = {
+            preview_width = 0.55,
+        },
+    }
+end
+
+function M.edit_config()
+    require("telescope.builtin").find_files {
+        shorten_path = false,
+        cwd = "~/Config/",
+        prompt = "~ Dots ~",
         hidden = true,
 
         layout_strategy = "horizontal",
