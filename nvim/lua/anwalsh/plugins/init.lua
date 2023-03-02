@@ -197,6 +197,7 @@ return {
 
     -- Search
     ({ "junegunn/fzf", build = "./install --all" }),
+    ({ "yamatsum/nvim-cursorline", lazy = false }),
 
     -- Markdown and Writing
     ({ "SidOfc/mkdx" }),
