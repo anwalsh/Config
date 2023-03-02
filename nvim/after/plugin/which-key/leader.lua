@@ -204,6 +204,7 @@ wk.register({
             l = { "<cmd>lopen<cr>", "Open Location List" },
             q = { "<cmd>copen<cr>", "Open Quickfix List" },
         },
+        ["`"] = { "<cmd>ToggleTerm dir=%:p:h<cr>", "Terminal" },
         ["z"] = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
     },
 })

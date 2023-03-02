@@ -103,6 +103,7 @@ return {
         end,
     }),
     ({ "ThePrimeagen/harpoon" }),
+    ({ "akinsho/toggleterm.nvim", lazy = false }),
 
     -- Text Manipulation
     ("junegunn/vim-easy-align"),
