@@ -115,6 +115,7 @@ require("telescope").load_extension("heading")
 require("telescope").load_extension("project")
 require("telescope").load_extension("aerial")
 require('telescope').load_extension('zoxide')
+require('telescope').load_extension('advanced_git_search')
 
 if vim.fn.executable "gh" == 1 then
     pcall(require("telescope").load_extension, "gh")

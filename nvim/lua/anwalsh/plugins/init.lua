@@ -138,6 +138,7 @@ return {
     ("crispgm/telescope-heading.nvim"),
     ("dhruvmanila/telescope-bookmarks.nvim"),
     ("jvgrootveld/telescope-zoxide"),
+    ({"aaronhallaert/advanced-git-search.nvim"}),
 
     -- Language/Treesitter
     ({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }),

@@ -118,7 +118,18 @@ wk.register({
                 ["?"] = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
             l = { "<Cmd>LazyGit<CR>", "Open LazyGit" },
-            y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" }
+            y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" },
+            ["F"] = {
+                name = "+find git",
+                l = { "<cmd>lua require'telescope'.extensions.advanced_git_search.search_log_content()<cr>",
+                    "Search Log Content" },
+                L = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_line()<cr>",
+                    "Search Diff Commit Line" },
+                c = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_file()<cr>",
+                    "Search Diff Commit File" },
+                b = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_branch()<cr>",
+                    "Search Diff Commit Branch" },
+            },
         },
         ["o"] = {
             name = "open",
