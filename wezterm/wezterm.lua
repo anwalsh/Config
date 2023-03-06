@@ -103,18 +103,18 @@ return {
         },
         {
             key = 'LeftArrow',
-            mods = 'LEADER',
+            mods = 'ALT',
             action = act.AdjustPaneSize { 'Left', 5 },
         },
         {
             key = 'DownArrow',
-            mods = 'LEADER',
+            mods = 'ALT',
             action = act.AdjustPaneSize { 'Down', 5 },
         },
-        { key = 'UpArrow', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
+        { key = 'UpArrow', mods = 'ALT', action = act.AdjustPaneSize { 'Up', 5 } },
         {
             key = 'RightArrow',
-            mods = 'LEADER',
+            mods = 'ALT',
             action = act.AdjustPaneSize { 'Right', 5 },
         },
         {
