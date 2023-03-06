@@ -138,6 +138,7 @@ return {
             action = act.ActivatePaneDirection 'Down',
         },
         { key = '=', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
+        { key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
         {
             key = 'x',
             mods = 'CMD',
@@ -148,5 +149,6 @@ return {
         { key = 'c', mods = 'LEADER', action = act.ActivatePaneByIndex(2) },
         { key = 'd', mods = 'LEADER', action = act.ActivatePaneByIndex(3) },
         { key = 'e', mods = 'LEADER', action = act.ActivatePaneByIndex(4) },
+        { key = 's', mods = 'LEADER', action = act.PaneSelect },
     },
 }
