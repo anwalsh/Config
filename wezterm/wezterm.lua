@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 wezterm.on("update-right-status", function(window)
     window:set_right_status(wezterm.format({
@@ -86,6 +87,55 @@ return {
         {
             regex = [[\b[tT](\d+)\b]],
             format = "https://example.com/tasks/?t=$1",
+        },
+    },
+    leader = { key = 'a', mods = 'CTRL' },
+    keys = {
+        {
+            key = '=',
+            mods = 'LEADER',
+            action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+        },
+        {
+            key = '/',
+            mods = 'LEADER',
+            action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+        },
+        {
+            key = 'LeftArrow',
+            mods = 'LEADER',
+            action = act.AdjustPaneSize { 'Left', 5 },
+        },
+        {
+            key = 'DownArrow',
+            mods = 'LEADER',
+            action = act.AdjustPaneSize { 'Down', 5 },
+        },
+        { key = 'UpArrow', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
+        {
+            key = 'RightArrow',
+            mods = 'LEADER',
+            action = act.AdjustPaneSize { 'Right', 5 },
+        },
+        {
+            key = 'h',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection 'Left',
+        },
+        {
+            key = 'l',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection 'Right',
+        },
+        {
+            key = 'k',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection 'Up',
+        },
+        {
+            key = 'j',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection 'Down',
         },
     },
 }
