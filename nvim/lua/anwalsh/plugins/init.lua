@@ -138,7 +138,7 @@ return {
     ("crispgm/telescope-heading.nvim"),
     ("dhruvmanila/telescope-bookmarks.nvim"),
     ("jvgrootveld/telescope-zoxide"),
-    ({"aaronhallaert/advanced-git-search.nvim"}),
+    ({ "aaronhallaert/advanced-git-search.nvim" }),
 
     -- Language/Treesitter
     ({ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }),
@@ -167,13 +167,11 @@ return {
     -- Completion/LSP
     ("neovim/nvim-lspconfig"),
     ({ "hrsh7th/nvim-cmp", dependencies = "onsails/lspkind.nvim" }),
-    ({ "hrsh7th/vim-vsnip", lazy = false }),
     ("L3MON4D3/LuaSnip"),
     ("rafamadriz/friendly-snippets"),
     ("saadparwaiz1/cmp_luasnip"),
     ("lukas-reineke/cmp-under-comparator"),
     ("hrsh7th/cmp-nvim-lsp"),
-    ({ "hrsh7th/cmp-vsnip", lazy = false }),
     ("hrsh7th/cmp-path"),
     ("hrsh7th/cmp-buffer"),
     ("hrsh7th/cmp-nvim-lua"),
