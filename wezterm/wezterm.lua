@@ -8,6 +8,45 @@ wezterm.on("update-right-status", function(window)
     }))
 end)
 
+local function get_process(tab)
+    local process_icons = {
+        ["docker"] = {
+            { Text = wezterm.nerdfonts.linux_docker },
+        },
+        ["docker-compose"] = {
+            { Text = wezterm.nerdfonts.linux_docker },
+        },
+        ["nvim"] = {
+            { Text = wezterm.nerdfonts.custom_vim },
+        },
+        ["zsh"] = {
+            { Text = wezterm.nerdfonts.dev_terminal },
+        },
+        ["cargo"] = {
+            { Text = wezterm.nerdfonts.dev_rust },
+        },
+        ["go"] = {
+            { Text = wezterm.nerdfonts.mdi_language_go },
+        },
+        ["git"] = {
+            { Text = wezterm.nerdfonts.dev_git },
+        },
+        ["lua"] = {
+            { Text = wezterm.nerdfonts.seti_lua },
+        },
+        ["python"] = {
+            { Text = wezterm.nerdfonts.dev_python },
+        },
+    }
+
+    local process_name = string.gsub(tab.active_pane.foreground_process_name, "(.*[/\\])(.*)", "%2")
+
+    return wezterm.format(
+        process_icons[process_name]
+        or { Text = string.format("[%s]", process_name) }
+    )
+end
+
 local function get_current_working_dir(tab)
     local current_dir = tab.active_pane.current_working_dir
     local HOME_DIR = string.format("file://%s", os.getenv("HOME"))
@@ -21,6 +60,7 @@ wezterm.on("format-tab-title", function(tab)
         { Attribute = { Intensity = "Half" } },
         { Text = string.format(" %s  ", tab.tab_index + 1) },
         "ResetAttributes",
+        { Text = get_process(tab) },
         { Text = " " },
         { Text = get_current_working_dir(tab) },
         { Text = "  ▕" },

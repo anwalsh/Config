@@ -75,7 +75,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "b2060eac2fbc84e0637ea706378ff66451e7c424" },
   "octo.nvim": { "branch": "master", "commit": "ab5dbe20dc276348019676e5c3e97cb391e46b1b" },
   "oxocarbon.nvim": { "branch": "main", "commit": "149e8dec961562c63091ad6910fec4ead61eaa7f" },
-  "parinfer-rust": { "branch": "master", "commit": "55ce1e0c6e2465ce7f883972bb0feb1e4e8bdfa0" },
+  "parinfer-rust": { "branch": "master", "commit": "4d4f4c6c0d3b44c8443f3102bfadfb67dfb385f7" },
   "playground": { "branch": "master", "commit": "4044b53c4d4fcd7a78eae20b8627f78ce7dc6f56" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
