@@ -139,6 +139,7 @@ return {
         },
         { key = '=', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
         { key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
+        { key = '0', mods = 'CTRL', action = wezterm.action.ResetFontSize },
         {
             key = 'x',
             mods = 'CMD',
