@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 -- For mapping <CR> {{{
 -- If you want insert `(` after select function or method item
