@@ -4,7 +4,7 @@ local act = wezterm.action
 wezterm.on("update-right-status", function(window)
     window:set_right_status(wezterm.format({
         { Attribute = { Intensity = "Bold" } },
-        { Text = wezterm.strftime(" %A, %d %B %Y %I:%M %p ") },
+        { Text = wezterm.strftime(" %a, %d %b %y %H:%M ") },
     }))
 end)
 
