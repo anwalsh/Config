@@ -138,4 +138,9 @@ return {
             action = act.ActivatePaneDirection 'Down',
         },
     },
+    {
+        key = 'x',
+        mods = 'CMD',
+        action = wezterm.action.CloseCurrentPane { confirm = true },
+    },
 }
