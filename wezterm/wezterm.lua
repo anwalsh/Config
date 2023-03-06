@@ -143,6 +143,10 @@ return {
             mods = 'CMD',
             action = wezterm.action.CloseCurrentPane { confirm = true },
         },
-
+        { key = 'a', mods = 'LEADER', action = act.ActivatePaneByIndex(0) },
+        { key = 'b', mods = 'LEADER', action = act.ActivatePaneByIndex(1) },
+        { key = 'c', mods = 'LEADER', action = act.ActivatePaneByIndex(2) },
+        { key = 'd', mods = 'LEADER', action = act.ActivatePaneByIndex(3) },
+        { key = 'e', mods = 'LEADER', action = act.ActivatePaneByIndex(4) },
     },
 }
