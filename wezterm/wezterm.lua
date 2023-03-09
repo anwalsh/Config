@@ -191,5 +191,19 @@ return {
         { key = 'd', mods = 'LEADER', action = act.ActivatePaneByIndex(3) },
         { key = 'e', mods = 'LEADER', action = act.ActivatePaneByIndex(4) },
         { key = 's', mods = 'LEADER', action = act.PaneSelect },
+        {
+            key = 'n',
+            mods = 'LEADER',
+            action = act.PaneSelect {
+                alphabet = '1234567890',
+            },
+        },
+        {
+            key = 'c',
+            mods = 'LEADER',
+            action = act.PaneSelect {
+                mode = 'SwapWithActive',
+            },
+        },
     },
 }
