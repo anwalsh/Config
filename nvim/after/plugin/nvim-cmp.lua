@@ -1,12 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
--- For mapping <CR> {{{
--- If you want insert `(` after select function or method item
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
--- }}}
-
 -- For SuperTab-like completion {{{
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -91,7 +85,7 @@ cmp.setup({
     },
 })
 
-cmp.setup.filetype({ "markdown", "txt" }, {
+cmp.setup.filetype({
     sources = {
         {
             name = "look",
@@ -103,9 +97,4 @@ cmp.setup.filetype({ "markdown", "txt" }, {
         },
         { name = "emoji", insert = true },
     },
-})
-
--- For navigator.lua
-if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft == "guihua_rust" then
-    require("cmp").setup.buffer({ completion = { enable = false } })
-end
+}, { "markdown", "txt" })

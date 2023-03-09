@@ -96,7 +96,7 @@ return {
         brightness = 0.85,
     },
     enable_scroll_bar = false,
-    tab_bar_at_bottom = false,
+    tab_bar_at_bottom = true,
     use_fancy_tab_bar = false,
     show_new_tab_button_in_tab_bar = false,
     window_background_opacity = 1.0,
@@ -132,7 +132,7 @@ return {
     leader = { key = 'a', mods = 'CTRL' },
     keys = {
         {
-            key = '=',
+            key = '-',
             mods = 'LEADER',
             action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
         },
