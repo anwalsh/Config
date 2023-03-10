@@ -192,7 +192,7 @@ return {
         { key = 'e', mods = 'LEADER', action = act.ActivatePaneByIndex(4) },
         { key = 's', mods = 'LEADER', action = act.PaneSelect },
         {
-            key = 'n',
+            key = '#',
             mods = 'LEADER',
             action = act.PaneSelect {
                 alphabet = '1234567890',
@@ -205,5 +205,6 @@ return {
                 mode = 'SwapWithActive',
             },
         },
+        { key = 'n', mods = 'LEADER', action = wezterm.action.SpawnWindow },
     },
 }
