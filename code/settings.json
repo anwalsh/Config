@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "[GitHub Dark]": {
@@ -47,8 +47,8 @@
   "workbench.editor.enablePreview": false,
   "editor.fontSize": 16,
   "editor.fontLigatures": "'ss06' on, 'zero' on, 'ss04' on",
-  "terminal.external.osxExec": "iTerm2.app",
-  "terminal.external.linuxExec": "alacritty",
+  "terminal.external.osxExec": "WezTerm.app",
+  "terminal.external.linuxExec": "wezterm",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.commandsToSkipShell": ["vspacecode.space"],
   "terminal.integrated.allowChords": false,
@@ -75,7 +75,7 @@
       "comments": "inline",
       "other": true,
       "strings": true
-    },
+    }
   },
   "[python]": {
     "editor.codeActionsOnSave": {
@@ -88,7 +88,7 @@
     "rewrap.autoWrap.enabled": true,
     "rewrap.wrappingColumn": 88,
     "editor.autoClosingBrackets": "always",
-    "files.insertFinalNewline": true,
+    "files.insertFinalNewline": true
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -158,9 +158,26 @@
       "source.organizeImports": true
     }
   },
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast"
+  ],
+  "go.lintOnSave": "package",
   "go.docsTool": "gogetdoc",
+  "go.autocompleteUnimportedPackages": true,
+  "go.buildOnSave": "package",
+  "go.coverOnTestPackage": false,
+  "go.formatTool": "goimports",
+  "go.toolsManagement.autoUpdate": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+  "go.useLanguageServer": true,
+  "go.vetOnSave": "package",
+  "gopls": {
+    "gofumpt": true
+  },
   "editor.cursorBlinking": "solid",
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.dragAndDrop": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -220,7 +237,7 @@
     "suppressFileNotUnderSourceControlWarning": false,
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": true,
-    "suppressNoRepositoryWarning": false,
+    "suppressNoRepositoryWarning": false
   },
   "gitlens.blame.ignoreWhitespace": true,
   "gitlens.codeLens.scopes": ["containers", "document", "blocks"],
@@ -234,21 +251,6 @@
   "errorLens.messageTemplate": "$source: $message [$code]",
   "errorLens.gutterIconsEnabled": true,
   "guides.active.gutter": true,
-  "go.autocompleteUnimportedPackages": true,
-  "go.buildOnSave": "package",
-  "go.coverOnTestPackage": false,
-  "go.formatTool": "goimports",
-  "go.lintTool": "golangci-lint",
-  "go.lintFlags": ["--fast"],
-  "go.lintOnSave": "package",
-  "go.toolsManagement.autoUpdate": true,
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-  "go.useLanguageServer": true,
-  "go.vetOnSave": "package",
-  "gopls": {
-    "gofumpt": true
-  },
   "indentRainbow.colors": [
     "rgba(98, 114, 164, 0.1)",
     "rgba(98, 114, 164, 0.2)",
@@ -277,7 +279,7 @@
   "python.analysis.completeFunctionParens": true,
   "python.analysis.diagnosticMode": "workspace",
   "python.analysis.typeCheckingMode": "basic",
-  "python.defaultInterpreterPath": "/Users/macinburrito/.pyenv/versions/3.10.2/bin/python",
+  "python.defaultInterpreterPath": "/Users/andy/.pyenv/versions/3.10.2/bin/python",
   "python.formatting.blackPath": "black",
   "python.formatting.provider": "black",
   "python.languageServer": "Pylance",
@@ -2158,5 +2160,5 @@
   "window.titleBarStyle": "custom",
   "Lua.telemetry.enable": true,
   "editor.stickyScroll.enabled": true,
-  "githubPullRequests.pullBranch": "never",
+  "githubPullRequests.pullBranch": "never"
 }
