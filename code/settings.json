@@ -43,7 +43,7 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
+    "editor.formatOnSaveMode": "filw"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -150,7 +150,7 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.codeLensFontFamily": "Inter",
   "editor.cursorBlinking": "solid",
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 10,
   "editor.detectIndentation": false,
   "editor.dragAndDrop": true,
@@ -618,6 +618,10 @@
   "vim.highlightedyank.duration": 500,
   "vim.insertModeKeyBindings": [
     {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
       "before": ["<C-j>"],
       "commands": ["cursorDown"]
     },
@@ -640,12 +644,12 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
       "before": [";"],
       "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["Z", "Z"],
+      "commands": [":wq"]
     },
     {
       "after": ["<ESC>"],
@@ -966,6 +970,221 @@
   "vscode_custom_css.statusbar": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "vspacecode.bindingOverrides": [
+    {
+      "keys": "w",
+      "name": "+Window",
+      "icon": "split-horizontal",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "-",
+          "name": "Split window below",
+          "icon": "split-vertical",
+          "type": "command",
+          "command": "workbench.action.splitEditorDown"
+        },
+        {
+          "key": "/",
+          "name": "Split window right",
+          "icon": "split-horizontal",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "key": "=",
+          "name": "Reset window sizes",
+          "icon": "move",
+          "type": "command",
+          "command": "workbench.action.evenEditorWidths"
+        },
+        {
+          "key": "[",
+          "name": "Shrink window",
+          "icon": "remove",
+          "type": "transient",
+          "command": "workbench.action.decreaseViewSize",
+          "bindings": [
+            {
+              "key": "[",
+              "name": "Shrink window",
+              "icon": "remove",
+              "type": "command",
+              "command": "workbench.action.decreaseViewSize"
+            },
+            {
+              "key": "]",
+              "name": "Enlarge window",
+              "icon": "add",
+              "type": "command",
+              "command": "workbench.action.increaseViewSize"
+            }
+          ]
+        },
+        {
+          "key": "]",
+          "name": "Enlarge window",
+          "icon": "add",
+          "type": "transient",
+          "command": "workbench.action.increaseViewSize",
+          "bindings": [
+            {
+              "key": "[",
+              "name": "Shrink window",
+              "icon": "remove",
+              "type": "command",
+              "command": "workbench.action.decreaseViewSize"
+            },
+            {
+              "key": "]",
+              "name": "Enlarge window",
+              "icon": "add",
+              "type": "command",
+              "command": "workbench.action.increaseViewSize"
+            }
+          ]
+        },
+        {
+          "key": "d",
+          "name": "Close window",
+          "icon": "close",
+          "type": "command",
+          "command": "workbench.action.closeEditorsInGroup"
+        },
+        {
+          "key": "h",
+          "name": "Focus window left",
+          "icon": "arrow-left",
+          "type": "command",
+          "command": "workbench.action.focusPreviousGroup"
+        },
+        {
+          "key": "j",
+          "name": "Focus window down",
+          "icon": "arrow-down",
+          "type": "command",
+          "command": "workbench.action.focusBelowGroup"
+        },
+        {
+          "key": "k",
+          "name": "Focus window up",
+          "icon": "arrow-up",
+          "type": "command",
+          "command": "workbench.action.focusAboveGroup"
+        },
+        {
+          "key": "l",
+          "name": "Focus window right",
+          "icon": "arrow-right",
+          "type": "command",
+          "command": "workbench.action.focusNextGroup"
+        },
+        {
+          "key": "m",
+          "name": "Maximize window",
+          "icon": "chrome-maximize",
+          "type": "command",
+          "command": "workbench.action.toggleEditorWidths"
+        },
+        {
+          "key": "o",
+          "name": "Switch frame",
+          "icon": "multiple-windows",
+          "type": "command",
+          "command": "workbench.action.quickSwitchWindow"
+        },
+        {
+          "key": "s",
+          "name": "Split window below",
+          "icon": "split-vertical",
+          "type": "command",
+          "command": "workbench.action.splitEditorDown"
+        },
+        {
+          "key": "v",
+          "name": "Split window right",
+          "icon": "split-horizontal",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "key": "w",
+          "name": "Focus next window",
+          "icon": "arrow-small-down",
+          "type": "command",
+          "command": "workbench.action.focusNextGroup"
+        },
+        {
+          "key": "x",
+          "name": "Close all windows",
+          "icon": "close-all",
+          "type": "command",
+          "command": "workbench.action.closeAllGroups"
+        },
+        {
+          "key": "z",
+          "name": "Combine all buffers",
+          "icon": "combine",
+          "type": "command",
+          "command": "workbench.action.joinAllGroups"
+        },
+        {
+          "key": "D",
+          "name": "Close all other windows",
+          "icon": "close-all",
+          "type": "command",
+          "command": "workbench.action.closeEditorsInOtherGroups"
+        },
+        {
+          "key": "F",
+          "name": "Open new empty frame",
+          "icon": "empty-window",
+          "type": "command",
+          "command": "workbench.action.newWindow"
+        },
+        {
+          "key": "H",
+          "name": "Move window left",
+          "icon": "triangle-left",
+          "type": "command",
+          "command": "workbench.action.moveActiveEditorGroupLeft"
+        },
+        {
+          "key": "J",
+          "name": "Move window down",
+          "icon": "triangle-down",
+          "type": "command",
+          "command": "workbench.action.moveActiveEditorGroupDown"
+        },
+        {
+          "key": "K",
+          "name": "Move window up",
+          "icon": "triangle-up",
+          "type": "command",
+          "command": "workbench.action.moveActiveEditorGroupUp"
+        },
+        {
+          "key": "L",
+          "name": "Move window right",
+          "icon": "triangle-right",
+          "type": "command",
+          "command": "workbench.action.moveActiveEditorGroupRight"
+        },
+        {
+          "key": "M",
+          "name": "Maximize window and hide side bar",
+          "icon": "screen-full",
+          "type": "command",
+          "command": "workbench.action.maximizeEditor"
+        },
+        {
+          "key": "W",
+          "name": "Focus previous window",
+          "icon": "arrow-small-up",
+          "type": "command",
+          "command": "workbench.action.focusPreviousGroup"
+        }
+      ]
+    },
     {
       "command": "workbench.action.terminal.new",
       "icon": "terminal-bash",
@@ -2176,10 +2395,10 @@
     },
     "editor.lineHighlightBackground": "#1073cf2d",
     "editor.lineHighlightBorder": "#9fced11f",
-    "editorCursor.foreground": "#db2466",
+    "editorCursor.foreground": "#bd24db",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -2191,7 +2410,7 @@
   "workbench.fontAliasing": "auto",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.preferredDarkColorTheme": "Github Dark",
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",

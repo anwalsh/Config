@@ -1,5 +1,46 @@
 [
   {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "!inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible && !isInDiffEditor"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown",
+    "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp",
+    "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible && !isInDiffEditor"
+  },
+  // Quick Navigation for diff view
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.compareEditor.focusSecondarySide",
+    "when": "isInDiffEditor && !isInDiffLeftEditor"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "isInDiffEditor && isInDiffLeftEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.compareEditor.focusPrimarySide",
+    "when": "isInDiffEditor && isInDiffLeftEditor"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "isInDiffEditor && !isInDiffLeftEditor"
+  },
+  {
     "command": "--editor.action.rename",
     "key": "f2",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
@@ -1150,7 +1191,7 @@
   },
   {
     "command": "cursorLeft",
-    "key": "ctrl+h",
+    "key": "ctrl+shift+h",
     "when": "textInputFocus"
   },
   {
@@ -1719,7 +1760,7 @@
   },
   {
     "command": "workbench.action.terminal.focus",
-    "key": "cmd+'"
+    "key": "shift+`"
   },
   {
     "command": "workbench.action.terminal.runSelectedText",
@@ -2037,7 +2078,7 @@
     "when": "panelFocus && activePanel == 'workbench.panel.markers' && !inputFocus"
   },
   {
-    "key": "ctrl+h",
+    "key": "alt+h",
     "command": "list.collapse",
     "when": "panelFocus && activePanel == 'workbench.panel.markers' && !inputFocus"
   },
