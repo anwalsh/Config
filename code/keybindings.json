@@ -1356,7 +1356,7 @@
     "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
   },
   {
-    "key": "ctrl+tab",
+    "key": "=",
     "command": "magit.toggle-fold",
     "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
   },
@@ -1727,7 +1727,7 @@
   },
   {
     "command": "workbench.action.terminal.toggleTerminal",
-    "key": "ctrl+'"
+    "key": "ctrl+`"
   },
   {
     "key": "cmd+k alt+cmd+right",
