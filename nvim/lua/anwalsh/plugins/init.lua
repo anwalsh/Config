@@ -104,6 +104,7 @@ return {
     }),
     ({ "ThePrimeagen/harpoon" }),
     ({ "akinsho/toggleterm.nvim", lazy = false }),
+    ({ "willothy/flatten.nvim", lazy = false }),
 
     -- Text Manipulation
     ("junegunn/vim-easy-align"),
