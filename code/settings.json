@@ -43,7 +43,7 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "filw"
+    "editor.formatOnSaveMode": "file"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -157,7 +157,7 @@
   "editor.find.cursorMoveOnType": false,
   "editor.foldingImportsByDefault": false,
   "editor.fontFamily": "JetBrains Mono",
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.guides.bracketPairs": "active",
   "editor.inlayHints.enabled": "offUnlessPressed",
@@ -644,6 +644,7 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "after": ["<space>"],
       "before": [";"],
       "commands": ["editor.action.commentLine"]
     },
@@ -972,6 +973,12 @@
   "vspacecode.bindingOverrides": [
     {
       "keys": "w",
+      "name": "Go to line",
+      "type": "command",
+      "command": "workbench.action.files.save"
+    },
+    {
+      "keys": "W",
       "name": "+Window",
       "icon": "split-horizontal",
       "type": "bindings",
@@ -2368,7 +2375,7 @@
       "type": "bindings"
     }
   ],
-  "whichkey.delay": 0,
+  "whichkey.delay": 100,
   "whichkey.sortOrder": "nonNumberFirst",
   "window.autoDetectColorScheme": true,
   "window.commandCenter": true,
@@ -2398,7 +2405,7 @@
     "editorCursor.foreground": "#bd24db",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -2410,7 +2417,7 @@
   "workbench.fontAliasing": "auto",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Github Dark",
+  "workbench.preferredDarkColorTheme": "Dracula Pro (Van Helsing)",
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",

@@ -167,6 +167,7 @@ return {
     ("danymat/neogen"),
 
     -- Completion/LSP
+    { "onsails/lspkind-nvim" }, -- adds icons to autocomplete menu
     ("neovim/nvim-lspconfig"),
     ({ "hrsh7th/nvim-cmp", dependencies = "onsails/lspkind.nvim" }),
     ({ "L3MON4D3/LuaSnip", build = "make install_jsregexp", lazy = false }),
@@ -180,6 +181,7 @@ return {
     ("hrsh7th/cmp-nvim-lsp-document-symbol"),
     ("hrsh7th/cmp-nvim-lsp-signature-help"),
     ("hrsh7th/cmp-emoji"),
+    ({ "jayp0521/mason-null-ls.nvim" }), -- bridge for mason to null-ls
     ("octaltree/cmp-look"),
     ("ray-x/cmp-treesitter"),
     ("folke/lsp-colors.nvim"),
