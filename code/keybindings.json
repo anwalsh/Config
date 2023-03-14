@@ -367,16 +367,6 @@
     "when": "textInputFocus"
   },
   {
-    "key": "cmd+k cmd+i",
-    "command": "-editor.action.showHover",
-    "when": "editorTextFocus"
-  },
-  {
-    "command": "-editor.action.showHover",
-    "key": "ctrl+j",
-    "when": "editorTextFocus"
-  },
-  {
     "command": "-editor.action.smartSelect.grow",
     "key": "alt+up",
     "when": "editorTextFocus"
@@ -1286,12 +1276,12 @@
     "when": "filesExplorerFocus && !editorTextFocus && !inputFocus"
   },
   {
-    "key": "shift+j",
+    "key": "ctrl+shift+down",
     "command": "list.expandSelectionDown",
     "when": "filesExplorerFocus && !editorTextFocus && !inputFocus"
   },
   {
-    "key": "shift+k",
+    "key": "ctrl+shift+up",
     "command": "list.expandSelectionUp",
     "when": "filesExplorerFocus && !editorTextFocus && !inputFocus"
   },
@@ -2268,16 +2258,6 @@
     "when": "inKeybindings && inKeybindingsSearch"
   },
   {
-    "key": "cmd+g h",
-    "command": "editor.action.triggerParameterHints",
-    "when": "editorHasSignatureHelpProvider && editorTextFocus"
-  },
-  {
-    "key": "shift+cmd+space",
-    "command": "-editor.action.triggerParameterHints",
-    "when": "editorHasSignatureHelpProvider && editorTextFocus"
-  },
-  {
     "key": "cmd+p p",
     "command": "workbench.action.showCommands"
   },
@@ -2330,5 +2310,9 @@
   {
     "key": "ctrl+l p",
     "command": "-extension.openPrGitProvider"
+  },
+  {
+    "key": "ctrl+. ctrl+.",
+    "command": "editor.action.inlineSuggest.trigger"
   }
 ]

@@ -21,11 +21,13 @@
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[go]": {
+    "editor.formatOnSaveMode": "file",
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
     "editor.formatOnSave": true,
-    "editor.snippetSuggestions": "none"
+    "editor.snippetSuggestions": "none",
+    "editor.defaultFormatter": "golang.go"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -644,6 +646,10 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["g", "k"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
       "after": ["<space>"],
       "before": [";"],
       "commands": ["editor.action.commentLine"]
@@ -972,10 +978,20 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "vspacecode.bindingOverrides": [
     {
+      "keys": "q",
+      "position": -1
+    },
+    {
       "keys": "w",
-      "name": "Go to line",
+      "name": "Write file",
       "type": "command",
       "command": "workbench.action.files.save"
+    },
+    {
+      "keys": "q",
+      "name": "Quit",
+      "type": "command",
+      "command": "workbench.action.closeActiveEditor"
     },
     {
       "keys": "W",
@@ -2405,7 +2421,7 @@
     "editorCursor.foreground": "#bd24db",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -2453,5 +2469,6 @@
     "!Split sequence"
   ],
   "yaml.schemas": {},
-  "Lua.telemetry.enable": true
+  "Lua.telemetry.enable": true,
+  "editor.formatOnSave": true
 }
