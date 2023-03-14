@@ -12,12 +12,16 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+    completion = {
+        completeopt = "menu,menuone,noinsert,noselect",
+    },
     sources = {
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "treesitter" },
     },
     formatting = {
         format = lspkind.cmp_format({
@@ -28,6 +32,8 @@ cmp.setup({
                 nvim_lua = "[lua]",
                 path = "[path]",
                 lusasnip = "[snip]",
+                look = "[Look]",
+                treesitter = "[ts]",
             },
             -- defines how annotations are shown
             -- default: symbol
@@ -61,5 +67,20 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
+    },
+})
+
+-- Overrides for specific filetypes
+cmp.setup.filetype({ "markdown", "txt" }, {
+    sources = {
+        {
+            name = "look",
+            keyword_length = 2,
+            option = {
+                convert_case = true,
+                loud = true,
+            },
+        },
+        { name = "emoji", insert = true },
     },
 })

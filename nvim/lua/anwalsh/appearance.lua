@@ -24,9 +24,9 @@ if ("carbonfox" == vim.g.colors_name) then
     hi(0, "VertSplit", { fg = palette.sel0 })
 
     require("nightfox").setup({
-      options = {
-        transparent = true,
-      },
+        options = {
+            transparent = true,
+        },
     })
 else
     vim.opt.background = "dark" -- set this to dark or light

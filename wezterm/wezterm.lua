@@ -129,7 +129,7 @@ return {
             format = "https://example.com/tasks/?t=$1",
         },
     },
-    leader = { key = 'b', mods = 'CTRL' },
+    leader = { key = 'a', mods = 'CTRL' },
     keys = {
         {
             key = '-',
