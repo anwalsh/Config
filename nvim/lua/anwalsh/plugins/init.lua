@@ -31,6 +31,7 @@ return {
     -- UI Tweaks
     ({ "nvim-lualine/lualine.nvim", lazy = false }),
     ("nvim-lua/popup.nvim"),
+    -- ({ "levouh/tint.nvim", lazy = false }), // TODO: Figure out the highlight issue with text fields
     -- Notifications
     -- Behaviors of Buffers/Frames
     ("beauwilliams/focus.nvim"),
