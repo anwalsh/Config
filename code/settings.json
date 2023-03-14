@@ -2421,7 +2421,7 @@
     "editorCursor.foreground": "#bd24db",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Kanagawa",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -2470,5 +2470,6 @@
   ],
   "yaml.schemas": {},
   "Lua.telemetry.enable": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "git.openRepositoryInParentFolders": "always"
 }
