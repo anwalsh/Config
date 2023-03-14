@@ -600,6 +600,19 @@
   "todo-tree.regex.enableMultiLine": true,
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "todo-tree.tree.autoRefresh": true,
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "background": "purple",
+      "gutterIcon": true,
+      "icon": "check",
+      "iconColor": "purple"
+    },
+    "FIXME": {
+      "background": "orange",
+      "gutterIcon": true,
+      "iconColor": "orange"
+    }
+  },
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.suggest.paths": false,
   "vim.camelCaseMotion.enable": true,
@@ -2421,7 +2434,7 @@
     "editorCursor.foreground": "#bd24db",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Kanagawa",
+  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
