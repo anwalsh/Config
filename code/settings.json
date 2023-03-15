@@ -160,6 +160,7 @@
   "editor.foldingImportsByDefault": false,
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontSize": 16,
+  "editor.fontLigatures": true,
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.guides.bracketPairs": "active",
   "editor.inlayHints.enabled": "offUnlessPressed",
@@ -602,15 +603,15 @@
   "todo-tree.tree.autoRefresh": true,
   "todo-tree.highlights.customHighlight": {
     "TODO": {
-      "background": "purple",
+      "background": "#78A9FF",
       "gutterIcon": true,
       "icon": "check",
-      "iconColor": "purple"
+      "iconColor": "#78A9FF"
     },
     "FIXME": {
-      "background": "orange",
+      "background": "#BE95FF",
       "gutterIcon": true,
-      "iconColor": "orange"
+      "iconColor": "#BE95FF"
     }
   },
   "typescript.suggest.completeFunctionCalls": true,
@@ -731,18 +732,6 @@
     {
       "before": ["<"],
       "commands": ["editor.action.outdentLines"]
-    },
-    {
-      "after": ["\"", "_", "D"],
-      "before": ["D"]
-    },
-    {
-      "after": ["\"", "_", "d"],
-      "before": ["d"]
-    },
-    {
-      "after": ["\"", "_", "d", "d"],
-      "before": ["d", "d"]
     },
     {
       "after": ["\"", "_", "c"],
@@ -917,14 +906,6 @@
       "before": ["<C-n>"]
     },
     {
-      "after": ["\"", "_", "d"],
-      "before": ["d"]
-    },
-    {
-      "after": ["\"", "_", "c"],
-      "before": ["c"]
-    },
-    {
       "after": ["\"", "_", "x"],
       "before": ["x"]
     },
@@ -1007,7 +988,7 @@
       "command": "workbench.action.closeActiveEditor"
     },
     {
-      "keys": "W",
+      "keys": "C-w",
       "name": "+Window",
       "icon": "split-horizontal",
       "type": "bindings",
@@ -2431,10 +2412,10 @@
     },
     "editor.lineHighlightBackground": "#1073cf2d",
     "editor.lineHighlightBorder": "#9fced11f",
-    "editorCursor.foreground": "#bd24db",
+    // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -2446,7 +2427,7 @@
   "workbench.fontAliasing": "auto",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.preferredDarkColorTheme": "Kanagawa",
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",

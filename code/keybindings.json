@@ -1,5 +1,11 @@
 [
   {
+    "key": "ctrl+w",
+    "command": "whichkey.triggerKey",
+    "args": "C-w",
+    "when": "whichkeyVisible"
+  },
+  {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft",
     "when": "!inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible && !isInDiffEditor"
@@ -2305,5 +2311,21 @@
   {
     "key": "ctrl+. ctrl+.",
     "command": "editor.action.inlineSuggest.trigger"
+  },
+  {
+    "key": "ctrl+alt+w",
+    "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
+  },
+  {
+    "key": "shift+cmd+0",
+    "command": "workbench.action.zoomReset"
+  },
+  {
+    "key": "cmd+numpad0",
+    "command": "-workbench.action.zoomReset"
   }
 ]
