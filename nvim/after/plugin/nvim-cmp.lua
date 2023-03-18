@@ -46,6 +46,27 @@ cmp.setup({
     mapping = {
         -- Enable "super tab" option for luasnip
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+        ['<C-n>'] = {
+            i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        },
+        ['<C-p>'] = {
+            i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        },
+        ['<C-b>'] = {
+            i = cmp.mapping.scroll_docs(-4),
+        },
+        ['<C-f>'] = {
+            i = cmp.mapping.scroll_docs(4),
+        },
+        ['<C-Enter>'] = {
+            i = cmp.mapping.complete(),
+        },
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+        }),
+        ['<C-y>'] = {
+            i = cmp.mapping.confirm({ select = true }),
+        },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()

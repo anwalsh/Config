@@ -220,4 +220,5 @@ return {
     ({ "rhysd/git-messenger.vim" }),
     ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "akinsho/git-conflict.nvim" }),
+    ({ "ThePrimeagen/git-worktree.nvim" }),
 }
