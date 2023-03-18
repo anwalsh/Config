@@ -14,22 +14,16 @@ require("telescope").setup({
             "--line-number",
             "--column",
             "--smart-case",
-            "--hidden"
+            "--hidden",
+            "--follow",
+            "--trim",
         },
         initial_mode = "insert",
         selection_strategy = "reset",
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "^%*.git/", "^.vim/undo", "^node_modules", "venv", "^__pycache__/", },
+        file_ignore_patterns = { "*.git/*", "*node_modules/*", "*venv/*", "*__pycache__/*", },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        find_command = {
-            "rg",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden"
-        },
+
         -- Appearance
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         sorting_strategy = "ascending",
@@ -69,7 +63,20 @@ require("telescope").setup({
         lsp_definitions = { theme = "ivy" },
         current_buffer_fuzzy_find = { theme = "ivy" },
         file_browser = { theme = "ivy" },
-        find_files = { theme = "ivy" },
+        find_files = {
+            theme = "ivy",
+            find_command =
+            {
+                "fd",
+                "-L",
+                "-i",
+                "-H",
+                "-E",
+                ".git",
+                "-c=never",
+                "--strip-cwd-prefix"
+            },
+        },
         git_bcommits = { theme = "ivy" },
         git_commits = { theme = "ivy" },
         grep_string = { theme = "ivy" },
@@ -121,7 +128,6 @@ if vim.fn.executable "gh" == 1 then
     pcall(require("telescope").load_extension, "gh")
     pcall(require("telescope").load_extension, "octo")
 end
--- require("telescope").load_extension("git_worktree")
 
 local M = {}
 
