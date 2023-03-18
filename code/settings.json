@@ -2415,7 +2415,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,

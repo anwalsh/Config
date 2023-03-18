@@ -1,4 +1,5 @@
-local wezterm = require 'wezterm'
+local wezterm = require('wezterm')
+local scheme = wezterm.color.get_builtin_schemes()['carbonfox']
 local act = wezterm.action
 
 wezterm.on("update-right-status", function(window)
@@ -68,12 +69,13 @@ wezterm.on("format-tab-title", function(tab)
 end)
 
 return {
-    font = wezterm.font_with_fallback {
+    scrollback_lines = 36000,
+    color_scheme = 'carbonfox',
+    font = wezterm.font_with_fallback({
         'JetBrains Mono',
         'FiraCode Nerd Font Mono'
-    },
+    }),
     font_size = 14.0,
-    color_scheme = "carbonfox",
     max_fps = 120,
     pane_focus_follows_mouse = false,
     warn_about_missing_glyphs = false,

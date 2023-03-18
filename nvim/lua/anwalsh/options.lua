@@ -34,13 +34,13 @@ opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 opt.cursorline = true -- Highlight the current line
 local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
 local set_cursorline = function(event, value, pattern)
-  vim.api.nvim_create_autocmd(event, {
-    group = group,
-    pattern = pattern,
-    callback = function()
-      vim.opt_local.cursorline = value
-    end,
-  })
+    vim.api.nvim_create_autocmd(event, {
+        group = group,
+        pattern = pattern,
+        callback = function()
+            vim.opt_local.cursorline = value
+        end,
+    })
 end
 set_cursorline("WinLeave", false)
 set_cursorline("WinEnter", true)
@@ -75,7 +75,7 @@ opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
-opt.mouse = "n"
+opt.mouse = "a"
 
 opt.signcolumn = "yes"
 opt.colorcolumn = "100"
@@ -85,15 +85,15 @@ opt.colorcolumn = "100"
 --   2. gw{motion} - Put cursor back after formatting motion.
 --
 opt.formatoptions = opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2" -- I'm not in gradeschool anymore
+    - "a" -- Auto formatting is BAD.
+    - "t" -- Don't auto format my code. I got linters for that.
+    + "c" -- In general, I like it when comments respect textwidth
+    + "q" -- Allow formatting comments w/ gq
+    - "o" -- O and o, don't continue comments
+    + "r" -- But do continue when pressing enter.
+    + "n" -- Indent past the formatlistpat, not underneath it.
+    + "j" -- Auto-remove comments if possible.
+    - "2" -- I'm not in gradeschool anymore
 
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done
@@ -103,6 +103,6 @@ opt.fillchars = { eob = "~" }
 
 vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 -- Mkdnflow Configuration for Markdown
-vim.api.nvim_create_autocmd("FileType", {pattern = "markdown", command = "set awa"})
+vim.api.nvim_create_autocmd("FileType", { pattern = "markdown", command = "set awa" })
 -- Use the following if your buffer is set to become hidden
 -- vim.api.nvim_create_autocmd("BufLeave", {pattern = "*.md", command = "silent! wall"})
