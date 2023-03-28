@@ -71,6 +71,20 @@ local on_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
+
+    -- gopls semantic token support reference https://github.com/golang/go/issues/54531#issuecomment-1464982242
+    -- issue https://github.com/neovim/neovim/issues/21588
+    -- if client.name == 'gopls'
+    --     and vim.fn.has('nvim-0.8.3') == 1
+    --     and not client.server_capabilities.semanticTokensProvider
+    -- then
+    --     local semantic = client.config.capabilities.textDocument.semanticTokens
+    --     client.server_capabilities.semanticTokensProvider = {
+    --         full = true,
+    --         legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
+    --         range = true,
+    --     }
+    -- end
 end
 
 -- organize imports
@@ -109,7 +123,19 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "ltex", "marksman", "bashls", "yamlls", "jsonls", "dockerls", },
+    ensure_installed =
+    {
+        "lua_ls",
+        "ltex",
+        "marksman",
+        "bashls",
+        "yamlls",
+        "jsonls",
+        "dockerls",
+        -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
+        "terraformls",
+        "zls",
+    },
 }
 
 -------------------------------------------------------------------------------
@@ -138,6 +164,7 @@ lspconfig.gopls.setup {
                 compositeLiteralFields = true,
                 functionTypeParameters = true,
             },
+            semanticTokens = true,
         },
     },
 }

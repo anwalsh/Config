@@ -38,13 +38,6 @@ return {
     ("stevearc/aerial.nvim"),
     ("luukvbaal/stabilize.nvim"),
     ({ "folke/zen-mode.nvim", dependencies = "folke/twilight.nvim", lazy = false }),
-    --
-    -- ({
-    --     "stevearc/stickybuf.nvim",
-    --     config = function()
-    --         require("stickybuf").setup()
-    --     end,
-    -- }),
 
     -- Forest
     ({
@@ -187,15 +180,6 @@ return {
     ("ray-x/cmp-treesitter"),
     ("folke/lsp-colors.nvim"),
     ("j-hui/fidget.nvim"),
-    -- ("ray-x/lsp_signature.nvim"), -- TODO: Should I use this?
-    -- ("ray-x/guihua.lua"), -- TODO: Same question for the below possibles.
-    -- ({
-    --     "ray-x/navigator.lua",
-    --     dependencies = {
-    --         { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
-    --         { "neovim/nvim-lspconfig" },
-    --     },
-    -- }),
     ({ "MTDL9/vim-log-highlighting" }),
     ("narutoxy/dim.lua"), -- May not work in all contexts (specifically works in Rust)
     ({ "SmiteshP/nvim-navic", lazy = false }),
@@ -212,13 +196,15 @@ return {
     ({ "tpope/vim-fugitive", lazy = false }),
     ("lewis6991/gitsigns.nvim"),
     (
-        { "pwntester/octo.nvim",
-            dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons" },
-            lazy = false }),
+    { "pwntester/octo.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons" },
+        lazy = false }),
     ({ "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" }),
     ({ "TimUntersberger/neogit", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "rhysd/git-messenger.vim" }),
     ({ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = false }),
     ({ "akinsho/git-conflict.nvim" }),
     ({ "ThePrimeagen/git-worktree.nvim" }),
+
+    -- Personal Knowledge Base Utilies
 }
