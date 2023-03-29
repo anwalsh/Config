@@ -60,16 +60,25 @@ local on_attach = function(client, bufnr)
         )
     end
 
-    vim.cmd([[
-            augroup formatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-                autocmd BufWritePre <buffer> lua OrganizeImports(1000)
-            augroup END
+    if filetype ~= "markdown" then
+        vim.cmd([[
+                augroup formatting
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+                    autocmd BufWritePre <buffer> lua OrganizeImports(1000)
+                augroup END
         ]])
 
-    if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+            navic.attach(client, bufnr)
+        end
+    elseif filetype == "markdown" then
+        vim.cmd([[
+                augroup formatting
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+                augroup END
+        ]])
     end
 
     -- gopls semantic token support reference https://github.com/golang/go/issues/54531#issuecomment-1464982242
