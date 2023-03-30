@@ -1,6 +1,4 @@
-if not pcall(require, "which-key") then
-    return
-end
+if not pcall(require, "which-key") then return end
 
 local wk = require("which-key")
 
@@ -52,8 +50,8 @@ wk.register({
             r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
             s = { "<Cmd>w<CR>", "Save Current File" },
             S = { "<Cmd>wa<CR>", "Save All Open Files" },
-            t = { "<Cmd>NvimTreeToggle<CR>", "Show NvimTree" },
-            T = { "<Cmd>NvimTreeFindFile<CR>", "Find Current File in NvimTree" },
+            t = { "<Cmd>Neotree toggle right<CR>", "Show NeoTree" },
+            T = { "<Cmd>Neotree toggle show buffers right<CR>", "Find Current Buffers in NeoTree" },
         },
         ["d"] = {
             name = "+debug",
@@ -138,14 +136,22 @@ wk.register({
             y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" },
             ["F"] = {
                 name = "+find git",
-                l = { "<cmd>lua require'telescope'.extensions.advanced_git_search.search_log_content()<cr>",
-                    "Search Log Content" },
-                L = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_line()<cr>",
-                    "Search Diff Commit Line" },
-                c = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_file()<cr>",
-                    "Search Diff Commit File" },
-                b = { "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_branch()<cr>",
-                    "Search Diff Commit Branch" },
+                l = {
+                    "<cmd>lua require'telescope'.extensions.advanced_git_search.search_log_content()<cr>",
+                    "Search Log Content",
+                },
+                L = {
+                    "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_line()<cr>",
+                    "Search Diff Commit Line",
+                },
+                c = {
+                    "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_file()<cr>",
+                    "Search Diff Commit File",
+                },
+                b = {
+                    "<cmd>lua require'telescope'.extensions.advanced_git_search.diff_commit_branch()<cr>",
+                    "Search Diff Commit Branch",
+                },
             },
         },
         ["o"] = {

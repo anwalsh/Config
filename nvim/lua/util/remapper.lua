@@ -25,19 +25,24 @@ local function bind(op, outer_opts)
     ---@param opts? table Options to pass. These are the same options as for `vim.api.nvim_set_keymap`.
     return function(lhs, rhs, opts)
         -- Defaults
-        opts = vim.tbl_extend("force",
-            outer_opts,
-            opts or {}
-        )
+        opts = vim.tbl_extend("force", outer_opts, opts or {})
 
         vim.keymap.set(op, lhs, rhs, opts)
     end
 end
 
-M.nmap = bind("n", {noremap = false})
+M.nmap = bind("n", { noremap = false, silent = true })
+M.vmap = bind("v", { noremap = false, silent = true })
+M.noremap = bind("")
 M.nnoremap = bind("n")
-M.vnoremap = bind("v")
-M.xnoremap = bind("x")
 M.inoremap = bind("i")
+M.xnoremap = bind("x")
+M.vnoremap = bind("v")
+M.cnoremap = bind("c")
+M.onoremap = bind("o")
+
+---Convenience function that wraps the given string with `<Cmd>` and `<CR>`
+---@param command string The command to wrap.
+M.cmd = function(command) return "<Cmd>" .. command .. "<CR>" end
 
 return M

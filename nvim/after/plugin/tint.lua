@@ -1,6 +1,4 @@
-if not pcall(require, "tint") then
-    return
-end
+if not pcall(require, "tint") then return end
 
 local fn = vim.fn
 
@@ -18,9 +16,7 @@ require("tint").setup({
             "Bqf.*",
         },
         window_ignore_function = function(win_id)
-            if vim.wo[win_id].diff or vim.fn.win_gettype(win_id) ~= "" then
-                return true
-            end
+            if vim.wo[win_id].diff or vim.fn.win_gettype(win_id) ~= "" then return true end
             local buf = vim.api.nvim_win_get_buf(win_id)
             local b = vim.bo[buf]
             local ignore_bt = { "terminal", "prompt", "nofile" }
@@ -35,5 +31,5 @@ require("tint").setup({
             }
             return lambda.any(b.bt, ignore_bt) or lambda.any(b.ft, ignore_ft)
         end,
-    }
+    },
 })

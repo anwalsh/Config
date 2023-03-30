@@ -5,7 +5,7 @@ vim.cmd([[colorscheme carbonfox]])
 -- vim.cmd([[colorscheme oxocarbon]])
 -- vim.cmd([[colorscheme kanagawa]])
 
-if ("carbonfox" == vim.g.colors_name) then
+if "carbonfox" == vim.g.colors_name then
     local palette = require("nightfox.palette").load("nightfox")
 
     vim.cmd([[
@@ -28,6 +28,6 @@ if ("carbonfox" == vim.g.colors_name) then
             transparent = true,
         },
     })
-else
-    vim.opt.background = "dark" -- set this to dark or light
 end
+
+vim.opt.background = "dark"

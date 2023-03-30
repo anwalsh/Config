@@ -1,22 +1,20 @@
-if not pcall(require, "nvim-tree") then
-  return
-end
+if not pcall(require, "nvim-tree") then return end
 
 require("nvim-tree").setup({
-      sort_by = "case_sensitive",
-      view = {
+    sort_by = "case_sensitive",
+    view = {
+        side = "right",
         adaptive_size = true,
         mappings = {
-          list = {
-            { key = "u", action = "dir_up" },
-          },
+            list = {
+                { key = "u", action = "dir_up" },
+            },
         },
-      },
-      renderer = {
+    },
+    renderer = {
         group_empty = true,
-      },
-      filters = {
+    },
+    filters = {
         dotfiles = true,
-      },
-    })
-
+    },
+})
