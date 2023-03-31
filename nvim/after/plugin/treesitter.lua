@@ -1,8 +1,7 @@
-if not pcall(require, "nvim-treesitter.configs") then
-  return
-end
+if not pcall(require, "nvim-treesitter.configs") then return end
 
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.install").compilers = { "gcc-12" }
+require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
     sync_install = false,
     highlight = {
@@ -27,7 +26,7 @@ require 'nvim-treesitter.configs'.setup {
             node_decremental = "grm",
         },
     },
-}
+})
 
 ----------------------
 -- Fixing nvim-treesitter highlighting
@@ -36,8 +35,8 @@ require 'nvim-treesitter.configs'.setup {
 -- Short version: that commit removed old TS* highlight groups that were necessary for some colorschemes.
 -- The code below restores them.
 local hl = function(group, opts)
-  opts.default = true
-  vim.api.nvim_set_hl(0, group, opts)
+    opts.default = true
+    vim.api.nvim_set_hl(0, group, opts)
 end
 
 -- Misc {{{

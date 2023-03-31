@@ -174,7 +174,8 @@ wk.register({
         },
         ["n"] = {
             name = "+neorg",
-            i = { "<cmd>Neorg index<cr>", "Neorg Index" },
+            i = { "<cmd>Neorg workspace kb<cr>", "Neorg Knowledgebase Index" },
+            I = { "<cmd>Neorg index<cr>", "Neorg Create a Index file in current Directory" },
             j = { "<cmd>Neorg journal<cr>", "Neorg Journal" },
             r = { "<cmd>Neorg return <cr>", "Neorg Return" },
         },

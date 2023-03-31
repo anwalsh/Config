@@ -7,7 +7,7 @@ require("neorg").setup({
         ["core.norg.dirman"] = {      -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    notes = "~/Gitlocal/github.com/anwalsh/kb",
+                    kb = "~/Gitlocal/github.com/anwalsh/kb",
                 },
             },
         },
