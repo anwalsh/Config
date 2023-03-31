@@ -11,6 +11,12 @@ wk.register({
     ["<C-k>"] = { "<C-w>k", "Jump window up" },
     ["<C-l>"] = { "<C-w>l", "Jump window right" },
     ["<leader>"] = {
+        ["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "which_key_ignore" },
+        ["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "which_key_ignore" },
+        ["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "which_key_ignore" },
+        ["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "which_key_ignore" },
+        ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "which_key_ignore" },
+        ["/"] = { "<cmd>Telescope live_grep<cr>", "Text without args" },
         ["w"] = { ":w<cr>", "Write" },
         ["q"] = { ":q<cr>", "Quit" },
         [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
@@ -40,6 +46,18 @@ wk.register({
             J = { ":resize +5", "Expand-buffer-below" },
             L = { "<C-W>5>", "Expand-buffer-right" },
             K = { ":resize -5", "Expand-buffer-up" },
+        },
+        ["B"] = {
+            name = "+bookmarks",
+            a = { "<cmd>lua require('harpoon.mark').add_file()<cr>,", "Harpoon Add File" },
+            s = { "<cmd>Telescope harpoon marks<cr>", "Search Harpoon Marks" },
+            A = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
+            c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
+            t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
+            j = { "<cmd>silent BookmarkNext<cr>", "Next" },
+            k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
+            S = { "<cmd>silent BookmarkShowAll<cr>", "Prev" },
+            x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
         },
         ["f"] = {
             name = "+file",
@@ -192,7 +210,6 @@ wk.register({
             R = { "<cmd>Telescope registers<cr>", "Registers" },
             p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
             P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
-            s = { "<cmd>Telescope live_grep<cr>", "Text without args" },
             t = { "<cmd>lua require('anwalsh.telescope').search_only_certain_files()<cr>", "Search by file types" },
             w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
@@ -211,7 +228,7 @@ wk.register({
                 },
             },
         },
-        u = { "<cmd>UndotreeToggle<cr>", "undo Tree" },
+        u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
         h = { "<cmd>lua require'focus'.split_command('h')<cr>", "Focus Left" },
         l = { "<cmd>lua require'focus'.split_command('l')<cr>", "Focus Right" },
         k = { "<cmd>lua require'focus'.split_command('k')<cr>", "Focus Up" },
@@ -248,5 +265,3 @@ wk.register({
         ["z"] = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
     },
 })
-
--- TODO Local leader/keybind env for Markdown? Or Markdown top level?

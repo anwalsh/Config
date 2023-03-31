@@ -56,6 +56,11 @@ return {
     },
     { "tpope/vim-scriptease" },
     { "romainl/vim-qf" }, -- QuickFix Window helper
+    {
+        "MattesGroeger/vim-bookmarks",
+        config = function() require("plugins.configs.bookmark") end,
+        lazy = false,
+    },
     { "andymass/vim-matchup" },
     { "tpope/vim-dispatch",               cmd = { "Dispatch", "Make" } },
     { "williamboman/mason.nvim" },
