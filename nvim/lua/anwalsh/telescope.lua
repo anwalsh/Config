@@ -1,6 +1,4 @@
-if not pcall(require, "telescope") then
-    return
-end
+if not pcall(require, "telescope") then return end
 
 local actions = require("telescope.actions")
 
@@ -21,9 +19,8 @@ require("telescope").setup({
         initial_mode = "insert",
         selection_strategy = "reset",
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = { "*.git/*", "*node_modules/*", "*venv/*", "*__pycache__/*", },
+        file_ignore_patterns = { "*.git/*", "*node_modules/*", "*venv/*", "*__pycache__/*" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-
         -- Appearance
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         sorting_strategy = "ascending",
@@ -31,7 +28,6 @@ require("telescope").setup({
         winblend = 0,
         prompt_prefix = "  ",
         selection_caret = " ",
-
         -- Mappings
         mappings = {
             i = {
@@ -45,16 +41,13 @@ require("telescope").setup({
                 ["J"] = actions.toggle_selection + actions.move_selection_better,
             },
         },
-
         -- Previewers
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     },
-
     pickers = {
         aerial = { theme = "ivy" },
         buffers = { theme = "dropdown" },
@@ -65,8 +58,7 @@ require("telescope").setup({
         file_browser = { theme = "ivy" },
         find_files = {
             theme = "ivy",
-            find_command =
-            {
+            find_command = {
                 "fd",
                 "-L",
                 "-i",
@@ -74,7 +66,7 @@ require("telescope").setup({
                 "-E",
                 ".git",
                 "-c=never",
-                "--strip-cwd-prefix"
+                "--strip-cwd-prefix",
             },
         },
         git_bcommits = { theme = "ivy" },
@@ -89,7 +81,6 @@ require("telescope").setup({
         lsp_workspace_symbols = { theme = "ivy" },
         man_pages = { theme = "ivy" },
     },
-
     extensions = {
         bookmarks = {
             selected_browser = "arc",
@@ -106,12 +97,12 @@ require("telescope").setup({
         },
         project = {
             base_dirs = {
-                '~/GitLocal/github.com/',
-                '~/Config/',
-                '~/Config/nvim',
+                "~/GitLocal/github.com/",
+                "~/Config/",
+                "~/Config/nvim",
             },
             hidden_files = true, -- default: false
-            theme = "dropdown"
+            theme = "dropdown",
         },
     },
 })
@@ -121,11 +112,12 @@ require("telescope").load_extension("bookmarks")
 require("telescope").load_extension("heading")
 require("telescope").load_extension("project")
 require("telescope").load_extension("aerial")
-require('telescope').load_extension("zoxide")
-require('telescope').load_extension("advanced_git_search")
-require('telescope').load_extension("git_worktree")
+require("telescope").load_extension("zoxide")
+require("telescope").load_extension("advanced_git_search")
+require("telescope").load_extension("git_worktree")
+require("telescope").load_extension("vim_bookmarks")
 
-if vim.fn.executable "gh" == 1 then
+if vim.fn.executable("gh") == 1 then
     pcall(require("telescope").load_extension, "gh")
     pcall(require("telescope").load_extension, "octo")
 end
@@ -163,37 +155,36 @@ M.project_search = function(opts)
             opts.cwd = vim.fn.getcwd()
         end
     end
-    require 'telescope.builtin'.find_files(opts)
+    require("telescope.builtin").find_files(opts)
 end
 
 function M.find_hidden_files()
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         cwd = vim.fn.getcwd(),
         shorten_path = false,
         hidden = true,
-
         layout_strategy = "horizontal",
         layout_config = {
             preview_width = 0.55,
         },
-    }
+    })
 end
 
 function M.search_all_files()
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         find_command = { "rg", "--no-ignore", "--files" },
-    }
+    })
 end
 
 function M.search_only_certain_files()
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         find_command = {
             "rg",
             "--files",
             "--type",
-            vim.fn.input "Type: ",
+            vim.fn.input("Type: "),
         },
-    }
+    })
 end
 
 function M.float_terminal(cmd)
@@ -220,31 +211,29 @@ function M.float_terminal(cmd)
 end
 
 function M.edit_nvim()
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         shorten_path = false,
         cwd = "~/Config/nvim/",
         prompt = "~ NVIM ~",
         hidden = true,
-
         layout_strategy = "horizontal",
         layout_config = {
             preview_width = 0.55,
         },
-    }
+    })
 end
 
 function M.edit_config()
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         shorten_path = false,
         cwd = "~/Config/",
         prompt = "~ Dots ~",
         hidden = true,
-
         layout_strategy = "horizontal",
         layout_config = {
             preview_width = 0.55,
         },
-    }
+    })
 end
 
 return M

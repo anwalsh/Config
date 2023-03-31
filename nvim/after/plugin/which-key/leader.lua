@@ -56,7 +56,7 @@ wk.register({
             t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
             j = { "<cmd>silent BookmarkNext<cr>", "Next" },
             k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
-            S = { "<cmd>silent BookmarkShowAll<cr>", "Prev" },
+            S = { "<cmd>Telescope vim_bookmarks all<cr>", "Show All Bookmarks" },
             x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
         },
         ["f"] = {

@@ -58,7 +58,6 @@ return {
     { "romainl/vim-qf" }, -- QuickFix Window helper
     {
         "MattesGroeger/vim-bookmarks",
-        config = function() require("plugins.configs.bookmark") end,
         lazy = false,
     },
     { "andymass/vim-matchup" },
@@ -101,6 +100,7 @@ return {
         dependencies = { { "nvim-lua/plenary.nvim" }, "nvim-lua/popup.nvim" },
     },
     { "nvim-telescope/telescope-file-browser.nvim" },
+    { "tom-anders/telescope-vim-bookmarks.nvim" },
     { "nvim-telescope/telescope-github.nvim" },
     { "nvim-telescope/telescope-project.nvim" },
     { "crispgm/telescope-heading.nvim" },
