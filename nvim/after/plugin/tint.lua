@@ -1,7 +1,5 @@
 if not pcall(require, "tint") then return end
 
-local fn = vim.fn
-
 require("tint").setup({
     opts = {
         tint = -30,

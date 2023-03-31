@@ -35,6 +35,7 @@ return {
     { "ggandor/leap.nvim",                   lazy = false },
     { "ggandor/flit.nvim",                   lazy = false },
     { "folke/which-key.nvim",                lazy = false },
+    -- { "levouh/tint.nvim",                    lazy = false },
     {
         "mrjones2014/legendary.nvim",
         version = "^2.1.0",
@@ -165,4 +166,7 @@ return {
     { "sindrets/diffview.nvim",        dependencies = "nvim-lua/plenary.nvim", lazy = false },
     { "akinsho/git-conflict.nvim" },
     { "ThePrimeagen/git-worktree.nvim" },
+    -- Knowledge Base and Markdown related Plugins
+    { "nvim-neorg/neorg",              build = ":Neorg sync-parsers",          lazy = false },
+    { "jakewvincent/mkdnflow.nvim",    dependencies = "starwing/luautf8" },
 }

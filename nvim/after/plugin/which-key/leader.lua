@@ -154,8 +154,14 @@ wk.register({
                 },
             },
         },
+        ["n"] = {
+            name = "+neorg",
+            i = { "<cmd>Neorg index<cr>", "Neorg Index" },
+            j = { "<cmd>Neorg journal<cr>", "Neorg Journal" },
+            r = { "<cmd>Neorg return <cr>", "Neorg Return" },
+        },
         ["o"] = {
-            name = "open",
+            name = "+open",
             d = { "<Cmd>TodoTrouble<CR>", "Open TODO List (Trouble)" },
             D = { "<Cmd>TodoTelescope<CR>", "Open TODO List (Telescope)" },
             f = { ":normal gof<CR>", "Open File in Finder" },
