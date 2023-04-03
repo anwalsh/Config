@@ -35,7 +35,7 @@ return {
     { "ggandor/leap.nvim",                   lazy = false },
     { "ggandor/flit.nvim",                   lazy = false },
     { "folke/which-key.nvim",                lazy = false },
-    -- { "levouh/tint.nvim",                    lazy = false },
+    -- { "levouh/tint.nvim",                    lazy = false }, -- TODO: Some oddities here with text fields and rendering that I haven't sorted
     {
         "mrjones2014/legendary.nvim",
         version = "^2.1.0",
