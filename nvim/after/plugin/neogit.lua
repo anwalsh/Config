@@ -1,19 +1,18 @@
-if not pcall(require, "neogit") then
-  return
-end
+if not pcall(require, "neogit") then return end
 
-require("neogit").setup {
+require("neogit").setup({
+    disable_commit_confirmation = true,
     signs = {
-        section = {"", ""},
-        item = {"﬒", ""},
+        section = { "", "" },
+        item = { "﬒", "" },
     },
     commit_popup = {
         kind = "split",
     },
     popup = {
-      kind = "split",
+        kind = "split",
     },
     integrations = {
-        diffview = true
+        diffview = true,
     },
-}
+})
