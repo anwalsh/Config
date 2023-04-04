@@ -1,17 +1,35 @@
 .uuid
 
-/zsh/**/*.zwc*
-/zsh/.zcompdump*
-/zsh/.zinit/
-/zsh/.zsh_history
-
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+npm/npm-backup-current.txt.*
 
+**/zsh/**/*.zwc*
+**/zsh/.zcompdump*
+**/zsh/.zinit/
+**/zsh/.zsh_history
+**/zsh/.zsh_sessions
 .DS_STORE
 /nvim/.netrwhist
+/backup/Brewfile.lock.json
+/setup/setup.log
+tags
+**/sshndp*
+**/__pycache__
 
+# Fish
+shell/fish/fish_variables
 fish_variables
+**/fishd.tmp*
+shell/fish/**/secret
+shell/fish/user/env/env.s.fish
+
+# Random Files
+**/dist
+**/build
+**/venv
+**/secrets
+node_modules
