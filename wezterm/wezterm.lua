@@ -1,5 +1,5 @@
-local wezterm = require('wezterm')
-local scheme = wezterm.color.get_builtin_schemes()['carbonfox']
+local wezterm = require("wezterm")
+local scheme = wezterm.color.get_builtin_schemes()["carbonfox"]
 local act = wezterm.action
 
 wezterm.on("update-right-status", function(window)
@@ -42,10 +42,7 @@ local function get_process(tab)
 
     local process_name = string.gsub(tab.active_pane.foreground_process_name, "(.*[/\\])(.*)", "%2")
 
-    return wezterm.format(
-        process_icons[process_name]
-        or { Text = string.format("[%s]", process_name) }
-    )
+    return wezterm.format(process_icons[process_name] or { Text = string.format("[%s]", process_name) })
 end
 
 local function get_current_working_dir(tab)
@@ -70,12 +67,12 @@ end)
 
 return {
     scrollback_lines = 36000,
-    color_scheme = 'carbonfox',
+    color_scheme = "carbonfox",
     font = wezterm.font_with_fallback({
-        'JetBrains Mono',
-        'FiraCode Nerd Font Mono'
+        "Iosevka Term",
+        "FiraCode Nerd Font Mono",
     }),
-    font_size = 14.0,
+    font_size = 15.0,
     max_fps = 120,
     pane_focus_follows_mouse = false,
     warn_about_missing_glyphs = false,
@@ -131,82 +128,82 @@ return {
             format = "https://example.com/tasks/?t=$1",
         },
     },
-    leader = { key = 'a', mods = 'CTRL' },
+    leader = { key = "a", mods = "CTRL" },
     keys = {
         {
-            key = '-',
-            mods = 'LEADER',
-            action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+            key = "-",
+            mods = "LEADER",
+            action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
         },
         {
-            key = '/',
-            mods = 'LEADER',
-            action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+            key = "/",
+            mods = "LEADER",
+            action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
         },
         {
-            key = 'LeftArrow',
-            mods = 'ALT',
-            action = act.AdjustPaneSize { 'Left', 5 },
+            key = "LeftArrow",
+            mods = "ALT",
+            action = act.AdjustPaneSize({ "Left", 5 }),
         },
         {
-            key = 'DownArrow',
-            mods = 'ALT',
-            action = act.AdjustPaneSize { 'Down', 5 },
+            key = "DownArrow",
+            mods = "ALT",
+            action = act.AdjustPaneSize({ "Down", 5 }),
         },
-        { key = 'UpArrow', mods = 'ALT', action = act.AdjustPaneSize { 'Up', 5 } },
+        { key = "UpArrow", mods = "ALT",  action = act.AdjustPaneSize({ "Up", 5 }) },
         {
-            key = 'RightArrow',
-            mods = 'ALT',
-            action = act.AdjustPaneSize { 'Right', 5 },
-        },
-        {
-            key = 'h',
-            mods = 'LEADER',
-            action = act.ActivatePaneDirection 'Left',
+            key = "RightArrow",
+            mods = "ALT",
+            action = act.AdjustPaneSize({ "Right", 5 }),
         },
         {
-            key = 'l',
-            mods = 'LEADER',
-            action = act.ActivatePaneDirection 'Right',
+            key = "h",
+            mods = "LEADER",
+            action = act.ActivatePaneDirection("Left"),
         },
         {
-            key = 'k',
-            mods = 'LEADER',
-            action = act.ActivatePaneDirection 'Up',
+            key = "l",
+            mods = "LEADER",
+            action = act.ActivatePaneDirection("Right"),
         },
         {
-            key = 'j',
-            mods = 'LEADER',
-            action = act.ActivatePaneDirection 'Down',
-        },
-        { key = '=', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
-        { key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
-        { key = '0', mods = 'CTRL', action = wezterm.action.ResetFontSize },
-        {
-            key = 'x',
-            mods = 'CMD',
-            action = wezterm.action.CloseCurrentPane { confirm = true },
-        },
-        { key = 'a', mods = 'LEADER', action = act.ActivatePaneByIndex(0) },
-        { key = 'b', mods = 'LEADER', action = act.ActivatePaneByIndex(1) },
-        { key = 'c', mods = 'LEADER', action = act.ActivatePaneByIndex(2) },
-        { key = 'd', mods = 'LEADER', action = act.ActivatePaneByIndex(3) },
-        { key = 'e', mods = 'LEADER', action = act.ActivatePaneByIndex(4) },
-        { key = 's', mods = 'LEADER', action = act.PaneSelect },
-        {
-            key = '#',
-            mods = 'LEADER',
-            action = act.PaneSelect {
-                alphabet = '1234567890',
-            },
+            key = "k",
+            mods = "LEADER",
+            action = act.ActivatePaneDirection("Up"),
         },
         {
-            key = 'c',
-            mods = 'LEADER',
-            action = act.PaneSelect {
-                mode = 'SwapWithActive',
-            },
+            key = "j",
+            mods = "LEADER",
+            action = act.ActivatePaneDirection("Down"),
         },
-        { key = 'n', mods = 'LEADER', action = wezterm.action.SpawnWindow },
+        { key = "=",       mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+        { key = "-",       mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+        { key = "0",       mods = "CTRL", action = wezterm.action.ResetFontSize },
+        {
+            key = "x",
+            mods = "CMD",
+            action = wezterm.action.CloseCurrentPane({ confirm = true }),
+        },
+        { key = "a", mods = "LEADER", action = act.ActivatePaneByIndex(0) },
+        { key = "b", mods = "LEADER", action = act.ActivatePaneByIndex(1) },
+        { key = "c", mods = "LEADER", action = act.ActivatePaneByIndex(2) },
+        { key = "d", mods = "LEADER", action = act.ActivatePaneByIndex(3) },
+        { key = "e", mods = "LEADER", action = act.ActivatePaneByIndex(4) },
+        { key = "s", mods = "LEADER", action = act.PaneSelect },
+        {
+            key = "#",
+            mods = "LEADER",
+            action = act.PaneSelect({
+                alphabet = "1234567890",
+            }),
+        },
+        {
+            key = "c",
+            mods = "LEADER",
+            action = act.PaneSelect({
+                mode = "SwapWithActive",
+            }),
+        },
+        { key = "n", mods = "LEADER", action = wezterm.action.SpawnWindow },
     },
 }

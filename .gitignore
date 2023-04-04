@@ -13,3 +13,5 @@
 
 .DS_STORE
 /nvim/.netrwhist
+
+fish_variables

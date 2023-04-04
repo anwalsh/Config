@@ -122,6 +122,7 @@ return {
     { "leoluz/nvim-dap-go" },
     { "mfussenegger/nvim-dap-python" },
     { "danymat/neogen" },
+    { "linux-cultist/venv-selector.nvim" },
 
     -- Completion/LSP
     { "onsails/lspkind-nvim" }, -- adds icons to autocomplete menu
