@@ -1,6 +1,6 @@
 # Abbreviations
 
-abbr c 'clear && ll'
+abbr c 'clear'
 abbr cls clear
 abbr e nvim
 abbr vs code
@@ -11,7 +11,7 @@ abbr mv 'mv -iv'
 abbr kubectx 'kubectl ctx'
 abbr ts2date 'perl -wE "say scalar(gmtime(shift() >> 32))"'
 
-abbr mod='git diff --name-only origin/trunk'
+abbr mod 'git diff --name-only origin/trunk'
 abbr ls 'exa'
 abbr l 'exa -a'
 abbr ll 'exa -lgh'

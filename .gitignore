@@ -21,11 +21,12 @@ tags
 **/__pycache__
 
 # Fish
-shell/fish/fish_variables
+fish/fish_variables
 fish_variables
 **/fishd.tmp*
-shell/fish/**/secret
-shell/fish/user/env/env.s.fish
+fish/**/secret
+fish/user/env/env.s.fish
+fish/completions
 
 # Random Files
 **/dist
