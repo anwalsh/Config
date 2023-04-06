@@ -1,15 +1,5 @@
-local lspkind = require('lspkind')
-local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 local cmp = require("cmp")
-
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local feedkey = function(key, mode)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
 
 cmp.setup({
     completion = {
@@ -19,9 +9,12 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
-        { name = "buffer" },
+        { name = "buffer",    keyword_length = 5 },
         { name = "path" },
         { name = "treesitter" },
+    },
+    snippet = {
+        expand = function(args) require("luasnip").lsp_expand(args.body) end,
     },
     formatting = {
         format = lspkind.cmp_format({
@@ -32,16 +25,11 @@ cmp.setup({
                 nvim_lua = "[lua]",
                 path = "[path]",
                 lusasnip = "[snip]",
-                look = "[Look]",
                 treesitter = "[ts]",
             },
-            -- defines how annotations are shown
-            -- default: symbol
-            -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-            mode = 'symbol_text',
-            -- prevent the popup from showing more than 50 chars
+            mode = "symbol_text",
             maxwidth = 50,
-        })
+        }),
     },
     mapping = {
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -50,10 +38,10 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm {
+        ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
-        },
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -79,15 +67,7 @@ cmp.setup({
             "s",
         }),
     },
-    sources = {
-        { name = "luasnip" },
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-        { name = "path" },
-    },
 })
-
 -- Overrides for specific filetypes
 cmp.setup.filetype({ "markdown", "txt" }, {
     sources = {
