@@ -1,5 +1,5 @@
-local lspconfig = require "lspconfig"
-local util = require('lspconfig/util')
+local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 local navic = require("nvim-navic")
 local path = util.path
 
@@ -7,38 +7,38 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 require("nvim-navic").setup({
     icons = {
-        File          = " ",
-        Module        = " ",
-        Namespace     = " ",
-        Package       = " ",
-        Class         = " ",
-        Method        = " ",
-        Property      = " ",
-        Field         = " ",
-        Constructor   = " ",
-        Enum          = "練",
-        Interface     = "練",
-        Function      = " ",
-        Variable      = " ",
-        Constant      = " ",
-        String        = " ",
-        Number        = " ",
-        Boolean       = "◩ ",
-        Array         = " ",
-        Object        = " ",
-        Key           = " ",
-        Null          = "ﳠ ",
-        EnumMember    = " ",
-        Struct        = " ",
-        Event         = " ",
-        Operator      = " ",
+        File = " ",
+        Module = " ",
+        Namespace = " ",
+        Package = " ",
+        Class = " ",
+        Method = " ",
+        Property = " ",
+        Field = " ",
+        Constructor = " ",
+        Enum = "練",
+        Interface = "練",
+        Function = " ",
+        Variable = " ",
+        Constant = " ",
+        String = " ",
+        Number = " ",
+        Boolean = "◩ ",
+        Array = " ",
+        Object = " ",
+        Key = " ",
+        Null = "ﳠ ",
+        EnumMember = " ",
+        Struct = " ",
+        Event = " ",
+        Operator = " ",
         TypeParameter = " ",
     },
     highlight = false,
     separator = " > ",
     depth_limit = 0,
     depth_limit_indicator = "..",
-    safe_output = true
+    safe_output = true,
 })
 
 local on_attach = function(client, bufnr)
@@ -54,10 +54,7 @@ local on_attach = function(client, bufnr)
         buf_set_keymap("glr", "<cmd>lua vim.lsp.codelens.run()<CR>")
     elseif filetype == "go" then
         -- gopls requires a require to list workspace arguments.
-        buf_set_keymap(
-            "fs",
-            "lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.input('Query: ')"
-        )
+        buf_set_keymap("fs", "lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.input('Query: ')")
     end
 
     if filetype ~= "markdown" then
@@ -69,9 +66,7 @@ local on_attach = function(client, bufnr)
                 augroup END
         ]])
 
-        if client.server_capabilities.documentSymbolProvider then
-            navic.attach(client, bufnr)
-        end
+        if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
     elseif filetype == "markdown" then
         vim.cmd([[
                 augroup formatting
@@ -131,9 +126,8 @@ vim.diagnostic.config({
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("mason-lspconfig").setup {
-    ensure_installed =
-    {
+require("mason-lspconfig").setup({
+    ensure_installed = {
         "lua_ls",
         "ltex",
         "marksman",
@@ -145,12 +139,12 @@ require("mason-lspconfig").setup {
         "terraformls",
         "zls",
     },
-}
+})
 
 -------------------------------------------------------------------------------
 -- gopls
 -------------------------------------------------------------------------------
-lspconfig.gopls.setup {
+lspconfig.gopls.setup({
     capabilities = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
@@ -176,21 +170,21 @@ lspconfig.gopls.setup {
             semanticTokens = true,
         },
     },
-}
+})
 
 -------------------------------------------------------------------------------
 -- golangci-lint-langserver
 -------------------------------------------------------------------------------
-require 'lspconfig'.golangci_lint_ls.setup {
+require("lspconfig").golangci_lint_ls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = { debounce_text_changes = 200 },
-}
+})
 
 -------------------------------------------------------------------------------
 -- rust-analyzer
 -------------------------------------------------------------------------------
-require("rust-tools").setup {
+require("rust-tools").setup({
     tools = {
         autoSetHints = true,
         runnables = { use_telescope = true },
@@ -224,60 +218,56 @@ require("rust-tools").setup {
             },
         },
     },
-}
+})
 
 -------------------------------------------------------------------------------
 -- lua
 -------------------------------------------------------------------------------
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup({
     capabilities = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
-}
+})
 
 -------------------------------------------------------------------------------
 -- ccls
 -------------------------------------------------------------------------------
-lspconfig.ccls.setup {
+lspconfig.ccls.setup({
     capabilites = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
-}
+})
 
 -------------------------------------------------------------------------------
 -- Python Poetry/Venv
 -------------------------------------------------------------------------------
 local function get_python_path(workspace)
     -- Use activated virtualenv.
-    if vim.env.VIRTUAL_ENV then
-        return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
-    end
+    if vim.env.VIRTUAL_ENV then return path.join(vim.env.VIRTUAL_ENV, "bin", "python") end
 
     -- Find and use virtualenv via poetry in workspace directory.
-    local match = vim.fn.glob(path.join(workspace, 'poetry.lock'))
-    if match ~= '' then
-        local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
-        return path.join(venv, 'bin', 'python')
+    local match = vim.fn.glob(path.join(workspace, "poetry.lock"))
+    if match ~= "" then
+        local venv = vim.fn.trim(vim.fn.system("poetry env info -p"))
+        return path.join(venv, "bin", "python")
     end
 
     -- Fallback to system Python.
-    return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
+    return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
 end
 
 -------------------------------------------------------------------------------
 -- pyright
 -------------------------------------------------------------------------------
-lspconfig.pyright.setup {
+lspconfig.pyright.setup({
     capabilites = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
-    on_init = function(client)
-        client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-    end,
+    on_init = function(client) client.config.settings.python.pythonPath = get_python_path(client.config.root_dir) end,
     settings = {
         typeCheckingMode = "basic",
-    }
-}
+    },
+})
 
 -------------------------------------------------------------------------------
 -- pylsp
@@ -316,7 +306,7 @@ lspconfig.pyright.setup {
 -------------------------------------------------------------------------------
 -- Latex/Markdown
 -------------------------------------------------------------------------------
-lspconfig.ltex.setup {
+lspconfig.ltex.setup({
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
@@ -324,29 +314,29 @@ lspconfig.ltex.setup {
             cmd = { "ltex-ls" },
             single_file_support = true,
             filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "text" },
-        }
-    }
-}
+        },
+    },
+})
 
-require 'lspconfig'.marksman.setup {
+require("lspconfig").marksman.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-}
+})
 
 -------------------------------------------------------------------------------
 -- yamlls
 -------------------------------------------------------------------------------
-lspconfig.yamlls.setup {
+lspconfig.yamlls.setup({
     capabilities = capabilities,
     flags = { debounce_text_changes = 200 },
     on_attach = on_attach,
-}
+})
 
 -------------------------------------------------------------------------------
 -- misc
 -------------------------------------------------------------------------------
 -- lsp-trouble.nvim
-require("trouble").setup {
+require("trouble").setup({
     auto_preview = false,
     auto_close = true,
     action_keys = {
@@ -354,7 +344,7 @@ require("trouble").setup {
         -- can't just escape in that window.
         cancel = {},
     },
-}
+})
 
 vim.api.nvim_set_keymap(
     "n",
@@ -376,9 +366,7 @@ for type, icon in pairs(signs) do
 end
 
 vim.notify = function(msg, log_level, _opts)
-    if msg:match("exit code") then
-        return
-    end
+    if msg:match("exit code") then return end
     if log_level == vim.log.levels.ERROR then
         vim.api.nvim_err_writeln(msg)
     else

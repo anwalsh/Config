@@ -67,6 +67,10 @@ cmp.setup({
             "s",
         }),
     },
+    experimental = {
+        native_menu = false,
+        ghost_text = false,
+    },
 })
 -- Overrides for specific filetypes
 cmp.setup.filetype({ "markdown", "txt" }, {

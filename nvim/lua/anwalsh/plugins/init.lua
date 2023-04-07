@@ -14,6 +14,7 @@ vim.opt.runtimepath:prepend(lazypath)
 return {
     { "Mofiqul/dracula.nvim" },
     { "nyoom-engineering/oxocarbon.nvim" },
+    { "projekt0n/github-nvim-theme",         version = "^v0.0.7" },
     { "EdenEast/nightfox.nvim" },
     { "catppuccin/nvim",                     as = "catppuccin" },
     { "projekt0n/github-nvim-theme" },
