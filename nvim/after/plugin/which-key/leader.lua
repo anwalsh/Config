@@ -253,6 +253,10 @@ wk.register({
             m = { "<cmd>:Mason<cr>", "Gogo Mason" },
             n = { "<cmd>lua require('anwalsh.telescope').edit_nvim()<cr>", "Edit Nvim Config" },
             d = { "<cmd>lua require('anwalsh.telescope').edit_config()<cr>", "Edit Config Files" },
+            s = {
+                "<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>",
+                "Edit current RT Snippets",
+            },
         },
         ["x"] = {
             name = "+tooling",
