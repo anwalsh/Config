@@ -1,16 +1,25 @@
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 
+local status_ok, luasnip = pcall(require, "luasnip")
+if not status_ok then return end
+
+local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
 cmp.setup({
     completion = {
         completeopt = "menu,menuone,noinsert,noselect",
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
+        { name = "nvim_lsp",  max_item_count = 10 },
+        { name = "nvim_lua",  max_item_count = 10 },
         { name = "luasnip" },
-        { name = "buffer",    keyword_length = 5 },
-        { name = "path" },
+        { name = "buffer",    max_item_count = 5, keyword_length = 5 },
+        { name = "path",      max_item_count = 5 },
         { name = "treesitter" },
     },
     snippet = {
@@ -20,12 +29,12 @@ cmp.setup({
         format = lspkind.cmp_format({
             with_text = true,
             menu = {
-                buffer = "[buf]",
+                buffer = "[Buf]",
                 nvim_lsp = "[LSP]",
-                nvim_lua = "[lua]",
-                path = "[path]",
-                lusasnip = "[snip]",
-                treesitter = "[ts]",
+                nvim_lua = "[Lua]",
+                path = "[Path]",
+                lusasnip = "[Snip]",
+                treesitter = "[TS]",
             },
             mode = "symbol_text",
             maxwidth = 50,
@@ -43,10 +52,10 @@ cmp.setup({
             select = false,
         }),
         ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            if cmp.visible() and has_words_before() then
                 cmp.select_next_item()
-            elseif require("luasnip").expand_or_jumpable() then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+            elseif luasnip.choice_active() then
+                luasnip.change_choice(1)
             else
                 fallback()
             end
@@ -57,8 +66,8 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif require("luasnip").jumpable(-1) then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+            elseif luasnip.choice_active() then
+                luasnip.change_choice(-1)
             else
                 fallback()
             end
@@ -68,12 +77,11 @@ cmp.setup({
         }),
     },
     experimental = {
-        native_menu = false,
-        ghost_text = false,
+        ghost_text = true,
     },
 })
 -- Overrides for specific filetypes
-cmp.setup.filetype({ "markdown", "txt" }, {
+cmp.setup.filetype({
     sources = {
         {
             name = "look",
@@ -85,4 +93,4 @@ cmp.setup.filetype({ "markdown", "txt" }, {
         },
         { name = "emoji", insert = true },
     },
-})
+}, { "markdown", "txt" })
