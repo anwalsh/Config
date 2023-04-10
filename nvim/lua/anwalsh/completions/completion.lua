@@ -18,25 +18,6 @@ function config.nvim_cmp()
     --     local col = vim.fn.col(".") - 1
     --     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
     -- end
-    local sources = {
-        { name = "nvim_lsp",  max_item_count = 10 },
-        { name = "nvim_lua",  max_item_count = 10 },
-        { name = "luasnip" },
-        { name = "buffer",    max_item_count = 5, keyword_length = 3 },
-        { name = "path",      max_item_count = 5 },
-        { name = "treesitter" },
-    }
-    if vim.o.ft == "norg" then
-        table.insert(sources, { name = "neorg" })
-        table.insert(sources, { name = "spell" })
-    end
-    if vim.o.ft == "markdown" or vim.o.ft == "txt" or vim.o.ft == "html" or vim.o.ft == "gitcommit" then
-        table.insert({ name = "spell" }, sources)
-    end
-    if vim.o.ft == "zsh" or vim.o.ft == "sh" or vim.o.ft == "fish" or vim.o.ft == "proto" then
-        table.insert({ name = "buffer", keyword_length = 3 }, sources)
-        table.insert(sources, { name = "calc" })
-    end
 
     cmp.setup({
         snippet = {
@@ -45,6 +26,14 @@ function config.nvim_cmp()
         completion = {
             autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
             completeopt = "menu,menuone,noselect",
+        },
+        sources = {
+            { name = "nvim_lsp",  max_item_count = 10 },
+            { name = "nvim_lua",  max_item_count = 10 },
+            { name = "luasnip" },
+            { name = "buffer",    max_item_count = 5, keyword_length = 3 },
+            { name = "path",      max_item_count = 5 },
+            { name = "treesitter" },
         },
         formatting = {
             format = lspkind.cmp_format({
@@ -76,8 +65,7 @@ function config.nvim_cmp()
                 end
             end,
             ["<CR>"] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = false,
+                select = true,
             }),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
@@ -106,7 +94,6 @@ function config.nvim_cmp()
                 "s",
             }),
         },
-        sources = sources,
         experimental = { ghost_text = true },
     })
     cmp.setup.filetype({ "markdown", "txt" }, {
