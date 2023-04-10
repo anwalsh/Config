@@ -61,7 +61,7 @@ return {
     },
     { "andymass/vim-matchup" },
     { "tpope/vim-dispatch",               cmd = { "Dispatch", "Make" } },
-    { "williamboman/mason.nvim" },
+    { "williamboman/mason.nvim",          build = ":MasonUpdate" },
     { "williamboman/mason-lspconfig.nvim" },
     {
         "simrat39/symbols-outline.nvim",
@@ -132,6 +132,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         dependencies = "onsails/lspkind.nvim",
+        lazy = false,
     },
     {
         "L3MON4D3/LuaSnip",

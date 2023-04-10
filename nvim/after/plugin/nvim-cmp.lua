@@ -81,7 +81,7 @@ cmp.setup({
     },
 })
 -- Overrides for specific filetypes
-cmp.setup.filetype({
+cmp.setup.filetype({ "markdown", "txt" }, {
     sources = {
         {
             name = "look",
@@ -93,4 +93,4 @@ cmp.setup.filetype({
         },
         { name = "emoji", insert = true },
     },
-}, { "markdown", "txt" })
+})
