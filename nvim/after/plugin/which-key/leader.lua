@@ -258,7 +258,7 @@ wk.register({
                 "Edit current RT Snippets",
             },
             S = {
-                "<cmd>source ~/Config/nvim/after/plugin/luasnip/luasnip.lua<cr>",
+                "<cmd>source ~/Config/nvim/lua/anwalsh/completions/luasnip/luasnip.lua<cr>",
                 "Hot reload for Snippets",
             },
         },

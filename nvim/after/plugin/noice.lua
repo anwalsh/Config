@@ -1,59 +1,71 @@
 if not pcall(require, "noice") then return end
 
-require("noice").setup({
-    presets = {
-        bottom_search = false,        -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = true,        -- add a border to hover docs and signature help
-    },
-    views = {
-        cmdline_popup = {
-            position = {
-                row = "50%",
-                col = "50%",
-            },
-            size = {
-                width = 60,
-                height = "auto",
-            },
-        },
-        popupmenu = {
-            relative = "editor",
-            position = {
-                row = "50%",
-                col = "50%",
-            },
-            size = {
-                width = 60,
-                height = 10,
-            },
-            border = {
-                style = "rounded",
-                padding = { 0, 1 },
-            },
-            win_options = {
-                winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-            },
-        },
-    },
-    {
+local M = {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+}
+
+function M.config()
+    local focused = true
+    vim.api.nvim_create_autocmd("FocusGained", {
+        callback = function() focused = true end,
+    })
+    vim.api.nvim_create_autocmd("FocusLost", {
+        callback = function() focused = false end,
+    })
+    require("noice").setup({
+        debug = false,
         lsp = {
-            -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                 ["vim.lsp.util.stylize_markdown"] = true,
                 ["cmp.entry.get_documentation"] = true,
             },
-            signature = { enabled = false },
-            progress = { enabled = false },
         },
         routes = {
             {
-                filter = { event = "msg_show", kind = "search_count" },
-                opts = { skip = true },
+                filter = {
+                    cond = function() return not focused end,
+                },
+                view = "notify_send",
+                opts = { stop = false },
+            },
+            {
+                filter = {
+                    event = "msg_show",
+                    find = "%d+L, %d+B",
+                },
+                view = "mini",
             },
         },
-    },
-})
+        presets = {
+            bottom_search = true,
+            command_palette = true,
+            long_message_to_split = true,
+            inc_rename = true,
+            cmdline_output_to_split = false,
+        },
+        commands = {
+            all = {
+                -- options for the message history that you get with `:Noice`
+                view = "split",
+                opts = { enter = true, format = "details" },
+                filter = {},
+            },
+        },
+        format = {
+            level = {
+                icons = false,
+            },
+        },
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function(event)
+            vim.schedule(function() require("noice.text.markdown").keys(event.buf) end)
+        end,
+    })
+end
+
+return M

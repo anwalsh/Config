@@ -1,5 +1,5 @@
 if not pcall(require, "aerial") then
-  return
+    return
 end
 
 require("aerial").setup {

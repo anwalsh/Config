@@ -1,6 +1,4 @@
-if not pcall(require, "null-ls") then
-    return
-end
+if not pcall(require, "null-ls") then return end
 
 require("null-ls").setup({
     sources = {
@@ -78,5 +76,5 @@ null_ls.setup({
 require("mason-null-ls").setup({
     automatic_installation = true,
     automatic_setup = false,
-    ensure_installed = {}
+    ensure_installed = {},
 })

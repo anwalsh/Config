@@ -23,6 +23,7 @@ require("nightfox").setup({
         transparent = true,
         styles = {
             comments = "italic",
+            keywords = "bold",
         },
     },
 })

@@ -1,8 +1,3 @@
-require("anwalsh.themes.carbonfox")
-require("anwalsh.themes.kanagawa")
-require("anwalsh.themes.catppuccin")
-
 vim.cmd([[colorscheme carbonfox]])
--- vim.cmd([[colorscheme kanagawa]])
--- vim.cmd([[colorscheme catppuccin]])
--- vim.cmd([[colorscheme oxocarbon]])
+
+if "carbonfox" == vim.g.colors_name then require("anwalsh.themes.carbonfox") end
