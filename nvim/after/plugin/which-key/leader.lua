@@ -257,6 +257,10 @@ wk.register({
                 "<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>",
                 "Edit current RT Snippets",
             },
+            S = {
+                "<cmd>source ~/Config/nvim/after/plugin/luasnip/luasnip.lua<cr>",
+                "Hot reload for Snippets",
+            },
         },
         ["x"] = {
             name = "+tooling",

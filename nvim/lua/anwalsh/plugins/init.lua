@@ -14,10 +14,8 @@ vim.opt.runtimepath:prepend(lazypath)
 return {
     { "Mofiqul/dracula.nvim" },
     { "nyoom-engineering/oxocarbon.nvim" },
-    { "projekt0n/github-nvim-theme",         version = "^v0.0.7" },
     { "EdenEast/nightfox.nvim" },
     { "catppuccin/nvim",                     as = "catppuccin" },
-    { "projekt0n/github-nvim-theme" },
     { "folke/tokyonight.nvim" },
     { "rebelot/kanagawa.nvim" },
     { "folke/noice.nvim",                    dependencies = "MunifTanjim/nui.nvim",      lazy = false },
@@ -124,18 +122,28 @@ return {
     { "mfussenegger/nvim-dap-python" },
     { "danymat/neogen" },
     { "linux-cultist/venv-selector.nvim" },
+    { "rktjmp/hotpot.nvim",                        lazy = false },
 
     -- Completion/LSP
     { "onsails/lspkind-nvim" }, -- adds icons to autocomplete menu
     { "neovim/nvim-lspconfig" },
-    { "hrsh7th/nvim-cmp",                          dependencies = "onsails/lspkind.nvim" },
+    { "tamago324/cmp-zsh" },
+    { "mtoohey31/cmp-fish",                        ft = "fish" },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = "onsails/lspkind.nvim",
+    },
     {
         "L3MON4D3/LuaSnip",
         build = "make install_jsregexp",
         lazy = false,
     },
     { "rafamadriz/friendly-snippets" },
-    { "saadparwaiz1/cmp_luasnip",            lazy = false },
+    {
+        "saadparwaiz1/cmp_luasnip",
+        dependencies = "L3MON4D3/LuaSnip",
+        lazy = false,
+    },
     { "lukas-reineke/cmp-under-comparator" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-path" },

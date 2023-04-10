@@ -1,3 +1,4 @@
+local ls = require("luasnip")
 local session = require("luasnip.session")
 
 local env = session.config.snip_env
@@ -6,7 +7,7 @@ local t = env["t"]
 local i = env["i"]
 local parse = env["parse"]
 
-return {
+ls.add_snippets("go", {
     s({ trig = "co", name = "Constant", dscr = "Insert a constant" }, {
         t("const "),
         i(1, "name"),
@@ -49,4 +50,4 @@ return {
   }
   ]]
     ),
-}
+})

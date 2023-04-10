@@ -1,28 +1,37 @@
 if not pcall(require, "luasnip") then return end
 
 local ls = require("luasnip")
+local snip_path = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/snippets" }
+local types = require("luasnip.util.types")
 
 ls.config.setup({
     history = true,
     update_events = "TextChanged,TextChangedI",
     delete_check_events = "TextChanged",
     ext_opts = {
-        [require("luasnip.util.types").choiceNode] = {
+        [types.choiceNode] = {
             active = {
-                virt_text = { { "choiceNode", "Comment" } },
+                virt_text = { { " « ", "NonTest" } },
             },
         },
     },
-    -- minimal increase in priority.
-    ext_prio_increase = 1,
-    enable_autosnippets = true,
-    -- mapping for cutting selected text so it's usable as SELECT_DEDENT,
-    -- SELECT_RAW or TM_SELECTED_TEXT (mapped via xmap).
-    store_selection_keys = "<C-Tab>",
-    -- resolve current filetype from cursor in e.g. markdown code blocks or `vim.cmd()`
-    ft_func = require("luasnip.extras.filetype_functions").from_cursor,
 })
+
+-- <C-k> jump forward snip
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+    if ls.expand_or_jumpable() then ls.expand_or_jump() end
+end, { silent = true })
+
+-- <C-j> jump backward snip
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+    if ls.jumpable(-1) then ls.jump(-1) end
+end, { silent = true })
+
+-- <C-l> list snip choices
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+    if ls.choice_active() then ls.change_choice(1) end
+end)
 
 vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]])
 
-require("luasnip.loaders.from_lua").load({ paths = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/snippets" } })
+require("luasnip.loaders.from_lua").load({ paths = snip_path })
