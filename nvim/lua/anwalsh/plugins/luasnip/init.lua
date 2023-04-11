@@ -12,7 +12,7 @@ return {
             local extras = require("luasnip.extras")
             local parser = require("luasnip.util.parser").parse_snippet
             local fmt = require("luasnip.extras.fmt").fmt
-            local fmata = require("luasnip.extras.fmt").fmta
+            local fmta = require("luasnip.extras.fmt").fmta
             local snip_path = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/snippets/" }
 
             ls.config.set_config({
