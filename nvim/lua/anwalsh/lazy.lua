@@ -1,4 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local cmd = vim.cmd
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -15,7 +17,7 @@ require("lazy").setup("anwalsh.plugins", {
     concurrency = 50,
     defaults = { lazy = true },
     install = { missing = true },
-    checker = { enabled = true, notify = true },
+    checker = { enabled = true, notify = true, concurrency = 50, frequency = 3600 },
     performance = {
         cache = {
             enabled = true,
@@ -23,6 +25,7 @@ require("lazy").setup("anwalsh.plugins", {
         },
         rtp = {
             disabled_plugins = {
+                "netrw",
                 "gzip",
                 "matchit",
                 "matchparen",
@@ -51,3 +54,5 @@ require("lazy").setup("anwalsh.plugins", {
         },
     },
 })
+
+cmd.colorscheme("carbonfox")

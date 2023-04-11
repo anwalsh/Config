@@ -1,4 +1,3 @@
-local conf = require("anwalsh.completions.completion")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -107,26 +106,6 @@ return {
     -- }}}
 
     -- Completions ============================= {{{
-    {
-        "hrsh7th/nvim-cmp",
-        event = { "InsertEnter", "CmdlineEnter" },
-        module = false,
-        lazy = false,
-        dependencies = {
-            { "onsails/lspkind.nvim",                 lazy = false },
-            { "hrsh7th/cmp-buffer",                   lazy = true },
-            { "hrsh7th/cmp-nvim-lua",                 lazy = true },
-            { "hrsh7th/cmp-path",                     lazy = true },
-            { "hrsh7th/cmp-cmdline",                  lazy = true },
-            { "hrsh7th/cmp-emoji",                    lazy = true },
-            { "hrsh7th/cmp-nvim-lsp",                 lazy = true },
-            { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
-            { "hrsh7th/cmp-nvim-lsp-signature-help",  lazy = true },
-            { "octaltree/cmp-look",                   lazy = true },
-            { "saadparwaiz1/cmp_luasnip",             lazy = true },
-        },
-        config = conf,
-    },
     { "tamago324/cmp-zsh" },
     { "mtoohey31/cmp-fish", ft = "fish" },
     {
