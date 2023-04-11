@@ -12,7 +12,8 @@ return {
             local extras = require("luasnip.extras")
             local parser = require("luasnip.util.parser").parse_snippet
             local fmt = require("luasnip.extras.fmt").fmt
-            local snip_path = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/plugins/luasnip/snippets/" }
+            local fmata = require("luasnip.extras.fmt").fmta
+            local snip_path = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/snippets/" }
 
             ls.config.set_config({
                 history = false,
@@ -36,6 +37,7 @@ return {
                 snip_env = {
                     -- https://github.com/L3MON4D3/LuaSnip/blob/master/lua/luasnip/config.lua#L22
                     fmt = fmt,
+                    fmta = fmta,
                     m = extras.match,
                     t = ls.text_node,
                     f = ls.function_node,

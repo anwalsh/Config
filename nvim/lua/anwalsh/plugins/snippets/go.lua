@@ -1,7 +1,6 @@
 ---@diagnostic disable: undefined-global
-require("luasnip.loaders.from_lua").lazy_load()
 local ls = require("luasnip")
-local env = ls.session.config.snip_env
+local env = ls.get_snip_env()
 
 return {
     env.snippet({ trig = "co", name = "Constant", dscr = "Insert a constant" }, {

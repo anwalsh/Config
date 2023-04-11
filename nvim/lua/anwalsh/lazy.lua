@@ -55,4 +55,4 @@ require("lazy").setup("anwalsh.plugins", {
     },
 })
 
-cmd.colorscheme("carbonfox")
+cmd.colorscheme("oxocarbon")
