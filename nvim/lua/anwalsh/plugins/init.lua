@@ -93,7 +93,7 @@ return {
     { "folke/neodev.nvim" },
     { "danymat/neogen" },
     { "linux-cultist/venv-selector.nvim" },
-    { "rktjmp/hotpot.nvim",              lazy = false },
+    { "rktjmp/hotpot.nvim",                     lazy = false },
     { "folke/lsp-colors.nvim" },
     -- }}}
 
@@ -106,32 +106,7 @@ return {
     -- }}}
 
     -- Completions ============================= {{{
-    { "tamago324/cmp-zsh" },
-    { "mtoohey31/cmp-fish", ft = "fish" },
-    {
-        "L3MON4D3/LuaSnip",
-        event = "InsertEnter",
-        dependencies = { "rafamadriz/friendly-snippets", module = false, event = "InsertEnter" }, -- , event = "InsertEnter"
-        module = true,
-        config = function() require("anwalsh.completions.luasnip.luasnip") end,
-        build = "make install_jsregexp",
-        lazy = false,
-    },
-    { "rafamadriz/friendly-snippets" },
-    {
-        "saadparwaiz1/cmp_luasnip",
-        dependencies = "L3MON4D3/LuaSnip",
-        lazy = false,
-    },
-    { "lukas-reineke/cmp-under-comparator" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-    { "hrsh7th/cmp-nvim-lsp-signature-help" },
-    { "hrsh7th/cmp-emoji" },
-    { "octaltree/cmp-look" },
+    -- Located in ./plugins/. for more finegrained control of rtp load.
     -- }}}
 
     -- Treesitter ============================= {{{

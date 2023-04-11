@@ -1,3 +1,4 @@
+local api = vim.api
 -- Convenience functions largely borrowed from elsewhere
 
 ---Determine if a value of any type is empty
@@ -44,7 +45,32 @@ function Fold(callback, list, accum)
     return accum
 end
 
+---@generic T
+---@param callback fun(item: T, key: string | number, list: T[]): T
+---@param list T[]
+---@return T[]
+function Map(callback, list)
+    return Fold(function(accum, v, k)
+        accum[#accum + 1] = callback(v, k, accum)
+        return accum
+    end, list, {})
+end
+
 ---A terser proxy for `nvim_replace_termcodes`
 ---@param str string
 ---@return string
 function Replace_termcodes(str) return api.nvim_replace_termcodes(str, true, true, true) end
+
+--- @class CommandArgs
+--- @field args string
+--- @field fargs table
+--- @field bang boolean,
+
+---Create an nvim command
+---@param name string
+---@param rhs string | fun(args: CommandArgs)
+---@param opts table?
+function Command(name, rhs, opts)
+    opts = opts or {}
+    api.nvim_create_user_command(name, rhs, opts)
+end

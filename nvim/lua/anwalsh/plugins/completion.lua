@@ -14,12 +14,20 @@ return {
             { "hrsh7th/cmp-cmdline" },
             { "octaltree/cmp-look" },
             { "ray-x/cmp-treesitter" },
+            { "tamago324/cmp-zsh" },
+            { "mtoohey31/cmp-fish",                  ft = "fish" },
             { "saadparwaiz1/cmp_luasnip" },
+            { "lukas-reineke/cmp-under-comparator" },
             { "hrsh7th/cmp-nvim-lsp-signature-help" },
             { "hrsh7th/cmp-nvim-lsp-document-symbol" },
             { "lukas-reineke/cmp-rg" },
             { "petertriho/cmp-git",                  opts = { filetypes = { "gitcommit", "NeogitCommitMessage" } } },
             { "abecodes/tabout.nvim",                opts = { ignore_beginning = false, completion = false } },
+            {
+                "saadparwaiz1/cmp_luasnip",
+                dependencies = "L3MON4D3/LuaSnip",
+                lazy = false,
+            },
         },
         config = function()
             local cmp = require("cmp")

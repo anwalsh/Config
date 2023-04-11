@@ -1,3 +1,16 @@
+set -l background "#0b0d0f"
+set -l current_line "#131a20"
+set -l selection "#131a20"
+set -l foreground "#f8f8f2"
+set -l comment "#6272a4"
+set -l cyan "#8be9fd"
+set -l green "#50fa7b"
+set -l orange "#ffb86c"
+set -l pink "#ff79c6"
+set -l purple "#bd93f9"
+set -l red "#ff5555"
+set -l yellow "#f1fa8c"
+
 # FZF Default Settings
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 set -gx FZF_DEFAULT_OPTS "\

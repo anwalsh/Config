@@ -136,6 +136,7 @@ require("mason-lspconfig").setup({
         "yamlls",
         "jsonls",
         "dockerls",
+        "pyright",
         -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
         "terraformls",
         "zls",
