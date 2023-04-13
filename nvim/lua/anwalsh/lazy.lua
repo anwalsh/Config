@@ -25,10 +25,12 @@ require("lazy").setup("anwalsh.plugins", {
         },
         rtp = {
             disabled_plugins = {
-                "netrw",
                 "gzip",
                 "matchit",
                 "matchparen",
+                "netrw",
+                "netrwFileHandlers",
+                "netrwSettings",
                 "netrwPlugin",
                 "rplugin",
                 "tarPlugin",

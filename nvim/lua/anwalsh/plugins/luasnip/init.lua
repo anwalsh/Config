@@ -16,9 +16,11 @@ return {
             local snip_path = { os.getenv("DOTFILES_HOME") .. "nvim/lua/anwalsh/snippets/" }
 
             ls.config.set_config({
-                history = false,
+                history = true,
+                loaders_store_source = true,
+                update_events = "TextChanged,TextChangedI",
                 region_check_events = "CursorMoved,CursorHold,InsertEnter",
-                delete_check_events = "InsertLeave",
+                delete_check_events = "TextChanged",
                 ext_opts = {
                     [types.choiceNode] = {
                         active = {
@@ -69,6 +71,9 @@ return {
             end)
 
             -- Load the snippets
+            require("luasnip").filetype_extend("go", { "go" })
+            require("luasnip").filetype_extend("python", { "python" })
+            require("luasnip").filetype_extend("rust", { "rust" })
             require("luasnip.loaders.from_lua").load({ paths = snip_path })
         end,
     },
