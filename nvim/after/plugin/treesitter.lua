@@ -1,8 +1,12 @@
 if not pcall(require, "nvim-treesitter.configs") then return end
 
+vim.opt.runtimepath:append("$HOME/.local/share/treesitter")
+
 require("nvim-treesitter.install").compilers = { "gcc-12" }
 require("nvim-treesitter.configs").setup({
+    -- installed servers {{{
     -- ensure_installed = "all",
+    parser_install_dir = "$HOME/.local/share/treesitter",
     ensure_installed = {
         "bash",
         "c",
@@ -65,6 +69,7 @@ require("nvim-treesitter.configs").setup({
         "yaml",
         "zig",
     },
+    -- }}}
     query_linter = {
         enable = true,
         use_virtual_text = true,
