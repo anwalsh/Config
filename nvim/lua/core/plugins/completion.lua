@@ -13,7 +13,9 @@ local M = {
             { "hrsh7th/cmp-emoji" },
             { "hrsh7th/cmp-cmdline" },
             { "octaltree/cmp-look" },
-            { "ray-x/cmp-treesitter" }, { "tamago324/cmp-zsh" },
+            { "saecki/crates.nvim" },
+            { "ray-x/cmp-treesitter" },
+            { "tamago324/cmp-zsh" },
             { "mtoohey31/cmp-fish",                  ft = "fish" },
             { "saadparwaiz1/cmp_luasnip" },
             { "lukas-reineke/cmp-under-comparator" },
@@ -62,6 +64,7 @@ local M = {
                     { name = "buffer",    max_item_count = 5, keyword_length = 3 },
                     { name = "path",      max_item_count = 5 },
                     { name = "treesitter" },
+                    { name = "crates" },
                 }),
                 formatting = {
                     format = lspkind.cmp_format({
@@ -73,6 +76,7 @@ local M = {
                             path = "[Path]",
                             lusasnip = "[Snip]",
                             treesitter = "[TS]",
+                            crates = "[C]",
                         },
                         mode = "symbol_text",
                         maxwidth = 50,
