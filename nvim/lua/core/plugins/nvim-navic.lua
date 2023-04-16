@@ -1,38 +1,11 @@
 local M = {
     "SmiteshP/nvim-navic",
     dependencies = {
-        "neovim/nvim-lspconfig"
+        "neovim/nvim-lspconfig",
     },
     config = function()
         require("nvim-navic").setup({
-            icons = {
-                File = " ",
-                Module = " ",
-                Namespace = " ",
-                Package = " ",
-                Class = " ",
-                Method = " ",
-                Property = " ",
-                Field = " ",
-                Constructor = " ",
-                Enum = "練",
-                Interface = "練",
-                Function = " ",
-                Variable = " ",
-                Constant = " ",
-                String = " ",
-                Number = " ",
-                Boolean = "◩ ",
-                Array = " ",
-                Object = " ",
-                Key = " ",
-                Null = "ﳠ ",
-                EnumMember = " ",
-                Struct = " ",
-                Event = " ",
-                Operator = " ",
-                TypeParameter = " ",
-            },
+            icons = require("core.utils.icons"),
             highlight = false,
             separator = " > ",
             depth_limit = 0,
@@ -40,7 +13,7 @@ local M = {
             safe_output = true,
             lsp = {
                 auto_attach = true,
-            }
+            },
         })
     end,
 }
