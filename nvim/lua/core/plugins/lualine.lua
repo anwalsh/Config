@@ -1,6 +1,8 @@
 local M = {
     "nvim-lualine/lualine.nvim",
-    "SmiteshP/nvim-navic",
+    dependencies = {
+        "SmiteshP/nvim-navic",
+    },
     lazy = false
 }
 

@@ -1,8 +1,3 @@
-
-if not pcall(require, "lualine") then
-    return
-end
-
 local lualine = require("lualine")
 local navic = require("nvim-navic")
 
@@ -75,7 +70,7 @@ ins_left({
     function()
         return "▊"
     end,
-    color = { fg = Colors.blue }, -- Sets highlighting of component
+    color = { fg = Colors.blue },      -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 

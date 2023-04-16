@@ -1,4 +1,9 @@
+local vo = vim.opt_local
 local set = vim.api.nvim_set_var
+
+vo.tabstop = 4
+vo.shiftwidth = 4
+vo.softtabstop = 4
 
 set("go_highlight_array_whitespace_error", 1)
 set("go_highlight_extra_types", 1)
