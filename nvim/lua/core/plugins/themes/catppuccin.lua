@@ -1,4 +1,6 @@
+local colors = require("catppuccin.palettes").get_palette()
 require("catppuccin").setup({
+    flavour = "mocha",
     transparent_background = false,
     term_colors = false,
     dim_inactive = {
@@ -7,11 +9,53 @@ require("catppuccin").setup({
         percentage = 0.15,
     },
     no_italic = false, -- Force no italic
-    no_bold = false,   -- Force no bold
+    no_bold = false, -- Force no bold
     styles = {
         comments = { "italic" },
+        keywords = { "bold" },
     },
-    color_overrides = {},
+    color_overrides = {
+        mocha = {
+            --            base = "#000000",
+            --            mantle = "#000000",
+            --            crust = "#000000",
+            TelescopeBorder = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopePromptBorder = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopePromptNormal = { bg = colors.surface0 },
+            TelescopePromptPrefix = { fg = colors.mauve, bg = colors.surface0 },
+            TelescopePreviewTitle = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopeResultsTitle = { fg = colors.surface0, bg = colors.surface0 },
+            TelescopeSelection = { bg = colors.surface1 },
+            FloatBorder = { bg = colors.mantle, fg = colors.subtext1 },
+            CmpDocBorder = { bg = colors.mantle, fg = colors.flamingo },
+            StatusLine = { bg = colors.mantle },
+            StatusLineNC = { bg = colors.mantle },
+            WinBar = { bg = colors.base },
+            WinBarNC = { bg = colors.base },
+            VertSplit = { bg = colors.mantle },
+            NvimTreeOpenedFile = { link = "TSTextReference" },
+            IndentBlanklineContextChar = { fg = colors.surface2 },
+            IndentBlanklineChar = { fg = colors.surface0 },
+            NeotestPassed = { link = "healthSuccess" },
+            NeotestSkipped = { link = "healthWarning" },
+            NeotestFailed = { link = "healthError" },
+            NeotestFocused = { link = "PMenuSel" },
+            NeotestRunning = { link = "CursorLineNr" },
+            NeotestBorder = { link = "Comment" },
+            NeotestTest = { link = "Normal" },
+            NeotestDir = { link = "Directory" },
+            NeotestFile = { link = "Character" },
+            NeotestIndent = { link = "Comment" },
+            NeotestExpandMarker = { link = "Comment" },
+            DiffAdd = { fg = "#A8FF60", bg = "#35522b" },
+            DiffChange = { fg = "#E9C062", bg = "#8b733a" },
+            DiffDelete = { fg = "#e87b94", bg = "#571727" },
+            DiffText = { fg = "#F1FA8C", bg = "#8b733a" },
+            DiffviewDiffAddAsDelete = { link = "DiffDelete" },
+            HighlightedyankRegion = { bg = colors.surface1 },
+        },
+    },
     custom_highlights = {},
     integrations = {
         treesitter = true,
@@ -74,4 +118,4 @@ require("catppuccin").setup({
     },
 })
 
-vim.cmd([[colorscheme catppuccin-mocha]])
+vim.cmd("colorscheme catppuccin")
