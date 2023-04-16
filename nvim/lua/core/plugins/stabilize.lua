@@ -1,5 +1,5 @@
 local M = {
-    "luukvbaal/stabilize.nvim",   
+    "luukvbaal/stabilize.nvim",
     lazy = false,
     config = function()
         require("stabilize").setup({

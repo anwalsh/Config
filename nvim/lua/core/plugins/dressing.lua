@@ -1,6 +1,6 @@
 local M = {
     "stevearc/dressing.nvim",
-    lazy = false
+    lazy = false,
 }
 
 return M

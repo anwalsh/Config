@@ -1,22 +1,20 @@
 local M = {
     "aaronhallaert/advanced-git-search.nvim",
     "lewis6991/gitsigns.nvim",
-    { "ruifm/gitlinker.nvim",     dependencies = "nvim-lua/plenary.nvim" },
+    { "ruifm/gitlinker.nvim", dependencies = "nvim-lua/plenary.nvim" },
     { "rhysd/git-messenger.vim" },
-    { "sindrets/diffview.nvim",   dependencies = "nvim-lua/plenary.nvim", lazy = false },
+    { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = false },
     { "akinsho/git-conflict.nvim" },
     lazy = false,
     config = function()
         require("git-conflict").setup({})
 
-        require "gitlinker".setup()
+        require("gitlinker").setup()
 
         require("gitsigns").setup({
             current_line_blame = true,
             current_line_blame_formatter = function(name, blame_info)
-                if blame_info.author == name then
-                    blame_info.author = "You"
-                end
+                if blame_info.author == name then blame_info.author = "You" end
 
                 local text
                 if blame_info.author == "Not Committed Yet" then

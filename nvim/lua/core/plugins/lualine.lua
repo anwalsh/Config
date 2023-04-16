@@ -3,7 +3,7 @@ local M = {
     dependencies = {
         "SmiteshP/nvim-navic",
     },
-    lazy = false
+    lazy = false,
 }
 
 return M

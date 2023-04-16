@@ -1,5 +1,5 @@
 local M = {
-   "MattesGroeger/vim-bookmarks",
+    "MattesGroeger/vim-bookmarks",
     config = function()
         vim.g.bookmark_no_default_key_mappings = 1
         vim.g.bookmark_auto_save = 0

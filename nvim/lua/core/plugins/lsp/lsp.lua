@@ -36,11 +36,8 @@ local on_attach = function(client, bufnr)
         ]])
     end
 
-    if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    end
+    if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
-
 
 -- organize imports
 -- https://github.com/neovim/nvim-lspconfig/issues/115#issuecomment-902680058

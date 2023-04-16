@@ -20,7 +20,7 @@ function M.setup(client, buffer)
                     expr = true,
                 },
                 a = {
-                    { vim.lsp.buf.code_action,                  "Code Action" },
+                    { vim.lsp.buf.code_action, "Code Action" },
                     { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
                 },
                 A = { "<cmd>lua require('neogen').generate()<cr>", "Create Annotation", mode = "n" },
@@ -40,8 +40,16 @@ function M.setup(client, buffer)
                 D = {
                     function()
                         require("telescope.builtin").lsp_document_symbols({
-                            symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct",
-                                "Trait" },
+                            symbols = {
+                                "Class",
+                                "Function",
+                                "Method",
+                                "Constructor",
+                                "Interface",
+                                "Module",
+                                "Struct",
+                                "Trait",
+                            },
                         })
                     end,
                     "Goto Symbol",
@@ -49,8 +57,16 @@ function M.setup(client, buffer)
                 S = {
                     function()
                         require("telescope.builtin").lsp_dynamic_workspace_symbols({
-                            symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct",
-                                "Trait" },
+                            symbols = {
+                                "Class",
+                                "Function",
+                                "Method",
+                                "Constructor",
+                                "Interface",
+                                "Module",
+                                "Struct",
+                                "Trait",
+                            },
                         })
                     end,
                     "Goto Workspace Symbol",

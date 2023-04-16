@@ -272,4 +272,3 @@ wk.register({
         ["z"] = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
     },
 })
-

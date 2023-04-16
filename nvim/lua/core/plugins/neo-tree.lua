@@ -1,5 +1,5 @@
 local M = {
-    "nvim-neo-tree/neo-tree.nvim",         
+    "nvim-neo-tree/neo-tree.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -24,7 +24,7 @@ local M = {
             enable_git_status = true,
             enable_diagnostics = true,
             sort_case_insensitive = false, -- used when sorting files and directories in the tree
-            sort_function = nil,           -- use a custom function for sorting files and directories in the tree
+            sort_function = nil, -- use a custom function for sorting files and directories in the tree
             event_handlers = {
                 {
                     event = "neo_tree_window_after_open",
@@ -73,7 +73,7 @@ local M = {
                 git_status = {
                     symbols = {
                         -- Change type
-                        added = "",    -- or "✚", but this is redundant info if you use git_status_colors on the name
+                        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
                         modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
                         deleted = "✖", -- this can only be used in the git_status source
                         renamed = "", -- this can only be used in the git_status source
@@ -156,9 +156,9 @@ local M = {
                     },
                 },
                 find_by_full_path_words = ".*",
-                follow_current_file = false,            -- This will find and focus the file in the active buffer every
+                follow_current_file = false, -- This will find and focus the file in the active buffer every
                 -- time the current file is changed while the tree is open.
-                group_empty_dirs = true,                -- when true, empty folders will be grouped together
+                group_empty_dirs = true, -- when true, empty folders will be grouped together
                 hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                 -- in whatever position is specified in window.position
                 -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -183,7 +183,7 @@ local M = {
             buffers = {
                 follow_current_file = true, -- This will find and focus the file in the active buffer every
                 -- time the current file is changed while the tree is open.
-                group_empty_dirs = true,    -- when true, empty folders will be grouped together
+                group_empty_dirs = true, -- when true, empty folders will be grouped together
                 show_unloaded = true,
                 window = {
                     mappings = {

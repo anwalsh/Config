@@ -141,7 +141,6 @@ local M = {
         end
     end,
 
-
     reload_modules = function()
         local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
         for _, dir in ipairs(lua_dirs) do

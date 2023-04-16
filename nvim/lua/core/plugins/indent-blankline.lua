@@ -1,5 +1,5 @@
 local M = {
-    "lukas-reineke/indent-blankline.nvim", 
+    "lukas-reineke/indent-blankline.nvim",
     lazy = false,
     config = function()
         local global = vim.api.nvim_set_var
@@ -15,10 +15,21 @@ local M = {
             show_current_context_start = true,
             show_first_indent_level = true,
             filetype_exclude = {
-                'dbout', 'neo-tree-popup', 'log', 'gitcommit',
-                'txt', 'help', 'NvimTree', 'git', 'flutterToolsOutline',
-                'undotree', 'markdown', 'norg', 'org', 'orgagenda',
-                '', -- for all buffers without a file type
+                "dbout",
+                "neo-tree-popup",
+                "log",
+                "gitcommit",
+                "txt",
+                "help",
+                "NvimTree",
+                "git",
+                "flutterToolsOutline",
+                "undotree",
+                "markdown",
+                "norg",
+                "org",
+                "orgagenda",
+                "", -- for all buffers without a file type
             },
         })
     end,

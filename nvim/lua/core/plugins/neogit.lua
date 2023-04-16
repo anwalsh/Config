@@ -3,7 +3,7 @@ local M = {
     dependencies = "nvim-lua/plenary.nvim",
     lazy = false,
     config = function()
-        require("neogit").setup {
+        require("neogit").setup({
             disable_commit_confirmation = true,
             signs = {
                 section = { "", "" },
@@ -18,7 +18,7 @@ local M = {
             integrations = {
                 diffview = true,
             },
-        }
+        })
     end,
 }
 

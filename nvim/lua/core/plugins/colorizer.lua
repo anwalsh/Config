@@ -3,9 +3,7 @@ local M = {
     dependencies = {
         "norcalli/nvim-terminal.lua",
     },
-    config = function()
-        require("terminal").setup()
-    end,
+    config = function() require("terminal").setup() end,
 }
 
 return M
