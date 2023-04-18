@@ -3,14 +3,15 @@ local M = {
     build = ":TSUpdate",
     event = "BufReadPost",
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        { "nvim-treesitter/nvim-treesitter-textobjects", lazy = false },
         "RRethy/nvim-treesitter-endwise",
         "mfussenegger/nvim-ts-hint-textobject",
         "windwp/nvim-ts-autotag",
         { "nvim-treesitter/playground", build = ":TSInstall query" },
-        "nvim-treesitter/nvim-treesitter-context",
+        { "nvim-treesitter/nvim-treesitter-context", lazy = false },
     },
-    config = function() require("core.plugins.treesitter") end,
+    config = function() require("core.plugins.treesitter.treesitter") end,
+    lazy = false,
 }
 
 return M

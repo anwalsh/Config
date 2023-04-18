@@ -64,8 +64,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     },
     callback = function()
         vim.cmd([[
-    nnoremap <silent> <buffer> q <cmd>close<CR> 
-    set nobuflisted 
+    nnoremap <silent> <buffer> q <cmd>close<CR>
+    set nobuflisted
     ]])
     end,
 })
@@ -74,3 +74,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank({ higroup = "Substitute", timeout = 150, on_macro = true }) end,
 })
+
+if pcall(require, "luasnip") then
+    -- Save me in case I change modes instead a multi-option snippet so tab doesn't do weird things
+    vim.api.nvim_create_autocmd("ModeChanged", {
+        pattern = "*",
+        callback = function()
+            if
+                ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
+                and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+                and not require("luasnip").session.jump_active
+            then
+                require("luasnip").unlink_current()
+            end
+        end,
+    })
+end
