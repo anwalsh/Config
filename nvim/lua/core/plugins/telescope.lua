@@ -15,7 +15,6 @@ local M = {
         "nvim-telescope/telescope-dap.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
-    lazy = false,
     config = function()
         local actions = require("telescope.actions")
         local telescope = require("telescope")
@@ -140,7 +139,6 @@ local M = {
             pcall(require("telescope").load_extension, "octo")
         end
     end,
-
     reload_modules = function()
         local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
         for _, dir in ipairs(lua_dirs) do
@@ -148,7 +146,6 @@ local M = {
             require("plenary.reload").reload_module(dir)
         end
     end,
-
     git_branches = function()
         require("telescope.builtin").git_branches({
             attach_mappings = function(_, map)
@@ -158,7 +155,6 @@ local M = {
             end,
         })
     end,
-
     project_search = function(opts)
         opts = opts or {}
         opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
@@ -174,7 +170,6 @@ local M = {
         end
         require("telescope.builtin").find_files(opts)
     end,
-
     find_hidden_files = function()
         require("telescope.builtin").find_files({
             cwd = vim.fn.getcwd(),
@@ -186,13 +181,11 @@ local M = {
             },
         })
     end,
-
     search_all_files = function()
         require("telescope.builtin").find_files({
             find_command = { "rg", "--no-ignore", "--files" },
         })
     end,
-
     search_only_certain_files = function()
         require("telescope.builtin").find_files({
             find_command = {
@@ -203,7 +196,6 @@ local M = {
             },
         })
     end,
-
     float_terminal = function(cmd)
         local buf = vim.api.nvim_create_buf(false, true)
         local vpad = 4
@@ -226,7 +218,6 @@ local M = {
         vim.cmd(table.concat(autocmd, " "))
         vim.cmd([[startinsert]])
     end,
-
     edit_nvim = function()
         require("telescope.builtin").find_files({
             shorten_path = false,
@@ -239,7 +230,6 @@ local M = {
             },
         })
     end,
-
     edit_config = function()
         require("telescope.builtin").find_files({
             shorten_path = false,

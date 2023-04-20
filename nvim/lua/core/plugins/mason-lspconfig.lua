@@ -6,20 +6,9 @@ local M = {
     },
     lazy = false,
     config = function()
+        local settings = require("core.settings")
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "ltex",
-                "marksman",
-                "bashls",
-                "yamlls",
-                "jsonls",
-                "dockerls",
-                "pyright",
-                -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
-                "terraformls",
-                "zls",
-            },
+            ensure_installed = settings.mason_ensure_installed,
         })
     end,
 }
