@@ -65,6 +65,7 @@ local M = {
                     { name = "path", max_item_count = 5 },
                     { name = "treesitter" },
                     { name = "crates" },
+                    { name = "neorg" },
                 }),
                 formatting = {
                     format = lspkind.cmp_format({
@@ -77,6 +78,7 @@ local M = {
                             lusasnip = "[Snip]",
                             treesitter = "[TS]",
                             crates = "[C]",
+                            neorg = "[NEORG]",
                         },
                         mode = "symbol_text",
                         maxwidth = 50,
