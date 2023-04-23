@@ -2,7 +2,10 @@
 # These get set before anything else in the interactive shell, from a user configuration perspective.
 
 # M1-specific
-eval (/opt/homebrew/bin/brew shellenv)
+set -l os (uname)
+if test "$os" = Darwin
+    eval (/opt/homebrew/bin/brew shellenv)
+end
 
 # HOME
 set -gx GITLOCAL_HOME $HOME/GitLocal

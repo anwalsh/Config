@@ -19,6 +19,30 @@ local M = {
         local actions = require("telescope.actions")
         local telescope = require("telescope")
         local settings = require("core.settings")
+        local jit = require("jit")
+        if jit.os == "popos" then
+            local os_find = {
+                "fd",
+                "-L",
+                "-i",
+                "-H",
+                "-E",
+                ".git",
+                "-c=never",
+                "--strip-cwd-prefix",
+            }
+        else
+            local os_find = {
+                "fdfind",
+                "-L",
+                "-i",
+                "-H",
+                "-E",
+                ".git",
+                "-c=never",
+                "--strip-cwd-prefix",
+            }
+        end
         telescope.setup({
             defaults = {
                 -- General Config
@@ -75,16 +99,7 @@ local M = {
                 file_browser = { theme = "ivy" },
                 find_files = {
                     theme = "ivy",
-                    find_command = {
-                        "fd",
-                        "-L",
-                        "-i",
-                        "-H",
-                        "-E",
-                        ".git",
-                        "-c=never",
-                        "--strip-cwd-prefix",
-                    },
+                    find_command = os_find,
                 },
                 git_bcommits = { theme = "ivy" },
                 git_commits = { theme = "ivy" },

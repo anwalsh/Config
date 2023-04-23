@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local scheme = wezterm.color.get_builtin_schemes()["carbonfox"]
 local act = wezterm.action
+local jit = require("jit")
 
 wezterm.on("update-right-status", function(window)
     window:set_right_status(wezterm.format({
@@ -78,7 +79,6 @@ return {
     warn_about_missing_glyphs = false,
     show_update_window = false,
     check_for_updates = false,
-    line_height = 1.20,
     window_decorations = "RESIZE",
     window_close_confirmation = "NeverPrompt",
     audible_bell = "Disabled",
