@@ -1,6 +1,7 @@
 local M = {
     config = function()
-        require("nvim-treesitter.install").compilers = { "gcc-12" }
+        local jit = require("jit")
+        if jit.arch == "arm64" then require("nvim-treesitter.install").compilers = { "/opt/homebrew/bin/gcc-12" } end
         local settings = require("core.settings")
         require("nvim-treesitter.configs").setup({
             parser_install_dir = "$HOME/.local/share/treesitter",
