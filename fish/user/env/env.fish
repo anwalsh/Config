@@ -65,3 +65,4 @@ fish_add_path -a /usr/local/sbin
 fish_add_path -a $HOME/bin
 fish_add_path -a $HOME/.local/bin
 fish_add_path -a /opt/homebrew/bin
+fish_add_path -a $HOME/.asdf/shims/
