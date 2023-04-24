@@ -3,7 +3,7 @@
 
 # M1-specific
 set -l os (uname)
-if test "$os" = Darwin
+if test "$os" = "Darwin"
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
