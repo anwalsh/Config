@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local scheme = wezterm.color.get_builtin_schemes()["carbonfox"]
 local act = wezterm.action
-local jit = require("jit")
 
 wezterm.on("update-right-status", function(window)
     window:set_right_status(wezterm.format({
@@ -66,6 +65,13 @@ wezterm.on("format-tab-title", function(tab)
     })
 end)
 
+local is_macos = wezterm.target_triple:match("darwin") ~= nil
+if is_macos then
+    h = 1.20
+else
+    h = 1.00
+end
+
 return {
     scrollback_lines = 36000,
     color_scheme = "carbonfox",
@@ -79,6 +85,7 @@ return {
     warn_about_missing_glyphs = false,
     show_update_window = false,
     check_for_updates = false,
+    line_height = h,
     window_decorations = "RESIZE",
     window_close_confirmation = "NeverPrompt",
     audible_bell = "Disabled",
