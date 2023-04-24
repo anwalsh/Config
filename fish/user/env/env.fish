@@ -30,8 +30,9 @@ set -gx KUBECONFIG $HOME/.kube/config
 set -gx KREW_ROOT $HOME/.krew
 set -gx M_PREFIX $HOME
 set -gx JABBA $HOME/.jabba/bin
-set -gx export ANT_HOME $HOME/apache-ant-1.10.5
-set -gx export JAVA_HOME $HOME/.jabba/jdk/default/Contents/Home/
+set -gx ANT_HOME $HOME/apache-ant-1.10.5
+set -gx JAVA_HOME $HOME/.jabba/jdk/default/Contents/Home/
+set -gx HOME_LOCAL_BIN $HOME/.local/bin/
 
 # Fisher
 set -gx fisher_path $FISH_HOME
