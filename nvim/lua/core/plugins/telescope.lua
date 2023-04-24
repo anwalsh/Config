@@ -130,8 +130,8 @@ local M = {
                 project = {
                     base_dirs = {
                         "~/GitLocal/github.com/",
-                        "~/Config/",
-                        "~/Config/nvim",
+                        "~/GitLocal/github.com/anwalsh/Config/",
+                        "~/GitLocal/github.com/anwalsh/Config/nvim",
                     },
                     hidden_files = true, -- default: false
                     theme = "dropdown",

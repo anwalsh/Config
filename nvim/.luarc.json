@@ -77,7 +77,6 @@
         "/Users/andy/.local/share/nvim/lazy/cmp-fish/lua",
         "/Users/andy/.local/share/nvim/lazy/neogit/lua",
         "/Users/andy/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
-        "/Users/andy/Config/nvim/lua",
         "${3rd}/luv/library"
     ]
 }
