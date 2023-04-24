@@ -14,6 +14,9 @@ fish_add_path -m $N_PREFIX/bin
 # Misc.
 [ -s "$HOME/.jabba/jabba.fish" ]; and source "$HOME/.jabba/jabba.fish"
 
+# asdf
+source ~/.asdf/asdf.fish
+
 # Disable greeting
 set fish_greeting
 # to the Moon!
