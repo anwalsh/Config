@@ -11,6 +11,8 @@ end
 set -gx GITLOCAL_HOME $HOME/GitLocal
 set -gx DOTFILES_HOME $HOME/Config
 set -gx FISH_HOME $DOTFILES_HOME/fish
+
+# Work Stuff
 set -gx WORK_HOME $GITLOCAL_HOME/github.com/10gen
 set -gx MMS_HOME $WORK_HOME/mms
 
@@ -65,3 +67,4 @@ fish_add_path -a /usr/local/sbin
 fish_add_path -a $HOME/bin
 fish_add_path -a $HOME/.local/bin
 fish_add_path -a /opt/homebrew/bin
+fish_add_path -a /usr/local/go/bin/
