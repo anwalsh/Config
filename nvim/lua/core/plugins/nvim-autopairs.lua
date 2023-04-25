@@ -1,10 +1,5 @@
 local M = {
     "windwp/nvim-autopairs",
-    {
-        "eraserhd/parinfer-rust",
-        build = "cargo build --release",
-        lazy = false,
-    },
     lazy = false,
     event = "InsertEnter",
     dependencies = { "hrsh7th/nvim-cmp" },
@@ -22,7 +17,6 @@ local M = {
                 javascript = { "template_string" },
             },
         })
-        require("parinfer-rust").setup()
     end,
 }
 
