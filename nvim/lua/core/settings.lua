@@ -1,7 +1,7 @@
 local M = {}
 -- theme: nightfox, carbonfox, oxocarbon, kanagawa, catppuccin; default is carbonfox
 -- refer to the themes settings file for different styles
-M.theme = "oxocarbon"
+M.theme = "carbonfox"
 -- use rg instead of grep
 M.grepprg = "rg --hidden --vimgrep --smart-case --"
 -- set numbered lines
