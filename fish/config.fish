@@ -8,6 +8,8 @@ if status --is-interactive
     end
 end
 
+source $__fish_config_dir/themes/carbonfox.fish
+
 set -x N_PREFIX "$HOME/.n"
 fish_add_path -m $N_PREFIX/bin
 
