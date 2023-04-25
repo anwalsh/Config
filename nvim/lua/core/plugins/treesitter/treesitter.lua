@@ -18,6 +18,7 @@ local M = {
             ignore_install = { "phpdoc" },
             indent = { enable = true },
             matchup = { enable = true },
+            autopairs = { enable = true },
             navigation = {
                 enable = false,
                 keymaps = {
