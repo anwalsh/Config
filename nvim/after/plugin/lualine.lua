@@ -123,7 +123,7 @@ ins_left({
 })
 
 ins_right({
-    navic.get_location,
+    function() return navic.get_location() end,
     cond = navic.is_available,
     color = { fg = Colors.green, gui = "bold" },
 })

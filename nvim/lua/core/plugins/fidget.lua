@@ -1,6 +1,16 @@
 local M = {
     "j-hui/fidget.nvim",
-    config = function() require("fidget").setup({}) end,
+    lazy = false,
+    config = function()
+        require("fidget").setup({
+            align = {
+                bottom = true,
+            },
+            window = {
+                relative = editor,
+            },
+        })
+    end,
 }
 
 return M
