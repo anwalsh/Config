@@ -2,7 +2,7 @@ local M = {
     config = function()
         if vim.loop.os_uname().sysname == "Darwin" then
             require("nvim-treesitter.install").compilers = {
-                "/opt/homebrew/bin/gcc-12",
+                "gcc-12",
             }
         end
         local settings = require("core.settings")
