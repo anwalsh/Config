@@ -77,6 +77,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 if pcall(require, "luasnip") then
     -- Save me in case I change modes instead a multi-option snippet so tab doesn't do weird things
+    -- https://github.com/L3MON4D3/LuaSnip/issues/258 sourced from this issue
     vim.api.nvim_create_autocmd("ModeChanged", {
         pattern = "*",
         callback = function()
