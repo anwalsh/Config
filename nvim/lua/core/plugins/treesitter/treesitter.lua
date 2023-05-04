@@ -1,10 +1,5 @@
 local M = {
     config = function()
-        if vim.loop.os_uname().sysname == "Darwin" then
-            require("nvim-treesitter.install").compilers = {
-                "gcc-12",
-            }
-        end
         local settings = require("core.settings")
         require("nvim-treesitter.configs").setup({
             parser_install_dir = "$HOME/.local/share/treesitter",
