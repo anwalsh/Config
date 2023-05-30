@@ -30,6 +30,12 @@ elseif settings.theme == "tokyonight" then
         lazy = false,
         config = function() require("core.plugins.themes.tokyonight") end,
     }
+elseif settings.theme == "github" then
+    return {
+        "projekt0n/github-nvim-theme",
+        lazy = false,
+        config = function() require("core.plugins.themes.github") end,
+    }
 else
     return {
         "EdenEast/nightfox.nvim",
