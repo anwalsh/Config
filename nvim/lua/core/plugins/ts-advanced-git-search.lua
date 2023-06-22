@@ -4,7 +4,9 @@ local M = {
         "nvim-telescope/telescope.nvim",
         -- to show diff splits and open commits in browser
         "tpope/vim-fugitive",
+        "tpope/vim-rhubarb",
     },
+    lazy = false,
     config = function() require("telescope").load_extension("advanced_git_search") end,
 }
 
