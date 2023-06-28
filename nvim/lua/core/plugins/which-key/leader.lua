@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
-    [";"] = { ":normal gcc<CR>", "Toggle Comment" },
+    -- [";"] = { ":normal gcc<CR>", "Toggle Comment" }, -- conflicts with Flash
     ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
     ["<S-TAB>"] = { ":bprevious<CR>", "Jump to prev buffer" },
     ["<C-h>"] = { "<C-w>h", "Jump window left" },
