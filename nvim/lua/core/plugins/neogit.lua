@@ -1,5 +1,5 @@
 local M = {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     dependencies = "nvim-lua/plenary.nvim",
     lazy = false,
     config = function()
