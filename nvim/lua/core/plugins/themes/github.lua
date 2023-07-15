@@ -1,6 +1,6 @@
 vim.opt.background = "dark"
 
-equire("github-theme").setup({
+require("github-theme").setup({
     options = {
         transparent = false, -- Disable setting background
         terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`

@@ -36,6 +36,13 @@ elseif settings.theme == "github" then
         lazy = false,
         config = function() require("core.plugins.themes.github") end,
     }
+elseif settings.theme == "rose-pine" then
+    return {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        lazy = false,
+        config = function() require("core.plugins.themes.rosepine") end,
+    }
 else
     return {
         "EdenEast/nightfox.nvim",
