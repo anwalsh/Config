@@ -74,8 +74,18 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true
   },
-  "[nunjucks]": {
-    "editor.defaultFormatter": "okitavera.vscode-nunjucks-formatter"
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": true,
+      "source.organizeImports.ruff": true
+    },
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 90,
+    "editor.wrappingIndent": "indent"
   },
   "[plaintext]": {
     "editor.quickSuggestions": {
@@ -88,18 +98,6 @@
   },
   "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[python]": {
-    "editor.autoClosingBrackets": "always",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 90,
-    "editor.wrappingIndent": "indent"
   },
   "[rust]": {
     "editor.formatOnSave": true
@@ -317,7 +315,6 @@
   "json.schemas": [],
   "json.trace.server": "verbose",
   "jupyter.askForKernelRestart": false,
-  "jupyter.sendSelectionToInteractiveWindow": false,
   "keyboard.dispatch": "keyCode",
   "lldb.suppressUpdateNotifications": true,
   "markdown.extension.italic.indicator": "_",
@@ -512,18 +509,7 @@
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": true,
   "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "black",
   "python.languageServer": "Pylance",
-  "python.linting.mypyArgs": [
-    "--follow-imports=silent",
-    "--ignore-missing-imports",
-    "--show-column-numbers",
-    "--no-pretty"
-  ],
-  "python.linting.pydocstyleArgs": ["--convention=google"],
-  "python.linting.pydocstyleEnabled": true,
-  "python.linting.pylintArgs": [],
-  "python.linting.pylintEnabled": true,
   "redhat.telemetry.enabled": false,
   "rust-analyzer.checkOnSave.command": "clippy",
   "scm.defaultViewMode": "tree",
@@ -2465,5 +2451,6 @@
   "yaml.schemas": {},
   "Lua.telemetry.enable": true,
   "editor.formatOnSave": true,
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "jupyter.interactiveWindow.textEditor.executeSelection": false
 }
