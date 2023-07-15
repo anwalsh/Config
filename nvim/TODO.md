@@ -1,3 +1,4 @@
-- [x] Fix Navic - which currently isn't displaying any details in the bottom left hand corner of Lualine. 2023-04-16T12:46:43+10:00
-- [x] Take a look at fixing the random sourcing erros we seem to afflicted with. 2023-04-17T22:18:51+10:00
+- [x] Fix Navic - which currently isn't displaying any details in the bottom left hand corner of Lualine.
+- [x] Take a look at fixing the random sourcing errors we seem to afflicted with.
 - [x] Add Nvim Oil to Configuration with associated keybind.
+- [] Migrate from null-ls due to archival.

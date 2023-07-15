@@ -1,5 +1,6 @@
 local M = {
-    "beauwilliams/focus.nvim",
+    "nvim-focus/focus.nvim",
+    version = false,
     lazy = false,
     config = function()
         require("focus").setup({
