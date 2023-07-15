@@ -80,7 +80,7 @@
       "source.organizeImports.ruff": true
     },
     "editor.autoClosingBrackets": "always",
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.wordWrap": "bounded",
