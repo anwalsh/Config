@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 local navic = require("nvim-navic")
 local path = util.path
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(binding, cmd)
@@ -19,24 +20,16 @@ local on_attach = function(client, bufnr)
         buf_set_keymap("fs", "lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.input('Query: ')")
     end
 
-    if filetype ~= "markdown" then
-        vim.cmd([[
-                augroup formatting
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-                    autocmd BufWritePre <buffer> lua OrganizeImports(1000)
-                augroup END
-        ]])
-    elseif filetype == "markdown" then
-        vim.cmd([[
-                augroup formatting
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-                augroup END
-        ]])
-    end
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end,
+        })
 
-    if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
+        if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
+    end
 end
 
 -- organize imports
