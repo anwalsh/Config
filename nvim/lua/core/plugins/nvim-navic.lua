@@ -5,7 +5,7 @@ local M = {
     },
     config = function()
         require("nvim-navic").setup({
-            icons = require("core.utils.icons"),
+            icons = require("nvim-web-devicons"),
             highlight = false,
             separator = " > ",
             depth_limit = 0,

@@ -1,18 +1,3 @@
--- require("null-ls").setup({
---     sources = {
---         require("null-ls").builtins.formatting.stylua,
---         require("null-ls").builtins.formatting.prettier,
---         require("null-ls").builtins.formatting.ruff,
---         require("null-ls").builtins.diagnostics.eslint,
---         require("null-ls").builtins.formatting.black,
---         require("null-ls").builtins.diagnostics.pylint,
---         require("null-ls").builtins.diagnostics.ruff,
---         require("null-ls").builtins.diagnostics.mypy,
---         require("null-ls").builtins.diagnostics.pydocstyle,
---     },
--- })
-
--- Following: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
 local null_ls = require("null-ls")
 local actions = null_ls.builtins.code_actions
 local diag = null_ls.builtins.diagnostics
@@ -27,7 +12,7 @@ null_ls.setup({
         fmt.fish_indent,
         fmt.gofumpt,
         fmt.goimports,
-        fmt.golines,
+        -- fmt.golines,
         fmt.just,
         fmt.nimpretty,
         fmt.prettier.with({
