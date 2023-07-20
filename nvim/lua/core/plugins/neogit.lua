@@ -8,7 +8,7 @@ local M = {
             disable_commit_confirmation = true,
             signs = {
                 section = { "", "" },
-                item = { "﬒", "" },
+                item = { "", "" },
             },
             commit_popup = {
                 kind = "split",

@@ -282,7 +282,7 @@ vim.api.nvim_set_keymap(
 local signs = {
     Error = " ",
     Warn = " ",
-    Hint = " ",
+    Hint = "󰌶 ",
     Info = " ",
 }
 for type, icon in pairs(signs) do
