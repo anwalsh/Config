@@ -867,6 +867,7 @@
   "vim.searchHighlightTextColor": "#24292e",
   "vim.smartcase": true,
   "vim.sneak": true,
+  "vim.surround": true,
   "vim.sneakReplacesF": true,
   "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindingsNonRecursive": [
