@@ -648,11 +648,6 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "after": [","],
-      "before": ["w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
       "before": ["g", "k"],
       "commands": ["editor.action.showHover"]
     },
