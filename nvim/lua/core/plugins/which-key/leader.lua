@@ -2,6 +2,9 @@ local wk = require("which-key")
 
 wk.register({
     -- [";"] = { ":normal gcc<CR>", "Toggle Comment" }, -- conflicts with Flash
+    [","] = {
+        w = { ":w<cr>", "which_key_ignore" },
+    },
     ["<TAB>"] = { "<Cmd>edit #<CR>", "Previously Edited Buffer" },
     ["<S-TAB>"] = { ":bprevious<CR>", "Jump to prev buffer" },
     ["<C-h>"] = { "<C-w>h", "Jump window left" },
@@ -15,7 +18,6 @@ wk.register({
         ["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "which_key_ignore" },
         ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "which_key_ignore" },
         ["/"] = { "<cmd>Telescope live_grep<cr>", "Text without args" },
-        ["w"] = { ":w<cr>", "Write" },
         ["q"] = { ":q<cr>", "Quit" },
         [" "] = { "<Cmd>Legendary<CR>", "Search All Commands" },
         ["b"] = {
