@@ -125,6 +125,7 @@
     "editor.tabSize": 2
   },
   "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": true,
   "code-runner.enableAppInsights": false,
   "code-runner.executorMap": {
     "javascript": "node -r esm",
@@ -138,7 +139,6 @@
   "color-highlight.markRuler": false,
   "color-highlight.markerType": "underline",
   "commands.commands": {},
-  "confluenceMarkup.monospaceFont": "MonoLisa",
   "customizeUI.titleBar": "regular",
   "diffEditor.codeLens": true,
   "diffEditor.ignoreTrimWhitespace": true,
@@ -248,6 +248,8 @@
   },
   "files.autoSave": "onWindowChange",
   "files.defaultLanguage": "txt",
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
   "files.exclude": {
     "**/*.zwc*": true,
     "**/.classpath": true,
@@ -287,7 +289,7 @@
   "go.autocompleteUnimportedPackages": true,
   "go.buildOnSave": "package",
   "go.coverOnTestPackage": false,
-  "go.formatTool": "goimports",
+  "go.formatTool": "gofumpt",
   "go.lintFlags": ["--fast"],
   "go.lintOnSave": "package",
   "go.lintTool": "golangci-lint",
