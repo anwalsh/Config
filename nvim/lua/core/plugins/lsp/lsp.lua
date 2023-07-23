@@ -298,3 +298,66 @@ vim.notify = function(msg, log_level, _opts)
         vim.api.nvim_echo({ { msg } }, true, {})
     end
 end
+
+-- Organize Go Imports and autoimport missing Imports
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function() vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true }) end,
+})
+
+-------------------------------------------------------------------------------
+-- Semantic Highlighting
+-------------------------------------------------------------------------------
+local links = {
+    ["@lsp.type.namespace"] = "@namespace",
+    ["@lsp.type.type"] = "@type",
+    ["@lsp.type.class"] = "@type",
+    ["@lsp.type.enum"] = "@type",
+    ["@lsp.type.interface"] = "@type",
+    ["@lsp.type.struct"] = "@structure",
+    ["@lsp.type.parameter"] = "Normal",
+    ["@lsp.type.variable"] = "@variable",
+    ["@lsp.type.property"] = "@property",
+    ["@lsp.type.enumMember"] = "@constant",
+    ["@lsp.type.function"] = "@function",
+    ["@lsp.type.method"] = "@method",
+    ["@lsp.type.macro"] = "@macro",
+    ["@lsp.type.decorator"] = "@function",
+}
+for newgroup, oldgroup in pairs(links) do
+    vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
+end
+-------------------------------------------------------------------------------
+-- Helpers
+-------------------------------------------------------------------------------
+
+function _G.workspace_diagnostics_status()
+    if #vim.lsp.buf_get_clients() == 0 then return "" end
+
+    local status = {}
+    local errors = #vim.diagnostic.get(
+        0,
+        { severity = { min = vim.diagnostic.severity.ERROR, max = vim.diagnostic.severity.ERROR } }
+    )
+    if errors > 0 then table.insert(status, "E: " .. errors) end
+
+    local warnings = #vim.diagnostic.get(
+        0,
+        { severity = { min = vim.diagnostic.severity.WARNING, max = vim.diagnostic.severity.WARNING } }
+    )
+    if warnings > 0 then table.insert(status, "W: " .. warnings) end
+
+    local hints = #vim.diagnostic.get(
+        0,
+        { severity = { min = vim.diagnostic.severity.HINT, max = vim.diagnostic.severity.HINT } }
+    )
+    if hints > 0 then table.insert(status, "H: " .. hints) end
+
+    local infos = #vim.diagnostic.get(
+        0,
+        { severity = { min = vim.diagnostic.severity.INFO, max = vim.diagnostic.severity.INFO } }
+    )
+    if infos > 0 then table.insert(status, "I: " .. infos) end
+
+    return table.concat(status, " | ")
+end
