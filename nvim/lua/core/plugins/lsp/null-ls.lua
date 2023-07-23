@@ -11,7 +11,7 @@ null_ls.setup({
         fmt.black,
         fmt.fish_indent,
         fmt.gofumpt,
-        fmt.goimports,
+        -- fmt.goimports,
         -- fmt.golines,
         fmt.just,
         fmt.nimpretty,
