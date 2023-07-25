@@ -286,16 +286,11 @@
   "go.alternateTools": {
     "go": "/opt/homebrew/bin/go"
   },
-  "go.autocompleteUnimportedPackages": true,
-  "go.buildOnSave": "package",
   "go.coverOnTestPackage": false,
-  "go.formatTool": "gofumpt",
   "go.lintFlags": ["--fast"],
   "go.lintOnSave": "package",
   "go.lintTool": "golangci-lint",
   "go.toolsManagement.autoUpdate": true,
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
   "go.useLanguageServer": true,
   "go.vetOnSave": "package",
   "gopls": {
