@@ -80,7 +80,7 @@ return {
 	scrollback_lines = 36000,
 	color_scheme = "carbonfox",
 	font = wezterm.font_with_fallback({
-		"JetBrains Mono",
+		"Berkeley Mono",
 		"FiraCode Nerd Font Mono",
 	}),
 	font_size = font_size,
