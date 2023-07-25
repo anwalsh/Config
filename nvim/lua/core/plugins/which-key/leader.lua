@@ -1,6 +1,5 @@
 local wk = require("which-key")
 
--- TODO: "w" as a main chord is freed up so we can reexamine some of this workflow now
 wk.register({
     -- [";"] = { ":normal gcc<CR>", "Toggle Comment" }, -- conflicts with Flash
     [","] = {
