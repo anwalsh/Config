@@ -69,7 +69,7 @@ local is_macos = wezterm.target_triple:match("darwin") ~= nil
 local line_height
 local font_size
 if is_macos then
-	line_height = 1.20
+	line_height = 1.25
 	font_size = 15.0
 else
 	line_height = 1.00

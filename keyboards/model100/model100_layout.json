@@ -7,12 +7,7 @@
       {"code": 32, "label": {"base": "3", "shifted": "#"}},
       {"code": 33, "label": {"base": "4", "shifted": "$"}},
       {"code": 34, "label": {"base": "5", "shifted": "%"}},
-      {
-        "code": 228,
-        "label": {"base": {"full": "Control", "1u": "Ctrl"}},
-        "location": "right",
-        "categories": ["modifier"]
-      },
+      {"code": 53, "label": {"base": "`", "shifted": "~"}},
       {"code": 44, "label": {"base": "Space"}},
       {"code": 40, "label": {"base": "Enter"}},
       {"code": 41, "label": {"base": "Esc"}},
@@ -28,10 +23,10 @@
       {"code": 8, "label": {"base": "e", "shifted": "E"}},
       {"code": 21, "label": {"base": "r", "shifted": "R"}},
       {"code": 23, "label": {"base": "t", "shifted": "T"}},
-      {"code": 70, "label": {"base": {"full": "Print Screen", "1u": "PrSc"}}},
+      {"code": 80, "label": {"base": {"full": "Left Arrow", "1u": "←"}}},
       {"code": 42, "label": {"base": {"full": "Backspace", "1u": "Bksp"}}},
       {"code": 42, "label": {"base": {"full": "Backspace", "1u": "Bksp"}}},
-      {"code": 75, "label": {"base": {"full": "Page Up", "1u": "PgUp"}}},
+      {"code": 79, "label": {"base": {"full": "Right Arrow", "1u": "→"}}},
       {"code": 28, "label": {"base": "y", "shifted": "Y"}},
       {"code": 24, "label": {"base": "u", "shifted": "U"}},
       {"code": 12, "label": {"base": "i", "shifted": "I"}},
@@ -39,19 +34,26 @@
       {"code": 19, "label": {"base": "p", "shifted": "P"}},
       {"code": 46, "label": {"base": "=", "shifted": "+"}},
       {
-        "code": 49210,
-        "baseCode": 41,
-        "label": {"hint": "Control/", "base": "Esc"},
-        "modifier": "Control",
-        "rangeStart": 49169,
-        "categories": ["modifier", "dualuse", "ctrl"]
+        "code": 224,
+        "label": {"base": {"full": "Control", "1u": "Ctrl"}},
+        "location": "left",
+        "categories": ["modifier"]
       },
       {"code": 4, "label": {"base": "a", "shifted": "A"}},
       {"code": 22, "label": {"base": "s", "shifted": "S"}},
       {"code": 7, "label": {"base": "d", "shifted": "D"}},
       {"code": 9, "label": {"base": "f", "shifted": "F"}},
       {"code": 10, "label": {"base": "g", "shifted": "G"}},
-      {"code": 74, "label": {"base": "Home"}},
+      {
+        "code": 6880,
+        "label": {
+          "hint": {"full": "Shift+Alt+Command+", "1u": "S+A+Cm+"},
+          "base": {"full": "Control", "1u": "Ctrl"}
+        },
+        "location": "left",
+        "categories": ["with-modifiers", "shift", "alt", "gui"],
+        "baseCode": 224
+      },
       {
         "code": 226,
         "label": {"base": "Alt"},
@@ -59,12 +61,21 @@
         "categories": ["modifier"]
       },
       {
-        "code": 224,
-        "label": {"base": {"full": "Control", "1u": "Ctrl"}},
+        "code": 226,
+        "label": {"base": "Alt"},
         "location": "left",
         "categories": ["modifier"]
       },
-      {"code": 78, "label": {"base": {"full": "Page Down", "1u": "PgDn"}}},
+      {
+        "code": 2784,
+        "label": {
+          "hint": {"full": "Shift+Alt+", "1u": "S+A+"},
+          "base": {"full": "Control", "1u": "Ctrl"}
+        },
+        "location": "left",
+        "categories": ["with-modifiers", "shift", "alt"],
+        "baseCode": 224
+      },
       {"code": 11, "label": {"base": "h", "shifted": "H"}},
       {"code": 13, "label": {"base": "j", "shifted": "J"}},
       {"code": 14, "label": {"base": "k", "shifted": "K"}},
@@ -112,7 +123,14 @@
       {"code": 16, "label": {"base": "m", "shifted": "M"}},
       {"code": 54, "label": {"base": ",", "shifted": "<"}},
       {"code": 55, "label": {"base": ".", "shifted": ">"}},
-      {"code": 56, "label": {"base": "/", "shifted": "?"}},
+      {
+        "code": 49225,
+        "baseCode": 56,
+        "label": {"hint": "Control/", "base": "/"},
+        "modifier": "Control",
+        "rangeStart": 49169,
+        "categories": ["modifier", "dualuse", "ctrl"]
+      },
       {"code": 49, "label": {"base": "\\", "shifted": "|"}}
     ],
     [
@@ -131,7 +149,7 @@
       {"code": 67, "label": {"base": "F10"}},
       {"code": 68, "label": {"base": "F11"}},
       {"code": 69, "label": {"base": "F12"}},
-      {"code": 41, "label": {"base": "Esc"}},
+      {"code": 83, "label": {"base": {"full": "Num Lock", "1u": "Num"}}},
       {"code": 73, "label": {"base": {"full": "Insert", "1u": "Ins"}}},
       {
         "code": 2078,
@@ -179,9 +197,9 @@
         "baseCode": 76
       },
       {
-        "code": 65535,
-        "label": {"base": {"full": "Transparent", "1u": " "}},
-        "categories": ["blanks"]
+        "code": 19103,
+        "label": {"base": {"full": "Exposé"}},
+        "categories": ["platform_apple"]
       },
       {
         "code": 18614,
@@ -222,11 +240,7 @@
         "categories": ["with-modifiers", "gui"],
         "baseCode": 44
       },
-      {
-        "code": 65535,
-        "label": {"base": {"full": "Transparent", "1u": " "}},
-        "categories": ["blanks"]
-      },
+      {"code": 75, "label": {"base": {"full": "Page Up", "1u": "PgUp"}}},
       {
         "code": 2080,
         "label": {"hint": null, "base": "#"},
@@ -303,15 +317,7 @@
         "categories": ["with-modifiers", "ctrl"],
         "baseCode": 81
       },
-      {
-        "code": 18544,
-        "legacyCode": 23664,
-        "label": {
-          "hint": {"full": "Brightness", "1u": "Brght."},
-          "base": {"full": "Down", "1u": "🔅"}
-        },
-        "categories": ["consumer"]
-      },
+      {"code": 78, "label": {"base": {"full": "Page Down", "1u": "PgDn"}}},
       {
         "code": 2082,
         "label": {"hint": null, "base": "%"},

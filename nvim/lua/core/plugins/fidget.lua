@@ -1,5 +1,6 @@
 local M = {
     "j-hui/fidget.nvim",
+    branch = "legacy",
     lazy = false,
     config = function()
         require("fidget").setup({
