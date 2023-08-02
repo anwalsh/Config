@@ -19,3 +19,8 @@ abbr la 'exa -lagh'
 abbr lt 'exa -T'
 abbr lg 'exa -lagh --git'
 
+# kubernetes
+abbr k kubectl
+abbr kx kubectl ctx
+abbr kn kubectl ns
+abbr kk kubectl krew

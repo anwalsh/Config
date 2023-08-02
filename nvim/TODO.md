@@ -4,5 +4,5 @@
 - [x] Take a look at fixing the random sourcing errors we seem to afflicted with.
 - [x] Add Nvim Oil to Configuration with associated keybind.
 - [ ] Migrate from null-ls due to archival.
-- [ ] Code Lens? Do I care?
+- [X] Code Lens? Do I care? A: I do not care.
 - [ ] Key bindings and "w".
