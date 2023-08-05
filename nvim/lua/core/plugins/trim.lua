@@ -3,7 +3,7 @@ local M = {
     event = "BufWritePre",
     config = true,
     opts = {
-        ft_blocklist = { "gitcommit" },
+        ft_blocklist = { "gitcommit", "NeogitCommitMessage" },
     },
 }
 
