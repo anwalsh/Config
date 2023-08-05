@@ -1,5 +1,0 @@
-{
-  "Comment.nvim": { "branch": "master", "commit": "d0cbbfb539898a275dc4398446ab0ae3b94819bf" },
-  "flash.nvim": { "branch": "main", "commit": "967117690bd677cb7b6a87f0bc0077d2c0be3a27" },
-  "nvim-treesitter": { "branch": "master", "commit": "6c93c86272633937090806fedb2a20fe11025876" }
-}
