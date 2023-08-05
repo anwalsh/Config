@@ -1,0 +1,93 @@
+source ~/.vimrc
+
+set relativenumber
+set number
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set showmode
+set showcmd
+set scrolloff=5
+set history=1000
+set viminfo
+set idearefactormode=keep
+
+" In pure vim a timeout on the leader key results in a menu being displayed, hence we have a VERY
+" low timeout setting. Since that menu is not available in ideavim, the timeout has to be increased
+" in order to have a more realistic chance on hitting key combinations.
+set timeout
+set timeoutlen=1000
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" https://superuser.com/questions/622898/how-to-turn-off-the-bell-sound-in-intellij
+" https://stackoverflow.com/questions/63386803/how-to-turn-off-a-bell-in-intellij-idea
+set visualbell
+
+"""
+""" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
+"""
+set quickscope
+
+" https://youtrack.jetbrains.com/issue/VIM-1970
+set highlightedyank
+
+set ideajoin
+
+
+" Same as default IDEA action, but only in insert mode. Enter block-visual
+" mode in normal mode.
+sethandler <C-v> i:ide
+
+"""
+""" To get a list of Actions run `:actionlist `
+"""
+" https://github.com/JetBrains/ideavim
+" https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
+" https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf
+"" Remap space as leader key
+let mapleader = " "
+
+nnoremap Y y$
+nnoremap p :action EditorPaste<CR>
+nnoremap P :action EditorPaste<CR>
+vnoremap p :action EditorPaste<CR>
+vnoremap P :action EditorPaste<CR>
+
+" Move text up and down
+inoremap <A-j> :action MoveLineDown<CR>
+inoremap <A-k> :action MoveLineUp<CR>
+nnoremap <A-j> :action MoveLineDown<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+vnoremap <A-j> :action MoveLineDown<CR>
+vnoremap <A-k> :action MoveLineUp<CR>
+
+" Smart select/unselect
+nmap <C-[> <Action>(EditorSelectWord)
+vmap <C-[> <Action>(EditorSelectWord)
+nmap <C-]> <Action>(EditorUnSelectWord)
+vmap <C-]> <Action>(EditorUnSelectWord)
+
+nnoremap <c-s> :write<CR>
+nnoremap s :action KJumpAction<CR>
+
+""" Editing source code
+nnoremap < <<
+nnoremap > >>
+vnoremap < <gv
+vnoremap > >gv
+
+
+""" Searching and Source Code Navigation
+nnoremap <c-/> :action FindInPath<CR>
+nnoremap <c-a> :action GotoAction<CR>
+nnoremap <c-p> :action GotoFile<CR>
+nnoremap gu :action FindUsages<CR>
+nnoremap gi :action GotoImplementation<CR>
+
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
+
+nnoremap <Leader>q :action CloseContent<CR>

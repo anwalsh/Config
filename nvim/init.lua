@@ -1,7 +1,7 @@
 if vim.g.vscode then
     require("core.vscode.options")
     require("core.vscode.mappings")
-    require("core.plugins.extra.vscode")
+    require("core.lazy")
 else
     require("core.globals")
     require("core.lazy")
