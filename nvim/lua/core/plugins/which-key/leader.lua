@@ -1,7 +1,6 @@
 local wk = require("which-key")
 
 wk.register({
-    -- [";"] = { ":normal gcc<CR>", "Toggle Comment" }, -- conflicts with Flash
     [","] = {
         w = { ":w<cr>", "which_key_ignore" },
     },
@@ -260,6 +259,50 @@ wk.register({
             S = {
                 "<cmd>source ~/Config/nvim/lua/core/plugins/luasnip/init.lua<cr>",
                 "Hot reload for Snippets",
+            },
+        },
+        ["w"] = {
+            name = "+window",
+            ["="] = { "<C-w>=", "Reset Window Layout" },
+            ["-"] = { "<cmd>rightbelow sb<cr>", "Split Window Horizontal" },
+            ["/"] = { "<cmd>vertical rightbelow sb<cr>", "Split Window Vertical" },
+            d = { "<cmd>q<cr>", "Close Current Window" },
+            D = { "<cmd>only<cr>", "Close All Other Windows" },
+            h = { "<C-w>h", "Focus Window to Left" },
+            l = { "<C-w>l", "Focus Window to Right" },
+            j = { "<C-w>j", "Focus Window Below" },
+            k = { "<C-w>k", "Focus Window Above" },
+            H = { "<cmd>wincmd H<cr>", "Move Window to Right" },
+            L = { "<cmd>wincmd L<cr>", "Move Window to Left" },
+            J = { "<cmd>wincmd J<cr>", "Move Window to Bottom" },
+            K = { "<cmd>wincmd K<cr>", "Move Window to Top" },
+            s = { "<cmd>rightbelow sb<cr>", "Split Window Horizontal" },
+            t = { "<cmd>enew<cr>", "New Empty Buffer" },
+            T = {
+                name = "tabs",
+                d = { "<cmd>tabclose<cr>", "Close Current Tab" },
+            },
+            v = { "<cmd>vertical rightbelow sb<cr>", "Split Window Vertical" },
+            f = {
+                name = "file new window",
+                l = {
+                    "<cmd>vertical rightbelow sb<CR><Cmd>FzfLua files<cr>",
+                    "New File Split Right",
+                },
+                h = { "<cmd>vertical sb<CR><Cmd>FzfLua files<cr>", "New File Split Left" },
+                j = {
+                    "<cmd>rightbelow sb<CR><Cmd>FzfLua files<cr>",
+                    "New File Split Below",
+                },
+                k = { "<cmd>split<CR><Cmd>FzfLua files<cr>", "New File Split Above" },
+            },
+            N = {
+                name = "new empty buffer",
+                c = { "<cmd>enew<cr>", "New In Current Window" },
+                h = { "<cmd>vnew<cr>", "New In Split Left" },
+                l = { "<cmd>vertical rightbelow new<cr>", "New In Split Right" },
+                j = { "<cmd>rightbelow new<cr>", "New In Split Below" },
+                k = { "<cmd>new<cr>", "New In Split Above" },
             },
         },
         ["x"] = {

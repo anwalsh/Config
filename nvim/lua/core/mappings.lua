@@ -10,6 +10,7 @@ local silent = { silent = true }
 
 -- inoremaps
 inoremap("jj", "<Esc>")
+inoremap("jk", "<Esc>")
 
 -- nnoremaps
 nnoremap("<esc><esc>", ":nohl<CR>", silent)

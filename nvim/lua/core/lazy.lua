@@ -18,47 +18,58 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-require("lazy").setup("core.plugins", {
-    concurrency = 50,
-    defaults = { lazy = true },
-    install = { missing = true },
-    checker = { enabled = true, notify = true, concurrency = 50, frequency = 3600 },
-    missing = true,
-    performance = {
-        cache = {
-            enabled = true,
-            -- disable_events = {},
-        },
-        rtp = {
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrw",
-                "netrwFileHandlers",
-                "netrwSettings",
-                "netrwPlugin",
-                "rplugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
+if not vim.g.vscode then
+    require("lazy").setup("core.plugins", {
+        concurrency = 50,
+        defaults = { lazy = true },
+        install = { missing = true },
+        checker = { enabled = true, notify = true, concurrency = 50, frequency = 3600 },
+        missing = true,
+        performance = {
+            cache = {
+                enabled = true,
+                -- disable_events = {},
+            },
+            rtp = {
+                disabled_plugins = {
+                    "gzip",
+                    "matchit",
+                    "matchparen",
+                    "netrw",
+                    "netrwFileHandlers",
+                    "netrwSettings",
+                    "netrwPlugin",
+                    "rplugin",
+                    "tarPlugin",
+                    "tohtml",
+                    "tutor",
+                    "zipPlugin",
+                },
             },
         },
-    },
-    ui = {
-        icons = {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
+        ui = {
+            icons = {
+                cmd = "⌘",
+                config = "🛠",
+                event = "📅",
+                ft = "📂",
+                init = "⚙",
+                keys = "🗝",
+                plugin = "🔌",
+                runtime = "💻",
+                source = "📄",
+                start = "🚀",
+                task = "📌",
+            },
         },
-    },
-})
+    })
+else
+    local vscode = require("core.plugins.vs-code")
+
+    local options = {
+        root = vim.fn.stdpath("data") .. "/lazy-vscode",
+        lockfile = vim.fn.stdpath("config") .. "/lazy-vscode-lock.json",
+    }
+
+    require("lazy").setup(vscode, options)
+end

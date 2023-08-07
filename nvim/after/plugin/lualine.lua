@@ -1,3 +1,5 @@
+if vim.g.vscode then return end
+
 local lualine = require("lualine")
 local navic = require("nvim-navic")
 
@@ -60,7 +62,7 @@ local function ins_right(component) table.insert(config.sections.lualine_x, comp
 
 ins_left({
     function() return "▊" end,
-    color = { fg = Colors.blue }, -- Sets highlighting of component
+    color = { fg = Colors.blue },      -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
