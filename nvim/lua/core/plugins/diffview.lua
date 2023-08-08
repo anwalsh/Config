@@ -17,6 +17,7 @@ local M = {
                 fold_open = "",
                 done = "✓",
             },
+            enhanced_diff_hl = true,
         })
     end,
 }

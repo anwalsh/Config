@@ -9,6 +9,7 @@ local M = {
             signs = {
                 section = { "", "" },
                 item = { "", "" },
+                hunk = { "󰐕", "󰍴" },
             },
             commit_popup = {
                 kind = "split",

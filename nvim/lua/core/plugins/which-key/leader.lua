@@ -149,7 +149,7 @@ wk.register({
                 i = { "<cmd>Octo issue list<cr>", "List Issues in GitHub" },
                 ["?"] = { "<cmd>Octo actions<cr>", "List Octo Actions" },
             },
-            l = { "<Cmd>LazyGit<CR>", "Open LazyGit" },
+            l = { "<cmd>lua lazygit_toggle()<cr>", "Open LazyGit" },
             y = { "<cmd>lua require('gitlinker').get_buf_range_url(n)<cr>", "Git Link to Line" },
             ["F"] = {
                 name = "+find git",
