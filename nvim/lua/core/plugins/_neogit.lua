@@ -4,7 +4,10 @@ local M = {
     lazy = false,
     config = function()
         require("neogit").setup({
-            disable_context_highlighting = false,
+            disable_signs = false,
+            disable_hint = true,
+            disable_builtin_notifications = true,
+            disable_insert_on_commit = false,
             disable_commit_confirmation = true,
             signs = {
                 section = { "", "" },

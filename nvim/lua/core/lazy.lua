@@ -69,6 +69,9 @@ else
     local options = {
         root = vim.fn.stdpath("data") .. "/lazy-vscode",
         lockfile = vim.fn.stdpath("config") .. "/lazy-vscode-lock.json",
+        install = { missing = true },
+        checker = { enabled = true, notify = false, concurrency = 50, frequency = 3600 },
+        missing = true,
     }
 
     require("lazy").setup(vscode, options)

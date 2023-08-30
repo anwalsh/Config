@@ -50,6 +50,9 @@ sethandler <C-v> i:ide
 "" Remap space as leader key
 let mapleader = " "
 
+inoremap jj  <esc>
+inoremap jk  <esc>
+
 nnoremap Y y$
 nnoremap p :action EditorPaste<CR>
 nnoremap P :action EditorPaste<CR>

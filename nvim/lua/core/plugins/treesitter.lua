@@ -8,7 +8,7 @@ local M = {
         "mfussenegger/nvim-ts-hint-textobject",
         "windwp/nvim-ts-autotag",
         "nvim-treesitter/playground",
-        { "windwp/nvim-ts-autotag",     opts = {} },
+        { "windwp/nvim-ts-autotag", opts = {} },
         { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
         {
             "nvim-treesitter/nvim-treesitter-context",
@@ -25,7 +25,7 @@ local M = {
             ignore_install = {},
             highlight = {
                 enable = true, -- false will disable the whole extension
-                disable = {},  -- list of language that will be disabled
+                disable = {}, -- list of language that will be disabled
                 additional_vim_regex_highlighting = false,
             },
             incremental_selection = {

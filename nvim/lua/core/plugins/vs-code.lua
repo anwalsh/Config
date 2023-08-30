@@ -1,3 +1,11 @@
+-- The below settings make Leap's highlighting a bit closer to what you've been
+-- used to in Lightspeed.
+vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+vim.api.nvim_set_hl(0, "LeapMatch", {
+    fg = "black", -- for light themes, set to 'black' or similar
+    bold = true,
+    nocombine = true,
+})
 return {
     {
         "folke/flash.nvim",
@@ -22,14 +30,6 @@ return {
                 function() require("flash").remote() end,
                 desc = "Remote Flash",
             },
-        },
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            "RRethy/nvim-treesitter-endwise",
         },
     },
     {
@@ -83,4 +83,6 @@ return {
         end,
     },
     { "tpope/vim-repeat" },
+    { "machakann/vim-sandwich" },
+    { "svermeulen/vim-cutlass" },
 }

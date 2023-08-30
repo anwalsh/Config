@@ -11,6 +11,7 @@ local M = {
             start_in_insert = true,
             persist_size = true,
             direction = "horizontal",
+            autochdir = true,
             close_on_exit = true,
             float_opts = {
                 border = "curved",
@@ -35,17 +36,21 @@ local M = {
             vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
         end
 
+        local float_handler = function(term)
+            if not as.falsy(fn.mapcheck("jk", "t")) then
+                vim.keymap.del("t", "jk", { buffer = term.bufnr })
+                vim.keymap.del("t", "<esc>", { buffer = term.bufnr })
+            end
+        end
+
         local Terminal = require("toggleterm.terminal").Terminal
+
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
             hidden = true,
             direction = "float",
-            float_opts = {
-                border = "none",
-                width = 100000,
-                height = 100000,
-            },
+            on_open = float_handler,
         })
 
         function lazygit_toggle() lazygit:toggle() end
