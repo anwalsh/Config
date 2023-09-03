@@ -306,14 +306,16 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.notify = function(msg, log_level, _opts)
-    if msg:match("exit code") then return end
-    if log_level == vim.log.levels.ERROR then
-        vim.api.nvim_err_writeln(msg)
-    else
-        vim.api.nvim_echo({ { msg } }, true, {})
-    end
-end
+vim.diagnostic.config({ virtual_text = true, signs = true, update_in_insert = true, severity_sort = true })
+
+-- vim.notify = function(msg, log_level, _opts)
+--     if msg:match("exit code") then return end
+--     if log_level == vim.log.levels.ERROR then
+--         vim.api.nvim_err_writeln(msg)
+--     else
+--         vim.api.nvim_echo({ { msg } }, true, {})
+--     end
+-- end
 
 -- Organize Go Imports and autoimport missing Imports
 vim.api.nvim_create_autocmd("BufWritePre", {

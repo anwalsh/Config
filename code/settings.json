@@ -1807,7 +1807,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "oxocarbon",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
