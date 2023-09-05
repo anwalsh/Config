@@ -148,7 +148,6 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
-  "editor.codeLensFontFamily": "Inter",
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 10,
@@ -542,6 +541,7 @@
   "terminal.integrated.letterSpacing": 1,
   "terminal.integrated.lineHeight": 1.1,
   "terminal.integrated.macOptionIsMeta": true,
+  "workbench.panel.defaultLocation": "right",
   "terminal.integrated.profiles.osx": {
     "bash": {
       "args": ["-l"],
@@ -1859,5 +1859,7 @@
   "editor.formatOnSave": true,
   "git.openRepositoryInParentFolders": "always",
   "jupyter.interactiveWindow.textEditor.executeSelection": false,
-  "trailing-spaces.trimOnSave": true
+  "trailing-spaces.trimOnSave": true,
+  "editor.codeLensFontFamily": "Berkley Mono",
+  "editor.inlayHints.fontFamily": "Berkley Mono"
 }
