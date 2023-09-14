@@ -144,6 +144,8 @@
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "diffEditor.wordWrap": "off",
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.hideUnchangedRegions.enabled": true,
   "docker.images.sortBy": "CreatedTime",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
@@ -541,7 +543,6 @@
   "terminal.integrated.letterSpacing": 1,
   "terminal.integrated.lineHeight": 1.1,
   "terminal.integrated.macOptionIsMeta": true,
-  "workbench.panel.defaultLocation": "right",
   "terminal.integrated.profiles.osx": {
     "bash": {
       "args": ["-l"],
@@ -1807,7 +1808,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "oxocarbon",
+  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -1861,5 +1862,6 @@
   "jupyter.interactiveWindow.textEditor.executeSelection": false,
   "trailing-spaces.trimOnSave": true,
   "editor.codeLensFontFamily": "Berkley Mono",
-  "editor.inlayHints.fontFamily": "Berkley Mono"
+  "editor.inlayHints.fontFamily": "Berkley Mono",
+  "go.formatTool": "gofumpt"
 }
