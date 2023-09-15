@@ -2329,5 +2329,15 @@
     "key": "k",
     "when": "neovim.mode == insert && editorTextFocus",
     "args": "k"
+  },
+  {
+    "key": "ctrl+'",
+    "command": "workbench.action.terminal.focus",
+    "when": "accessibilityModeEnabled && terminalAccessibleBufferOnLastLine && terminalHasBeenCreated || accessibilityModeEnabled && terminalAccessibleBufferOnLastLine && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+down",
+    "command": "-workbench.action.terminal.focus",
+    "when": "accessibilityModeEnabled && terminalAccessibleBufferOnLastLine && terminalHasBeenCreated || accessibilityModeEnabled && terminalAccessibleBufferOnLastLine && terminalProcessSupported"
   }
 ]

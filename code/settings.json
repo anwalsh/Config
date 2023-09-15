@@ -205,7 +205,8 @@
   "explorer.openEditors.visible": 1,
   "extensions.autoUpdate": false,
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
+    "vscodevim.vim": 1,
+    "asvetliakov.vscode-neovim": 1
   },
   "files.associations": {
     "*.end": "shellscript",
@@ -1863,5 +1864,6 @@
   "trailing-spaces.trimOnSave": true,
   "editor.codeLensFontFamily": "Berkley Mono",
   "editor.inlayHints.fontFamily": "Berkley Mono",
-  "go.formatTool": "gofumpt"
+  "go.formatTool": "gofumpt",
+  "go.diagnostic.vulncheck": "Imports"
 }
