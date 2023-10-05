@@ -7,9 +7,7 @@ return {
     keys = {
         {
             "=",
-            function()
-                require("conform").format({ async = true, lsp_fallback = true })
-            end,
+            function() require("conform").format({ async = true, lsp_fallback = true }) end,
             mode = "",
             desc = "Format buffer",
         },
@@ -28,7 +26,7 @@ return {
             markdown = { prettier },
             graphql = { prettier },
             lua = { "stylua" },
-            go = { "goimports", "gofumpt" }, -- golines?
+            go = { "goimports", "gofumpt", "golines" },
             fish = { "fish_indent" },
             sh = { "shfmt" },
             python = { "ruff", "isort", "black" },
@@ -38,16 +36,12 @@ return {
         log_level = vim.log.levels.DEBUG,
         format_on_save = function(bufnr)
             local async_format = vim.g.async_format_filetypes[vim.bo[bufnr].filetype]
-            if async_format or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-                return
-            end
+            if async_format or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
             return { timeout_ms = 500, lsp_fallback = true }
         end,
         format_after_save = function(bufnr)
             local async_format = vim.g.async_format_filetypes[vim.bo[bufnr].filetype]
-            if not async_format or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-                return
-            end
+            if not async_format or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
             return { lsp_fallback = true }
         end,
         user_async_format_filetypes = {

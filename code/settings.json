@@ -25,9 +25,8 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    "editor.formatOnSave": true,
-    "editor.snippetSuggestions": "none",
-    "editor.defaultFormatter": "golang.go"
+    "editor.formatOnSave": true
+    //"editor.defaultFormatter": "golang.go"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -267,9 +266,9 @@
     "go": "/opt/homebrew/bin/go"
   },
   "go.coverOnTestPackage": false,
-  "go.lintFlags": ["--fast"],
   "go.lintOnSave": "package",
   "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "go.vetOnSave": "package",
@@ -1809,7 +1808,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": true,
@@ -1865,5 +1864,354 @@
   "editor.codeLensFontFamily": "Berkley Mono",
   "editor.inlayHints.fontFamily": "Berkley Mono",
   "go.formatTool": "gofumpt",
-  "go.diagnostic.vulncheck": "Imports"
+  "go.diagnostic.vulncheck": "Imports",
+  "vim.camelCaseMotion.enable": true,
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.replace": "block-outline",
+  "vim.cursorStylePerMode.visual": "block-outline",
+  "vim.cursorStylePerMode.visualblock": "block-outline",
+  "vim.cursorStylePerMode.visualline": "block-outline",
+  "vim.debug.loggingLevelForConsole": "debug",
+  "vim.easymotion": true,
+  "vim.easymotionMarkerFontWeight": "bold",
+  "vim.easymotionMarkerForegroundColorOneChar": "#f78ae0",
+  "vim.highlightedyank.color": "rgba(247, 138, 224, 0.40)",
+  "vim.highlightedyank.enable": true,
+  "vim.history": 100,
+  "vim.hlsearch": true,
+  "vim.highlightedyank.duration": 500,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["cursorDown"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["cursorUp"]
+    },
+    {
+      "before": ["<BS>"],
+      "commands": ["deleteLeft"]
+    },
+    {
+      "after": ["cmd+z"],
+      "before": ["cmd+a"]
+    },
+    {
+      "after": ["<Esc>"],
+      "before": ["ctrl+d"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "k"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "after": ["<space>"],
+      "before": [";"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["Z", "Z"],
+      "commands": [":wq"]
+    },
+    {
+      "after": ["<ESC>"],
+      "before": ["<ESC>"],
+      "commands": [":nohl", "closeFindWidget"]
+    },
+    {
+      "after": ["g", "j"],
+      "before": ["j"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["k"]
+    },
+    {
+      "before": ["g", "H"],
+      "commands": ["docsView.documentation.focus"]
+    },
+    {
+      "before": ["g", "p"],
+      "commands": ["editor.action.peekDefinition"]
+    },
+    {
+      "after": ["s"],
+      "before": ["f"]
+    },
+    {
+      "after": ["S"],
+      "before": ["F"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "after": ["q"],
+      "before": ["Q"]
+    },
+    {
+      "before": ["q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "after": ["<C-d>", "z", "z"],
+      "before": ["<C-d>"]
+    },
+    {
+      "after": ["<C-u>", "z", "z"],
+      "before": ["<C-u>"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "after": ["\"", "_", "c"],
+      "before": ["c"]
+    },
+    {
+      "after": ["\"", "_", "C"],
+      "before": ["C"]
+    },
+    {
+      "after": ["\"", "_", "c", "c"],
+      "before": ["c", "c"]
+    },
+    {
+      "after": ["\"", "_", "x"],
+      "before": ["x"]
+    },
+    {
+      "after": ["\"", "_", "X"],
+      "before": ["X"]
+    },
+    {
+      "after": ["d"],
+      "before": ["m"]
+    },
+    {
+      "after": ["d", "d"],
+      "before": ["m", "m"]
+    },
+    {
+      "after": ["D"],
+      "before": ["M"]
+    },
+    {
+      "after": ["g", "b"],
+      "before": ["<C-n>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["editor.action.insertCursorBelow"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.insertCursorAbove"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["g", "l"],
+      "commands": ["workbench.action.gotoLine"]
+    },
+    {
+      "before": ["g", "K"],
+      "commands": ["extension.dash.specific"]
+    },
+    {
+      "before": ["g", "D"],
+      "commands": ["editor.action.revealDefinitionAside"]
+    },
+    {
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
+    },
+    {
+      "after": ["g", "_"],
+      "before": ["L"]
+    },
+    {
+      "after": ["^"],
+      "before": ["H"]
+    },
+    {
+      "after": [],
+      "before": ["g", "B"],
+      "commands": [
+        {
+          "command": "editor.action.selectHighlights"
+        }
+      ]
+    },
+    {
+      "after": [],
+      "before": ["g", "H"],
+      "commands": [
+        {
+          "command": "editor.action.triggerParameterHints"
+        }
+      ]
+    },
+    {
+      "before": ["u"],
+      "commands": [
+        {
+          "command": "undo"
+        }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "commands": [
+        {
+          "command": "redo"
+        }
+      ]
+    },
+    {
+      "after": ["v"],
+      "before": ["v"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["<up>"]
+    },
+    {
+      "after": ["g", "j"],
+      "before": ["<down>"]
+    },
+    {
+      "after": ["y", "$"],
+      "before": ["Y"]
+    },
+    {
+      "before": [","],
+      "commands": [
+        "vspacecode.space",
+        {
+          "args": "m",
+          "command": "whichkey.triggerKey"
+        }
+      ]
+    }
+  ],
+  "vim.searchHighlightColor": "#85e89d",
+  "vim.searchHighlightTextColor": "#24292e",
+  "vim.smartcase": true,
+  "vim.sneak": true,
+  "vim.surround": true,
+  "vim.sneakReplacesF": true,
+  "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "after": ["g", "j"],
+      "before": ["j"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["k"]
+    },
+    {
+      "after": ["s"],
+      "before": ["f"]
+    },
+    {
+      "after": ["S"],
+      "before": ["F"]
+    },
+    {
+      "before": ["<Tab>"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "after": ["y", "g", "v", "<ESC>"],
+      "before": ["y"]
+    },
+    {
+      "after": ["g", "b"],
+      "before": ["<C-n>"]
+    },
+    {
+      "after": ["\"", "_", "x"],
+      "before": ["x"]
+    },
+    {
+      "after": ["d"],
+      "before": ["m"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
+    },
+    {
+      "before": ["g", "B"],
+      "commands": [
+        {
+          "command": "editor.action.selectHighlights"
+        }
+      ]
+    },
+    {
+      "after": ["^"],
+      "before": ["H"]
+    },
+    {
+      "after": ["g", "_"],
+      "before": ["L"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "after": ["a", "f"],
+      "before": ["v"]
+    },
+    {
+      "before": [","],
+      "commands": [
+        "vspacecode.space",
+        {
+          "args": "m",
+          "command": "whichkey.triggerKey"
+        }
+      ]
+    }
+  ]
 }
