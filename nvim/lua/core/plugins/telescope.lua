@@ -13,6 +13,7 @@ local M = {
         "dhruvmanila/telescope-bookmarks.nvim",
         "jvgrootveld/telescope-zoxide",
         "nvim-telescope/telescope-dap.nvim",
+        "debugloop/telescope-undo.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
@@ -148,6 +149,7 @@ local M = {
         require("telescope").load_extension("advanced_git_search")
         require("telescope").load_extension("git_worktree")
         require("telescope").load_extension("vim_bookmarks")
+        require("telescope").load_extension("undo")
 
         if vim.fn.executable("gh") == 1 then
             pcall(require("telescope").load_extension, "gh")

@@ -229,6 +229,7 @@ wk.register({
             },
         },
         u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
+        U = { "<cmd>:Telescope undo<cr>", "Telescope Undo" },
         h = { "<cmd>lua require'focus'.split_command('h')<cr>", "Focus Left" },
         l = { "<cmd>lua require'focus'.split_command('l')<cr>", "Focus Right" },
         k = { "<cmd>lua require'focus'.split_command('k')<cr>", "Focus Up" },
