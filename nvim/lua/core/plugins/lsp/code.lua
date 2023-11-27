@@ -11,13 +11,11 @@ function M.setup(client, buffer)
                 name = "+code",
                 s = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
                 r = {
-                    function()
-                        require("inc_rename")
-                        return ":IncRename " .. vim.fn.expand("<cword>")
-                    end,
+                    function() return string.format(":IncRename %s", vim.fn.expand("<cword>")) end,
                     "Rename",
                     cond = cap.renameProvider,
                     expr = true,
+                    silent = false,
                 },
                 a = {
                     { vim.lsp.buf.code_action, "Code Action" },

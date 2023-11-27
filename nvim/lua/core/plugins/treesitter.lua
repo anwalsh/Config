@@ -18,6 +18,7 @@ local M = {
         },
     },
     config = function()
+        require("nvim-treesitter.install").compilers = { "clang", "gcc" }
         require("nvim-treesitter.configs").setup({
             ensure_installed = require("core.settings").treesitter_ensure_installed,
             auto_install = true,
