@@ -36,7 +36,6 @@ return {
         "gowork",
         "go",
         "graphql",
-        "help",
         "html",
         "http",
         "java",
