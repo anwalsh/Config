@@ -23,10 +23,10 @@
   "[go]": {
     "editor.formatOnSaveMode": "file",
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "always"
     },
     "editor.formatOnSave": true
-    //"editor.defaultFormatter": "golang.go"
+    // "editor.defaultFormatter": "golang.go"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -75,8 +75,8 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": true,
-      "source.organizeImports.ruff": true
+      "source.fixAll.ruff": "always",
+      "source.organizeImports.ruff": "always"
     },
     "editor.autoClosingBrackets": "always",
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -161,7 +161,6 @@
   "editor.fontLigatures": true,
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.guides.bracketPairs": "active",
-  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.lineHeight": 21,
   "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
@@ -1836,7 +1835,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.colorTheme": "Kanagawa",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": "multiple",
