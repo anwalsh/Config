@@ -271,6 +271,13 @@
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "go.vetOnSave": "package",
+  "go.inlayHints.assignVariableTypes": true,
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.inlayHints.compositeLiteralTypes": true,
+  "go.inlayHints.constantValues": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.rangeVariableTypes": true,
   "gopls": {
     "gofumpt": true,
     "codelenses": {
@@ -282,15 +289,6 @@
       "tidy": true,
       "upgrade_dependency": true,
       "vendor": true
-    },
-    "hints": {
-      "assignVariableTypes": true,
-      "compositeLiteralFields": true,
-      "compositeLiteralTypes": true,
-      "constantValues": true,
-      "functionTypeParameters": true,
-      "parameterNames": true,
-      "rangeVariableTypes": true
     },
     "analyses": {
       "nilness": true,
@@ -1835,7 +1833,7 @@
     // "editorCursor.foreground": "#6f0285",
     "titleBar.activeBackground": "#0b0d0f"
   },
-  "workbench.colorTheme": "Kanagawa",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.labelFormat": "medium",
   "workbench.editor.openPositioning": "first",
   "workbench.editor.showTabs": "multiple",
