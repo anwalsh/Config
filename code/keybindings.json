@@ -1755,7 +1755,7 @@
   },
   {
     "command": "workbench.action.terminal.toggleTerminal",
-    "key": "f4"
+    "key": "ctrl+`"
   },
   {
     "key": "cmd+k alt+cmd+right",
