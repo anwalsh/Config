@@ -9,7 +9,7 @@ vim.api.nvim_set_hl(0, "LeapMatch", {
 return {
     {
         "folke/flash.nvim",
-        event = "VeryLazy",
+        lazy = true,
         opts = {},
         keys = {
             {
@@ -34,7 +34,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        lazy = false,
+        lazy = true,
         config = function()
             require("Comment").setup({
                 -- LHS of operator-pending mapping in NORMAL + VISUAL mode

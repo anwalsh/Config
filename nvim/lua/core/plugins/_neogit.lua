@@ -7,7 +7,7 @@ local M = {
             disable_signs = false,
             disable_hint = true,
             disable_builtin_notifications = true,
-            disable_insert_on_commit = false,
+            disable_insert_on_commit = true,
             disable_commit_confirmation = true,
             signs = {
                 section = { "", "" },
@@ -15,7 +15,7 @@ local M = {
                 hunk = { "󰐕", "󰍴" },
             },
             commit_popup = {
-                kind = "split",
+                kind = "vsplit",
             },
             popup = {
                 kind = "split",
@@ -23,6 +23,7 @@ local M = {
             integrations = {
                 diffview = true,
             },
+            kind = "split",
         })
     end,
 }
