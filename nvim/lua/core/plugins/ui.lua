@@ -62,7 +62,7 @@ local function ins_right(component) table.insert(config.sections.lualine_x, comp
 
 ins_left({
     function() return "▊" end,
-    color = { fg = Colors.blue },      -- Sets highlighting of component
+    color = { fg = Colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
@@ -154,4 +154,6 @@ ins_right({
 })
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+return {
+    lualine.setup(config),
+}

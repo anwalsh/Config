@@ -1,4 +1,4 @@
-local Remap = require("core.utils.remapper")
+local Remap = require("core.util.remapper")
 local nmap = Remap.nmap
 local noremap = Remap.noremap
 local nnoremap = Remap.nnoremap
