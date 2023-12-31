@@ -1,3 +1,5 @@
+local function augroup(name) return vim.api.nvim_create_augroup("aw" .. name, { clear = true }) end
+
 vim.cmd("au FocusGained * :checktime")
 
 --- Remove all trailing whitespace on save
@@ -6,6 +8,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     command = [[:%s/\s\+$//e]],
     group = TrimWhiteSpaceGrp,
 })
+
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
     callback = function()
@@ -55,18 +58,38 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     end,
 })
 
--- q to close in certain contexts (I do this almost always but...
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+    group = augroup("checktime"),
+    command = "checktime",
+})
+
+-- resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+    group = augroup("resize_splits"),
+    callback = function()
+        local current_tab = vim.fn.tabpagenr()
+        vim.cmd("tabdo wincmd =")
+        vim.cmd("tabnext " .. current_tab)
+    end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
-        "qf",
+        "PlenaryTestPopup",
         "help",
+        "lspinfo",
         "man",
         "notify",
-        "lspinfo",
+        "qf",
+        "query",
         "spectre_panel",
         "startuptime",
         "tsplayground",
-        "PlenaryTestPopup",
+        "neotest-output",
+        "checkhealth",
+        "neotest-summary",
+        "neotest-output-panel",
     },
     callback = function()
         vim.cmd([[

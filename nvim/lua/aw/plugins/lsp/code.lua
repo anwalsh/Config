@@ -18,18 +18,18 @@ function M.setup(client, buffer)
                     silent = false,
                 },
                 a = {
-                    { vim.lsp.buf.code_action, "Code Action" },
+                    { vim.lsp.buf.code_action,                  "Code Action" },
                     { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
                 },
                 A = { "<cmd>lua require('neogen').generate()<cr>", "Create Annotation", mode = "n" },
                 f = {
                     {
-                        require("core.plugins.lsp.formatting").format,
+                        require("aw.plugins.lsp.formatting").format,
                         "Format Document",
                         cond = cap.documentFormatting,
                     },
                     {
-                        require("core.plugins.lsp.formatting").format,
+                        require("aw.plugins.lsp.formatting").format,
                         "Format Range",
                         cond = cap.documentRangeFormatting,
                         mode = "v",

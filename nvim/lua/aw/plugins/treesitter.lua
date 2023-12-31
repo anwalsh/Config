@@ -8,7 +8,7 @@ local M = {
         "mfussenegger/nvim-ts-hint-textobject",
         "windwp/nvim-ts-autotag",
         "nvim-treesitter/playground",
-        { "windwp/nvim-ts-autotag", opts = {} },
+        { "windwp/nvim-ts-autotag",     opts = {} },
         { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
         {
             "nvim-treesitter/nvim-treesitter-context",
@@ -20,13 +20,13 @@ local M = {
     config = function()
         require("nvim-treesitter.install").compilers = { "clang", "gcc" }
         require("nvim-treesitter.configs").setup({
-            ensure_installed = require("core.settings").treesitter_ensure_installed,
+            ensure_installed = require("aw.settings").treesitter_ensure_installed,
             auto_install = true,
             sync_install = true,
             ignore_install = {},
             highlight = {
                 enable = true, -- false will disable the whole extension
-                disable = {}, -- list of language that will be disabled
+                disable = {},  -- list of language that will be disabled
                 additional_vim_regex_highlighting = false,
             },
             incremental_selection = {

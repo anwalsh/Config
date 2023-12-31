@@ -1,12 +1,6 @@
-if not vim.g.vscode then
-    require("core.globals")
-    require("core.lazy")
-    require("core.mappings")
-    require("core.options")
-    require("core.util.qf")
-    require("core.autocmd")
-else
-    require("core.vscode.options")
-    require("core.vscode.mappings")
-    require("core.lazy")
-end
+require("aw.globals")
+require("aw.lazy")
+require("aw.mappings")
+require("aw.options")
+require("aw.util.qf")
+require("aw.autocmd")

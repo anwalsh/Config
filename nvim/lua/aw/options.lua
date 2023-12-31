@@ -1,4 +1,4 @@
-local settings = require("core.settings")
+local settings = require("aw.settings")
 local opt = vim.opt
 
 -- Ignore compiled files
@@ -23,23 +23,30 @@ opt.wildoptions = "pum"
 
 opt.showmode = false
 opt.showcmd = true
-opt.timeoutlen = 250                          -- important for which-key
-opt.cmdheight = 1                             -- Height of the command bar
-opt.incsearch = true                          -- Makes search act like search in modern browsers
-opt.showmatch = true                          -- show matching brackets when text indicator is over them
+opt.timeoutlen = 250 -- important for which-key
+opt.cmdheight = 1 -- Height of the command bar
+opt.incsearch = true -- Makes search act like search in modern browsers
+opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.relativenumber = settings.relative_number -- Show line numbers
-opt.number = settings.number                  -- But show the actual number for the line we're on
-opt.ignorecase = true                         -- Ignore case when searching...
-opt.smartcase = true                          -- ... unless there is a capital letter in the query
-opt.hidden = true                             -- I like having buffers stay around
-opt.equalalways = false                       -- I don't like my windows changing all the time
-opt.splitright = true                         -- Prefer windows splitting to the right
-opt.splitbelow = true                         -- Prefer windows splitting to the bottom
+opt.number = settings.number -- But show the actual number for the line we're on
+opt.ignorecase = true -- Ignore case when searching...
+opt.smartcase = true -- ... unless there is a capital letter in the query
+opt.hidden = true -- I like having buffers stay around
+opt.equalalways = false -- I don't like my windows changing all the time
+opt.splitright = true -- Prefer windows splitting to the right
+opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.splitkeep = "screen"
-opt.updatetime = 1000                         -- Make updates happen faster
-opt.hlsearch = true                           -- I wouldn't use this without my DoNoHL function
-opt.scrolloff = 10                            -- Make it so there are always ten lines below my cursor
+opt.updatetime = 1000 -- Make updates happen faster
+opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 if vim.fn.has("nvim-0.10") == 1 then opt.smoothscroll = true end
+if vim.fn.has("nvim-0.9.0") == 1 then vim.opt.statuscolumn = [[%!v:lua.require'aw.util.ui'.statuscolumn()]] end
+if vim.fn.has("nvim-0.10") == 1 then
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "v:lua.require'aw.util.ui'.foldexpr()"
+else
+    vim.opt.foldmethod = "indent"
+end
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer

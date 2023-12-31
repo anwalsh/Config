@@ -5,10 +5,10 @@ local M = {
     },
     config = function()
         require("nvim-navic").setup({
-            icons = require("core.settings").icons.kinds,
+            icons = require("aw.settings").icons.kinds,
             highlight = false,
             separator = " > ",
-            depth_limit = 0,
+            depth_limit = 5,
             depth_limit_indicator = "..",
             safe_output = true,
             lsp = {

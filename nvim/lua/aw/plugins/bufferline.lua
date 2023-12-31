@@ -36,7 +36,7 @@ return {
             diagnostics = "nvim_lsp",
             always_show_bufferline = false,
             diagnostics_indicator = function(_, _, diag)
-                local icons = require("lua.core.settings").icons.diagnostics
+                local icons = require("aw.settings").icons.diagnostics
                 local ret = (diag.error and icons.Error .. diag.error .. " " or "")
                     .. (diag.warning and icons.Warn .. diag.warning or "")
                 return vim.trim(ret)

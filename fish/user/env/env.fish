@@ -3,13 +3,13 @@
 
 # M1-specific
 set -l os (uname)
-if test "$os" = "Darwin"
+if test "$os" = Darwin
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
 # HOME
 set -gx GITLOCAL_HOME $HOME/GitLocal
-set -gx DOTFILES_HOME $HOME/Config
+set -gx DOTFILES_HOME $HOME/GitLocal/github.com/anwalsh/Config
 set -gx FISH_HOME $DOTFILES_HOME/fish
 
 # Work Stuff

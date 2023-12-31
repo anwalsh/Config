@@ -6,7 +6,7 @@ local M = {
     },
     lazy = false,
     config = function()
-        local settings = require("core.settings")
+        local settings = require("aw.settings")
         require("mason-lspconfig").setup({
             ensure_installed = settings.mason_ensure_installed,
         })

@@ -3,7 +3,7 @@ local M = {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    config = function() require("core.plugins.lsp.null-ls") end,
+    config = function() require("aw.plugins.lsp.null-ls") end,
     lazy = false,
 }
 

@@ -7,7 +7,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(binding, cmd)
         local opts = { noremap = true, silent = true }
-        require("core.plugins.lsp.code").setup(client, bufnr)
+        require("aw.plugins.lsp.code").setup(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, "n", binding, cmd, opts)
     end
 

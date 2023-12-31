@@ -19,7 +19,7 @@ local M = {
     config = function()
         local actions = require("telescope.actions")
         local telescope = require("telescope")
-        local settings = require("core.settings")
+        local settings = require("aw.settings")
         telescope.setup({
             defaults = {
                 -- General Config
