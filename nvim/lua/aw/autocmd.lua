@@ -100,9 +100,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function() vim.highlight.on_yank({ higroup = "Substitute", timeout = 150, on_macro = true }) end,
-})
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+--     callback = function() vim.highlight.on_yank({ higroup = "Substitute", timeout = 150, on_macro = true }) end,
+-- })
 
 if pcall(require, "luasnip") then
     -- Save me in case I change modes instead a multi-option snippet so tab doesn't do weird things

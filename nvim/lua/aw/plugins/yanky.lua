@@ -29,4 +29,6 @@ return {
             { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
         },
     },
+    vim.api.nvim_set_hl(0, "YankyPut", { link = "Substitute" }),
+    vim.api.nvim_set_hl(0, "YankyYanked", { link = "Substitute" }),
 }
