@@ -7,8 +7,8 @@ local M = {
         require("nvim-navic").setup({
             icons = require("aw.settings").icons.kinds,
             highlight = false,
-            separator = " > ",
-            depth_limit = 5,
+            separator = " ",
+            depth_limit = 3,
             depth_limit_indicator = "..",
             safe_output = true,
             lsp = {

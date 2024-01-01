@@ -2,30 +2,12 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 local navic = require("nvim-navic")
 local path = util.path
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(binding, cmd)
-        local opts = { noremap = true, silent = true }
-        require("aw.plugins.lsp.code").setup(client, bufnr)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", binding, cmd, opts)
-    end
-
-    local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-    if filetype == "rust" then
-        buf_set_keymap("gle", "<cmd>lua vim.lsp.codelens.refresh()<CR>")
-        buf_set_keymap("glr", "<cmd>lua vim.lsp.codelens.run()<CR>")
-    elseif filetype == "go" then
-        -- gopls requires a require to list workspace arguments.
-        buf_set_keymap("fs", "lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.input('Query: ')")
-    end
-
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end,
+            pattern = "*",
+            callback = OrganizeImports(3600),
         })
 
         if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
@@ -148,12 +130,27 @@ require("rust-tools").setup({
         },
         settings = {
             ["rust-analyzer"] = {
+                cargo = {
+                    allFeatures = true,
+                    loadOutDirsFromCheck = true,
+                    runBuildScripts = true,
+                },
                 checkOnSave = {
+                    allFeatures = true,
                     command = "clippy",
+                    extraArgs = { "--no-deps" },
                 },
                 completion = {
                     autoimport = {
                         enable = true,
+                    },
+                },
+                procMacro = {
+                    enable = true,
+                    ignored = {
+                        ["async-trait"] = { "async_trait" },
+                        ["napi-derive"] = { "napi" },
+                        ["async-recursion"] = { "async_recursion" },
                     },
                 },
             },

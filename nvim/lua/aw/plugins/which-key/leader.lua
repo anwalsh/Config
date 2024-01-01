@@ -1,11 +1,13 @@
+-- TODO: Should add a keybinding to Toggle Aerial
 local wk = require("which-key")
 
 wk.register({
     [","] = {
         w = { ":w<cr>", "which_key_ignore" },
     },
-    ["<TAB>"] = { "<Cmd>edit #<CR>", "Cycle Buffer" },
-    ["<S-TAB>"] = { ":bprevious<CR>", "Previous buffer" },
+    ["[b"] = { "<cmd>bprevious<cr>", "Next Buffer" },
+    ["]b"] = { "<cmd>bnext<cr>", "Previous Buffer" },
+    ["<TAB>"] = { "<<cmd>e #<cr>", "Switch to other Buffer" },
     ["<C-h>"] = { "<C-w>h", "Jump window left" },
     ["<C-j>"] = { "<C-w>j", "Jump window down" },
     ["<C-k>"] = { "<C-w>k", "Jump window up" },
@@ -22,8 +24,6 @@ wk.register({
         ["b"] = {
             name = "+buffer",
             b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-            n = { "<cmd>bn<cr>", "Next Buffer" },
-            p = { "<cmd>bp<cr>", "Previous Buffer" },
             N = { "<Cmd>enew<CR>", "New Empty Buffer" },
             m = { "<Cmd>messages<CR>", "Show 'messages' Buffer" },
             j = { "<C-w>j", "Lower Buffer Split" },
