@@ -5,13 +5,14 @@ local M = {
         build = "make install_jsregexp",
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
+            local g, fn = vim.g, vim.fn
             local ls = require("luasnip")
             local types = require("luasnip.util.types")
             local extras = require("luasnip.extras")
             local parser = require("luasnip.util.parser").parse_snippet
             local fmt = require("luasnip.extras.fmt").fmt
             local fmta = require("luasnip.extras.fmt").fmta
-            local snip_path = { os.getenv("DOTFILES_HOME") .. "/nvim/snippets/" }
+            local snip_path = { fn.expand(g.vim_dir) .. "/snippets" }
 
             ls.config.set_config({
                 history = true,

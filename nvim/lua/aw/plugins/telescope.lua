@@ -1,3 +1,5 @@
+local g = vim.g
+
 local M = {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -106,9 +108,10 @@ local M = {
                 },
                 project = {
                     base_dirs = {
-                        "~/GitLocal/github.com/",
-                        "~/GitLocal/github.com/anwalsh/Config/",
-                        "~/GitLocal/github.com/anwalsh/Config/nvim",
+                        g.dotfiles,
+                        g.vim_dir,
+                        g.projects_dir,
+                        g.work_dir,
                     },
                     hidden_files = true, -- default: false
                     theme = "dropdown",
@@ -214,7 +217,7 @@ local M = {
     edit_nvim = function()
         require("telescope.builtin").find_files({
             shorten_path = false,
-            cwd = "~/Config/nvim/",
+            cwd = g.vim_dir,
             prompt = "~ NVIM ~",
             hidden = true,
             layout_strategy = "horizontal",
@@ -226,7 +229,7 @@ local M = {
     edit_config = function()
         require("telescope.builtin").find_files({
             shorten_path = false,
-            cwd = "~/Config/",
+            cwd = g.dotfiles,
             prompt = "~ Dots ~",
             hidden = true,
             layout_strategy = "horizontal",
