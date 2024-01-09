@@ -1,17 +1,14 @@
-local M = {
+return {
     "j-hui/fidget.nvim",
-    branch = "legacy",
-    lazy = false,
+    lazy = true,
     config = function()
         require("fidget").setup({
             align = {
                 bottom = true,
             },
             window = {
-                relative = editor,
+                relative = "editor",
             },
         })
     end,
 }
-
-return M

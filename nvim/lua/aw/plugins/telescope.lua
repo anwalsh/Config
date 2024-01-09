@@ -51,6 +51,7 @@ local M = {
                 -- Mappings
                 mappings = {
                     i = {
+                        ["<Esc>"] = actions.close,
                         ["<C-n>"] = false,
                         ["<C-p>"] = false,
                         ["<C-j>"] = actions.move_selection_next,
@@ -70,7 +71,6 @@ local M = {
             },
             pickers = {
                 aerial = { theme = "ivy" },
-                buffers = { theme = "dropdown" },
                 colorscheme = { theme = "ivy" },
                 lsp_references = { theme = "ivy" },
                 lsp_definitions = { theme = "ivy" },
@@ -78,7 +78,18 @@ local M = {
                 file_browser = { theme = "ivy" },
                 find_files = {
                     theme = "ivy",
-                    find_command = { "fd" },
+                    find_command = { "rg", "--files", "--no-ignore", "--hidden" },
+                },
+                oldfiles = {
+                    prompt_title = "History",
+                },
+                buffers = {
+                    theme = "dropdown",
+                    mappings = {
+                        i = {
+                            ["<C-x>"] = "delete_buffer",
+                        },
+                    },
                 },
                 git_bcommits = { theme = "ivy" },
                 git_commits = { theme = "ivy" },
@@ -120,6 +131,7 @@ local M = {
         })
 
         -- Extension Loading
+        require("telescope").load_extension("fzf")
         require("telescope").load_extension("bookmarks")
         require("telescope").load_extension("heading")
         require("telescope").load_extension("project")
@@ -135,22 +147,7 @@ local M = {
             pcall(require("telescope").load_extension, "octo")
         end
     end,
-    reload_modules = function()
-        local lua_dirs = vim.fn.glob("./lua/*", 0, 1)
-        for _, dir in ipairs(lua_dirs) do
-            dir = string.gsub(dir, "./lua/", "")
-            require("plenary.reload").reload_module(dir)
-        end
-    end,
-    git_branches = function()
-        require("telescope.builtin").git_branches({
-            attach_mappings = function(_, map)
-                map("i", "<c-d>", actions.git_delete_branch)
-                map("n", "<c-d>", actions.git_delete_branch)
-                return true
-            end,
-        })
-    end,
+
     project_search = function(opts)
         opts = opts or {}
         opts.cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
@@ -218,11 +215,14 @@ local M = {
         require("telescope.builtin").find_files({
             shorten_path = false,
             cwd = g.vim_dir,
-            prompt = "~ NVIM ~",
+            prompt_title = "Nvim Config",
             hidden = true,
             layout_strategy = "horizontal",
             layout_config = {
                 preview_width = 0.55,
+            },
+            file_ignore_patterns = {
+                "^lazy-lock.json",
             },
         })
     end,
@@ -230,12 +230,23 @@ local M = {
         require("telescope.builtin").find_files({
             shorten_path = false,
             cwd = g.dotfiles,
-            prompt = "~ Dots ~",
+            prompt_title = "Dotfiles",
             hidden = true,
             layout_strategy = "horizontal",
             layout_config = {
                 preview_width = 0.55,
             },
+            file_ignore_patterns = {
+                "^.git/",
+                "^git/submodules/",
+            },
+        })
+    end,
+    lsp_document_methods = function()
+        require("telescope.builtin").lsp_document_symbols({
+            prompt_title = "LSP Document Methods",
+            symbols = { "method" },
+            symbol_width = 80,
         })
     end,
 }

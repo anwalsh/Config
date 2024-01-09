@@ -201,6 +201,8 @@ wk.register({
             ['"'] = { "<cmd>Telescope registers<cr>", "Registers" },
             p = { "<cmd>TodoTelescope<cr>", "Open TODO comments" },
             P = { "<cmd>Telescope zoxide list<cr>", "Open projects" },
+            s = { "<cmd>lua require('aw.plugins.telescope').lsp_document_methods()<cr>", "LSP Doc Methods" },
+            S = { "<cmd>Telescope lsp_document_symbols<cr>", "LSP Doc Symbols" },
             t = { "<cmd>lua require('aw.plugins.telescope').search_only_certain_files()<cr>", "Search by file types" },
             w = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
         },
