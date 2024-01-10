@@ -89,6 +89,8 @@ return {
         "jsonls",
         "dockerls",
         "pyright",
+        "gopls",
+        "clangd",
         -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
         "terraformls",
         "zls",
@@ -169,8 +171,8 @@ return {
         diagnostics = {
             Error = " ",
             Warn  = " ",
-            Hint  = " ",
             Info  = " ",
+            Hint  = "󰌶 ",
         },
         git = {
             added    = " ",

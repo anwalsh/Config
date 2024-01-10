@@ -36,7 +36,7 @@ return {
         },
             -- stylua: ignore
             keys = {
-              { "<,-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+              { "<localleader><Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
               { "<localleader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
               { "<localleader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
               { "<localleader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
