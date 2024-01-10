@@ -61,9 +61,19 @@ local function on_attach(client, buffer)
     keymap(
         "[e",
         function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
-        "Previous error"
+        "Previous Error"
     )
-    keymap("]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, "Next error")
+    keymap("]e", function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, "Next Error")
+    keymap(
+        "[w",
+        function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARNING }) end,
+        "Previous Warning"
+    )
+    keymap(
+        "]w",
+        function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARNING }) end,
+        "Next Warning"
+    )
 
     if client.supports_method("textDocument/codeAction") then
         keymap("ca", vim.lsp.buf.code_action, "Code Actions", { "n", "v" })
