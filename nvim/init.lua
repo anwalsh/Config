@@ -5,6 +5,7 @@ require("aw.mappings")
 require("aw.options")
 require("aw.util.qf")
 require("aw.autocmd")
+-- require("aw.winbar") -- FIXME: Enable after 0.10.0 or once I move to nightly
 
 local home = env.HOME
 -- Get the OS in case I need it into the namespace
