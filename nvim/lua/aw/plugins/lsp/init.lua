@@ -28,6 +28,7 @@ return {
                         "shfmt",
                         "stylua",
                     },
+                    max_concurrent_installers = PU_COUNT,
                 },
             },
             "onsails/lspkind-nvim",

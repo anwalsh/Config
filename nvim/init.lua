@@ -11,6 +11,9 @@ local home = env.HOME
 -- Get the OS in case I need it into the namespace
 g.os = loop.os_uname().sysname
 
+-- CPU Count for concurrency
+PU_COUNT = #loop.cpu_info()
+
 -- Same idea for variables within the system
 g.dotfiles = env.DOTFILES_HOME or fn.expand("$DOTFILES_HOME")
 g.vim_dir = g.dotfiles .. "/nvim"
@@ -37,7 +40,7 @@ end
 opt.rtp:prepend(lazypath)
 
 require("lazy").setup("aw.plugins", {
-    concurrency = 50,
+    concurrency = PU_COUNT,
     defaults = { lazy = true },
     install = { missing = true },
     checker = { enabled = true, notify = true, concurrency = 50, frequency = 3600 },
