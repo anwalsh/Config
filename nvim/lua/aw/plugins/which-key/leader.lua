@@ -1,4 +1,3 @@
--- TODO: Should add a keybinding to Toggle Aerial
 local wk = require("which-key")
 
 wk.register({
@@ -49,23 +48,6 @@ wk.register({
             S = { "<cmd>Telescope vim_bookmarks all<cr>", "Show All Bookmarks" },
             x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
         },
-        -- ["d"] = {
-        --     name = "+debug",
-        --     t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-        --     b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-        --     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-        --     C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-        --     d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-        --     g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-        --     i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-        --     o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-        --     u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-        --     p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-        --     r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-        --     s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-        --     q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-        --     Q = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
-        -- },
         ["f"] = {
             name = "+file",
             b = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
@@ -160,13 +142,6 @@ wk.register({
                 },
             },
         },
-        -- ["n"] = {
-        --     name = "+neorg",
-        --     i = { "<cmd>Neorg workspace kb<cr>", "Neorg Knowledgebase Index" },
-        --     I = { "<cmd>Neorg index<cr>", "Neorg Create a Index file in current Directory" },
-        --     j = { "<cmd>Neorg journal<cr>", "Neorg Journal" },
-        --     r = { "<cmd>Neorg return <cr>", "Neorg Return" },
-        -- },
         ["o"] = {
             name = "+open",
             d = { "<Cmd>TodoTrouble<CR>", "Open TODO List (Trouble)" },
