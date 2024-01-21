@@ -154,6 +154,7 @@ return {
                             settings = {
                                 gopls = {
                                     gofumpt = true,
+                                    usePlaceholders = true,
                                     completeUnimported = true,
                                     analyses = {
                                         unusedparams = true,
