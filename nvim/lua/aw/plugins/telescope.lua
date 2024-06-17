@@ -103,30 +103,28 @@ local M = {
                 lsp_workspace_symbols = { theme = "ivy" },
                 man_pages = { theme = "ivy" },
             },
-            extensions = {
-                bookmarks = {
-                    selected_browser = "arc",
-                    url_open_command = "open",
-                    bookmarks = require("telescope.themes").get_dropdown({
-                        width = 0.8,
-                        results_height = 0.8,
-                        sorting_strategy = "descending",
-                        layout_defaults = {
-                            horizontal = { mirror = false },
-                            vertical = { mirror = false },
-                        },
-                    }),
-                },
-                project = {
-                    base_dirs = {
-                        g.dotfiles,
-                        g.vim_dir,
-                        g.projects_dir,
-                        g.work_dir,
+            bookmarks = {
+                selected_browser = "arc",
+                url_open_command = "open",
+                bookmarks = require("telescope.themes").get_dropdown({
+                    width = 0.8,
+                    results_height = 0.8,
+                    sorting_strategy = "descending",
+                    layout_defaults = {
+                        horizontal = { mirror = false },
+                        vertical = { mirror = false },
                     },
-                    hidden_files = true, -- default: false
-                    theme = "dropdown",
+                }),
+            },
+            project = {
+                base_dirs = {
+                    g.dotfiles,
+                    g.vim_dir,
+                    g.projects_dir,
+                    g.work_dir,
                 },
+                hidden_files = true, -- default: false
+                theme = "dropdown",
             },
         })
 

@@ -4,7 +4,7 @@ local function toggle_inlay_hints(buf, value)
         ih(buf, value)
     elseif type(ih) == "table" and ih.enable then
         if value == nil then value = not ih.is_enabled(buf) end
-        ih.enable(buf, value)
+        ih.enable(value, { bufnr = buf })
     end
 end
 

@@ -1,0 +1,115 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      ", w": "workspace::Save",
+      "space f f": "file_finder::Toggle",
+      "space p p": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "ctrl-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "ctrl-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "ctrl-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "ctrl-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ],
+      "g ]": "editor::GoToDiagnostic",
+      "g [": "editor::GoToPrevDiagnostic",
+      "g shift-r": "editor::FindAllReferences",
+      "shift-k": "editor::Hover",
+      "g a": "editor::ToggleCodeActions",
+      "g r": "editor::Rename",
+      ", w": "workspace::Save",
+      "j": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !VimCount",
+    "bindings": {
+      "0": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "$": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "g c c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "g c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-b z": "workspace::ToggleZoom",
+      "ctrl-u": "terminal::Clear"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "ctrl-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "ctrl-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "ctrl-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock"
+    }
+  }
+]
