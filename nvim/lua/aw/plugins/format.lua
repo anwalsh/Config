@@ -47,9 +47,6 @@ return {
         },
         lsp_fallback = true,
         log_level = vim.log.levels.DEBUG,
-        format_on_save = function(buf)
-            if vim.g.formatting_disabled or vim.b[buf].formatting_disabled then return end
-            return { timeout_ms = 500, lsp_fallback = true }
-        end,
+        format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
     },
 }
