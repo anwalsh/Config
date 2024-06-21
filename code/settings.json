@@ -1845,7 +1845,7 @@
   "workbench.fontAliasing": "auto",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Kanagawa",
+  "workbench.preferredDarkColorTheme": "oxocarbon",
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
