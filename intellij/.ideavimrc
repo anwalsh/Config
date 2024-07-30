@@ -12,6 +12,7 @@ set scrolloff=5
 set history=1000
 set viminfo
 set idearefactormode=keep
+set commentary
 
 " In pure vim a timeout on the leader key results in a menu being displayed, hence we have a VERY
 " low timeout setting. Since that menu is not available in ideavim, the timeout has to be increased
@@ -53,44 +54,67 @@ let mapleader = " "
 inoremap jj  <esc>
 inoremap jk  <esc>
 
+nnoremap <esc><esc> :noh<cr>
 nnoremap Y y$
-nnoremap p :action EditorPaste<CR>
-nnoremap P :action EditorPaste<CR>
-vnoremap p :action EditorPaste<CR>
-vnoremap P :action EditorPaste<CR>
+nnoremap p :action EditorPaste<cr>
+nnoremap P :action EditorPaste<cr>
+vnoremap p :action EditorPaste<cr>
+vnoremap P :action EditorPaste<cr>
 
 " Move text up and down
-inoremap <A-j> :action MoveLineDown<CR>
-inoremap <A-k> :action MoveLineUp<CR>
-nnoremap <A-j> :action MoveLineDown<CR>
-nnoremap <A-k> :action MoveLineUp<CR>
-vnoremap <A-j> :action MoveLineDown<CR>
-vnoremap <A-k> :action MoveLineUp<CR>
+inoremap <A-j> :action MoveLineDown<cr>
+inoremap <A-k> :action MoveLineUp<cr>
+nnoremap <A-j> :action MoveLineDown<cr>
+nnoremap <A-k> :action MoveLineUp<cr>
+vnoremap <A-j> :action MoveLineDown<cr>
+vnoremap <A-k> :action MoveLineUp<cr>
 
-" Smart select/unselect
-nmap <C-[> <Action>(EditorSelectWord)
-vmap <C-[> <Action>(EditorSelectWord)
-nmap <C-]> <Action>(EditorUnSelectWord)
-vmap <C-]> <Action>(EditorUnSelectWord)
+" Actions
+nnoremap [d :action GotoPreviousError<cr>
+nnoremap ]d :action GotoNextError<cr>
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap go :action GotoTypeDeclaration<cr>
+nnoremap gr :action GotoRelated<cr>
+nnoremap gu :action GotoUsages<cr>
+" Windows
+nnoremap <C--> :action SplitHorizontally<cr>
+nnoremap <C-\> :action SplitVertically<cr>
+" Finder
+nnoremap <space>fp :action FindInPath<cr>
+nnoremap <space>ff :action GotoFile<cr>
+nnoremap <space>fF :action GotoClass<cr>
+nnoremap <space>fa :action GotoAction<cr>
+nnoremap <space>fb :action Switcher<cr>
+nnoremap <space>fr :action RecentFiles<cr>
+nnoremap <space>fd :action ActivateProblemsViewToolWindow<cr>
+nnoremap <space>fs :action FileStructurePopup<cr>
+nnoremap <space>fS :action GotoSymbol<cr>
+nnoremap <space>fo :action OpenFile<cr>
+" Code
+nnoremap <space>cr :action RenameElement<cr>
+nnoremap <space>cf :action ReformatCode<cr>
+nnoremap <space>ca :action ShowIntentionActions<cr>
 
-nnoremap <c-s> :write<CR>
-nnoremap s :action KJumpAction<CR>
+nnoremap <c-s> :write<cr>
+nnoremap s :action KJumpAction<cr>
 
 """ Editing source code
 nnoremap < <<
 nnoremap > >>
 vnoremap < <gv
 vnoremap > >gv
+nmap < V<gv
+nmap > V>gv
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap G Gzz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 
-""" Searching and Source Code Navigation
-nnoremap <c-/> :action FindInPath<CR>
-nnoremap <c-a> :action GotoAction<CR>
-nnoremap <c-p> :action GotoFile<CR>
-nnoremap gu :action FindUsages<CR>
-nnoremap gi :action GotoImplementation<CR>
+nnoremap H :action PreviousTab<cr>
+nnoremap L :action NextTab<cr>
 
-nnoremap H :action PreviousTab<CR>
-nnoremap L :action NextTab<CR>
-
-nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>q :action CloseContent<cr>

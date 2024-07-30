@@ -13,7 +13,7 @@
   },
   "soft_wrap": "none",
   "relative_line_numbers": true,
-  "base_keymap": "VSCode",
+  "base_keymap": "JetBrains",
   "theme": "Carbonfox",
   "ui_font_size": 14,
   "ui_font_family": "Berkeley Mono Variable",

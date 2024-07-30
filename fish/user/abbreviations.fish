@@ -1,6 +1,6 @@
 # Abbreviations
 
-abbr c 'clear'
+abbr c clear
 abbr cls clear
 abbr e nvim
 abbr vs code
@@ -12,12 +12,12 @@ abbr kubectx 'kubectl ctx'
 abbr ts2date 'perl -wE "say scalar(gmtime(shift() >> 32))"'
 
 abbr mod 'git diff --name-only origin/trunk'
-abbr ls 'exa'
-abbr l 'exa -a'
-abbr ll 'exa -lgh'
-abbr la 'exa -lagh'
-abbr lt 'exa -T'
-abbr lg 'exa -lagh --git'
+abbr ls eza
+abbr l 'eza -a'
+abbr ll 'eza -lgh'
+abbr la 'eza -lagh'
+abbr lt 'eza -T'
+abbr lg 'eza -lagh --git'
 
 # kubernetes
 abbr k kubectl
