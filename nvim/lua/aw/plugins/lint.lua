@@ -16,6 +16,7 @@ return {
             go = { "golangcilint" },
             commit = { "commitlint " },
             dotenv = { "dotenv_linter" },
+            gitcommit = { "commitlint" },
             python = { "ruff", "mypy", "pylint" },
             sh = { "shellcheck" },
             lua = { "luacheck" },

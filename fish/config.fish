@@ -1,6 +1,7 @@
 #!/usr/bin/env fish
 
 # set fish_trace 1 # uncomment to debug shell.
+fzf --fish | source
 
 if status --is-interactive
     for config in $__fish_config_dir/user/**/*.fish # User settings
@@ -18,7 +19,7 @@ fish_add_path -m $N_PREFIX/bin
 
 # asdf
 set -l os (uname)
-if test "$os" = "Darwin"
+if test "$os" = Darwin
     source "/opt/homebrew/opt/asdf/libexec/asdf.fish"
 else
     source "$HOME/.asdf/asdf.fish"
