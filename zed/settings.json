@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "tabs": {
+    "file_icons": true
+  },
   "auto_update": true,
   "features": {
     "copilot": false

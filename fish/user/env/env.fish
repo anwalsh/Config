@@ -59,7 +59,6 @@ fish_add_path -a $HOME/.cargo/bin
 fish_add_path -a $HOME/.poetry/bin
 fish_add_path -a $PYENV_ROOT/bin
 fish_add_path -a $HOME/.emacs.d/bin
-fish_add_path -a $WORK_HOME/ops-tools/scripts/python/sshnds/bin
 fish_add_path -a /usr/bin
 fish_add_path -a /usr/sbin
 fish_add_path -a /sbin
