@@ -7,6 +7,9 @@ local M = {
             build = "./install --all",
             lazy = false,
         },
+        {
+            "stevearc/qf_helper.nvim",
+        },
     },
     config = function()
         require("bqf").setup({
