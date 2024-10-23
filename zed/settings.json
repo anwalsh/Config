@@ -40,7 +40,12 @@
   },
   "format_on_save": "on",
   "formatter": "language_server",
-  "git_gutter": "tracked_files",
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    },
+  },
   "hour_format": "hour24",
   "project_panel": {
     "dock": "right"
