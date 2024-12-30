@@ -36,7 +36,10 @@
   },
   "vim_mode": true,
   "vim": {
-    "use_system_clipboard": "always"
+    "use_system_clipboard": "always",
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "highlight_on_yank_duration": 120
   },
   "format_on_save": "on",
   "formatter": "language_server",
@@ -87,6 +90,13 @@
       "completeUnimported": true,
       "staticcheck": true,
       "ui.semanticTokens": true
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": {
+          "command": "clippy"
+        }
+      }
     }
   }
 }

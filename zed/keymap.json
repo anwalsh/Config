@@ -125,5 +125,13 @@
     "bindings": {
       "ctrl-`": "workspace::ToggleBottomDock"
     }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "space w": "workspace::Save",
+      "space s t": "workspace::NewSearch",
+      "space f": "file_finder::Toggle"
+    }
   }
 ]
