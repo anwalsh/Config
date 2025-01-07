@@ -2,6 +2,7 @@ theme = oxocarbon
 font-size = 16
 font-family = "JetBrains Mono"
 cursor-style = block
+shell-integration-features = no-cursor
 
 # Clipboard
 clipboard-read = allow
