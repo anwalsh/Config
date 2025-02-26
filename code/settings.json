@@ -300,15 +300,6 @@
     "staticcheck": true,
     "ui.semanticTokens": true
   },
-  "hadolint.hadolintPath": "/opt/homebrew/bin/hadolint",
-  "indentRainbow.colors": [
-    "rgba(98, 114, 164, 0.1)",
-    "rgba(98, 114, 164, 0.2)",
-    "rgba(98, 114, 164, 0.3)",
-    "rgba(98, 114, 164, 0.4)",
-    "rgba(98, 114, 164, 0.5)"
-  ],
-  "indentRainbow.includedLanguages": ["python"],
   "isort.args": ["--profile", "black"],
   "isort.check": true,
   "javascript.suggest.completeFunctionCalls": true,
@@ -517,6 +508,8 @@
   "scm.defaultViewMode": "tree",
   "screencastMode.fontSize": 40,
   "screencastMode.verticalOffset": 10,
+  "search.searchEditor.focusResultsOnSearch": true,
+  "search.defaultViewMode": "tree",
   "search.exclude": {
     "**/.git": true,
     "yarn-error.log": true,
@@ -560,7 +553,7 @@
   "snipsnap.silent": true,
   "telemetry.telemetryLevel": "error",
   "terminal.explorerKind": "external",
-  "terminal.external.osxExec": "WezTerm.app",
+  "terminal.external.osxExec": "Ghostty.app",
   "terminal.integrated.commandsToSkipShell": ["vspacecode.space"],
   "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.fontFamily": "Berkley Mono, FiraCode Nerd Font Mono",
@@ -2240,5 +2233,6 @@
     }
   ],
   "scm.inputFontFamily": "editor",
-  "confluenceMarkup.monospaceFont": "Berkley Mono"
+  "confluenceMarkup.monospaceFont": "Berkley Mono",
+  "geminicodeassist.project": ""
 }
