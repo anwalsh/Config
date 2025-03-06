@@ -55,7 +55,7 @@ local function on_attach(client, buffer)
     keymap("gI", "<cmd>Telescope lsp_implementations<cr>", "Go to Implemenatation")
     keymap("gD", "<cmd>Telescope lsp_declarations<cr>", "Go to Declarations")
     keymap("gR", "<cmd>Trouble lsp_references<cr>", "Trouble References")
-    keymap("<localleader>cd", vim.diagnostic.open_float, "Line diagnostics")
+    keymap(",.", vim.diagnostic.open_float, "Line diagnostics")
     keymap("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
     keymap("]d", vim.diagnostic.goto_next, "Next diagnostic")
     keymap(
@@ -93,11 +93,7 @@ for name, icon in pairs(require("aw.settings").icons.diagnostics) do
 end
 
 vim.diagnostic.config({
-    virtual_text = {
-        source = "if_many", -- was previously "always"
-        prefix = "▎",
-        spacing = 4,
-    },
+    virtual_text = false,
     signs = true,
     underline = true,
     update_in_insert = true,
