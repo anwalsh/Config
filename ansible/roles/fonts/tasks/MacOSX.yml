@@ -1,0 +1,12 @@
+- name: "Fonts | MacOSX | Install"
+  community.general.homebrew:
+    name:
+      - font-powerline-symbols
+      - font-awesome-terminal-fonts
+      - font-fire-code-nerd-font
+      - font-fontawesome
+      - font-inter
+      - font-iosevka
+      - font-jetbrains-mono
+      - font-source-code-pro
+    state: present

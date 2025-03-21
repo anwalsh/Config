@@ -1,0 +1,4 @@
+- name: "MDB Compass | MacOSX | Install Compass"
+  community.general.homebrew_cask:
+    name: mongodb-compass
+    state: present

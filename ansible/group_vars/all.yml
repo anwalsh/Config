@@ -1,0 +1,67 @@
+default_roles:
+  - 1password
+  - alfred
+  - alt-tab
+  - arc
+  - bat
+  - chrome
+  - compass
+  - discord
+  - dock
+  - docker
+  - finder
+  - fish
+  - fonts
+  - fzf
+  - gh
+  - ghostty
+  - git
+  - go
+  - gpg-suite
+  - helm
+  - istats
+  - iterm2
+  - java
+  - jetbrains
+  - just
+  - k8s
+  - karabiner
+  - kitty
+  - krew
+  - kubectx
+  - lazygit
+  - little-snitch
+  - lua
+  - menubar
+  - muzzle
+  - nim
+  - nushell
+  - nvim
+  #   - npm
+  #   - nvm
+  - obsidian
+  - podman
+  - python
+  - raycast
+  - readdle-spark
+  - ruby
+  - rust
+  - spotify
+  #   - ssh
+  - starship
+  - system
+  - terraform
+  - tldr
+  - tmux
+  - tooling
+  - visual-studio-code
+  - wezterm
+  - zig
+  - zsh
+  - zed
+go:
+  packages:
+    - package: github.com/mvdan/gofumpt@latest
+      cmd: gofumpt
+    - package: golang.org/x/tools/cmd/goimports@latest
+      cmd: goimports

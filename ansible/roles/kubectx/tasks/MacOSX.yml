@@ -1,0 +1,4 @@
+- name: "kubectx | MacOSX | Install kubectx"
+  community.general.homebrew:
+    name: kubectx
+    state: present

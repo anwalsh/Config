@@ -1,0 +1,4 @@
+- name: "Alfred | MacOSX | Install Alfred"
+  community.general.homebrew_cask:
+    name: alfred
+    state: present

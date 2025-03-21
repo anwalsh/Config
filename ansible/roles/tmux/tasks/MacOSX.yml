@@ -1,0 +1,13 @@
+- name: "Tmux | MacOSX | Install Tmux"
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - tmux
+- name: "Tmux | Deploy Configuration"
+  ansible.builtin.file:
+    src: '{{ dots }}/tmux/.tmux.conf'
+    dest: '{{ home }}/.tmux.conf'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

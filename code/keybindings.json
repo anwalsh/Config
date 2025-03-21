@@ -722,6 +722,11 @@
     "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && editorLangId == 'markdown'"
   },
   {
+    "command": "workbench.action.closeSidebar",
+    "key": "cmd+b",
+    "when": "(editorTextFocus || sideBarFocus) && sideBarVisible"
+  },
+  {
     "command": "-markdown.extension.onIndentLines",
     "key": "cmd+]",
     "when": "editorTextFocus && !suggestWidgetVisible && editorLangId == 'markdown'"

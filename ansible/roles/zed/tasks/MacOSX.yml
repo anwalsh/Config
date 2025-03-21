@@ -1,0 +1,26 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "Zed | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Zed.app'
+  register: zed_install
+- name: "Zed | MacOSX | Install"
+  community.general.homebrew:
+    name: zed
+    state: present
+  when: not zed_install
+- name: "Zed | MacOSX | Link Keymap"
+  ansible.builtin.file:
+    src: '{{ dots }}/zed/keymap.json'
+    dest: '{{ home }}/.config/zed/keymap.json'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link
+- name: "Zed | MacOSX | Link Settings"
+  ansible.builtin.file:
+    src: '{{ dots }}/zed/settings.json'
+    dest: '{{ home }}/.config/zed/settings.json'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

@@ -1,0 +1,4 @@
+- name: "GPG Suite | MacOSX | Install GPG Suite"
+  community.general.homebrew_cask:
+    name: gpg-suite-no-mail
+    state: present

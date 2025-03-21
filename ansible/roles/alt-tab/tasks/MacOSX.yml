@@ -1,0 +1,4 @@
+- name: "Alt-tab | MacOSX | Install Alt-tab"
+  community.general.homebrew_cask:
+    name: alt-tab
+    state: present

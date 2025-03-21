@@ -1,0 +1,16 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "bat | MacOSX | Install bat"
+  community.general.homebrew:
+    name:
+      - bat
+      - bat-extras
+    state: present
+- name: "bat | MacOSX | Link Bat Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/bat'
+    dest: '{{ home }}/.config/bat'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

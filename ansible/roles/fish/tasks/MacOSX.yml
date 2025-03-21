@@ -1,0 +1,32 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "Fish | MacOSX | Install"
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - fish
+    - fisher
+- name: "Fish | MacOSX | Make Fish Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/fish'
+    dest: '{{ home }}/.config/fish'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link
+- name: "Find | Fish"
+  command: which fish
+  changed_when: false
+  register: fish_executable_path
+- name: "Add Fish to Shells"
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    search_string: '{{ fish_executable_path.stdout_lines[0] }}'
+    line: '{{ fish_executable_path.stdout_lines[0] }}'
+- name: "chsh | Fish"
+  become: true
+  ansible.builtin.user:
+    name: '{{ user }}'
+    shell: '{{ fish_executable_path.stdout_lines[0] }}'

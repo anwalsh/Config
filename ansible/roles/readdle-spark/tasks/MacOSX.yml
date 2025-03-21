@@ -1,0 +1,9 @@
+- name: "Spark | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Spark.app'
+  register: spark_install
+- name: "Spark | MacOSX | Install Spark"
+  community.general.homebrew_cask:
+    name: readdle-spark
+    state: present
+  when: not spark_install

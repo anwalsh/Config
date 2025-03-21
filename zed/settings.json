@@ -28,7 +28,7 @@
   "terminal": {
     "dock": "bottom",
     "blinking": "on",
-    "font_size": 14,
+    "font_size": 15,
     "font_family": "Berkeley Mono",
     "line_height": {
       "custom": 1.25

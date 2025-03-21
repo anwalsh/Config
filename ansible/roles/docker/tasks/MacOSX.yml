@@ -1,0 +1,11 @@
+- name: "Docker | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Docker.app'
+  register: docker_install
+- name: "Docker | MacOSX | Install Docker"
+  community.general.homebrew_cask:
+    name:
+      - docker
+      - docker-compose
+    state: present
+  when: not docker_install

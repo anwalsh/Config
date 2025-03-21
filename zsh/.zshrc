@@ -14,7 +14,7 @@ if [ -d "${ZINIT_HOME}" ]
         source "${ZINIT_HOME}/zinit.zsh"
 else mkdir -p "$(dirname $ZINIT_HOME)"
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-    source "${ZINIT_HOME}/zinit.zsh"   
+    source "${ZINIT_HOME}/zinit.zsh"
 fi
 
 #   -----------------------------
@@ -56,7 +56,7 @@ setopt LIST_TYPES             # Show types in completion
 setopt NO_BEEP                # I hate beeps
 setopt PROMPT_SUBST           # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 setopt SHARE_HISTORY          # Share history between all sessions.
- 
+
 autoload colors
 colors
 
@@ -64,8 +64,8 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 
 # Source other files
 source ~/.zsh/.secret_zsh
-source ~/Config/zsh/.functions.zsh
-source ~/Config/zsh/.aliases.zsh
+source ~/.config/zsh/.functions.zsh
+source ~/.config/zsh/.aliases.zsh
 
 fpath[1,0]=$HOME/.zsh/completion
 

@@ -1,0 +1,12 @@
+- name: "1Password | MacOSX | Is Installed?"
+  command: "op --version"
+  register: op_version_result
+  ignore_errors: true
+- name: "1Password | MacOSX | Install 1Password"
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - 1password
+    - 1password-cli
+  when: op_version_result.rc != 0

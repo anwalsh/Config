@@ -1,0 +1,9 @@
+- name: "Chrome | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Google Chrome.app'
+  register: chrome_install
+- name: "Chrome | MacOSX | Install Chrome"
+  community.general.homebrew_cask:
+    name: google-chrome
+    state: present
+  when: not chrome_install.stat.exists

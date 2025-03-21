@@ -1,0 +1,9 @@
+- name: "iStat | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/iStat Menus.app'
+  register: istat_install
+- name: "iStat | MacOSX | Install iStat Menus"
+  community.general.homebrew_cask:
+    name: istat-menus
+    state: latest
+  when: not istat_install

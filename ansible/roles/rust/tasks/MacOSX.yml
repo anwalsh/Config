@@ -1,0 +1,10 @@
+- name: "Check Rust"
+  shell: "command -v cargo"
+  register: cargo_exists
+  ignore_errors: true
+- name: Install rustup-init
+  homebrew:
+    name: rustup
+    state: latest
+- name: Install rustup
+  command: rustup-init -y --no-modify-path

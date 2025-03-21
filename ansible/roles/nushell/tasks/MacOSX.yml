@@ -1,0 +1,4 @@
+- name: "nushell | MacOSX | Install nushell"
+  community.general.homebrew:
+    name: nushell
+    state: present

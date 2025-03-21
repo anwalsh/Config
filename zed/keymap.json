@@ -25,43 +25,36 @@
     "bindings": {
       "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus",
-      "ctrl-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "ctrl-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "ctrl-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "ctrl-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-/": "pane::SplitVertical",
+      "ctrl--": "pane::SplitHorizontal",
       "g ]": "editor::GoToDiagnostic",
-      "g [": "editor::GoToPrevDiagnostic",
+      "g [": "editor::GoToPreviousDiagnostic",
       "g shift-r": "editor::FindAllReferences",
       "shift-k": "editor::Hover",
       "g a": "editor::ToggleCodeActions",
       "g r": "editor::Rename",
       ", w": "workspace::Save",
+      ", .": "editor::ToggleInlineDiagnostics",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePreviousItem",
       "j": [
         "vim::Down",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "k": [
         "vim::Up",
         {
-          "displayLines": true
+          "display_lines": true
         }
-      ]
-    },
-    ", g b": "editor::ToggleGitBlame"
+      ],
+      ", g b": "editor::ToggleGitBlame"
+    }
   },
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !VimCount",
@@ -69,13 +62,13 @@
       "0": [
         "vim::StartOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "$": [
         "vim::EndOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ]
     }
@@ -102,22 +95,10 @@
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "ctrl-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "ctrl-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "ctrl-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ]
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -132,6 +113,15 @@
       "space w": "workspace::Save",
       "space s t": "workspace::NewSearch",
       "space f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
     }
   }
 ]

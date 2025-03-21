@@ -1,0 +1,64 @@
+- name: Configure Finder
+  block:
+    - name: Show All Files
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: AppleShowAllFiles
+        type: bool
+        value: "{{ show_all_files }}"
+    - name: ds files don't write on network devices
+      community.general.osx_defaults:
+        domain: com.apple.desktopservices
+        key: DSDontWriteNetworkStores
+        type: bool
+        value: "{{ ds_not_write_network_dev }}"
+    - name: ds files don't write on usb devices
+      community.general.osx_defaults:
+        domain: com.apple.desktopservices
+        key: DSDontWriteUSBStores
+        type: bool
+        value: "{{ ds_not_write_usb_dev }}"
+    - name: Finder View Style
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: FXPreferredViewStyle
+        type: string
+        value: "{{ finder_view_style }}"
+    - name: Finder Path Bar
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowPathbar
+        type: bool
+        value: "{{ finder_path_bar }}"
+    - name: Finder New Window starts at Home
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: NewWindowTarget
+        type: string
+        value: "{{ new_window_target }}"
+    - name: Finder New Window Target Path
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: NewWindowTargetPath
+        type: string
+        value: "{{ new_window_target_path }}"
+    - name: No Icons on Desktop
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: CreateDesktop
+        type: bool
+        value: "{{ create_desktop }}"
+    - name: Give full POSIX Path
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: _FXShowPosixPathInTitle
+        type: bool
+        value: "{{ full_posix_path }}"
+    - name: Disable Stage Manager
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: Desktop-StageManager
+        type: bool
+        value: "{{ stage_manager }}"
+- name: Restart Finder
+  shell: killall Finder

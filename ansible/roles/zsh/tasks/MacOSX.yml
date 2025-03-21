@@ -1,0 +1,30 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "ZSH | MacOSX | Install"
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - zsh
+- name: "ZSH | MacOSX | Make ZSH Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/zsh/.zshrc'
+    dest: '{{ home }}/.zshrc'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link
+- name: "ZSH | MacOSX | Make ZSH Aliases and Functins"
+  ansible.builtin.file:
+    src: '{{ dots }}/zsh'
+    dest: '{{ home }}/.config/zsh'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link
+- name: "ZSH | MacOSX | Make ZSH Env"
+  ansible.builtin.file:
+    src: '{{ dots }}/zsh/.zshenv'
+    dest: '{{ home }}/.zshenv'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

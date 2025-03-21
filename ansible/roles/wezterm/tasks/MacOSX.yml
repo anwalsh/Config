@@ -1,0 +1,14 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "Wezterm | MacOSX | Install Wezterm"
+  community.general.homebrew_cask:
+    name: wezterm
+    state: present
+- name: "Wezterm | MacOSX | Link Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/wezterm'
+    dest: '{{ home }}/.config/wezterm'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

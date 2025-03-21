@@ -1,0 +1,15 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "👻 Ghostty | Install Ghostty"
+  community.general.homebrew_cask:
+    name: ghostty
+    state: present
+    update_homebrew: true
+- name: "👻 Ghostty | Deploy Configuration"
+  ansible.builtin.file:
+    src: '{{ dots }}/ghostty'
+    dest: '{{ home }}/.config/ghostty'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

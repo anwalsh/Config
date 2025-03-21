@@ -1,0 +1,9 @@
+configure_dock: true
+# Recommended to the multiples of 16
+dock_position: "left"
+dock_tile_size: 42
+dock_autohide: true
+dock_magnification: true
+dock_magnification_size: 82
+dock_delay: 0
+interface_style: "Dark"

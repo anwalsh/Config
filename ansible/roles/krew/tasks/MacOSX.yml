@@ -1,0 +1,6 @@
+- name: "Krew & kubectx | MacOSX | Install K8s Utilities"
+  community.general.homebrew:
+    name:
+      - krew
+      - kubectx
+    state: present

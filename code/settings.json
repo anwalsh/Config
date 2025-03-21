@@ -2234,5 +2234,6 @@
   ],
   "scm.inputFontFamily": "editor",
   "confluenceMarkup.monospaceFont": "Berkley Mono",
-  "geminicodeassist.project": ""
+  "geminicodeassist.project": "",
+  "makefile.configureOnOpen": true
 }

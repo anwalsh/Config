@@ -1,0 +1,6 @@
+- name: Show a 24-hour clock.
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: Show24Hour
+    type: bool
+    value: true

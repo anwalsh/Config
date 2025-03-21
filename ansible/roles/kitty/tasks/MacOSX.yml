@@ -1,0 +1,14 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "Kitty | MacOSX | Install kitty"
+  community.general.homebrew_cask:
+    name: kitty
+    state: present
+- name: "Kitty | MacOSX | Link Kitty Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/kitty'
+    dest: '{{ home }}/.config/kitty'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

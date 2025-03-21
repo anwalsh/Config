@@ -1,0 +1,22 @@
+- name: "Neovim | MacOSX | Dependencies"
+  community.general.homebrew:
+    name:
+      - cmake
+      - curl
+      - pkg-config
+      - libtool
+      - unzip
+      - ansible-lint
+      - ripgrep
+    state: present
+- name: "Neovim | MacOSX | Install"
+  community.general.homebrew:
+    name: neovim
+    state: present
+- name: "Neovim | MacOSX | Link Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/nvim'
+    dest: '{{ home }}/.config/nvim'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

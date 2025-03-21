@@ -1,0 +1,14 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "GH | MacOSX | Install gh"
+  community.general.homebrew:
+    name: gh
+    state: present
+- name: "GH | MacOSX | Link GH Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/gh'
+    dest: '{{ home }}/.config/gh'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

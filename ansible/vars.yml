@@ -1,0 +1,4 @@
+home: "{{lookup('ansible.builtin.env', 'HOME')}}"
+dots: "{{home}}/GitLocal/github.com/anwalsh/dots"
+user: "{{lookup('ansible.builtin.env', 'USER')}}"
+group: "staff"

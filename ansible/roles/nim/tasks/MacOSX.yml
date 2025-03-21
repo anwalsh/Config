@@ -1,0 +1,4 @@
+- name: "nim | MacOSX | Install nim"
+  community.general.homebrew:
+    name: nim
+    state: present

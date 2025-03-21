@@ -1,0 +1,6 @@
+- name: "Zig | MacOSX | Install Zig"
+  community.general.homebrew:
+    name:
+      - zig
+      - zls
+    state: present

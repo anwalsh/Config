@@ -1,0 +1,19 @@
+- name: "Python Environment | MacOSX | Install Python Environment"
+  community.general.homebrew:
+    name:
+      - pyenv
+      - openssl
+      - readline
+      - sqlite3
+      - xz
+      - zlib
+    state: present
+- name: "Latest Python | Is Installed"
+  ansible.builtin.shell:
+    cmd: pyenv versions | grep '3.13.1'
+  register: python_installed
+  ignore_errors: true
+- name: "Pyenv | Configure Latest Python"
+  ansible.builtin.shell:
+    cmd: pyenv install 3.13.1
+  when: not python_installed

@@ -1,0 +1,11 @@
+- name: "Starship | MacOSX | Install Starship"
+  community.general.homebrew:
+    name: starship
+    state: present
+- name: "Starship | MacOSX | Link Conf"
+  ansible.builtin.file:
+    src: '{{ dots }}/starship'
+    dest: '{{ home }}/.config/starship'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

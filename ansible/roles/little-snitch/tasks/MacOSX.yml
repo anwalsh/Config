@@ -1,0 +1,9 @@
+- name: "Little Snitch | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Little Snitch.app'
+  register: little_snitch_installed
+- name: "Little Snitch | MacOSX | Install Little Snitch"
+  community.general.homebrew_cask:
+    name: little-snitch
+    state: latest
+  when: not little_snitch_installed
