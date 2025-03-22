@@ -1,12 +1,7 @@
-- name: "JetBrains Toolbox | MacOSX | Check Install"
-  ansible.builtin.stat:
-    path: '/Applications/JetBrains Toolbox.app'
-  register: jetbrains_installed
 - name: Install JetBrains Toolbox
   community.general.homebrew_cask:
     name: jetbrains-toolbox
     state: latest
-  when: not jetbrains_installed
 - name: "Ideavimrc | Deploy Configuration"
   ansible.builtin.file:
     src: '{{ dots }}/intellij/.ideavimrc'

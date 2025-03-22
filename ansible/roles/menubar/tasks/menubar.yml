@@ -1,6 +1,12 @@
-- name: Show a 24-hour clock.
+- name: Show a 24-hour clock
   community.general.osx_defaults:
     domain: com.apple.menuextra.clock
     key: Show24Hour
     type: bool
     value: true
+- name: Show battery percentage
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.battery
+    key: ShowPercent
+    type: string
+    value: "YES"

@@ -9,6 +9,7 @@ default_roles:
   - discord
   - dock
   - docker
+  - fantastical
   - finder
   - fish
   - fonts
@@ -21,7 +22,7 @@ default_roles:
   - helm
   - istats
   - iterm2
-  - java
+  #   - java
   - jetbrains
   - just
   - k8s
@@ -61,7 +62,7 @@ default_roles:
   - zed
 go:
   packages:
-    - package: github.com/mvdan/gofumpt@latest
+    - package: mvdan.cc/gofumpt@latest
       cmd: gofumpt
     - package: golang.org/x/tools/cmd/goimports@latest
       cmd: goimports

@@ -1,0 +1,6 @@
+- name: "Fantastical | MacOSX | Install"
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - fantastical
