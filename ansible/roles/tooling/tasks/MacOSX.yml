@@ -7,7 +7,7 @@
       - bazelisk
       - ccls
       - direnv
-      - drone
+      - drone-cli
       - editorconfig
       - eslint
       - eza

@@ -1,9 +1,4 @@
-- name: "Raycast | MacOSX | Check Install"
-  ansible.builtin.stat:
-    path: '/Applications/Raycast.app'
-  register: raycast_install
 - name: "RayCast | MacOSX | Install RayCast"
   community.general.homebrew_cask:
     name: raycast
     state: present
-  when: not raycast_install

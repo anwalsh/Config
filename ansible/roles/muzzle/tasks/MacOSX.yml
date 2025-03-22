@@ -1,9 +1,4 @@
-- name: "Muzzle | MacOSX | Check Install"
-  ansible.builtin.stat:
-    path: '/Applications/Muzzle.app'
-  register: muzzle_installed
 - name: "Muzzle | MacOSX | Install Muzzle"
   community.general.homebrew_cask:
     name: muzzle
     state: latest
-  when: not muzzle_installed
