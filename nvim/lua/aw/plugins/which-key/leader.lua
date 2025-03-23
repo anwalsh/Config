@@ -4,7 +4,7 @@ wk.add({
     { ",w ", ":w<cr>", hidden = true },
     { "[b", "<cmd>bprevious<cr>", desc = "Next Buffer" },
     { "]b", "<cmd>bnext<cr>", desc = "Previous Buffer" },
-    { "<TAB>", "<<cmd>e #<cr>", desc = "Switch to other Buffer" },
+    { "<TAB>", "<cmd>e #<cr>", desc = "Switch to other Buffer" },
     { "<C-h>", "<C-w>h", desc = "Jump window left" },
     { "<C-j>", "<C-w>j", desc = "Jump window down" },
     { "<C-k>", "<C-w>k", desc = "Jump window up" },
