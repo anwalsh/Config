@@ -8,3 +8,7 @@
     state: latest
 - name: Install rustup
   command: rustup-init -y --no-modify-path
+- name: Install nightly
+  command: rustup toolchain install nightly
+- name: Rust Update
+  command: rustup update

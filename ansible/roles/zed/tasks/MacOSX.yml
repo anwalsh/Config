@@ -1,6 +1,13 @@
 - name: "Include main vars"
   ansible.builtin.include_vars:
     file: "../../../vars.yml"
+- name: "Check for Zed Directory"
+  ansible.builtin.stat:
+    path: '{{ home }}/.config/zed'
+  register: p
+- name: "Create the Directory"
+  shell: 'mkdir {{ home }}/.config/zed/'
+  when: p.stat.isdir is not defined and not p.stat.isdir
 - name: "Zed | MacOSX | Install"
   community.general.homebrew:
     name: zed

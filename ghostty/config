@@ -18,8 +18,8 @@ keybind = ctrl+j=goto_split:bottom
 keybind = ctrl+k=goto_split:top
 keybind = ctrl+l=goto_split:right
 
-keybind = ctrl+a>l=new_split:right
-keybind = ctrl+a>j=new_split:down
+keybind = ctrl+a>/=new_split:right
+keybind = ctrl+a>-=new_split:down
 
 keybind = ctrl+a>shift+l=next_tab
 keybind = ctrl+a>shift+h=previous_tab

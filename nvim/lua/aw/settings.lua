@@ -56,7 +56,7 @@ return {
         "ninja",
         "nix",
         "norg",
-        "org",
+        -- "org",
         "php",
         "python",
         "query",

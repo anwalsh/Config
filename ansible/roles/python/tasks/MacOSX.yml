@@ -2,18 +2,36 @@
   community.general.homebrew:
     name:
       - pyenv
+      - pipx
       - openssl
       - readline
       - sqlite3
       - xz
       - zlib
     state: present
-- name: "Latest Python | Is Installed"
-  ansible.builtin.shell:
-    cmd: pyenv versions | grep '3.13.1'
+- name: "Check Python Installed"
+  shell: pyenv install 3.13.1
   register: python_installed
   ignore_errors: true
-- name: "Pyenv | Configure Latest Python"
-  ansible.builtin.shell:
-    cmd: pyenv install 3.13.1
+- name: "Pyenv | Install Python"
+  block:
+    - name: "Python 3.13"
+      ansible.builtin.shell:
+        cmd: pyenv install 3.13.1
+    - name: "Python 3.10"
+      ansible.builtin.shell:
+        cmd: pyenv install 3.10.16
   when: not python_installed
+- name: "Check Global"
+  shell: pyenv global
+  register: global_set
+- name: "Set Global"
+  ansible.builtin.shell:
+    cmd: pyenv global 3.10.16
+  when: not global_set
+- name: "Ensure Path Pipx"
+  ansible.builtin.shell:
+    cmd: pipx ensurepath
+- name: "Install Poetry"
+  ansible.builtin.shell:
+    cmd: pipx install poetry==1.5.1

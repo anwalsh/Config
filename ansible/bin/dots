@@ -49,6 +49,8 @@ case $machine_os in
     ;;
 esac
 
-# TODO: Setup directories we know we will need that won't exist yet
+if ! [ -d "$HOME"/.config/ ]; then
+    mkdir "$HOME"/.config/
+fi
 
 ansible-playbook -K "$ANSIBLE_DIR/main.yml" "$@"
