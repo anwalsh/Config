@@ -1,0 +1,4 @@
+- name: "Raindropio | MacOSX | Install Raindropio"
+  community.general.homebrew_cask:
+    name: raindropio
+    state: present

@@ -3,6 +3,7 @@ default_roles:
   - alfred
   - alt-tab
   - arc
+  - bartender
   - bat
   - chrome
   - compass
@@ -43,6 +44,7 @@ default_roles:
   - obsidian
   - podman
   - python
+  - raindropio
   - raycast
   - readdle-spark
   - ruby

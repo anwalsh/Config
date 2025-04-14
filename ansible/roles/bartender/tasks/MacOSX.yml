@@ -1,0 +1,4 @@
+- name: "Bartender | MacOSX | Install Bartender"
+  community.general.homebrew_cask:
+    name: bartender
+    state: present
