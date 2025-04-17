@@ -3,7 +3,7 @@ default_roles:
   - alfred
   - alt-tab
   - arc
-  - bartender
+  # - bartender
   - bat
   - chrome
   - compass
@@ -28,6 +28,7 @@ default_roles:
   - just
   - k8s
   - karabiner
+  - keyboard
   - kitty
   - krew
   - kubectx

@@ -1,0 +1,6 @@
+- name: Disable VSCode Key Repeat
+  community.general.osx_defaults:
+    domain: com.microsoft.VSCode
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
