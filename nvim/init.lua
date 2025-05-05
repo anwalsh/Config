@@ -1,4 +1,4 @@
-local g, fn, opt, loop, env, cmd = vim.g, vim.fn, vim.opt, vim.loop, vim.env, vim.cmd
+local g, fn, opt, loop, env = vim.g, vim.fn, vim.opt, vim.loop, vim.env
 
 require("aw.globals")
 require("aw.mappings")
@@ -7,7 +7,6 @@ require("aw.util.qf")
 require("aw.autocmd")
 -- require("aw.winbar") -- FIXME: Enable after 0.10.0 or once I move to nightly
 
-local home = env.HOME
 -- Get the OS in case I need it into the namespace
 g.os = loop.os_uname().sysname
 

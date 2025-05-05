@@ -1,3 +1,5 @@
+local env = vim.env
+
 local function get_python_path()
     -- Poetry first given workflows currently:
     if env.POETRY_ACTIVE == 1 then
@@ -44,6 +46,7 @@ return {
 
             require("mason-lspconfig").setup({
                 ensure_installed = require("aw.settings").mason_ensure_installed,
+                automatic_installation = require("aw.settings").mason_ensure_installed,
                 handlers = {
                     function(server) lspconfig[server].setup({ capabilities = capabilities() }) end,
                     eslint = function()
