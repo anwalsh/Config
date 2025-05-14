@@ -1,4 +1,9 @@
+- name: "Bartender | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: '/Applications/Bartender 5.app'
+  register: bartender_install
 - name: "Bartender | MacOSX | Install Bartender"
   community.general.homebrew_cask:
     name: bartender
     state: present
+  when: not bartender_install.stat.exists

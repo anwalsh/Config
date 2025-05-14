@@ -1,0 +1,4 @@
+- name: "Signal | MacOSX | Install Signal"
+  community.general.homebrew_cask:
+    name: signal
+    state: present
