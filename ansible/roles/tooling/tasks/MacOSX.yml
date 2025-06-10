@@ -6,6 +6,7 @@
       - awk
       - bazelisk
       - ccls
+      - cmake-docs
       - direnv
       - drone-cli
       - editorconfig
