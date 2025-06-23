@@ -14,7 +14,7 @@
     owner: '{{ user }}'
     group: '{{ group }}'
     state: link
-- name: "ZSH | MacOSX | Make ZSH Aliases and Functins"
+- name: "ZSH | MacOSX | Make ZSH Aliases and Functions"
   ansible.builtin.file:
     src: '{{ dots }}/zsh'
     dest: '{{ home }}/.config/zsh'
