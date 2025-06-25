@@ -4,3 +4,15 @@
       - docker
       - docker-compose
     state: present
+- name: "Create .docker if it does not exist"
+  ansible.builtin.file:
+    path: '{{ home }}/.docker/'
+    state: directory
+    mode: '0755'
+- name: "Docker | Deploy Configuration"
+  ansible.builtin.file:
+    src: '{{ dots }}/docker/config.json'
+    dest: '{{ home }}/.docker/config.json'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link

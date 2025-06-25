@@ -1,0 +1,7 @@
+{
+"stackOrchestrator": "swarm",
+"credsStore": "osxkeychain",
+"cliPluginsExtraDirs": [
+      "/opt/homebrew/lib/docker/cli-plugins"
+  ]
+}
