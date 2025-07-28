@@ -3,7 +3,7 @@ local M = {}
 function M.on_rename(from, to)
     local clients = M.get_clients()
     for _, client in ipairs(clients) do
-        if client.supports_method("workspace/willRenameFiles") then
+        if client:supports_method("workspace/willRenameFiles") then
             ---@diagnostic disable-next-line: invisible
             local resp = client.request_sync("workspace/willRenameFiles", {
                 files = {

@@ -32,10 +32,6 @@ wk.add({
         { "<leader>bh", "<C-w>h", desc = "Left Buffer Split" },
         { "<leader>bo", "<cmd>FocusMaximise<cr>", desc = "Focus Buffer Only" },
         { "<leader>bt", "<cmd>FocusMaxOrEqual<cr>", desc = "Focus Toggle" },
-        { "<leader>bH", "<C-W>5<", desc = "Expand-buffer-left" },
-        { "<leader>bJ", ":resize +5", desc = "Expand-buffer-below" },
-        { "<leader>bL", "<C-W>5>", desc = "Expand-buffer-right" },
-        { "<leader>bK", ":resize -5", desc = "Expand-buffer-up" },
     },
     {
         { "<leader>B", group = "+bookmarks" },

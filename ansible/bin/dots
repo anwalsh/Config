@@ -31,6 +31,11 @@ function macos_setup() {
     read -n 1 -s -r -p "Press any key to continue"
     echo "[✓] 1Password CLI setup complete"
   fi
+  if ! [ -x "$(command xcode-select -p)" ]; then
+    echo "Setting up Xcode"
+    xcode-select --install
+    sudo xcodebuild -license
+  fi
 }
 
 detect_os() {

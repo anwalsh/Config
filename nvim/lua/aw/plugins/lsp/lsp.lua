@@ -30,10 +30,10 @@ end
 
 local function on_attach(client, buffer)
     -- InlayHint toggle
-    if client.supports_method("textDocument/inlayHint") then toggle_inlay_hints(buffer, true) end
+    if client:supports_method("textDocument/inlayHint") then toggle_inlay_hints(buffer, true) end
 
     -- Navic instantiation
-    if client.supports_method("textDocument/symbolProvider") then require("nvim-navic") end
+    if client:supports_method("textDocument/symbolProvider") then require("nvim-navic") end
 
     ---@param lhs string
     ---@param rhs string|function
@@ -75,13 +75,13 @@ local function on_attach(client, buffer)
         "Next Warning"
     )
 
-    if client.supports_method("textDocument/codeAction") then
+    if client:supports_method("textDocument/codeAction") then
         keymap("ca", vim.lsp.buf.code_action, "Code Actions", { "n", "v" })
     end
 
-    if client.supports_method("textDocument/rename") then keymap("<leader>cr", vim.lsp.buf.rename, "Rename") end
+    if client:supports_method("textDocument/rename") then keymap("<leader>cr", vim.lsp.buf.rename, "Rename") end
 
-    if client.supports_method("textDocument/signatureHelp") then
+    if client:supports_method("textDocument/signatureHelp") then
         keymap("<C-k>", vim.lsp.buf.signature_help, "Signature help", "i")
     end
 end

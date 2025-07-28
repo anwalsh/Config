@@ -36,6 +36,7 @@ default_roles:
   - lazygit
   - little-snitch
   - lua
+  - mas
   - menubar
   - muzzle
   - nim
