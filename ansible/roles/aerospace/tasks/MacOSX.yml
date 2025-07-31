@@ -1,0 +1,15 @@
+- name: "Include main vars"
+  ansible.builtin.include_vars:
+    file: "../../../vars.yml"
+- name: "Aerospace | Install Aerospace"
+  community.general.homebrew_cask:
+    name: 'nikitabobko/tap/aerospace@0.12.0'
+    state: present
+    update_homebrew: true
+- name: "Aerospace | Deploy Configuration"
+  ansible.builtin.file:
+    src: '{{ dots }}/aerospace'
+    dest: '{{ home }}/.config/aerospace'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    state: link
