@@ -14,16 +14,12 @@ source $__fish_config_dir/themes/carbonfox.fish
 set -x N_PREFIX "$HOME/.n"
 fish_add_path -m $N_PREFIX/bin
 
-# Misc.
-[ -s "$HOME/.jabba/jabba.fish" ]; and source "$HOME/.jabba/jabba.fish"
-
-# asdf
-# set -l os (uname)
-# if test "$os" = Darwin
-#     source "/opt/homebrew/opt/asdf/libexec/asdf.fish"
-# else
-#     source "$HOME/.asdf/asdf.fish"
-# end
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
 
 # Disable greeting
 set fish_greeting

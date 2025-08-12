@@ -89,20 +89,9 @@ if [ -x "$(command -v apt-get)" ] || [ -x "$(command -v dnf)" ]; then
     export FZF_DEFAULT_COMMAND='fdfind --type file --follow --hidden --exclude .git'
 elif [ -x "$(command -v pacman)" ]; then
     export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
+else
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 fi
-
-local background="#0b0d0f"
-local current_line="#131a20"
-local selection="#131a20"
-local foreground="#f8f8f2"
-local comment="#6272a4"
-local cyan="#8be9fd"
-local green="#50fa7b"
-local orange="#ffb86c"
-local pink="#ff79c6"
-local purple="#bd93f9"
-local red="#ff5555"
-local yellow="#f1fa8c"
 
 export FZF_COMPLETION_TRIGGER='**'
 # For Dracula
@@ -165,8 +154,6 @@ else
     ssh-add
 fi
 
-[ -s "/home/andy/.jabba/jabba.sh" ] && source "/home/andy/.jabba/jabba.sh"
-
 # Rocket Man
 eval "$(starship init zsh)"
 
@@ -210,3 +197,4 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
+. /Users/andy/.asdf/plugins/java/set-java-home.zsh

@@ -15,14 +15,6 @@
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      ", w": "workspace::Save",
-      "space f f": "file_finder::Toggle",
-      "space p p": "projects::OpenRecent"
-    }
-  },
-  {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
-    "bindings": {
       "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus",
       "ctrl-h": "workspace::ActivatePaneLeft",
@@ -37,7 +29,7 @@
       "shift-k": "editor::Hover",
       "g a": "editor::ToggleCodeActions",
       "g r": "editor::Rename",
-      ", w": "workspace::Save",
+      "space w": "workspace::Save",
       ", .": "editor::ToggleInlineDiagnostics",
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePreviousItem",
@@ -52,8 +44,7 @@
         {
           "display_lines": true
         }
-      ],
-      ", g b": "editor::ToggleGitBlame"
+      ]
     }
   },
   {
@@ -108,20 +99,19 @@
     }
   },
   {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": "vim::NormalBefore",
+      "j k": "vim::NormalBefore"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "space w": "workspace::Save",
       "space s t": "workspace::NewSearch",
-      "space f": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Dock",
-    "bindings": {
-      "ctrl-w h": "workspace::ActivatePaneLeft",
-      "ctrl-w l": "workspace::ActivatePaneRight",
-      "ctrl-w k": "workspace::ActivatePaneUp",
-      "ctrl-w j": "workspace::ActivatePaneDown"
+      "space f f": "file_finder::Toggle",
+      "space p p": "projects::OpenRecent"
     }
   }
 ]

@@ -1,7 +1,10 @@
 {
-"stackOrchestrator": "swarm",
-"credsStore": "osxkeychain",
-"cliPluginsExtraDirs": [
-      "/opt/homebrew/lib/docker/cli-plugins"
-  ]
+  "stackOrchestrator": "swarm",
+  "credsStore": "osxkeychain",
+  "cliPluginsExtraDirs": [
+    "/opt/homebrew/lib/docker/cli-plugins"
+  ],
+  "credHelpers": {
+    "664315256653.dkr.ecr.us-east-1.amazonaws.com": "ecr-login"
+  }
 }

@@ -1,8 +1,9 @@
 default_roles:
   - 1password
-  - aerospace
+  # - aerospace
   - alfred
   - alt-tab
+  - ant
   - arc
   - bartender
   - bat
@@ -21,7 +22,8 @@ default_roles:
   - ghostty
   - git
   - go
-  - gpg-suite
+  # - gpg-suite
+  - gnupg
   - helm
   - istats
   - iterm2

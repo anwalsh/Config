@@ -14,10 +14,13 @@
   "features": {
     "copilot": false
   },
+  "breadcrumbs": {
+    "enabled": true
+  },
   "soft_wrap": "none",
   "relative_line_numbers": true,
   "base_keymap": "JetBrains",
-  "theme": "Oxocarbon Dark (IBM Carbon)",
+  "theme": "Oxocarbon Dark (Variation III)",
   "ui_font_size": 14,
   "ui_font_family": "Berkeley Mono",
   "buffer_font_size": 14,
@@ -96,6 +99,11 @@
         "checkOnSave": {
           "command": "clippy"
         }
+      }
+    },
+    "pyright": {
+      "settings": {
+        "typeCheckingMode": "basic"
       }
     }
   }

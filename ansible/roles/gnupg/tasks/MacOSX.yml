@@ -1,0 +1,11 @@
+- name: "GnuPG | MacOSX | Is Installed?"
+  command: "gpg --version"
+  register: gpg_version_result
+  ignore_errors: true
+- name: "GnuPG | MacOSX | Install 1Password"
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - gnupg
+  when: gpg_version_result.rc != 0

@@ -7,6 +7,11 @@ if test "$os" = Darwin
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
+
 # HOME
 set -gx GITLOCAL_HOME $HOME/GitLocal
 set -gx DOTFILES_HOME $HOME/GitLocal/github.com/anwalsh/Config
@@ -29,10 +34,10 @@ set -gx VASA_HOME $HOME/.vasa
 set -gx KUBECONFIG $HOME/.kube/config
 set -gx KREW_ROOT $HOME/.krew
 set -gx M_PREFIX $HOME
-set -gx JABBA $HOME/.jabba/bin
-set -gx ANT_HOME $HOME/apache-ant-1.10.5
-set -gx JAVA_HOME $HOME/.jabba/jdk/default/Contents/Home/
+set -gx ANT_HOME $HOME/bin/ant
+set -gx JAVA_HOME $HOME/.asdf/installs/java/temurin-17.0.15+6
 set -gx HOME_LOCAL_BIN $HOME/.local/bin/
+set -gx ASDF_DATA_DIR $HOME/.asdf
 
 # Fisher
 set -gx fisher_path $FISH_HOME

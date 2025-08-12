@@ -1,0 +1,11 @@
+- name: "Ant | MacOSX | Is Installed?"
+  command: "ant -version"
+  register: ant_version_result
+  ignore_errors: true
+- name: "Ant | MacOSX | Install Ant"
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - ant
+  when: ant_version_result.rc != 0
