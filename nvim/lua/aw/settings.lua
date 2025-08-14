@@ -93,6 +93,7 @@ return {
         "clangd",
         -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
         "terraformls",
+        "vtsls",
         "zls",
     },
 

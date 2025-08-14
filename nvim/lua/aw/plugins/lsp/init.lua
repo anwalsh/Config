@@ -292,6 +292,51 @@ return {
                             },
                         })
                     end,
+                    vtslt = function()
+                        lspconfig.tsserver.setup({
+                            capabilities = capabilities(),
+                            flags = { debounce_text_changes = 200 },
+                            single_file_support = true,
+                            root_dir = function(file)
+                                return vim.fs.dirname(vim.fs.find(".git", { path = file, upward = true })[1])
+                                    or util.root_pattern(".git", "package.json", "tsconfig.json")(file)
+                            end,
+                            filetypes = {
+                                "javascript",
+                                "javascriptreact",
+                                "javascript.jsx",
+                                "typescript",
+                                "typescriptreact",
+                                "typescript.tsx",
+                            },
+                            settings = {
+                                complete_function_calls = true,
+                                vtsls = {
+                                    enableMoveToFileCodeAction = true,
+                                    autoUseWorkspaceTsdk = true,
+                                    experimental = {
+                                        completion = { enableServerSideFuzzyMatch = true },
+                                    },
+                                },
+                                typescript = {
+                                    updateImportsOnFileMove = "always",
+                                    suggest = { completeFunctionCalls = true },
+                                    inlayHints = {
+                                        enumMemberValues = { enabled = true },
+                                        functionLikeReturnTypes = { enabled = true },
+                                        parameterNames = { enabled = "literals" },
+                                        parameterTypes = { enabled = true },
+                                        propertyDeclarationTypes = { enabled = true },
+                                        variableTypes = { enabled = false },
+                                    },
+                                },
+                                referencesCodeLens = {
+                                    showOnAllFunctions = true,
+                                    enabled = true,
+                                },
+                            },
+                        })
+                    end,
                 },
             })
         end,
