@@ -15,6 +15,7 @@
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
+      "space q": "pane::CloseActiveItem",
       "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus",
       "ctrl-h": "workspace::ActivatePaneLeft",
