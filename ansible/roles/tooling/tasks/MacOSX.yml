@@ -5,6 +5,7 @@
       - asdf
       - awk
       - bazelisk
+      - buf
       - ccls
       - cmake-docs
       - direnv
@@ -32,6 +33,7 @@
       - make
       - markdownlint-cli
       - mas
+      - mockery
       - mongocli
       - mongosh
       - mtr

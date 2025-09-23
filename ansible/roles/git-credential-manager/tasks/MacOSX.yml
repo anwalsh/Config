@@ -1,0 +1,4 @@
+- name: "Git Credential Manager | MacOSX | Install git-credential-manager"
+  community.general.homebrew_cask:
+    name: git-credential-manager
+    state: present

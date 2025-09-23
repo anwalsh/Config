@@ -1,31 +1,37 @@
-function extract --description 'Does what is says on the tin.'
-  set --local ext (echo $argv[1] | awk -F. '{print $NF}')
-  switch $ext
-    case "tar.bz2"
-        tar xjf $argv[1]
-    case "tar.gz"
-        tar xzf $argv[1]
-    case "bz2"
-        bunzip2 $argv[1]
-    case "rar"
-        unrar x $argv[1]
-    case "gz"
-        gunzip $argv[1]
-    case "tar"
-        tar xf $argv[1]
-    case "tbz2"
-        tar xjf $argv[1]
-    case "tgz"
-        tar xzf $argv[1]
-    case "zip"
-        unzip $argv[1]
-    case "Z"
-        uncompress $argv[1]
-    case "7z"
-        7z x $argv[1]
-    case "*"
-        echo "'$argv[1]' cannot be extracted via extract()"
-    case '*'
-      echo "unknown extension"
+function extract -d 'unarchive any file type'
+  if test (count $argv) -ne 1
+    echo "Error: No file specified."
+    return 1
+  end
+  set -l f $argv
+  if test -f $f
+    switch $f
+      case '*.tar.bz2'
+        tar xvjf $f
+      case '*.tar.gz'
+        tar xvzf $f
+      case '*.bz2'
+        bunzip2 $f
+      case '*.rar'
+        unrar x $f
+      case '*.gz'
+        gunzip $f
+      case '*.tar'
+        tar xvf $f
+      case '*.tbz2'
+        tar xvjf $f
+      case '*.tgz'
+        tar xvzf $f
+      case '*.zip'
+        unzip $f
+      case '*.Z'
+        uncompress
+      case '*.7z'
+        7z x $f
+      case '*'
+        echo "'$f' cannot be extracted"
+    end
+  else
+    echo "'$f' is not a valid file"
   end
 end

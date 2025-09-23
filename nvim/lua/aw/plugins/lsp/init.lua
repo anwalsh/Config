@@ -84,6 +84,17 @@ return {
                         lspconfig.lua_ls.setup({
                             capabilities = capabilities(),
                             single_file_support = true,
+                            filetypes = { "lua" },
+                            root_markers = {
+                                ".luarc.json",
+                                ".luarc.jsonc",
+                                ".luacheckrc",
+                                ".stylua.toml",
+                                "stylua.toml",
+                                "selene.toml",
+                                "selene.yml",
+                                ".git",
+                            },
                             settings = {
                                 Lua = {
                                     workspace = {
@@ -154,6 +165,8 @@ return {
                             flags = {
                                 debounce_text_changes = 150,
                             },
+                            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                            root_markers = { "go.mod", "go.work", ".git" },
                             settings = {
                                 gopls = {
                                     gofumpt = true,
@@ -240,6 +253,15 @@ return {
                         lspconfig.pyright.setup({
                             capabilites = capabilities(),
                             flags = { debounce_text_changes = 200 },
+                            filetypes = { "python" },
+                            root_markers = {
+                                "pyproject.toml",
+                                "setup.py",
+                                "setup.cfg",
+                                "requirements.txt",
+                                "Pipfile",
+                                ".git",
+                            },
                             on_init = function(client) client.config.settings.python.pythonPath = get_python_path() end,
                             settings = {
                                 typeCheckingMode = "basic",
@@ -276,20 +298,6 @@ return {
                         lspconfig.yamlls.setup({
                             capabilities = capabilities(),
                             flags = { debounce_text_changes = 200 },
-                        })
-                    end,
-                    zls = function()
-                        lspconfig.zls.setup({
-                            capabilities = capabilities(),
-                            flags = { debounce_text_changes = 200 },
-                            settings = {
-                                zls = {
-                                    enable_inlay_hints = true,
-                                    inlay_hints_show_builtin = true,
-                                    include_at_in_builtins = true,
-                                    warn_style = true,
-                                },
-                            },
                         })
                     end,
                     vtslt = function()
@@ -333,6 +341,22 @@ return {
                                 referencesCodeLens = {
                                     showOnAllFunctions = true,
                                     enabled = true,
+                                },
+                            },
+                        })
+                    end,
+                    zls = function()
+                        lspconfig.zls.setup({
+                            capabilities = capabilities(),
+                            flags = { debounce_text_changes = 200 },
+                            filetypes = { "zig" },
+                            root_markers = { "build.zig", ".git" },
+                            settings = {
+                                zls = {
+                                    enable_inlay_hints = true,
+                                    inlay_hints_show_builtin = true,
+                                    include_at_in_builtins = true,
+                                    warn_style = true,
                                 },
                             },
                         })

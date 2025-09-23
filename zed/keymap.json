@@ -109,9 +109,7 @@
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "space w": "workspace::Save",
-      "space s t": "workspace::NewSearch",
-      "space f f": "file_finder::Toggle",
-      "space p p": "projects::OpenRecent"
+      "space s t": "workspace::NewSearch"
     }
   }
 ]

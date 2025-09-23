@@ -21,6 +21,7 @@ default_roles:
   - gh
   - ghostty
   - git
+  - git-credential-manager
   - go
   # - gpg-suite
   - gnupg
@@ -49,6 +50,7 @@ default_roles:
   #   - nvm
   - obsidian
   - podman
+  - postman
   - python
   - raindropio
   - raycast

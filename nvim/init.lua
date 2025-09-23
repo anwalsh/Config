@@ -5,7 +5,6 @@ require("aw.mappings")
 require("aw.options")
 require("aw.util.qf")
 require("aw.autocmd")
--- require("aw.winbar") -- FIXME: Enable after 0.10.0 or once I move to nightly
 
 -- Get the OS in case I need it into the namespace
 g.os = loop.os_uname().sysname
@@ -36,7 +35,7 @@ if not loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-opt.rtp:prepend(lazypath)
+vim.opt.rtp = vim.opt.rtp ^ lazypath
 
 require("lazy").setup("aw.plugins", {
     concurrency = PU_COUNT,
@@ -52,11 +51,6 @@ require("lazy").setup("aw.plugins", {
         rtp = {
             disabled_plugins = {
                 "gzip",
-                "matchit",
-                "matchparen",
-                "netrw",
-                "netrwFileHandlers",
-                "netrwSettings",
                 "netrwPlugin",
                 "rplugin",
                 "tarPlugin",

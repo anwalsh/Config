@@ -14,7 +14,7 @@ set --erase _asdf_shims
 
 # HOME
 set -gx GITLOCAL_HOME $HOME/GitLocal
-set -gx DOTFILES_HOME $HOME/GitLocal/github.com/anwalsh/Config
+set -gx DOTFILES_HOME $HOME/GitLocal/github.com/anwalsh/dots
 set -gx FISH_HOME $DOTFILES_HOME/fish
 
 # Work Stuff

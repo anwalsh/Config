@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Material Icon Theme",
   "tabs": {
     "file_icons": true
   },
@@ -23,7 +24,7 @@
   "theme": "Oxocarbon Dark (Variation III)",
   "ui_font_size": 14,
   "ui_font_family": "Berkeley Mono",
-  "buffer_font_size": 14,
+  "buffer_font_size": 15,
   "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": {
     "custom": 1.25
@@ -58,7 +59,7 @@
   },
   "inlay_hints": {
     "enabled": true,
-    "show_type_hints": true,
+    "show_type_hints": false,
     "show_parameter_hints": false,
     "show_other_hints": true
   },

@@ -2,6 +2,15 @@ local function augroup(name) return vim.api.nvim_create_augroup("aw" .. name, { 
 
 vim.cmd("au FocusGained * :checktime")
 
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("aw/big_file", { clear = true }),
+    desc = "Disable features in big files",
+    pattern = "bigfile",
+    callback = function(args)
+        vim.schedule(function() vim.bo[args.buf].syntax = vim.filetype.match({ buf = args.buf }) or "" end)
+    end,
+})
+
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = vim.api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
