@@ -58,8 +58,6 @@ local M = {
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<Tab>"] = actions.move_selection_next,
                         ["<S-Tab>"] = actions.move_selection_previous,
-                        ["K"] = actions.toggle_selection + actions.move_selection_worse,
-                        ["J"] = actions.toggle_selection + actions.move_selection_better,
                     },
                 },
                 -- Previewers
