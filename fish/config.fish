@@ -25,3 +25,6 @@ end
 set fish_greeting
 # to the Moon!
 starship init fish | source
+
+direnv hook fish | source
+pyenv init - fish | source

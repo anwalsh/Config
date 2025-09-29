@@ -38,6 +38,7 @@ set -gx ANT_HOME $HOME/bin/ant
 set -gx JAVA_HOME $HOME/.asdf/installs/java/temurin-17.0.15+6
 set -gx HOME_LOCAL_BIN $HOME/.local/bin/
 set -gx ASDF_DATA_DIR $HOME/.asdf
+set -gx PIPX_DEFAULT_PYTHON (pyenv prefix)/bin/python
 
 # Fisher
 set -gx fisher_path $FISH_HOME
@@ -55,7 +56,6 @@ set -gx NODEMODS $HOME/node_modules/.bin
 set -gx PYENV_ROOT $HOME/.pyenv
 
 # Pathing
-fish_add_path -a $PYENV_ROOT/bin
 fish_add_path -a $HOME_LOCAL_BIN
 fish_add_path -a $GOPATH/bin
 fish_add_path -a $KREW_ROOT/bin

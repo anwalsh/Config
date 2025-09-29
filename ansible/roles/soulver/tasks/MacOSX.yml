@@ -1,0 +1,4 @@
+- name: "Soulver | MacOSX | Install Soulver"
+  community.general.homebrew_cask:
+    name: soulver
+    state: present

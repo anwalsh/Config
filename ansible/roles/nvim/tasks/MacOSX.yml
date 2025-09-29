@@ -15,8 +15,8 @@
     state: present
 - name: "Neovim | MacOSX | Link Conf"
   ansible.builtin.file:
-    src: '{{ dots }}/nvim'
-    dest: '{{ home }}/.config/nvim'
-    owner: '{{ user }}'
-    group: '{{ group }}'
+    src: "{{ dots }}/nvim"
+    dest: "{{ home }}/.config/nvim"
+    owner: "{{ user }}"
+    group: "{{ group }}"
     state: link

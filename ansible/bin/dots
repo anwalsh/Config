@@ -34,7 +34,7 @@ function macos_setup() {
   if ! [ -x "$(command xcode-select -p)" ]; then
     echo "Setting up Xcode"
     xcode-select --install
-    sudo xcodebuild -license
+    sudo xcodebuild -license accept
   fi
 }
 
