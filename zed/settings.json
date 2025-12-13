@@ -9,17 +9,30 @@
 {
   "icon_theme": "Material Icon Theme",
   "tabs": {
-    "file_icons": true
+    "file_icons": true,
+    "show_diagnostics": "errors"
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
   },
   "auto_update": true,
-  "features": {
-    "copilot": false
-  },
-  "breadcrumbs": {
-    "enabled": true
-  },
   "soft_wrap": "none",
-  "relative_line_numbers": true,
+  "hour_format": "hour24",
+  "pane_split_direction_vertical": "right",
+  "pane_split_direction_horizontal": "down",
+  "wrap_guides": [
+    80
+  ],
+  "search": {
+    "center_on_match": true
+  },
+  "relative_line_numbers": "enabled",
   "base_keymap": "JetBrains",
   "theme": "Oxocarbon Dark (Variation III)",
   "ui_font_size": 14,
@@ -29,6 +42,19 @@
   "buffer_line_height": {
     "custom": 1.25
   },
+  "whitespace_map": {
+    "space": "•",
+    "tab": "→"
+  },
+  "git": {
+    "branch_picker": {
+      "show_author_name": true
+    },
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    }
+  },
   "terminal": {
     "dock": "bottom",
     "blinking": "on",
@@ -36,24 +62,30 @@
     "font_family": "Berkeley Mono",
     "line_height": {
       "custom": 1.25
+    },
+    "env": {
+      "GIT_EDITOR": "zed --wait"
     }
   },
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
-    "use_multiline_find": true,
     "use_smartcase_find": true,
-    "highlight_on_yank_duration": 120
+    "highlight_on_yank_duration": 500
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "indent_guides": {
+    "enabled": true
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
   },
   "format_on_save": "on",
   "formatter": "language_server",
-  "git": {
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": true
-    },
-  },
-  "hour_format": "hour24",
   "project_panel": {
     "dock": "right"
   },
@@ -62,6 +94,10 @@
     "show_type_hints": false,
     "show_parameter_hints": false,
     "show_other_hints": true
+  },
+  "show_completions_on_input": true,
+  "global_lsp_settings": {
+    "button": true
   },
   "lsp": {
     "gopls": {
@@ -107,5 +143,24 @@
         "typeCheckingMode": "basic"
       }
     }
+  },
+  "auto_install_extensions": {
+    "material-icon-theme": true,
+    "oxocarbon": true,
+    "nvim-nightfox": true,
+    "ruff": true,
+    "golangci-lint": true,
+    // languages
+    "html": true,
+    "markdown": true,
+    "fish": true,
+    "lua": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "toml": true,
+    "java": true,
+    "sql": true,
+    "terraform": true,
+    "zig": true
   }
 }
