@@ -249,8 +249,8 @@ return {
                             },
                         })
                     end,
-                    pyright = function()
-                        lspconfig.pyright.setup({
+                    ty = function()
+                        lspconfig.ty.setup({
                             capabilites = capabilities(),
                             flags = { debounce_text_changes = 200 },
                             filetypes = { "python" },

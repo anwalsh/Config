@@ -1,6 +1,6 @@
 - name: "Bartender | MacOSX | Check Install"
   ansible.builtin.stat:
-    path: '/Applications/Bartender 5.app'
+    path: "/Applications/Bartender 6.app"
   register: bartender_install
 - name: "Bartender | MacOSX | Install Bartender"
   community.general.homebrew_cask:

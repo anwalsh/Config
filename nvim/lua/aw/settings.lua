@@ -88,7 +88,7 @@ return {
         "yamlls",
         "jsonls",
         "dockerls",
-        "pyright",
+        "ty",
         "gopls",
         "clangd",
         -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails

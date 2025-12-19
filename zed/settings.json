@@ -23,7 +23,6 @@
   },
   "auto_update": true,
   "soft_wrap": "none",
-  "hour_format": "hour24",
   "pane_split_direction_vertical": "right",
   "pane_split_direction_horizontal": "down",
   "wrap_guides": [
@@ -99,48 +98,67 @@
   "global_lsp_settings": {
     "button": true
   },
+  "languages": {
+    "Python": {
+      "language_servers": [
+        "ty",
+        "ruff",
+        "!basedpyright",
+        "!pyrefly",
+        "!pyright",
+        "!pylsp"
+      ]
+    }
+  },
   "lsp": {
     "gopls": {
-      "gofumpt": true,
-      "codelenses": {
-        "gc_details": false,
-        "generate": true,
-        "regenerate_cgo": true,
-        "run_govulncheck": true,
-        "test": true,
-        "tidy": true,
-        "upgrade_dependency": true,
-        "vendor": true
+      "initialization_options": {
+        "gofumpt": true,
+        "codelenses": {
+          "gc_details": false,
+          "generate": true,
+          "regenerate_cgo": true,
+          "run_govulncheck": true,
+          "test": true,
+          "tidy": true,
+          "upgrade_dependency": true,
+          "vendor": true
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        },
+        "analyses": {
+          "nilness": true,
+          "unusedparams": true,
+          "unusedwrite": true,
+          "useany": true
+        },
+        "completeUnimported": true,
+        "staticcheck": true,
+        "ui.semanticTokens": true
       },
-      "hints": {
-        "assignVariableTypes": true,
-        "compositeLiteralFields": true,
-        "compositeLiteralTypes": true,
-        "constantValues": true,
-        "functionTypeParameters": true,
-        "parameterNames": true,
-        "rangeVariableTypes": true
-      },
-      "analyses": {
-        "nilness": true,
-        "unusedparams": true,
-        "unusedwrite": true,
-        "useany": true
-      },
-      "completeUnimported": true,
-      "staticcheck": true,
-      "ui.semanticTokens": true
     },
     "rust-analyzer": {
       "initialization_options": {
         "checkOnSave": {
           "command": "clippy"
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
         }
-      }
-    },
-    "pyright": {
-      "settings": {
-        "typeCheckingMode": "basic"
       }
     }
   },
