@@ -146,9 +146,7 @@
     },
     "rust-analyzer": {
       "initialization_options": {
-        "checkOnSave": {
-          "command": "clippy"
-        },
+        "checkOnSave": true,
         "inlayHints": {
           "maxLength": null,
           "lifetimeElisionHints": {
