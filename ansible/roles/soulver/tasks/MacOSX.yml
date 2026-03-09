@@ -1,4 +1,9 @@
+- name: "Soulver | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: "/Applications/Soulver 3.app"
+  register: soulver_install
 - name: "Soulver | MacOSX | Install Soulver"
   community.general.homebrew_cask:
     name: soulver
     state: present
+  when: not soulver_install.stat.exists

@@ -9,29 +9,42 @@
       - xz
       - zlib
     state: present
-- name: "Check Python Installed"
-  shell: pyenv install 3.13.1
-  register: python_installed
+- name: "Check Python 3.13.12 Installed"
+  ansible.builtin.shell:
+    cmd: pyenv versions | grep '3.13.12' | awk '{print $NF}'
+  register: python_3_13_12_installed
   ignore_errors: true
-- name: "Pyenv | Install Python"
-  block:
-    - name: "Python 3.13"
-      ansible.builtin.shell:
-        cmd: pyenv install 3.13.1
-    - name: "Python 3.10"
-      ansible.builtin.shell:
-        cmd: pyenv install 3.10.16
-  when: not python_installed
+- name: "Check Python 3.10.20 Installed"
+  ansible.builtin.shell:
+    cmd: pyenv versions | grep '3.10.20' | awk '{print $NF}'
+  register: python_3_10_20_installed
+  ignore_errors: true
+- name: "Pyenv | Install 3.13 Python"
+  ansible.builtin.shell:
+    cmd: pyenv install 3.13.12
+  when: not python_3_13_12_installed
+- name: "Pyenv | Install 3.10 Python"
+  ansible.builtin.shell:
+    cmd: pyenv install 3.10.20
+  when: not python_3_10_20_installed
 - name: "Check Global"
-  shell: pyenv global
+  ansible.builtin.shell:
+    cmd: pyenv global
   register: global_set
 - name: "Set Global"
   ansible.builtin.shell:
-    cmd: pyenv global 3.10.16
+    cmd: pyenv global 3.10.20
   when: not global_set
+  ignore_errors: true
 - name: "Ensure Path Pipx"
   ansible.builtin.shell:
     cmd: pipx ensurepath
+- name: "Check Poetry"
+  ansible.builtin.shell:
+    cmd: poetry --version | grep "version" | awk '{print $NF}' | awk '{gsub(/[()]/, ""); print}'
+  register: poetry_install
+  ignore_errors: true
 - name: "Install Poetry"
   ansible.builtin.shell:
-    cmd: pipx install poetry==1.5.1
+    cmd: pipx install poetry==2.3.2
+  when: not poetry_install
