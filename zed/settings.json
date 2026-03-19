@@ -33,7 +33,7 @@
   },
   "relative_line_numbers": "enabled",
   "base_keymap": "JetBrains",
-  "theme": "Oxocarbon Dark (IBM Carbon)",
+  "theme": "Carbonfox - opaque",
   "ui_font_size": 14,
   "ui_font_family": "Berkeley Mono",
   "buffer_font_size": 15,
@@ -72,8 +72,9 @@
     "use_smartcase_find": true,
     "highlight_on_yank_duration": 500
   },
-  "features": {
-    "edit_prediction_provider": "zed"
+  "edit_predictions": {
+    "mode": "subtle",
+    "provider": "zed"
   },
   "indent_guides": {
     "enabled": true
