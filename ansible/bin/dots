@@ -36,6 +36,8 @@ function macos_setup() {
     xcode-select --install
     sudo xcodebuild -license accept
   fi
+  echo "Updating and upgrading brew..."
+  brew upgrade && brew update
 }
 
 detect_os() {

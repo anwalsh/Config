@@ -2,7 +2,6 @@
   community.general.homebrew:
     name:
       - pyenv
-      - pipx
       - openssl
       - readline
       - sqlite3
@@ -34,11 +33,15 @@
 - name: "Set Global"
   ansible.builtin.shell:
     cmd: pyenv global 3.10.20
-  when: not global_set
+  when: global_set == "system" and global_set != 3.10.20
   ignore_errors: true
+- name: "Install Pipx"
+  ansible.builtin.pip:
+    name: pipx
+    state: present
+    extra_args: --user
 - name: "Ensure Path Pipx"
-  ansible.builtin.shell:
-    cmd: pipx ensurepath
+  ansible.builtin.command: python3 -m pipx ensurepath
 - name: "Check Poetry"
   ansible.builtin.shell:
     cmd: poetry --version | grep "version" | awk '{print $NF}' | awk '{gsub(/[()]/, ""); print}'
