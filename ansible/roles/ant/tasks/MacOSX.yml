@@ -1,7 +1,8 @@
 - name: "Ant | MacOSX | Is Installed?"
-  command: "ant -version"
+  ansible.builtin.command: "ant -version"
   register: ant_version_result
-  ignore_errors: true
+  changed_when: false
+  failed_when: false
 - name: "Ant | MacOSX | Install Ant"
   community.general.homebrew:
     name: "{{ item }}"

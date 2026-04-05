@@ -28,3 +28,6 @@ starship init fish | source
 
 direnv hook fish | source
 pyenv init - fish | source
+
+# source env
+envsource ~/.env

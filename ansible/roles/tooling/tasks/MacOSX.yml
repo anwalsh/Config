@@ -36,7 +36,6 @@
       - mockery
       - mongocli
       - mongosh
-      - mtr
       - ncurses
       - nmap
       - pkgconf

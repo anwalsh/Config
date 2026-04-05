@@ -1,8 +1,9 @@
 - name: "GnuPG | MacOSX | Is Installed?"
-  command: "gpg --version"
+  ansible.builtin.command: "gpg --version"
   register: gpg_version_result
-  ignore_errors: true
-- name: "GnuPG | MacOSX | Install 1Password"
+  changed_when: false
+  failed_when: false
+- name: "GnuPG | MacOSX | Install GnuPG"
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: present

@@ -1,7 +1,8 @@
 - name: "1Password | MacOSX | Is Installed?"
-  command: "op --version"
+  ansible.builtin.command: "op --version"
   register: op_version_result
-  ignore_errors: true
+  changed_when: false
+  failed_when: false
 - name: "1Password | MacOSX | Install 1Password"
   community.general.homebrew_cask:
     name: "{{ item }}"

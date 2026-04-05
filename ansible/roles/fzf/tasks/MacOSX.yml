@@ -2,3 +2,4 @@
   community.general.homebrew:
     name: fzf
     state: present
+  notify: "Install FZF"

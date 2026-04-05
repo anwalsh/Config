@@ -61,4 +61,5 @@
         type: bool
         value: "{{ stage_manager }}"
 - name: Restart Finder
-  shell: killall Finder
+  ansible.builtin.command: killall Finder
+  changed_when: true

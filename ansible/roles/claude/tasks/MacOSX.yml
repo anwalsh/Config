@@ -1,0 +1,7 @@
+- name: "Claude | MacOSX | Install Claude App"
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - claude
+    - claude-code

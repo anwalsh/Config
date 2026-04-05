@@ -1,0 +1,4 @@
+- name: "Opencode | MacOSX | Install Opencode"
+  community.general.homebrew:
+    name: opencode
+    state: present

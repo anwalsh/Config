@@ -9,4 +9,4 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: ~/.config/karabiner/assets/complex_modifications/
-  loop: "{{ query('fileglob', 'Karabiner-Elements/*.json') }}"
+  loop: "{{ query('fileglob', playbook_dir + '/files/Karabiner-Elements/*.json') }}"

@@ -8,6 +8,7 @@ default_roles:
   - bartender
   - bat
   - chrome
+  - claude
   - compass
   - discord
   - dock
@@ -49,6 +50,7 @@ default_roles:
   #   - npm
   #   - nvm
   - obsidian
+  - opencode
   - podman
   - postman
   - python

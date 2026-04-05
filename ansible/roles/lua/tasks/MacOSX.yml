@@ -6,5 +6,4 @@
     - lua
     - luarocks
     - luajit
-    - luarocks
     - luv

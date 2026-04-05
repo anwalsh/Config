@@ -1,6 +1,8 @@
 - name: Dotfiles Config
   hosts: localhost
   connection: local
+  vars_files:
+    - vars.yml
   pre_tasks:
     - name: Detect Host User
       ansible.builtin.import_tasks: pre_tasks/whoami.yml

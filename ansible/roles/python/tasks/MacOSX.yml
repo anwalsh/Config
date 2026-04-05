@@ -1,4 +1,9 @@
-- name: "Python Environment | MacOSX | Install Python Environment"
+- name: "Python Environment | MacOSX | Define Python Versions"
+  ansible.builtin.set_fact:
+    python_stable_version: "3.14.3"
+    python_legacy_version: "3.10.20"
+
+- name: "Python Environment | MacOSX | Install Build Dependencies"
   community.general.homebrew:
     name:
       - pyenv
@@ -8,46 +13,63 @@
       - xz
       - zlib
     state: present
-- name: "Check Python 3.13.12 Installed"
+
+- name: "Python Environment | MacOSX | Check Stable Python Installed"
   ansible.builtin.shell:
-    cmd: pyenv versions | grep '3.13.12' | awk '{print $NF}'
-  register: python_3_13_12_installed
-  ignore_errors: true
-- name: "Check Python 3.10.20 Installed"
+    cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{ python_stable_version }}$'"
+    executable: /bin/bash
+  register: python_stable_installed
+  changed_when: false
+  failed_when: false
+
+- name: "Python Environment | MacOSX | Check Legacy Python Installed"
   ansible.builtin.shell:
-    cmd: pyenv versions | grep '3.10.20' | awk '{print $NF}'
-  register: python_3_10_20_installed
-  ignore_errors: true
-- name: "Pyenv | Install 3.13 Python"
-  ansible.builtin.shell:
-    cmd: pyenv install 3.13.12
-  when: not python_3_13_12_installed
-- name: "Pyenv | Install 3.10 Python"
-  ansible.builtin.shell:
-    cmd: pyenv install 3.10.20
-  when: not python_3_10_20_installed
-- name: "Check Global"
-  ansible.builtin.shell:
+    cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{ python_legacy_version }}$'"
+    executable: /bin/bash
+  register: python_legacy_installed
+  changed_when: false
+  failed_when: false
+
+- name: "Python Environment | MacOSX | Install Stable Python"
+  ansible.builtin.command:
+    cmd: "pyenv install {{ python_stable_version }}"
+  when: python_stable_installed.stdout == ""
+  changed_when: true
+
+- name: "Python Environment | MacOSX | Install Legacy Python"
+  ansible.builtin.command:
+    cmd: "pyenv install {{ python_legacy_version }}"
+  when: python_legacy_installed.stdout == ""
+  changed_when: true
+
+- name: "Python Environment | MacOSX | Check Pyenv Global Version"
+  ansible.builtin.command:
     cmd: pyenv global
-  register: global_set
-- name: "Set Global"
-  ansible.builtin.shell:
-    cmd: pyenv global 3.10.20
-  when: global_set == "system" and global_set != 3.10.20
-  ignore_errors: true
-- name: "Install Pipx"
-  ansible.builtin.pip:
+  register: python_pyenv_global
+  changed_when: false
+  failed_when: false
+
+- name: "Python Environment | MacOSX | Set Pyenv Global"
+  ansible.builtin.command:
+    cmd: "pyenv global {{ python_legacy_version }}"
+  when: python_pyenv_global.stdout != python_legacy_version
+  changed_when: true
+
+- name: "Python Environment | MacOSX | Install Pipx"
+  community.general.homebrew:
     name: pipx
     state: present
-    extra_args: --user
-- name: "Ensure Path Pipx"
-  ansible.builtin.command: python3 -m pipx ensurepath
-- name: "Check Poetry"
+
+- name: "Python Environment | MacOSX | Check Poetry Version"
   ansible.builtin.shell:
-    cmd: poetry --version | grep "version" | awk '{print $NF}' | awk '{gsub(/[()]/, ""); print}'
-  register: poetry_install
-  ignore_errors: true
-- name: "Install Poetry"
-  ansible.builtin.shell:
+    cmd: "set -o pipefail && poetry --version 2>/dev/null | awk '{print $NF}' | tr -d '()'"
+    executable: /bin/bash
+  register: python_poetry_version
+  changed_when: false
+  failed_when: false
+
+- name: "Python Environment | MacOSX | Install Poetry"
+  ansible.builtin.command:
     cmd: pipx install poetry==2.3.2
-  when: not poetry_install
+  when: python_poetry_version.stdout is not search("2.3.2")
+  changed_when: true

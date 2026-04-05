@@ -11,11 +11,17 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
---- Remove all trailing whitespace on save
+-- remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = vim.api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
     command = [[:%s/\s\+$//e]],
     group = TrimWhiteSpaceGrp,
+})
+
+-- format using Conform on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args) require("conform").format({ bufnr = args.buf }) end,
 })
 
 -- show cursor line only in active window
