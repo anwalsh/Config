@@ -1,52 +1,23 @@
+-------------------------------------------------------------------------------
+-- Theme loader
+-------------------------------------------------------------------------------
 local settings = require("aw.settings")
+local theme = settings.theme
 
-if settings.theme == "oxocarbon" then
-    return {
-        "nyoom-engineering/oxocarbon.nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.oxocarbon") end,
-    }
-elseif settings.theme == "kanagawa" then
-    return {
-        "rebelot/kanagawa.nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.kanagawa") end,
-    }
-elseif settings.theme == "dracula" then
-    return {
-        "Mofiqul/dracula.nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.dracula") end,
-    }
-elseif settings.theme == "catppuccin" then
-    return {
-        "catppuccin/nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.catppuccin") end,
-    }
-elseif settings.theme == "tokyonight" then
-    return {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.tokyonight") end,
-    }
-elseif settings.theme == "github" then
-    return {
-        "projekt0n/github-nvim-theme",
-        lazy = false,
-        config = function() require("aw.plugins.themes.github") end,
-    }
-elseif settings.theme == "rose-pine" then
-    return {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = false,
-        config = function() require("aw.plugins.themes.rosepine") end,
-    }
+if theme == "oxocarbon" then
+    vim.opt.background = "dark"
+    vim.cmd("colorscheme oxocarbon")
+elseif theme == "kanagawa" then
+    require("aw.plugins.themes.kanagawa")
+elseif theme == "catppuccin" then
+    require("aw.plugins.themes.catppuccin")
+elseif theme == "tokyonight" then
+    vim.cmd("colorscheme tokyonight")
+elseif theme == "github" then
+    require("aw.plugins.themes.github")
+elseif theme == "rose-pine" then
+    require("aw.plugins.themes.rosepine")
 else
-    return {
-        "EdenEast/nightfox.nvim",
-        lazy = false,
-        config = function() require("aw.plugins.themes.carbonfox") end,
-    }
+    -- Default: carbonfox
+    require("aw.plugins.themes.carbonfox")
 end

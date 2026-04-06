@@ -1,10 +1,17 @@
-local M = {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    branch = "main",
-    lazy = false,
-    event = { "BufReadPost", "BufNewFile" },
-    config = function() require("aw.plugins.treesitter") end,
-}
-
-return M
+-------------------------------------------------------------------------------
+-- Treesitter
+-------------------------------------------------------------------------------
+require("nvim-treesitter").setup({
+    ensure_installed = require("aw.settings").treesitter_ensure_installed,
+    highlight = { enable = true },
+    indent = { enable = true },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "<C-space>",
+            node_incremental = "<C-space>",
+            scope_incremental = false,
+            node_decremental = "<bs>",
+        },
+    },
+})

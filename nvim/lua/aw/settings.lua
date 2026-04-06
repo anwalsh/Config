@@ -79,23 +79,7 @@ return {
         "zig",
     },
 
-    -- Mason ensure installed
-    mason_ensure_installed = {
-        "lua_ls",
-        "ltex",
-        "marksman",
-        "bashls",
-        "yamlls",
-        "jsonls",
-        "dockerls",
-        "ty",
-        "gopls",
-        "clangd",
-        -- "nimls", // Somehthing is wrong with this one, will need to look into why the server fails
-        "terraformls",
-        "vtsls",
-        "zls",
-    },
+    -- LSP servers are configured in lua/aw/lsp.lua via vim.lsp.config/enable
 
     -- enable greping in hidden files
     telescope_grep_hidden = true,

@@ -23,6 +23,7 @@ opt.wildoptions = "pum"
 
 opt.showmode = false
 opt.showcmd = true
+opt.showtabline = 0 -- Never show the tab bar
 opt.timeoutlen = 250 -- important for which-key
 opt.cmdheight = 1 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
@@ -39,6 +40,7 @@ opt.splitkeep = "screen"
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+opt.winbar = nil
 if vim.fn.has("nvim-0.10") == 1 then opt.smoothscroll = true end
 if vim.fn.has("nvim-0.9.0") == 1 then vim.opt.statuscolumn = [[%!v:lua.require'aw.util.ui'.statuscolumn()]] end
 if vim.fn.has("nvim-0.10") == 1 then

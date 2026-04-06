@@ -18,11 +18,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     group = TrimWhiteSpaceGrp,
 })
 
--- format using Conform on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function(args) require("conform").format({ bufnr = args.buf }) end,
-})
+-- NOTE: format-on-save is configured in plugins/format.lua via conform's format_on_save option
 
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
@@ -48,7 +44,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
     callback = function(event)
-        local file = vim.loop.fs_realpath(event.match) or event.match
+        local file = vim.uv.fs_realpath(event.match) or event.match
 
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
         local backup = vim.fn.fnamemodify(file, ":p:~:h")

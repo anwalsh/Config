@@ -1,55 +1,35 @@
-local function neotest() return require("neotest") end
-local function open() neotest().output.open({ enter = true, short = false }) end
-local function run_file() neotest().run.run(vim.fn.expand("%")) end
-local function run_file_sync() neotest().run.run({ vim.fn.expand("%"), concurrent = false }) end
-local function nearest() neotest().run.run() end
-local function next_failed() neotest().jump.prev({ status = "failed" }) end
-local function prev_failed() neotest().jump.next({ status = "failed" }) end
-local function toggle_summary() neotest().summary.toggle() end
-local function cancel() neotest().run.stop({ interactive = true }) end
+-------------------------------------------------------------------------------
+-- Neotest
+-------------------------------------------------------------------------------
+local neotest = require("neotest")
 
-return {
-    {
-        "nvim-neotest/neotest",
-        keys = {
-            { "<localleader>ts", toggle_summary, desc = "neotest: toggle summary" },
-            { "<localleader>to", open, desc = "neotest: output" },
-            { "<localleader>tn", nearest, desc = "neotest: run" },
-            { "<localleader>tf", run_file, desc = "neotest: run file" },
-            { "<localleader>tF", run_file_sync, desc = "neotest: run file synchronously" },
-            { "<localleader>tc", cancel, desc = "neotest: cancel" },
-            { "[n", next_failed, desc = "jump to next failed test" },
-            { "]n", prev_failed, desc = "jump to previous failed test" },
-        },
-        config = function()
-            local namespace = vim.api.nvim_create_namespace("neotest")
-            vim.diagnostic.config({
-                virtual_text = {
-                    format = function(diagnostic)
-                        return diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-                    end,
-                },
-            }, namespace)
-
-            require("neotest").setup({
-                discovery = { enabled = true },
-                diagnostic = { enabled = true },
-                floating = { line = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" } },
-                quickfix = { enabled = false, open = true },
-                adapters = {
-                    require("neotest-plenary"),
-                    require("neotest-go")({ experimental = { test_table = true } }),
-                    require("neotest-rust")({
-                        args = { "--verbose" },
-                    }),
-                },
-            })
+local namespace = vim.api.nvim_create_namespace("neotest")
+vim.diagnostic.config({
+    virtual_text = {
+        format = function(diagnostic)
+            return diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
         end,
-        dependencies = {
-            { "rouge8/neotest-rust" },
-            { "nvim-neotest/neotest-go" },
-            { "nvim-neotest/nvim-nio" },
-            { "rcarriga/neotest-plenary", dependencies = { "nvim-lua/plenary.nvim" } },
-        },
     },
-}
+}, namespace)
+
+neotest.setup({
+    discovery = { enabled = true },
+    diagnostic = { enabled = true },
+    floating = { border = "rounded" },
+    quickfix = { enabled = false, open = true },
+    adapters = {
+        require("neotest-plenary"),
+        require("neotest-go")({ experimental = { test_table = true } }),
+        require("neotest-rust")({ args = { "--verbose" } }),
+    },
+})
+
+-- Keymaps
+vim.keymap.set("n", "<localleader>ts", function() neotest.summary.toggle() end, { desc = "neotest: toggle summary" })
+vim.keymap.set("n", "<localleader>to", function() neotest.output.open({ enter = true, short = false }) end, { desc = "neotest: output" })
+vim.keymap.set("n", "<localleader>tn", function() neotest.run.run() end, { desc = "neotest: run" })
+vim.keymap.set("n", "<localleader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "neotest: run file" })
+vim.keymap.set("n", "<localleader>tF", function() neotest.run.run({ vim.fn.expand("%"), concurrent = false }) end, { desc = "neotest: run file synchronously" })
+vim.keymap.set("n", "<localleader>tc", function() neotest.run.stop({ interactive = true }) end, { desc = "neotest: cancel" })
+vim.keymap.set("n", "[n", function() neotest.jump.prev({ status = "failed" }) end, { desc = "jump to next failed test" })
+vim.keymap.set("n", "]n", function() neotest.jump.next({ status = "failed" }) end, { desc = "jump to previous failed test" })
