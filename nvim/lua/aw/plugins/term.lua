@@ -6,21 +6,21 @@ require("toggleterm").setup({
     open_mapping = "<F4>",
     hide_numbers = true,
     shade_filetypes = {},
-    shade_terminals = true,
+    shade_terminals = false,
     start_in_insert = true,
     persist_size = true,
     direction = "horizontal",
     autochdir = true,
     close_on_exit = true,
+    highlights = {
+        FloatBorder = { link = "Special" },
+        NormalFloat = { link = "Normal" },
+    },
     float_opts = {
         border = "curved",
         width = 70,
         height = 20,
         winblend = 0,
-        highlights = {
-            border = "Special",
-            background = "Normal",
-        },
     },
 })
 

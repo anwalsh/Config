@@ -167,8 +167,36 @@ require("legendary").setup({})
 -- Focus (auto-resize windows)
 require("focus").setup({
     enable = true,
-    excluded_filetypes = { "fterm", "term", "toggleterm" },
-    bufnew = false,
+    split = {
+        bufnew = false,
+    },
+})
+
+-- Disable focus.nvim for certain filetypes and buftypes (e.g. terminals, sidebars).
+-- focus.nvim has no built-in excluded_filetypes option; autocommands are required.
+local focus_ignore_filetypes = { "fterm", "term", "toggleterm", "neo-tree", "Trouble", "trouble" }
+local focus_ignore_buftypes = { "nofile", "prompt", "popup", "terminal" }
+
+local focus_group = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
+vim.api.nvim_create_autocmd("WinEnter", {
+    group = focus_group,
+    callback = function()
+        if vim.tbl_contains(focus_ignore_buftypes, vim.bo.buftype) then
+            vim.w.focus_disable = true
+        else
+            vim.w.focus_disable = false
+        end
+    end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+    group = focus_group,
+    callback = function()
+        if vim.tbl_contains(focus_ignore_filetypes, vim.bo.filetype) then
+            vim.b.focus_disable = true
+        else
+            vim.b.focus_disable = false
+        end
+    end,
 })
 
 -- Flatten (nested neovim instances)

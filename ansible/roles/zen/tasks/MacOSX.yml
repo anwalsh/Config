@@ -1,0 +1,9 @@
+- name: "Zen | MacOSX | Check Install"
+  ansible.builtin.stat:
+    path: /Applications/Zen Browser.app
+  register: zen_install
+- name: "Zen | MacOSX | Install Zen Browser"
+  community.general.homebrew_cask:
+    name: zen
+    state: present
+  when: not zen_install.stat.exists

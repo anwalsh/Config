@@ -74,6 +74,7 @@ default_roles:
   - zig
   - zsh
   - zed
+  - zen
 go:
   packages:
     - package: mvdan.cc/gofumpt@latest
