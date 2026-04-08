@@ -200,7 +200,7 @@ wk.add({
 
     -- Settings
     { "<leader>,", group = "+settings" },
-    { "<leader>,m", "<cmd>Mason<cr>", desc = "Mason" },
+    { "<leader>,u", "<cmd>lua vim.pack.update()<cr>", desc = "Update Plugins" },
     { "<leader>,n", function() ts.edit_nvim() end, desc = "Edit Nvim Config" },
     { "<leader>,d", function() ts.edit_config() end, desc = "Edit Config Files" },
     { "<leader>,s", "<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>", desc = "Edit current RT Snippets" },
