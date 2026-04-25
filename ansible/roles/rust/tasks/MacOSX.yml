@@ -5,8 +5,8 @@
   failed_when: false
 - name: "Rust | MacOSX | Install rustup-init"
   community.general.homebrew:
-    name: rustup
-    state: latest
+      name: rustup
+      state: latest
 - name: "Rust | MacOSX | Install rustup"
   ansible.builtin.command: rustup-init -y --no-modify-path
   when: cargo_exists.rc != 0

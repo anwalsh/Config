@@ -7,6 +7,28 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "agent": {
+    "dock": "left",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "icon_theme": "Material Icon Theme",
   "tabs": {
     "file_icons": true,
@@ -22,11 +44,12 @@
     "show_tab_bar_buttons": false
   },
   "auto_update": true,
+  "tab_size": 4,
   "soft_wrap": "none",
   "pane_split_direction_vertical": "right",
   "pane_split_direction_horizontal": "down",
   "wrap_guides": [
-    80
+    100
   ],
   "search": {
     "center_on_match": true
@@ -91,8 +114,8 @@
   },
   "inlay_hints": {
     "enabled": true,
-    "show_type_hints": false,
-    "show_parameter_hints": false,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
     "show_other_hints": true
   },
   "show_completions_on_input": true,
@@ -109,6 +132,21 @@
         "!pyright",
         "!pylsp"
       ]
+    },
+    "TypeScript": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "TSX": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "JavaScript": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "JSX": {
+      "language_servers": ["vtsls", "eslint", "!typescript-language-server"]
+    },
+    "Lua": {
+      "tab_size": 2
     }
   },
   "lsp": {
@@ -145,6 +183,30 @@
         "ui.semanticTokens": true
       },
     },
+    "vtsls": {
+      "initialization_options": {
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": { "enabled": "all" },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": { "enabled": true },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true }
+          }
+        },
+        "javascript": {
+          "inlayHints": {
+            "parameterNames": { "enabled": "literals" },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": { "enabled": true },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true }
+          }
+        }
+      }
+    },
     "rust-analyzer": {
       "initialization_options": {
         "checkOnSave": true,
@@ -167,6 +229,7 @@
     "nvim-nightfox": true,
     "ruff": true,
     "golangci-lint": true,
+    "vtsls": true,
     // languages
     "html": true,
     "markdown": true,

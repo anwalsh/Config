@@ -26,11 +26,24 @@
       "ctrl--": "pane::SplitHorizontal",
       "g ]": "editor::GoToDiagnostic",
       "g [": "editor::GoToPreviousDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
       "g r": "editor::FindAllReferences",
+      "g t": "editor::GoToTypeDefinition",
+      "g I": "editor::GoToImplementation",
+      "g D": "editor::GoToDeclaration",
+      "g s": "outline::Toggle",
       "shift-k": "editor::Hover",
       "g a": "editor::ToggleCodeActions",
       "space w": "workspace::Save",
+      "space c r": "editor::Rename",
+      "space f f": "file_finder::Toggle",
+      "space /": "workspace::NewSearch",
+      "space b b": "tab_switcher::Toggle",
+      "space g g": "git_panel::ToggleFocus",
       ", .": "editor::ToggleInlineDiagnostics",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePreviousItem",
       "j": [
@@ -102,7 +115,8 @@
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
       "j j": "vim::NormalBefore",
-      "j k": "vim::NormalBefore"
+      "j k": "vim::NormalBefore",
+      "ctrl-k": "editor::ShowSignatureHelp"
     }
   },
   {

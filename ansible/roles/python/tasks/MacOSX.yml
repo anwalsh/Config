@@ -1,75 +1,108 @@
 - name: "Python Environment | MacOSX | Define Python Versions"
   ansible.builtin.set_fact:
-    python_stable_version: "3.14.3"
-    python_legacy_version: "3.10.20"
+      python_stable_version: "3.14.3"
+      python_legacy_version: "3.10.20"
 
 - name: "Python Environment | MacOSX | Install Build Dependencies"
   community.general.homebrew:
-    name:
-      - pyenv
-      - openssl
-      - readline
-      - sqlite3
-      - xz
-      - zlib
-    state: present
+      name:
+          - pyenv
+          - openssl
+          - readline
+          - sqlite3
+          - xz
+          - zlib
+      state: present
 
 - name: "Python Environment | MacOSX | Check Stable Python Installed"
   ansible.builtin.shell:
-    cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{ python_stable_version }}$'"
-    executable: /bin/bash
+      cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{
+          python_stable_version }}$'"
+      executable: /bin/bash
   register: python_stable_installed
   changed_when: false
   failed_when: false
 
 - name: "Python Environment | MacOSX | Check Legacy Python Installed"
   ansible.builtin.shell:
-    cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{ python_legacy_version }}$'"
-    executable: /bin/bash
+      cmd: "set -o pipefail && pyenv versions --bare | grep -E '^{{
+          python_legacy_version }}$'"
+      executable: /bin/bash
   register: python_legacy_installed
   changed_when: false
   failed_when: false
 
 - name: "Python Environment | MacOSX | Install Stable Python"
   ansible.builtin.command:
-    cmd: "pyenv install {{ python_stable_version }}"
+      cmd: "pyenv install {{ python_stable_version }}"
   when: python_stable_installed.stdout == ""
   changed_when: true
 
 - name: "Python Environment | MacOSX | Install Legacy Python"
   ansible.builtin.command:
-    cmd: "pyenv install {{ python_legacy_version }}"
+      cmd: "pyenv install {{ python_legacy_version }}"
   when: python_legacy_installed.stdout == ""
   changed_when: true
 
 - name: "Python Environment | MacOSX | Check Pyenv Global Version"
   ansible.builtin.command:
-    cmd: pyenv global
+      cmd: pyenv global
   register: python_pyenv_global
   changed_when: false
   failed_when: false
 
 - name: "Python Environment | MacOSX | Set Pyenv Global"
   ansible.builtin.command:
-    cmd: "pyenv global {{ python_legacy_version }}"
+      cmd: "pyenv global {{ python_legacy_version }}"
   when: python_pyenv_global.stdout != python_legacy_version
   changed_when: true
 
 - name: "Python Environment | MacOSX | Install Pipx"
   community.general.homebrew:
-    name: pipx
-    state: present
+      name: pipx
+      state: present
 
 - name: "Python Environment | MacOSX | Check Poetry Version"
   ansible.builtin.shell:
-    cmd: "set -o pipefail && poetry --version 2>/dev/null | awk '{print $NF}' | tr -d '()'"
-    executable: /bin/bash
+      cmd: "set -o pipefail && poetry --version 2>/dev/null | awk '{print $NF}' | tr
+          -d '()'"
+      executable: /bin/bash
   register: python_poetry_version
   changed_when: false
   failed_when: false
 
 - name: "Python Environment | MacOSX | Install Poetry"
   ansible.builtin.command:
-    cmd: pipx install poetry==2.3.2
+      cmd: pipx install poetry==2.3.2
   when: python_poetry_version.stdout is not search("2.3.2")
+  changed_when: true
+
+- name: "Python Environment | MacOSX | Check Poetry Fish Completions"
+  ansible.builtin.stat:
+      path: "{{ home }}/.config/fish/completions/poetry.fish"
+  register: poetry_fish_completions
+
+- name: "Python Environment | MacOSX | Generate Poetry Fish Completions"
+  ansible.builtin.shell:
+      cmd: "poetry completions fish > {{ home }}/.config/fish/completions/poetry.fish"
+      executable: /bin/bash
+  when: not poetry_fish_completions.stat.exists
+  changed_when: true
+
+- name: "Python Environment | MacOSX | Install uv"
+  community.general.homebrew:
+      name: uv
+      state: present
+
+- name: "Python Environment | MacOSX | Check uv Shell Completions"
+  ansible.builtin.stat:
+      path: "{{ home }}/.config/fish/completions/uv.fish"
+  register: uv_fish_completions
+
+- name: "Python Environment | MacOSX | Generate uv Fish Completions"
+  ansible.builtin.shell:
+      cmd: "uv generate-shell-completion fish > {{ home
+          }}/.config/fish/completions/uv.fish"
+      executable: /bin/bash
+  when: not uv_fish_completions.stat.exists
   changed_when: true
