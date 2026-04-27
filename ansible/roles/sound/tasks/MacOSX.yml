@@ -1,0 +1,7 @@
+- name: Route alert sounds to built-in speakers
+  community.general.osx_defaults:
+    domain: com.apple.soundpref
+    host: currentHost
+    key: AlertsUseMainDevice
+    type: int
+    value: 1

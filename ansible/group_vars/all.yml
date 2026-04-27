@@ -60,6 +60,7 @@ default_roles:
   - ruby
   - rust
   - signal
+  - sound
   - spotify
   - soulver
   #   - ssh
