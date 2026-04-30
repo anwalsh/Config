@@ -5,3 +5,11 @@
     key: AlertsUseMainDevice
     type: int
     value: 1
+
+- name: Set notification alert volume to 0
+  community.general.osx_defaults:
+    domain: com.apple.soundpref
+    host: currentHost
+    key: AlertVolume
+    type: float
+    value: 0.0

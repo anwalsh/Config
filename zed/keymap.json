@@ -1,129 +1,129 @@
 [
-  {
-    "context": "Editor || Workspace",
-    "bindings": {
-      "ctrl-shift-e": "workspace::ToggleRightDock",
-      "ctrl-x": "pane::CloseActiveItem"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-`": "workspace::ToggleBottomDock"
-    }
-  },
-  {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
-    "bindings": {
-      "space q": "pane::CloseActiveItem",
-      "ctrl-w z": "workspace::ToggleZoom",
-      "ctrl-w t": "terminal_panel::ToggleFocus",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-/": "pane::SplitVertical",
-      "ctrl--": "pane::SplitHorizontal",
-      "g ]": "editor::GoToDiagnostic",
-      "g [": "editor::GoToPreviousDiagnostic",
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic",
-      "g r": "editor::FindAllReferences",
-      "g t": "editor::GoToTypeDefinition",
-      "g I": "editor::GoToImplementation",
-      "g D": "editor::GoToDeclaration",
-      "g s": "outline::Toggle",
-      "shift-k": "editor::Hover",
-      "g a": "editor::ToggleCodeActions",
-      "space w": "workspace::Save",
-      "space c r": "editor::Rename",
-      "space f f": "file_finder::Toggle",
-      "space /": "workspace::NewSearch",
-      "space b b": "tab_switcher::Toggle",
-      "space g g": "git_panel::ToggleFocus",
-      ", .": "editor::ToggleInlineDiagnostics",
-      "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp",
-      "tab": "pane::ActivateNextItem",
-      "shift-tab": "pane::ActivatePreviousItem",
-      "j": [
-        "vim::Down",
-        {
-          "display_lines": true
+    {
+        "context": "Editor || Workspace",
+        "bindings": {
+            "ctrl-shift-e": "workspace::ToggleRightDock",
+            "ctrl-x": "pane::CloseActiveItem"
         }
-      ],
-      "k": [
-        "vim::Up",
-        {
-          "display_lines": true
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-`": "workspace::ToggleBottomDock"
         }
-      ]
-    }
-  },
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !VimCount",
-    "bindings": {
-      "0": [
-        "vim::StartOfLine",
-        {
-          "display_lines": true
+    },
+    {
+        "context": "Editor && VimControl && !VimWaiting && !menu",
+        "bindings": {
+            "space q": "pane::CloseActiveItem",
+            "ctrl-w z": "workspace::ToggleZoom",
+            "ctrl-w t": "terminal_panel::ToggleFocus",
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-/": "pane::SplitVertical",
+            "ctrl--": "pane::SplitHorizontal",
+            "g ]": "editor::GoToDiagnostic",
+            "g [": "editor::GoToPreviousDiagnostic",
+            "] d": "editor::GoToDiagnostic",
+            "[ d": "editor::GoToPreviousDiagnostic",
+            "g r": "editor::FindAllReferences",
+            "g t": "editor::GoToTypeDefinition",
+            "g I": "editor::GoToImplementation",
+            "g D": "editor::GoToDeclaration",
+            "g s": "outline::Toggle",
+            "shift-k": "editor::Hover",
+            "g a": "editor::ToggleCodeActions",
+            "space w": "workspace::Save",
+            "space c r": "editor::Rename",
+            "space f f": "file_finder::Toggle",
+            "space /": "workspace::NewSearch",
+            "space b b": "tab_switcher::Toggle",
+            "space g g": "git_panel::ToggleFocus",
+            ", .": "editor::ToggleInlineDiagnostics",
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp",
+            "tab": "pane::ActivateNextItem",
+            "shift-tab": "pane::ActivatePreviousItem",
+            "j": [
+                "vim::Down",
+                {
+                    "display_lines": true
+                }
+            ],
+            "k": [
+                "vim::Up",
+                {
+                    "display_lines": true
+                }
+            ]
         }
-      ],
-      "$": [
-        "vim::EndOfLine",
-        {
-          "display_lines": true
+    },
+    {
+        "context": "Editor && vim_mode == normal && !VimWaiting && !VimCount",
+        "bindings": {
+            "0": [
+                "vim::StartOfLine",
+                {
+                    "display_lines": true
+                }
+            ],
+            "$": [
+                "vim::EndOfLine",
+                {
+                    "display_lines": true
+                }
+            ]
         }
-      ]
+    },
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "g c c": "editor::ToggleComments"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == visual",
+        "bindings": {
+            "g c": "editor::ToggleComments"
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-b z": "workspace::ToggleZoom",
+            "ctrl-u": "terminal::Clear"
+        }
+    },
+    {
+        "context": "Dock",
+        "bindings": {
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown"
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-`": "workspace::ToggleBottomDock"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert && !menu",
+        "bindings": {
+            "j j": "vim::NormalBefore",
+            "j k": "vim::NormalBefore",
+            "ctrl-k": "editor::ShowSignatureHelp"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !menu",
+        "bindings": {
+            "space w": "workspace::Save",
+            "space s t": "workspace::NewSearch"
+        }
     }
-  },
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
-      "g c c": "editor::ToggleComments"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == visual",
-    "bindings": {
-      "g c": "editor::ToggleComments"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-b z": "workspace::ToggleZoom",
-      "ctrl-u": "terminal::Clear"
-    }
-  },
-  {
-    "context": "Dock",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-`": "workspace::ToggleBottomDock"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == insert && !menu",
-    "bindings": {
-      "j j": "vim::NormalBefore",
-      "j k": "vim::NormalBefore",
-      "ctrl-k": "editor::ShowSignatureHelp"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == normal && !menu",
-    "bindings": {
-      "space w": "workspace::Save",
-      "space s t": "workspace::NewSearch"
-    }
-  }
 ]
