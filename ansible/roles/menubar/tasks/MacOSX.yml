@@ -10,3 +10,9 @@
     key: ShowPercent
     type: string
     value: yes
+- name: Show Bluetooth in menu bar
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: Bluetooth
+    type: int
+    value: 18

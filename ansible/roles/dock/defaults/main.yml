@@ -7,3 +7,4 @@ dock_magnification: true
 dock_magnification_size: 82
 dock_delay: 0
 interface_style: "Dark"
+apple_accent_color: -1

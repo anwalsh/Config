@@ -60,6 +60,8 @@ fish_add_path -a $HOME_LOCAL_BIN
 fish_add_path -a $GOPATH/bin
 fish_add_path -a $KREW_ROOT/bin
 fish_add_path -a /opt/homebrew/bin/go
+fish_add_path -a /opt/homebrew/bin/
+fish_add_path -a /opt/homebrew/sbin/
 fish_add_path -a $HOME/.cargo/bin
 fish_add_path -a $HOME/.poetry/bin
 fish_add_path -a $PYENV_ROOT/bin

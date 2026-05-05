@@ -42,6 +42,12 @@
         key: AppleInterfaceStyle
         type: string
         value: "{{ interface_style }}"
+    - name: Set Graphite accent color for dark icons
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: AppleAccentColor
+        type: int
+        value: "{{ apple_accent_color }}"
 - name: Restart Dock
   ansible.builtin.command: "killall Dock"
   changed_when: true
