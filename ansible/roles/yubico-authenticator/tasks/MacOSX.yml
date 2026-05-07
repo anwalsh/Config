@@ -1,0 +1,4 @@
+- name: "Yubico Authenticator | MacOSX | Install Yubico Authenticator"
+  community.general.homebrew_cask:
+    name: yubico-authenticator
+    state: present
