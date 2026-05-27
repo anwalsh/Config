@@ -1,4 +1,5 @@
 - name: "Install Mac App Store Apps | MacOSX | Install MAS"
   community.general.mas:
-    id: 497799835 # xcode
+    id:
+      - 497799835 # xcode
     state: present
