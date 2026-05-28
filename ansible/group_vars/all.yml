@@ -4,7 +4,6 @@ default_roles:
   - alfred
   - alt-tab
   - ant
-  - arc
   - bartender
   - bat
   - chrome

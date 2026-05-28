@@ -1,9 +1,0 @@
-- name: "Arc | MacOSX | Check Install"
-  ansible.builtin.stat:
-    path: /Applications/Arc.app
-  register: arc_install
-- name: "Arc | MacOSX | Install Arc"
-  community.general.homebrew_cask:
-    name: arc
-    state: present
-  when: not arc_install.stat.exists
