@@ -26,6 +26,7 @@ default_roles:
   # - gpg-suite
   - gnupg
   - helm
+  - input
   - istats
   - iterm2
   #   - java
@@ -33,7 +34,6 @@ default_roles:
   - just
   - k8s
   - karabiner
-  - keyboard
   - kitty
   - krew
   - kubectx

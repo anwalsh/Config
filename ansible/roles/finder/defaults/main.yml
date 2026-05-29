@@ -1,5 +1,12 @@
 # Finder
+show_external_hard_drives_on_desktop: true
+show_hard_drives_on_desktop: true
+show_mounted_servers_on_desktop: true
+show_removable_media_on_desktop: true
 show_all_files: true
+apple_show_all_extensions: true
+springing_enabled: true
+springing_delay: 0
 ds_not_write_network_dev: true
 ds_not_write_usb_dev: true
 # Use list view in all Finder windows by default.
@@ -10,8 +17,10 @@ ds_not_write_usb_dev: true
 finder_view_style: "Nlsv"
 finder_path_bar: true
 finder_status_bar: true
+full_posix_path: true
+fx_default_search_scope: "SCcf"
+open_window_for_new_removable_media: true
 new_window_target: "PfHm"
 new_window_target_path: "file://${HOME}"
 create_desktop: false
-full_posix_path: true
 stage_manager: false

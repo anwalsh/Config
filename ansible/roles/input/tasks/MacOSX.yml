@@ -1,0 +1,18 @@
+- name: Enable Mac tap to click behavior
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    # Set tap to click for the current host
+    - { domain: "NSGlobalDomain",
+        key: "com.apple.mouse.tapBehavior",
+        type: "int",
+        value: 1 }
+    # Set tap to click for Bluetooth Trackpads
+    - { domain: "com.apple.driver.AppleBluetoothMultitouch.trackpad",
+        key: "Clicking",
+        type: bool,
+        value: true }

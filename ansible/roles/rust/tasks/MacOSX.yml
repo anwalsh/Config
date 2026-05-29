@@ -3,12 +3,12 @@
   register: cargo_exists
   changed_when: false
   failed_when: false
-- name: "Rust | MacOSX | Install rustup-init"
+- name: "Rust | MacOSX | Install rustup"
   community.general.homebrew:
       name: rustup
       state: latest
-- name: "Rust | MacOSX | Install rustup"
-  ansible.builtin.command: rustup-init -y --no-modify-path
+- name: "Rust | MacOSX | Install rust"
+  ansible.builtin.command: rustup toolchain install stable
   when: cargo_exists.rc != 0
 - name: "Rust | MacOSX | Install nightly"
   ansible.builtin.command: rustup toolchain install nightly

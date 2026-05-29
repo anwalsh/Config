@@ -1,11 +1,53 @@
 - name: Configure Finder
   block:
+    - name: Show External HDD on Desktop
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowExternalHardDrivesOnDesktop
+        type: bool
+        value: "{{ show_external_hard_drives_on_desktop }}"
+    - name: ShowHardDrivesOnDesktop
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowHardDrivesOnDesktop
+        type: bool
+        value: "{{ show_hard_drives_on_desktop }}"
+    - name: ShowMountedServersOnDesktop
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowMountedServersOnDesktop
+        type: bool
+        value: "{{ show_mounted_servers_on_desktop }}"
+    - name: ShowRemovableMediaOnDesktop
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowRemovableMediaOnDesktop
+        type: bool
+        value: "{{ show_removable_media_on_desktop }}"
     - name: Show All Files
       community.general.osx_defaults:
         domain: com.apple.finder
         key: AppleShowAllFiles
         type: bool
         value: "{{ show_all_files }}"
+    - name: AppleShowAllExtensions
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: AppleShowAllExtensions
+        type: bool
+        value: "{{ apple_show_all_extensions }}"
+    - name: SpringingEnabled
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: com.apple.springing.enabled
+        type: bool
+        value: "{{ springing_enabled }}"
+    - name: SpringingDelay
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: com.apple.springing.delay
+        type: float
+        value: "{{ springing_delay }}"
     - name: ds files don't write on network devices
       community.general.osx_defaults:
         domain: com.apple.desktopservices
@@ -36,12 +78,24 @@
         key: ShowStatusBar
         type: bool
         value: "{{ finder_status_bar }}"
-    - name: Finder New Window starts at Home
+    - name: Give full POSIX Path
       community.general.osx_defaults:
         domain: com.apple.finder
-        key: NewWindowTarget
+        key: _FXShowPosixPathInTitle
+        type: bool
+        value: "{{ full_posix_path }}"
+    - name: FXDefaultSearchScope
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: FXDefaultSearchScope
         type: string
-        value: "{{ new_window_target }}"
+        value: "{{ fx_default_search_scope }}"
+    - name: OpenWindowForNewRemovableMedia
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: OpenWindowForNewRemovableMedia
+        type: bool
+        value: "{{ open_window_for_new_removable_media }}"
     - name: Finder New Window Target Path
       community.general.osx_defaults:
         domain: com.apple.finder
@@ -54,18 +108,18 @@
         key: CreateDesktop
         type: bool
         value: "{{ create_desktop }}"
-    - name: Give full POSIX Path
-      community.general.osx_defaults:
-        domain: com.apple.finder
-        key: _FXShowPosixPathInTitle
-        type: bool
-        value: "{{ full_posix_path }}"
     - name: Disable Stage Manager
       community.general.osx_defaults:
         domain: com.apple.finder
         key: Desktop-StageManager
         type: bool
         value: "{{ stage_manager }}"
+    - name: Finder New Window starts at Home
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: NewWindowTarget
+        type: string
+        value: "{{ new_window_target }}"
 - name: Restart Finder
   ansible.builtin.command: killall Finder
   changed_when: true
