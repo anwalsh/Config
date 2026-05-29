@@ -30,6 +30,12 @@
         key: ShowPathbar
         type: bool
         value: "{{ finder_path_bar }}"
+    - name: Finder Status Bar
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowStatusBar
+        type: bool
+        value: "{{ finder_status_bar }}"
     - name: Finder New Window starts at Home
       community.general.osx_defaults:
         domain: com.apple.finder

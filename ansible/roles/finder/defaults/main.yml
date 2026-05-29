@@ -9,6 +9,7 @@ ds_not_write_usb_dev: true
 # Cover Flow:  "Flwv"
 finder_view_style: "Nlsv"
 finder_path_bar: true
+finder_status_bar: true
 new_window_target: "PfHm"
 new_window_target_path: "file://${HOME}"
 create_desktop: false

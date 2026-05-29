@@ -19,6 +19,7 @@ require("conform").setup({
         fish = { "fish_indent" },
         sh = { "shfmt", "shellcheck", "shellharden", stop_after_first = true },
         terraform = { "terraform_fmt" },
+        toml = { "taplo" },
         python = { "ruff", "isort", "black", stop_after_first = true },
         rust = { "rustfmt" },
         yaml = { "yamlfmt" },
