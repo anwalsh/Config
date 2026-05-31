@@ -8,6 +8,7 @@ default_roles:
   - bat
   - chrome
   - claude
+  - cleanshot
   - compass
   - discord
   - dock

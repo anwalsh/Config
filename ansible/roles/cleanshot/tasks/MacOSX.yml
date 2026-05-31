@@ -1,0 +1,4 @@
+- name: "Cleanshot | MacOSX | Install Cleanshot App"
+  community.general.homebrew_cask:
+    name: cleanshot
+    state: present
