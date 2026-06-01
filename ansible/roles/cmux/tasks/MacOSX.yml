@@ -1,0 +1,4 @@
+- name: "Cmux | MacOSX | Install Cmux"
+  community.general.homebrew_cask:
+    name: cmux
+    state: present
