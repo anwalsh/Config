@@ -11,6 +11,7 @@ default_roles:
   - cleanshot
   - cmux
   - compass
+  - container
   - discord
   - dock
   - docker
@@ -24,9 +25,9 @@ default_roles:
   - ghostty
   - git
   - git-credential-manager
+  - gnupg
   - go
   # - gpg-suite
-  - gnupg
   - helm
   - input
   - istats
@@ -62,8 +63,8 @@ default_roles:
   - rust
   - signal
   - sound
-  - spotify
   - soulver
+  - spotify
   #   - ssh
   - starship
   - system
@@ -75,9 +76,9 @@ default_roles:
   - wezterm
   - yubico-authenticator
   - zig
-  - zsh
   - zed
   - zen
+  - zsh
 go:
   packages:
     - package: mvdan.cc/gofumpt@latest

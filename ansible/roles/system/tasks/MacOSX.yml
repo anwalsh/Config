@@ -4,8 +4,7 @@
     upgrade_all: true
 - name: "System | MacOSX | Install Homebrew Packages"
   community.general.homebrew:
-    name: "{{ item }}"
+    name:
+      - jq
+      - yamlfmt
     state: present
-  with_items:
-    - jq
-    - yamlfmt

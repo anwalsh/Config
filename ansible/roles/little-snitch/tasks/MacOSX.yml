@@ -1,4 +1,4 @@
 - name: "Little Snitch | MacOSX | Install Little Snitch"
   community.general.homebrew_cask:
     name: little-snitch
-    state: latest
+    state: present

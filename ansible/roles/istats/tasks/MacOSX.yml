@@ -1,4 +1,4 @@
 - name: "iStat | MacOSX | Install iStat Menus"
   community.general.homebrew_cask:
     name: istat-menus
-    state: latest
+    state: present

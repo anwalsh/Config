@@ -1,0 +1,7 @@
+- name: "Container | MacOSX | Install Container"
+  community.general.homebrew_cask:
+    name: container
+    state: present
+  when:
+    - ansible_facts['architecture'] == 'arm64'
+    - ansible_facts['distribution_major_version'] | int >= 15

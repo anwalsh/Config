@@ -1,4 +1,8 @@
-- name: "Install Mac App Store Apps | MacOSX | Install MAS"
+- name: "MAS | MacOSX | Install mas CLI"
+  community.general.homebrew:
+    name: mas
+    state: present
+- name: "MAS | MacOSX | Install App Store Apps"
   community.general.mas:
     id:
       - 497799835 # xcode

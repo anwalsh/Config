@@ -6,7 +6,7 @@
 - name: "Rust | MacOSX | Install rustup"
   community.general.homebrew:
       name: rustup
-      state: latest
+      state: present
 - name: "Rust | MacOSX | Install rust"
   ansible.builtin.command: rustup toolchain install stable
   when: cargo_exists.rc != 0

@@ -13,7 +13,7 @@
     group: '{{ group }}'
     state: link
 - name: "Find | Fish"
-  command: which fish
+  ansible.builtin.command: which fish
   changed_when: false
   register: fish_executable_path
 - name: "Add Fish to Shells"

@@ -1,7 +1,7 @@
-- name: Install JetBrains Toolbox
+- name: "JetBrains | MacOSX | Install JetBrains Toolbox"
   community.general.homebrew_cask:
     name: jetbrains-toolbox
-    state: latest
+    state: present
 - name: "Ideavimrc | Deploy Configuration"
   ansible.builtin.file:
     src: '{{ dots }}/intellij/.ideavimrc'

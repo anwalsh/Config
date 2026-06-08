@@ -9,7 +9,7 @@
           - pyenv
           - openssl
           - readline
-          - sqlite3
+          - sqlite
           - xz
           - zlib
       state: present

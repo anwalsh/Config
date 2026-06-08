@@ -1,14 +1,14 @@
-- name: "Tooling | Install"
+- name: "Tooling | MacOSX | Install"
   community.general.homebrew:
     name:
-      - mtr
       - asdf
       - awk
       - bazelisk
       - buf
       - ccls
-      - commitlint
       - cmake-docs
+      - commitlint
+      - coreutils
       - direnv
       - drone-cli
       - editorconfig
@@ -22,8 +22,8 @@
       - gnu-tar
       - gnutls
       - grep
-      - htop
       - helix
+      - htop
       - hub
       - hyperfine
       - llvm
@@ -33,10 +33,10 @@
       - lzo
       - make
       - markdownlint-cli
-      - mas
       - mockery
       - mongocli
       - mongosh
+      - mtr
       - ncurses
       - nmap
       - pkgconf
@@ -51,7 +51,6 @@
       - stylua
       - subversion
       - texinfo
-      - tmux
       - tree
       - tree-sitter
       - vim
@@ -61,4 +60,12 @@
       - yq
       - zoxide
       - zstd
+    state: present
+- name: "Tooling | MacOSX | Add starpls tap"
+  community.general.homebrew_tap:
+    name: withered-magic/brew
+    state: present
+- name: "Tooling | MacOSX | Install starpls"
+  community.general.homebrew:
+    name: starpls
     state: present
