@@ -61,11 +61,3 @@
       - zoxide
       - zstd
     state: present
-- name: "Tooling | MacOSX | Add starpls tap"
-  community.general.homebrew_tap:
-    name: withered-magic/brew
-    state: present
-- name: "Tooling | MacOSX | Install starpls"
-  community.general.homebrew:
-    name: starpls
-    state: present

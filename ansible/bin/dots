@@ -10,8 +10,8 @@ function macos_setup() {
   if ! [ -x "$(command -v brew)" ]; then
     echo "Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo >> /Users/andy/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/andy/.zprofile
+    echo >> "$HOME/.zprofile"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
   if ! [ -x "$(command -v git)" ]; then
@@ -27,22 +27,27 @@ function macos_setup() {
     brew install 1password
     brew install 1password-cli
     echo "Setting up 1Password CLI"
-    # press any key to continue
     read -n 1 -s -r -p "Press any key to continue"
     echo "[✓] 1Password CLI setup complete"
   fi
-  if ! [ -x "$(command xcode-select -p)" ]; then
+  if ! xcode-select -p &>/dev/null; then
     echo "Setting up Xcode"
     xcode-select --install
     sudo xcodebuild -license accept
   fi
   echo "Updating and upgrading brew..."
-  brew upgrade && brew update
+  brew update && brew upgrade
 }
 
 detect_os() {
-  echo $(uname -s | tr '[:upper:]' '[:lower:]')
+  uname -s | tr '[:upper:]' '[:lower:]'
 }
+
+# Determine optimal forks: use 2x logical CPUs, capped at 50
+CPU_COUNT=$(sysctl -n hw.logicalcpu 2>/dev/null || nproc 2>/dev/null || echo 4)
+ANSIBLE_FORKS=$(( CPU_COUNT * 2 > 50 ? 50 : CPU_COUNT * 2 ))
+export ANSIBLE_FORKS
+echo "Using ${ANSIBLE_FORKS} forks (${CPU_COUNT} logical CPUs detected)"
 
 machine_os=$(detect_os)
 echo "Detected OS as: $machine_os"
@@ -56,8 +61,17 @@ case $machine_os in
     ;;
 esac
 
-if ! [ -d "$HOME"/.config/ ]; then
-    mkdir "$HOME"/.config/
+if ! [ -d "$HOME/.config/" ]; then
+    mkdir "$HOME/.config/"
 fi
 
-ansible-playbook -K "$ANSIBLE_DIR/main.yml" "$@"
+# When --check is passed, also enable --diff to show what would change
+EXTRA_ARGS=()
+for arg in "$@"; do
+  if [[ "$arg" == "--check" ]]; then
+    EXTRA_ARGS+=("--diff")
+    break
+  fi
+done
+
+ansible-playbook -K "$ANSIBLE_DIR/main.yml" "${EXTRA_ARGS[@]}" "$@"

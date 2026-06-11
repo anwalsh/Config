@@ -6,48 +6,53 @@
         key: tilesize
         type: float
         value: "{{ dock_tile_size }}"
+      notify: Restart Dock
     - name: Set dock position flag.
       community.general.osx_defaults:
         domain: com.apple.dock
         key: orientation
         type: string
         value: "{{ dock_position }}"
+      notify: Restart Dock
     - name: Set dock vis behavior
       community.general.osx_defaults:
         domain: com.apple.dock
         key: autohide
         type: bool
         value: "{{ dock_autohide }}"
+      notify: Restart Dock
     - name: Set dock magnification flag.
       community.general.osx_defaults:
         domain: com.apple.dock
         key: magnification
         type: bool
         value: "{{ dock_magnification }}"
+      notify: Restart Dock
     - name: Set dock magnification size.
       community.general.osx_defaults:
         domain: com.apple.dock
         key: largesize
         type: float
         value: "{{ dock_magnification_size }}"
+      notify: Restart Dock
     - name: Set dock hide delay
       community.general.osx_defaults:
         domain: com.apple.dock
         key: autohide-delay
         type: float
         value: "{{ dock_delay }}"
+      notify: Restart Dock
     - name: Dark Dock
       community.general.osx_defaults:
         domain: NSGlobalDomain
         key: AppleInterfaceStyle
         type: string
         value: "{{ interface_style }}"
+      notify: Restart Dock
     - name: Set Graphite accent color for dark icons
       community.general.osx_defaults:
         domain: NSGlobalDomain
         key: AppleAccentColor
         type: int
         value: "{{ apple_accent_color }}"
-- name: Restart Dock
-  ansible.builtin.command: "killall Dock"
-  changed_when: true
+      notify: Restart Dock

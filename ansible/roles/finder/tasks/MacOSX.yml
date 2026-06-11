@@ -6,120 +6,137 @@
         key: ShowExternalHardDrivesOnDesktop
         type: bool
         value: "{{ show_external_hard_drives_on_desktop }}"
+      notify: Restart Finder
     - name: ShowHardDrivesOnDesktop
       community.general.osx_defaults:
         domain: com.apple.finder
         key: ShowHardDrivesOnDesktop
         type: bool
         value: "{{ show_hard_drives_on_desktop }}"
+      notify: Restart Finder
     - name: ShowMountedServersOnDesktop
       community.general.osx_defaults:
         domain: com.apple.finder
         key: ShowMountedServersOnDesktop
         type: bool
         value: "{{ show_mounted_servers_on_desktop }}"
+      notify: Restart Finder
     - name: ShowRemovableMediaOnDesktop
       community.general.osx_defaults:
         domain: com.apple.finder
         key: ShowRemovableMediaOnDesktop
         type: bool
         value: "{{ show_removable_media_on_desktop }}"
+      notify: Restart Finder
     - name: Show All Files
       community.general.osx_defaults:
         domain: com.apple.finder
         key: AppleShowAllFiles
         type: bool
         value: "{{ show_all_files }}"
+      notify: Restart Finder
     - name: AppleShowAllExtensions
       community.general.osx_defaults:
         domain: NSGlobalDomain
         key: AppleShowAllExtensions
         type: bool
         value: "{{ apple_show_all_extensions }}"
+      notify: Restart Finder
     - name: SpringingEnabled
       community.general.osx_defaults:
         domain: NSGlobalDomain
         key: com.apple.springing.enabled
         type: bool
         value: "{{ springing_enabled }}"
+      notify: Restart Finder
     - name: SpringingDelay
       community.general.osx_defaults:
         domain: NSGlobalDomain
         key: com.apple.springing.delay
         type: float
         value: "{{ springing_delay }}"
+      notify: Restart Finder
     - name: ds files don't write on network devices
       community.general.osx_defaults:
         domain: com.apple.desktopservices
         key: DSDontWriteNetworkStores
         type: bool
         value: "{{ ds_not_write_network_dev }}"
+      notify: Restart Finder
     - name: ds files don't write on usb devices
       community.general.osx_defaults:
         domain: com.apple.desktopservices
         key: DSDontWriteUSBStores
         type: bool
         value: "{{ ds_not_write_usb_dev }}"
+      notify: Restart Finder
     - name: Finder View Style
       community.general.osx_defaults:
         domain: com.apple.finder
         key: FXPreferredViewStyle
         type: string
         value: "{{ finder_view_style }}"
+      notify: Restart Finder
     - name: Finder Path Bar
       community.general.osx_defaults:
         domain: com.apple.finder
         key: ShowPathbar
         type: bool
         value: "{{ finder_path_bar }}"
+      notify: Restart Finder
     - name: Finder Status Bar
       community.general.osx_defaults:
         domain: com.apple.finder
         key: ShowStatusBar
         type: bool
         value: "{{ finder_status_bar }}"
+      notify: Restart Finder
     - name: Give full POSIX Path
       community.general.osx_defaults:
         domain: com.apple.finder
         key: _FXShowPosixPathInTitle
         type: bool
         value: "{{ full_posix_path }}"
+      notify: Restart Finder
     - name: FXDefaultSearchScope
       community.general.osx_defaults:
         domain: com.apple.finder
         key: FXDefaultSearchScope
         type: string
         value: "{{ fx_default_search_scope }}"
+      notify: Restart Finder
     - name: OpenWindowForNewRemovableMedia
       community.general.osx_defaults:
         domain: com.apple.finder
         key: OpenWindowForNewRemovableMedia
         type: bool
         value: "{{ open_window_for_new_removable_media }}"
+      notify: Restart Finder
     - name: Finder New Window Target Path
       community.general.osx_defaults:
         domain: com.apple.finder
         key: NewWindowTargetPath
         type: string
         value: "{{ new_window_target_path }}"
+      notify: Restart Finder
     - name: No Icons on Desktop
       community.general.osx_defaults:
         domain: com.apple.finder
         key: CreateDesktop
         type: bool
         value: "{{ create_desktop }}"
+      notify: Restart Finder
     - name: Disable Stage Manager
       community.general.osx_defaults:
         domain: com.apple.finder
         key: Desktop-StageManager
         type: bool
         value: "{{ stage_manager }}"
+      notify: Restart Finder
     - name: Finder New Window starts at Home
       community.general.osx_defaults:
         domain: com.apple.finder
         key: NewWindowTarget
         type: string
         value: "{{ new_window_target }}"
-- name: Restart Finder
-  ansible.builtin.command: killall Finder
-  changed_when: true
+      notify: Restart Finder

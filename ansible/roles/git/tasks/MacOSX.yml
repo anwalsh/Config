@@ -1,22 +1,11 @@
-- name: "Git | MacOSX | Install git"
+- name: "Git | MacOSX | Install git tools"
   community.general.homebrew:
-    name: git
-    state: present
-- name: "Git | MacOSX | Install git-delta"
-  community.general.homebrew:
-    name: git-delta
-    state: present
-- name: "Git | MacOSX | Install git-extras"
-  community.general.homebrew:
-    name: git-extras
-    state: present
-- name: "Git | MacOSX | Install git-filter-repo"
-  community.general.homebrew:
-    name: git-filter-repo
-    state: present
-- name: "Git | MacOSX | Install git-trim"
-  community.general.homebrew:
-    name: git-trim
+    name:
+      - git
+      - git-delta
+      - git-extras
+      - git-filter-repo
+      - git-trim
     state: present
 - name: "Git | Set [delta] config"
   block:

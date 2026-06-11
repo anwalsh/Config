@@ -15,4 +15,5 @@
   when: cargo_exists.rc != 0
 - name: "Rust | MacOSX | Rust Update"
   ansible.builtin.command: rustup update
-  changed_when: true
+  register: rustup_update
+  changed_when: rustup_update.stdout is regex('updated - rustc')
